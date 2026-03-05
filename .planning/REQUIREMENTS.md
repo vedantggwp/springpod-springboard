@@ -20,11 +20,11 @@
 ### Hosting
 
 - [x] **HOST-01**: Site is accessible at GitHub Pages URL (e.g., `username.github.io/repo-name`)
-- [ ] **HOST-02**: Site is private — only repository collaborators can view it
+- [x] **HOST-02**: Site is private — only repository collaborators can view it
 
 ### Quality
 
-- [ ] **QUAL-01**: Branch protection on main requires CI to pass before merge
+- [x] **QUAL-01**: Branch protection on main requires CI to pass before merge
 
 ## v2 Requirements
 
@@ -61,8 +61,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CICD-02 | Phase 2 | Complete |
 | CICD-03 | Phase 2 | Complete |
 | HOST-01 | Phase 2 | Complete |
-| HOST-02 | Phase 2 | Pending |
-| QUAL-01 | Phase 2 | Pending |
+| HOST-02 | Phase 2 | Complete |
+| QUAL-01 | Phase 2 | Complete |
 
 **Coverage:**
 - v1 requirements: 9 total
