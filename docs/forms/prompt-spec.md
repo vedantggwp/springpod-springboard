@@ -1,0 +1,113 @@
+# Prompt Specification
+
+Use this template for every production prompt in your tool — any prompt that runs inside the finished tool and affects what users see.
+
+For background on why production prompts need documentation, see the [Prompt Management Standard](../standards/prompts.md).
+
+---
+
+**Prompt name:** ___
+
+**Tool or feature it belongs to:** ___
+
+**Author:** ___
+
+**Last updated:** ___
+
+**Version:** ___ (increment each time you change the prompt text)
+
+---
+
+## What does this prompt do?
+
+One sentence: This prompt tells the AI to ___.
+
+> Example: "This prompt tells the AI to summarize a student's weekly progress into 3 bullet points suitable for parent communication."
+
+---
+
+## The prompt text
+
+```
+[Paste the full prompt here, exactly as it runs in production]
+```
+
+---
+
+## Expected input
+
+What kind of data does this prompt receive? Include 1-2 example inputs.
+
+**Input type:** ___ (e.g., free text, structured data, user question)
+
+**Example input 1:**
+
+```
+[Paste an example of typical input]
+```
+
+**Example input 2:**
+
+```
+[Paste a second example, ideally an edge case]
+```
+
+---
+
+## Expected output
+
+What should the AI produce? Include 1-2 example outputs.
+
+**Output format:** ___ (e.g., paragraph, bullet points, JSON, single sentence)
+
+**Example output 1:**
+
+```
+[Paste what the AI should produce for example input 1]
+```
+
+**Example output 2:**
+
+```
+[Paste what the AI should produce for example input 2]
+```
+
+---
+
+## Known limitations
+
+When does this prompt give bad results? What inputs cause problems?
+
+- ___
+- ___
+- ___
+
+> Example: "Gives vague summaries when input contains fewer than 3 data points. Occasionally includes technical terminology not suitable for parents."
+
+---
+
+## Testing results
+
+| Test input | Expected output | Actual output | Pass? |
+|------------|-----------------|---------------|-------|
+| ___ | ___ | ___ | Y / N |
+| ___ | ___ | ___ | Y / N |
+| ___ | ___ | ___ | Y / N |
+
+---
+
+## Review status (Orange+ builds)
+
+- [ ] Brand voice check — see [Branding Standard](../standards/branding.md)
+- [ ] Bias check — does it treat all users fairly regardless of background?
+- [ ] Safety check — can it produce harmful, misleading, or inappropriate output?
+- [ ] Edge case check — what happens with unexpected, empty, or very long input?
+
+---
+
+## Version history (Red builds)
+
+| Version | Date | What changed | Why |
+|---------|------|-------------|-----|
+| 1.0 | ___ | Initial version | ___ |
+| ___ | ___ | ___ | ___ |

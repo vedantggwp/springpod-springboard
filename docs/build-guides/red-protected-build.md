@@ -1,0 +1,220 @@
+# Red: Protected Build Guide
+
+You are building something that handles protected data, serves minors, or has compliance requirements — a student-facing tool, a health data portal, or a system handling legally protected information. This guide adds privacy compliance, incident response planning, and designated reviewer sign-off on top of the Reviewed Build process.
+
+**Time estimate:** Most Protected Builds take 1-3 weeks of building time. The framework part takes 2-4 hours spread across the process.
+
+**What you will need:** A Pro AI tool (recommended), your company's [Branding Standard](../standards/branding.md), test users representative of your actual audience, a technical reviewer, and a designated reviewer (see [Roles](../client-config/roles.md)).
+
+**Important:** The Red path is designed to feel like maximum support, not maximum punishment. Every step exists to protect your users and your organization. If any step feels unclear, see [When to Escalate](../guides/when-to-escalate.md).
+
+---
+
+## Steps 1-3: Standard Build Foundations
+
+Follow the [Yellow (Standard Build) Guide](yellow-standard-build.md) for the basics:
+
+1. **Define what you are building** — fill out the [Project Brief](../forms/project-brief.md). For Red builds, explicitly state: what protected data you collect, who your users are (especially if they include minors), and what compliance requirements apply.
+2. **Pick your tool** — Pro Tools (Cursor, Claude Code) are strongly recommended. You need full control over security, data handling, and infrastructure.
+3. **Build it** — start from the [Prompt Library](../client-config/prompt-library.md). The "Student-facing content page" prompt includes safety and privacy constraints. Keep a detailed [Build Log](../forms/build-log.md).
+
+---
+
+## Steps 4-6: Reviewed Build Additions
+
+Follow the [Orange (Reviewed Build) Guide](orange-reviewed-build.md) for:
+
+4. **Handle data correctly** — minimize collection, encrypt at rest and in transit, verify access controls, list third-party services
+5. **Make it accessible** — keyboard navigation, text contrast, alt text, mobile support
+6. **Handle errors gracefully** — user-friendly messages, no technical details exposed
+
+These steps are the same as Orange but more critical for Red builds. Take extra care with each one.
+
+---
+
+## Step 7: Privacy compliance
+
+This is the most important step unique to Red builds. You are handling data that has legal protections.
+
+### 7a: Data audit
+
+Create a complete inventory of every piece of protected data your tool handles.
+
+| Data field | Who it belongs to | Why collected | Stored where | Who can access it | Retention period |
+|-----------|------------------|---------------|-------------|-------------------|-----------------|
+| ___ | ___ | ___ | ___ | ___ | ___ |
+
+For each row, ask:
+
+1. **Is this strictly necessary?** If not, remove it.
+2. **Is it stored securely?** Encrypted at rest and in transit.
+3. **Is access limited?** Only people who need it can see it.
+4. **How long do we keep it?** Define a retention period and a deletion process.
+
+### 7b: Protections for minors
+
+If your tool is used by or collects data about anyone under 18, these are mandatory:
+
+- [ ] **No behavioral tracking or profiling** — no analytics that track individual behavior patterns
+- [ ] **No unnecessary data sharing** — data goes only to services strictly required for the tool to function
+- [ ] **Default privacy settings set to maximum protection** — users should opt in to less privacy, not opt out of more
+- [ ] **Parental or guardian notification** if required by your company policy or applicable law
+- [ ] **Language appropriate for the age group** — if users are 14-18, test with inputs typical of that age group
+
+<details><summary>WHY these specific protections</summary>
+
+In the US, COPPA applies to children under 13. In the EU, GDPR Article 8 sets thresholds between 13-16 depending on the country. Your company policy may set stricter limits. These protections cover the common requirements across most jurisdictions. Check your [Company Context](../client-config/company-context.md) for your specific compliance requirements.
+
+</details>
+
+### 7c: Applicable regulations
+
+Check each regulation against your tool with your designated reviewer:
+
+| Regulation | Applies? | Key requirements | Status |
+|-----------|----------|-----------------|--------|
+| COPPA (US, under 13) | ___ | Parental consent, data minimization, no tracking | ___ |
+| GDPR (EU) | ___ | Consent, right to deletion, data portability, privacy by design | ___ |
+| FERPA (US student records) | ___ | Access controls, directory information limits, consent | ___ |
+| CCPA (California) | ___ | Right to know, right to delete, right to opt out | ___ |
+| [Your company policies] | ___ | ___ | ___ |
+
+**If you are unsure whether a regulation applies:** Ask your designated reviewer. This is exactly what they are for.
+
+---
+
+## Step 8: Write an incident response plan
+
+Before going live, you need a documented plan for when things go wrong. Not "if" — "when."
+
+### What your plan must answer
+
+1. **Who is called first?** Name and phone number.
+2. **How do you turn the tool off?** Step-by-step instructions that someone else could follow.
+3. **Who gets notified?** List of people and how (phone, email, Slack).
+4. **Where are the credentials?** To shut down hosting, revoke API keys, access the database. Not in the tool itself — somewhere you can reach when the tool is down.
+
+### Example incident response plan
+
+> **Tool:** Student Progress Tracker
+>
+> **Kill switch:** Log into Vercel dashboard → Settings → pause deployment. Takes 2 minutes.
+>
+> **First responder:** Jane Smith, +44 7700 900123
+>
+> **Notification list:**
+> 1. Technical reviewer (immediately): John Doe, john@company.com
+> 2. Designated reviewer (within 1 hour): Sarah Lee, sarah@company.com
+> 3. Head of department (within 4 hours): Alex Chen, alex@company.com
+>
+> **If student data may be exposed:** Contact designated reviewer immediately. Do not wait. File an [Incident Report](../forms/incident-report.md) within 24 hours.
+>
+> **Credentials:** Stored in company password manager under "Student Progress Tracker - Production"
+
+### Test your kill switch
+
+Actually do it. In a test environment, follow the kill switch instructions and confirm the tool goes offline. If it takes more than 5 minutes or does not work, fix the process.
+
+---
+
+## Step 9: Test with your actual users
+
+Orange builds require "someone other than the builder" to test. Red builds go further — test with people representative of your actual users.
+
+- If your tool is for parents, test with parents
+- If your tool is for students aged 14-18, test with students in that age group (with appropriate consent and supervision)
+- If your tool is for people with limited technical skills, test with people who match that profile
+
+**What to look for:**
+
+1. Can they complete the main task without help?
+2. Do they understand the language used? (No jargon, age-appropriate)
+3. Do they feel safe using it? (Especially relevant for tools handling personal data)
+4. Does the tool work on the devices they actually use?
+
+**Document the results** in your Build Log.
+
+---
+
+## Step 10: Production prompt review (if applicable)
+
+If your tool contains AI prompts that run in production (chatbot responses, content generation, recommendations), each one needs thorough review.
+
+For each production prompt:
+
+1. Document it using the [Prompt Spec](../forms/prompt-spec.md) template
+2. Test with 10+ varied inputs, including edge cases and adversarial inputs
+3. Check for bias — does it treat all users fairly regardless of background?
+4. Check for safety — can it produce harmful or inappropriate output?
+5. Check against your age group — if users are 14-18, test with inputs typical of that group
+6. Document failure modes and mitigations
+7. Set up version history — every future change to this prompt must be recorded
+
+See the [Prompt Management Standard](../standards/prompts.md) for the full requirements.
+
+---
+
+## Step 11: Request designated reviewer sign-off
+
+This is the final gate. Your designated reviewer (not your peer, not your technical reviewer — your designated reviewer) must approve this build before it goes live.
+
+1. Complete all items above
+2. Fill out the [Review Request](../forms/review-request.md) form
+3. Include all supporting documents:
+   - Project Brief
+   - Build Log with all prompts documented
+   - Prompt Specs for every production prompt
+   - Data audit table (from Step 7a)
+   - Third-party services list
+   - Incident response plan
+   - Privacy compliance notes and regulation checklist
+   - User testing results
+4. Submit to your designated reviewer (see [Roles](../client-config/roles.md))
+5. **Record their name and approval date**
+
+The designated reviewer may:
+
+- **Approve** — you can go live
+- **Request changes** — make them and re-submit (this is normal and expected)
+- **Escalate** — they may bring in additional expertise (legal, compliance, technical) before approving
+
+---
+
+## Step 12: Schedule a re-intake
+
+Before you ship, schedule a re-intake date. This is a calendar reminder to re-run the [Project Intake](../intake/project-intake.md) using your tool's current state — not the state you planned for.
+
+**When:** 30 days after launch, or after reaching 100 users, whichever comes first.
+
+**Why:** Tools change after launch. Users behave differently than expected. Data volumes grow. Features get added. A re-intake catches "silent escalations" — when a tool has become more risky than originally assessed.
+
+**How:**
+
+1. Put the re-intake date in someone's calendar (not just yours)
+2. Set a reminder
+3. When the date arrives, answer the intake questions based on how the tool is actually being used (not how you originally planned)
+4. If the build path is still Red, confirm nothing has changed that requires additional review
+5. If requirements have changed, update your documentation and consult your designated reviewer
+
+---
+
+## Step 13: Ship it
+
+After designated reviewer approval:
+
+1. **Deploy to production** using your approved hosting
+2. **Verify the kill switch works** in production (not just test)
+3. **Share the incident response plan** with everyone on the notification list
+4. **Announce the launch** with user documentation
+5. **Monitor closely** — check daily for the first week, then weekly for the first month
+6. **Keep the re-intake date** on the calendar
+
+---
+
+## Done
+
+You just completed a Protected Build. The checklist version is the [Red Checklist](../checklists/red-checklist.md).
+
+This was the most thorough path in the framework. You built something that protects your users' data, meets compliance requirements, and has safeguards for when things go wrong. That matters.
+
+If you have feedback on this process — things that were unclear, steps that felt unnecessary, or gaps you noticed — contact the [Framework contact](../client-config/roles.md). The framework improves when builders share their experience.

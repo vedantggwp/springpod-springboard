@@ -1,0 +1,121 @@
+# When to Escalate
+
+## This is not a failure page.
+
+If you are here, you are doing exactly the right thing. Asking for help early prevents problems. Not asking creates them.
+
+---
+
+## Common situations
+
+### "I do not know which build path my project is."
+
+**What to do:** Re-run the [Project Intake](../intake/project-intake.md). Answer each question honestly based on what you know right now. If you are still unsure after completing it, message the [Framework contact](../client-config/roles.md).
+
+**Rule of thumb:** If you are unsure, pick the higher path. It is easier to scale back than to realize you under-classified after launch.
+
+---
+
+### "I am stuck on a checklist item."
+
+**What to do:** Skip it and note it in your [Review Request](../forms/review-request.md). Your reviewer will help you resolve it. Skipping an item and documenting why is much better than getting stuck and stopping altogether.
+
+**Example:**
+
+> Checklist item: "Personal data is encrypted at rest"
+>
+> My note: "I am using Supabase and I think it encrypts by default, but I could not confirm this. Flagging for reviewer to verify."
+
+That is a perfectly good response. Your reviewer exists for exactly this reason.
+
+---
+
+### "I think there might be a security issue."
+
+**What to do:** Stop building. Contact the [Technical reviewer](../client-config/roles.md) immediately.
+
+Do not try to fix it yourself. Do not Google it and hope for the best. Security issues are one area where expert help is always the right call. Better to ask and be wrong than to stay silent and be right.
+
+**Examples of things that should trigger this:**
+
+- You accidentally committed an API key or password to your code
+- You noticed users can see other users' data
+- Your tool sends data to a service you did not intentionally connect to
+- Someone reported seeing unexpected content or behavior
+
+---
+
+### "My tool is live and something went wrong."
+
+**What to do:**
+
+1. If it is **Critical severity** (data exposed, safety risk, minors affected): Call the [Emergency contact](../client-config/roles.md) **now**. Do not email. Call.
+2. If it is **High severity** (users blocked, no workaround): Contact the [Technical reviewer](../client-config/roles.md) and consider taking the tool offline.
+3. If it is **Medium or Low severity**: Fill out the [Incident Report](../forms/incident-report.md) and contact your reviewer.
+
+If you are unsure about severity, treat it as one level higher than you think. See the severity guide in the [Incident Report](../forms/incident-report.md) template.
+
+---
+
+### "I am not sure if AI-generated output is correct."
+
+**What to do:** Never trust AI output without checking. This applies to both code and content.
+
+- **For code:** Test it. If you cannot test it yourself, ask someone who can.
+- **For content (chatbot responses, summaries, recommendations):** Read the output carefully. Check facts against reliable sources. If the output could mislead users or cause harm, flag it for review.
+- **If you cannot verify it yourself:** Ask a colleague with the relevant expertise, or flag it in your [Review Request](../forms/review-request.md).
+
+---
+
+### "This framework does not cover my situation."
+
+**What to do:** That is expected — no framework covers everything. Message the [Framework contact](../client-config/roles.md) and describe your situation. They will either:
+
+- Point you to a part of the framework you missed
+- Help you adapt the framework to your situation
+- Note it as something to add in the next framework update
+
+---
+
+### "I need to add a feature to a live tool and I am not sure if it changes the build path."
+
+**What to do:** Re-run the [Project Intake](../intake/project-intake.md) with the new feature in mind. Answer the questions based on what the tool will do after the change, not what it does now.
+
+If the build path changes (e.g., from Green to Yellow), follow the new path's checklist before deploying the update.
+
+---
+
+### "Someone asked me to do something that feels wrong."
+
+**What to do:** If you have been asked to:
+
+- Skip security checks to meet a deadline
+- Deploy without a review when the checklist requires one
+- Handle data in a way that seems risky
+- Build something that could harm users
+
+You have the right — and the responsibility — to raise concerns. Contact the [Designated reviewer](../client-config/roles.md) or the [Framework contact](../client-config/roles.md). The framework exists to protect users, and that includes protecting builders who raise legitimate concerns.
+
+---
+
+## Who to contact
+
+| Situation | Contact | How |
+|-----------|---------|-----|
+| General framework question | Framework contact | Email |
+| Build path or checklist question | Framework contact | Email |
+| Security concern | Technical reviewer | Email (or phone if urgent) |
+| Live tool is broken | Technical reviewer | Email |
+| Data exposed or safety risk | Emergency contact | Phone (immediately) |
+| Compliance or legal question | Designated reviewer | Email |
+| Something feels wrong | Designated reviewer | Email |
+
+See [Roles](../client-config/roles.md) for your company's specific contacts and response time expectations.
+
+---
+
+## The bottom line
+
+Escalating is not a sign of weakness. It is a sign that you care about doing things right. The framework is designed so that no one has to figure out difficult situations alone.
+
+When in doubt: **ask.**

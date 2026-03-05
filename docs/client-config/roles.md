@@ -1,0 +1,115 @@
+# Roles and Contacts
+
+This document defines who does what in the VCF framework — who reviews builds, who approves tools, and who to contact when something goes wrong.
+
+Search this document for `[CLIENT:` to find all fields that need your input.
+
+---
+
+## Framework roles
+
+| Role | Person | Contact | Responsibilities |
+|------|--------|---------|------------------|
+| **Peer reviewer** | Any team member | — | Reviews Yellow builds. Checks that the builder followed the checklist and the tool works as described. |
+| **Technical reviewer** | [CLIENT: Name] | [CLIENT: Email] | Reviews Orange builds. Checks security, data handling, access controls, and technical architecture. |
+| **Designated reviewer** | [CLIENT: Name] | [CLIENT: Email] | Signs off Red builds. Verifies compliance, privacy impact, and age-appropriate design. Has authority to approve or block launch. |
+| **Framework contact** | [CLIENT: Name] | [CLIENT: Email] | Answers questions about VCF itself. Updates framework documents. Runs training sessions. |
+| **Emergency contact** | [CLIENT: Name] | [CLIENT: Phone] | First call for critical incidents (data exposure, safety risk, compliance breach). Available outside business hours. |
+
+---
+
+## Who reviews what
+
+| Build path | Reviewer role | What they check |
+|------------|--------------|-----------------|
+| **Green** (Quick Build) | No formal review required | Builder self-checks using the [Green Checklist](../checklists/green-checklist.md) |
+| **Yellow** (Standard Build) | Peer reviewer | Checklist completion, basic functionality, realistic data testing |
+| **Orange** (Reviewed Build) | Technical reviewer | Security, data handling, branding, access controls, third-party services |
+| **Red** (Protected Build) | Designated reviewer | Everything above, plus compliance, privacy impact, age-appropriate design, incident response plan |
+
+<details><summary>WHY different reviewers for different paths</summary>
+
+Green builds are low-risk — a self-check is enough. As risk increases, you need reviewers with more expertise. A peer can check if a tool works correctly. A technical reviewer can check if it is secure. A designated reviewer can check if it is compliant. Matching reviewer expertise to risk level keeps the process efficient without cutting corners.
+
+</details>
+
+---
+
+## Escalation path
+
+When you are not sure what to do, follow this path:
+
+```
+Start here
+    |
+    v
+Can you solve it yourself using the framework docs?
+    |
+   YES --> Solve it and document in your Build Log
+    |
+   NO
+    |
+    v
+Is it a question about how to build something?
+    |
+   YES --> Ask the Framework contact
+    |
+   NO
+    |
+    v
+Is it a security or data concern?
+    |
+   YES --> Contact the Technical reviewer
+    |
+   NO
+    |
+    v
+Is it a compliance, legal, or safety issue?
+    |
+   YES --> Contact the Designated reviewer
+    |
+   NO
+    |
+    v
+Is something broken in a live tool?
+    |
+   YES --> Contact the Emergency contact
+         and file an Incident Report
+```
+
+See [When to Escalate](../guides/when-to-escalate.md) for more detailed guidance.
+
+---
+
+## Backup contacts
+
+[CLIENT: For each role above, who is the backup if the primary person is unavailable?]
+
+| Role | Backup person | Backup contact |
+|------|---------------|----------------|
+| Technical reviewer | [CLIENT: Name] | [CLIENT: Email] |
+| Designated reviewer | [CLIENT: Name] | [CLIENT: Email] |
+| Emergency contact | [CLIENT: Name] | [CLIENT: Phone] |
+
+---
+
+## Response time expectations
+
+[CLIENT: How quickly should each role respond?]
+
+| Role | Expected response time |
+|------|----------------------|
+| Peer reviewer | [CLIENT: e.g., Within 3 business days] |
+| Technical reviewer | [CLIENT: e.g., Within 5 business days] |
+| Designated reviewer | [CLIENT: e.g., Within 5 business days] |
+| Framework contact | [CLIENT: e.g., Within 2 business days] |
+| Emergency contact | [CLIENT: e.g., Within 1 hour for Critical severity] |
+
+---
+
+## Related documents
+
+- [Review Request](../forms/review-request.md) — the form to submit when requesting a review
+- [Incident Report](../forms/incident-report.md) — the form to submit when something goes wrong
+- [When to Escalate](../guides/when-to-escalate.md) — guidance on when to ask for help
+- [Company Context](company-context.md) — your company's values and constraints

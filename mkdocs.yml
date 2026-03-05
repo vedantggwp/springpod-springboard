@@ -1,0 +1,97 @@
+site_name: Vibe Coding Framework
+site_description: A structured framework for building AI-powered tools with consistency, safety, and speed.
+site_url: ""
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Inter
+    code: JetBrains Mono
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - navigation.indexes
+    - search.highlight
+    - search.suggest
+    - content.tabs.link
+    - toc.follow
+  icon:
+    logo: material/shield-check
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - tables
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+
+nav:
+  - Home: index.md
+  - Intake:
+    - Project Intake: intake/project-intake.md
+  - Standards:
+    - Quality: standards/quality.md
+    - Security: standards/security.md
+    - Branding: standards/branding.md
+    - Prompt Management: standards/prompts.md
+  - Build Guides:
+    - Green - Quick Build: build-guides/green-quick-build.md
+    - Yellow - Standard Build: build-guides/yellow-standard-build.md
+    - Orange - Reviewed Build: build-guides/orange-reviewed-build.md
+    - Red - Protected Build: build-guides/red-protected-build.md
+  - Checklists:
+    - Green Checklist: checklists/green-checklist.md
+    - Yellow Checklist: checklists/yellow-checklist.md
+    - Orange Checklist: checklists/orange-checklist.md
+    - Red Checklist: checklists/red-checklist.md
+  - Forms & Templates:
+    - Project Brief: forms/project-brief.md
+    - Prompt Spec: forms/prompt-spec.md
+    - Review Request: forms/review-request.md
+    - Incident Report: forms/incident-report.md
+    - Build Log: forms/build-log.md
+  - Guides:
+    - Your First Build: guides/first-build.md
+    - Tool Selection: guides/tool-selection.md
+    - When to Escalate: guides/when-to-escalate.md
+    - Glossary: guides/glossary.md
+  - Client Config:
+    - Company Context: client-config/company-context.md
+    - Approved Tools: client-config/approved-tools.md
+    - Roles & Contacts: client-config/roles.md
+    - Prompt Library: client-config/prompt-library.md
+  - Reference:
+    - Verification Log: verification-log.md
+    - Version History: version.md
+
+extra:
+  generator: false

@@ -1,0 +1,198 @@
+# Yellow: Standard Build Guide
+
+You are building something your team will use for real work — a dashboard, a workflow tool, or a data entry system. It handles business data and needs to look professional. This guide walks you through it.
+
+**Time estimate:** Most Standard Builds take 1-3 days of building time. The framework part takes about 30 minutes.
+
+**What you will need:** Access to an AI coding tool, your company's [Branding Standard](../standards/branding.md), and a colleague willing to test your tool.
+
+---
+
+## Step 1: Define what you are building (10 min)
+
+Fill out the [Project Brief](../forms/project-brief.md). For a Standard Build, be thorough — this tool will be used for real work, so "done" criteria matter.
+
+**Example completed brief:**
+
+> **Project name:** Team Performance Dashboard
+>
+> **What are you building?** A dashboard showing weekly team metrics — tasks completed, response times, and satisfaction scores. Used by team leads during Monday standups.
+>
+> **What problem does it solve?** Team leads currently pull data from three spreadsheets manually. Takes 30 minutes per week and the numbers are sometimes wrong.
+>
+> **What does "done" look like?**
+> 1. Shows tasks completed per person for the past 4 weeks
+> 2. Shows average response time with trend arrows
+> 3. Shows satisfaction score from the latest survey
+> 4. Filters by team and date range
+> 5. Matches company branding (colors, logo, fonts)
+>
+> **Tools:** Replit Agent (needs a backend to pull data from multiple sources)
+
+---
+
+## Step 2: Pick your tool
+
+For a Standard Build, you need a tool that lets you see and edit the code, because you may need to customize beyond what AI generates.
+
+**Recommended for Yellow builds:**
+
+- **Low-Code (Replit Agent)** — good balance of speed and control, handles databases and APIs
+- **Pro Tools (Cursor, Claude Code)** — maximum control, best for complex logic
+
+**Not recommended for Yellow builds:**
+
+- No-Code tools are fast but hard to customize and harder to move away from. If this tool will be used for months, consider starting with Low-Code or Pro.
+
+See the [Tool Selection Guide](../guides/tool-selection.md) for a full comparison and your company's [Approved Tools](../client-config/approved-tools.md) for what is available.
+
+---
+
+## Step 3: Build it
+
+### Accelerator
+
+Start from the [Prompt Library](../client-config/prompt-library.md). The "Internal dashboard" prompt is a good starting point for most Yellow builds.
+
+**Example prompt for a team performance dashboard:**
+
+```
+Create a dashboard showing team performance metrics.
+
+Data sections:
+1. Tasks completed per person for the past 4 weeks (bar chart)
+2. Average response time with trend indicator (summary card)
+3. Satisfaction score from latest survey (gauge or large number)
+
+Features:
+- Filter by team (dropdown) and date range (date picker)
+- Data refreshes when filters change
+- Loading state while data is fetching
+- Clear error message if data source is unavailable
+
+Colors:
+- Primary (headers, buttons): #1B3A5C
+- Accent (highlights, links): #2ABFBF
+- Background: #FFFFFF
+- Text: #333333
+
+Requirements:
+- Responsive (works on desktop and tablet)
+- No external libraries unless strictly necessary
+- Do not add features I did not ask for
+```
+
+### Keep a Build Log
+
+For Yellow builds and above, keep a [Build Log](../forms/build-log.md). Record:
+
+- Each prompt you use and which tool you used
+- Decisions you made and why
+- Issues you encountered and how you resolved them
+
+This takes 5 minutes per session and saves hours for anyone who needs to modify the tool later.
+
+---
+
+## Step 4: Test it
+
+Go beyond basic testing. Use realistic data and get someone else to try it.
+
+**Testing checklist:**
+
+1. **Realistic data** — Use real names, real numbers, real edge cases (not "test123")
+2. **Edge cases** — Try empty data, very large numbers, very long text, special characters
+3. **Different devices** — Open it on your phone and a tablet (or use browser device preview)
+4. **Fresh eyes** — Ask a colleague to complete the main task without help. Watch where they hesitate.
+
+**Getting feedback:**
+
+1. Pick someone who was not involved in building the tool
+2. Give them a task: "Using this dashboard, tell me which team member completed the most tasks last week"
+3. Do not help them — just watch
+4. Note every point of confusion and fix it
+
+---
+
+## Step 5: Match your brand
+
+Your tool should look and feel like it belongs to your company. Check it against the [Branding Standard](../standards/branding.md).
+
+**Quick brand check:**
+
+1. Open your tool next to your company website
+2. Do the colors match? (buttons, headers, links, backgrounds)
+3. Do the fonts match? (headings, body text)
+4. Is the company logo present?
+5. Do error messages and empty states use your brand voice? (Not generic "Error 500" or "No data")
+
+If anything looks off, update the styling to match the branding standard. Most tools let you change colors and fonts in a theme or CSS file.
+
+---
+
+## Step 6: Secure it
+
+Same secrets check as Green, but more thorough because this tool handles business data.
+
+1. **Search your code** for: `sk-`, `api_key`, `secret`, `password`, `token`, `DATABASE_URL`
+2. **Check your database** — is it password-protected? Is the connection string in environment variables?
+3. **Check error messages** — do they show technical details (database names, file paths, stack traces)? They should not. Users see "Something went wrong. Please try again." Not the internals.
+
+See the [Security Standard](../standards/security.md) for the full list of checks.
+
+---
+
+## Step 7: Document your prompts
+
+Save the prompts you used to build this tool. Use the [Build Log](../forms/build-log.md) or create a `prompts.md` file in your project.
+
+**Why this matters:** If someone needs to modify this tool in 6 months, they need to know what instructions you gave the AI. Without the original prompts, they are guessing.
+
+For production prompts (prompts that run inside your finished tool, like a chatbot's instructions), use the [Prompt Spec](../forms/prompt-spec.md) template to document each one in detail.
+
+---
+
+## Step 8: Request peer review
+
+Before going live, get a peer review.
+
+1. Fill out the [Review Request](../forms/review-request.md) form
+2. Send it to a peer reviewer (any colleague — see [Roles](../client-config/roles.md))
+3. Give them access to the tool and your build log
+4. They check that you followed the checklist and the tool works as described
+5. Address their feedback, then ship
+
+**What a peer review is not:** It is not a formal audit. It is a colleague spending 15-30 minutes making sure nothing obvious is wrong. Do not overthink it.
+
+---
+
+## Step 9: Ship it
+
+1. **Share the link** with your team
+2. **Note the kill switch** — know how to take it offline
+3. **Tell people it exists** and how to use it
+4. **Monitor it** for the first week — check if people are using it and if anything breaks
+
+---
+
+## Done
+
+You just completed a Standard Build. Here is what you did:
+
+1. Defined the project (Project Brief)
+2. Chose the right tool
+3. Built it with clear, specific prompts
+4. Tested with realistic data and fresh eyes
+5. Matched your company brand
+6. Secured it (no exposed secrets, no leaking error messages)
+7. Documented your prompts (Build Log)
+8. Got a peer review
+9. Shipped it
+
+The checklist version is the [Yellow Checklist](../checklists/yellow-checklist.md). Use that for future builds when you do not need the full walkthrough.
+
+---
+
+## What if things change?
+
+If your tool starts handling personal data, serves external users, or becomes business-critical, re-run the [Project Intake](../intake/project-intake.md). You may need to follow the Orange (Reviewed Build) path.
