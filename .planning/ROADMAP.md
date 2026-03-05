@@ -12,7 +12,7 @@ All content is complete. This milestone takes the existing MkDocs site from a lo
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Repository Setup** - Create private GitHub repo, push code, pin dependencies
+- [x] **Phase 1: Repository Setup** - Create private GitHub repo, push code, pin dependencies (completed 2026-03-05)
 - [ ] **Phase 2: CI/CD and Live Hosting** - GitHub Actions pipeline, Pages deployment, branch protection, verified private access
 
 ## Phase Details
@@ -26,7 +26,7 @@ Decimal phases appear between their surrounding integers in numeric order.
   2. Local code is pushed and visible in the GitHub UI
   3. `site/` directory does not appear in the repository (excluded by .gitignore)
   4. `requirements.txt` exists and pins MkDocs and Material theme to specific versions so any fresh `pip install -r requirements.txt` produces an identical build environment
-**Plans:** 1 plan
+**Plans:** 1/1 plans complete
 
 Plans:
 - [ ] 01-01-PLAN.md — Create private GitHub repo, pin dependencies in requirements.txt, push all code
@@ -54,5 +54,5 @@ Phases execute in numeric order: 1 → 2
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Repository Setup | 0/1 | Not started | - |
+| 1. Repository Setup | 1/1 | Complete   | 2026-03-05 |
 | 2. CI/CD and Live Hosting | 0/2 | Not started | - |
