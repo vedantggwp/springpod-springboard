@@ -1,0 +1,104 @@
+# Glossary
+
+Plain-language definitions for terms used in the Vibe Coding Framework. If a term is not here, check the [index](/index) or contact the [Framework contact](/client-config/roles).
+
+---
+
+**Accessibility**
+Making a tool usable by people with disabilities — including those who use screen readers, keyboard-only navigation, or have limited vision. Required for Orange+ builds. See the [Quality Standard](/standards/quality).
+
+**API key**
+A password-like string that lets your tool connect to an external service (like an AI model or database). Must never be visible in your code. Store it in environment variables. See the [Security Standard](/standards/security).
+
+**Build log**
+A running record of what you did during a build — decisions made, prompts used, issues encountered. Required for Yellow+ builds. See the [Build Log template](/forms/build-log).
+
+**Build path**
+One of four levels (Green, Yellow, Orange, Red) that determines how much process your project needs. Determined by the [Project Intake](/intake/project-intake).
+
+**Build prompt**
+A prompt you type into an AI tool while building your project. These are your instructions to the AI during development. They are temporary — they do not run inside the finished tool. See the [Prompt Management Standard](/standards/prompts).
+
+**COPPA**
+Children's Online Privacy Protection Act. A US law that restricts how websites and tools can collect data from children under 13. Relevant for Red builds serving young users. See the [Security Standard](/standards/security).
+
+**Designated reviewer**
+The person who signs off on Red (Protected Build) projects. They have the authority and expertise to evaluate compliance and safety. See [Roles](/client-config/roles).
+
+**Encryption**
+Scrambling data so that only authorized people can read it. "At rest" means when stored in a database. "In transit" means when sent between the user's browser and your server. Required for Orange+ builds handling personal data.
+
+**Environment variable**
+A setting stored outside your code that your tool can read at runtime. Used for API keys, database URLs, and other secrets. The safe alternative to putting secrets in your code.
+
+**Escalation**
+Asking for help from someone with more expertise or authority. This is a good thing — not a failure. See [When to Escalate](/guides/when-to-escalate).
+
+**FERPA**
+Family Educational Rights and Privacy Act. A US law that protects student education records. Relevant for Red builds in educational settings.
+
+**GDPR**
+General Data Protection Regulation. An EU law that gives people control over their personal data, including the right to deletion and data portability. Relevant for Orange+ builds serving EU users.
+
+**Green: Quick Build**
+The simplest build path. For internal tools, prototypes, and throwaway projects with no sensitive data. 6 checklist items. No formal review required. See the [Green Guide](/build-guides/green-quick-build).
+
+**HTTPS**
+The secure version of HTTP (the protocol your browser uses to load web pages). Shows as a lock icon in the address bar. Means data between the user and your tool is encrypted in transit. Required for all builds.
+
+**Incident**
+Something going wrong with a live tool — from a cosmetic bug to a data breach. Documented using the [Incident Report](/forms/incident-report) template.
+
+**Incident response plan**
+A written plan for what to do when something goes wrong with a live tool. Includes who to call, how to shut the tool down, and who to notify. Required for Red builds. See the [Red Guide](/build-guides/red-protected-build).
+
+**Kill switch**
+A way to quickly take your tool offline if something goes wrong. Can be as simple as "delete the deployment" or "set it to private." Required for all builds.
+
+**No-Code tools**
+AI tools that let you describe what you want in plain language and generate a working tool without writing code. Examples: Lovable, Bolt, v0. See the [Tool Selection Guide](/guides/tool-selection).
+
+**Orange: Reviewed Build**
+The build path for tools handling personal data or serving external users. 14 checklist items. Requires a technical review. See the [Orange Guide](/build-guides/orange-reviewed-build).
+
+**Peer reviewer**
+Any colleague who reviews your tool for basic quality and functionality. Required for Yellow+ builds. See [Roles](/client-config/roles).
+
+**Personal data**
+Any information that identifies or could identify a specific person — names, email addresses, phone numbers, student IDs, health information, location data. Triggers Orange or Red build path.
+
+**Pro Tools**
+AI coding tools that give you a full development environment with AI assistance. You work directly with code. Examples: Cursor, Claude Code. See the [Tool Selection Guide](/guides/tool-selection).
+
+**Production prompt**
+A prompt that runs inside your finished tool — like a chatbot's system instructions or an AI summarizer's rules. These affect what users see every time they use the tool. Required to be documented for Yellow+ builds. See the [Prompt Management Standard](/standards/prompts).
+
+**Progressive disclosure**
+The approach this framework uses for documentation. Each item has three layers: a one-line summary (for experienced builders), a "WHY" explanation (for those who want to understand), and a "HOW TO CHECK" walkthrough (for those who need step-by-step instructions). You choose how deep to go.
+
+**Project Brief**
+A short document that captures what you are building, why, and what "done" looks like. Required for all builds. See the [Project Brief template](/forms/project-brief).
+
+**Project Intake**
+Five questions that determine your build path (Green, Yellow, Orange, or Red). This is the starting point for every project. See the [Project Intake](/intake/project-intake).
+
+**Protected data**
+Data with the highest sensitivity — student records, health information, data about minors, legally protected information. Triggers Red build path.
+
+**Red: Protected Build**
+The most thorough build path. For tools handling protected data, serving minors, or subject to compliance requirements. 18 checklist items. Requires designated reviewer sign-off. See the [Red Guide](/build-guides/red-protected-build).
+
+**Re-intake**
+Re-running the [Project Intake](/intake/project-intake) after a tool is live to check if the build path is still correct. Required for Red builds at 30 days or 100 users. Recommended whenever a tool changes significantly.
+
+**Review Request**
+A form submitted when your tool is ready for review. Includes what you built, what checklist items you completed, and what you need feedback on. See the [Review Request template](/forms/review-request).
+
+**Technical reviewer**
+A person with security or technical expertise who reviews Orange builds. They check data handling, security, and access controls. See [Roles](/client-config/roles).
+
+**Vibe coding**
+Building software tools by describing what you want to an AI system, which then generates the code. The term captures the informal, creative nature of this approach — you set the "vibe" and the AI builds it. VCF provides the governance layer for doing this responsibly.
+
+**Yellow: Standard Build**
+The build path for tools with business data and moderate customization needs. 10 checklist items. Requires peer review. See the [Yellow Guide](/build-guides/yellow-standard-build).

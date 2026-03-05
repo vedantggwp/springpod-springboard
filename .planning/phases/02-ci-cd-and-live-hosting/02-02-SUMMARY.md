@@ -69,7 +69,7 @@ Task 2 was a `checkpoint:human-verify` — no code changes, user approval record
 1. **Task 1: Configure branch protection on main requiring CI status check** - GitHub API call, `enforce_admins:false`, `strict:false`, context `"deploy"`. No local commit.
 2. **Task 2: Verify live site and deployment pipeline** - Checkpoint approved by user.
 
-**Plan metadata:** _(added after state update commit)_
+**Plan metadata:** `1f1a977` (docs: complete branch protection and live site verification plan)
 
 ## Files Created/Modified
 

@@ -6,53 +6,65 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Vibe Coding Framework (VCF)** — a documentation-only framework that guides non-technical builders through AI-powered tool development using risk-appropriate processes. Content is organized into build paths (Green/Yellow/Orange/Red) with progressive disclosure.
 
-This is **not an application**. There is no backend, no database, no application code. All content is Markdown rendered as a static site.
+This is **not an application**. There is no backend, no database. All content is MDX rendered as a static site.
 
 ## Tech Stack
 
-- **MkDocs 1.6.1** + **Material for MkDocs 9.7.4** (static site generator)
-- **Python 3.x** runtime (for MkDocs only)
-- **GitHub Actions** CI/CD → **GitHub Pages** deployment
-- Dependencies pinned in `requirements.txt`
+- **Next.js 16** (App Router, static export via `output: 'export'`)
+- **Tailwind CSS v4** with VCF design tokens
+- **next-mdx-remote** for rendering MDX content
+- **shiki** for code syntax highlighting
+- **Fuse.js** for client-side search
+- **lucide-react** for icons
+- **TypeScript**
+- **Vercel** deployment
 
 ## Build & Development Commands
 
 ```bash
 # Install dependencies
-pip install -r requirements.txt
+npm install
 
 # Local development server (hot reload)
-mkdocs serve
+npm run dev
 
-# Build static site (outputs to /site/, gitignored)
-mkdocs build
+# Build search index + static site (outputs to /out/, gitignored)
+npm run build
 
-# Deploy to GitHub Pages (CI does this automatically)
-mkdocs gh-deploy --force
+# Type checking
+npm run typecheck
+
+# Lint
+npm run lint
 ```
-
-## CI/CD Pipeline
-
-Push to `main` triggers `.github/workflows/ci.yml`:
-1. Checkout → Setup Python 3.x → Cache → Install deps → `mkdocs gh-deploy --force`
-2. Branch protection requires the `deploy` status check to pass before merge.
-
-Live site: https://vedantggwp.github.io/SP-VibeFrame/
 
 ## Content Architecture
 
-All source content lives in `docs/`. The site navigation is defined in `mkdocs.yml` under `nav:`.
+All source content lives in `src/content/` as `.mdx` files. Navigation is defined in `src/lib/navigation.ts`.
 
 **7-layer progressive framework:**
-1. **Intake** (`docs/intake/`) — 5-question classifier → assigns build path
-2. **Standards** (`docs/standards/`) — Quality, Security, Branding, Prompts (universal + path-specific)
-3. **Build Guides** (`docs/build-guides/`) — Step-by-step walkthroughs per path
-4. **Checklists** (`docs/checklists/`) — Binary verification per path
-5. **Forms** (`docs/forms/`) — Project Brief, Prompt Spec, Review Request, Incident Report, Build Log
-6. **Guides** (`docs/guides/`) — First Build, Tool Selection, Escalation, Glossary
-7. **Client Config** (`docs/client-config/`) — Organization-specific customization templates
+1. **Intake** (`src/content/intake/`) — 5-question classifier → assigns build path
+2. **Standards** (`src/content/standards/`) — Quality, Security, Branding, Prompts
+3. **Build Guides** (`src/content/build-guides/`) — Step-by-step walkthroughs per path
+4. **Checklists** (`src/content/checklists/`) — Binary verification per path
+5. **Forms** (`src/content/forms/`) — Project Brief, Prompt Spec, Review Request, Incident Report, Build Log
+6. **Guides** (`src/content/guides/`) — First Build, Tool Selection, Escalation, Glossary
+7. **Client Config** (`src/content/client-config/`) — Organization-specific customization templates
 
-**Content pattern:** Uses `<details>` collapsibles for WHY/HOW TO sections (progressive disclosure).
+**Content components:** MDX files use `<Collapsible>`, `<ChecklistItem>`, `<CardGrid>`, `<Card>`, `<Admonition>` components for interactive content.
+
+## Component Architecture
+
+- `src/components/layout/` — DocHeader, DocSidebar, DocFooter, DocBreadcrumbs, DocTableOfContents, MobileNav, DocPage
+- `src/components/mdx/` — Collapsible, Admonition, CardGrid, Card, Checklist, ChecklistItem, CodeBlock, DataTable, HeroBadge, StepCard, mdx-components
+- `src/components/search/` — SearchDialog (Cmd+K)
+- `src/components/theme/` — ThemeProvider (class strategy, localStorage), ThemeToggle
+
+## Design Tokens
+
+Navy/teal theme defined as Tailwind CSS v4 `@theme` tokens in `src/app/globals.css`:
+- `vcf-navy` (#16254C), `vcf-teal` (#0BB3B7), `vcf-blue` (#446DF6)
+- Dark mode uses CSS variables with `.dark` class strategy
 
 ## Planning & Audit Trail
 
@@ -66,7 +78,6 @@ All source content lives in `docs/`. The site navigation is defined in `mkdocs.y
 
 ## Key Constraints
 
-- **No tests** — This is documentation, not code. Quality is verified via manual checklists in `.planning/phases/*/VERIFICATION.md`.
-- **Site is publicly accessible** — GitHub Pages on personal Pro accounts cannot restrict access. Source repo is private, but the rendered site is public. Accepted as v1 trade-off.
-- **Custom theme** — `docs/stylesheets/extra.css` overrides Material theme with navy/teal design language (design tokens from Figma). Covers colors, admonitions, code blocks, tables, sidebar, typography, and dark mode.
-- **Markdown extensions** — Content uses admonitions, tabbed content, superfences, emoji, and details (configured in `mkdocs.yml` under `markdown_extensions`).
+- **No tests** — This is documentation, not code. Quality is verified via manual checklists.
+- **Custom theme** — Navy/teal design language from Figma. Design tokens in `globals.css`, component styling via Tailwind.
+- **Static export** — `output: 'export'` in next.config.ts. No server-side features (API routes, middleware, etc.).
