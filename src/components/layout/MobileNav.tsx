@@ -36,6 +36,7 @@ interface MobileNavProps {
 
 export function MobileNav({ navigation }: MobileNavProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [trackedPathname, setTrackedPathname] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
@@ -44,10 +45,13 @@ export function MobileNav({ navigation }: MobileNavProps) {
     return () => window.removeEventListener("toggle-mobile-nav", handleToggle);
   }, []);
 
-  // Close drawer on route change
-  useEffect(() => {
-    setIsOpen(false);
-  }, [pathname]);
+  // Close drawer on route change (using state comparison during render)
+  if (pathname !== trackedPathname) {
+    setTrackedPathname(pathname);
+    if (isOpen) {
+      setIsOpen(false);
+    }
+  }
 
   // Prevent body scroll when open
   useEffect(() => {

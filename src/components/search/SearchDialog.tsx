@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Search, X, FileText, ArrowRight } from "lucide-react";
 import Fuse from "fuse.js";
 import type { SearchEntry } from "@/types/content";
@@ -30,7 +30,6 @@ function groupBySection(
 export function SearchDialog() {
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<readonly SearchResult[]>([]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [fuse, setFuse] = useState<Fuse<SearchEntry> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -62,7 +61,6 @@ export function SearchDialog() {
   const close = useCallback(() => {
     setIsOpen(false);
     setQuery("");
-    setResults([]);
     setSelectedIndex(0);
   }, []);
 
@@ -92,16 +90,10 @@ export function SearchDialog() {
     }
   }, [isOpen]);
 
-  // Search when query changes
-  useEffect(() => {
-    if (!fuse || !query.trim()) {
-      setResults([]);
-      setSelectedIndex(0);
-      return;
-    }
-    const fuseResults = fuse.search(query).slice(0, 8);
-    setResults(fuseResults);
-    setSelectedIndex(0);
+  // Derive search results from query (no effect needed)
+  const results = useMemo<readonly SearchResult[]>(() => {
+    if (!fuse || !query.trim()) return [];
+    return fuse.search(query).slice(0, 8);
   }, [query, fuse]);
 
   // Scroll selected result into view

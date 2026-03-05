@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useSyncExternalStore, useCallback } from "react";
 
 interface ChecklistItemProps {
   readonly id: string;
@@ -12,25 +12,39 @@ function getStorageKey(id: string): string {
   return `vcf-checklist-${id}`;
 }
 
+function useLocalStorageChecked(id: string) {
+  const key = getStorageKey(id);
+  const subscribe = useCallback(
+    (callback: () => void) => {
+      const handler = (e: StorageEvent) => {
+        if (e.key === key) callback();
+      };
+      window.addEventListener("storage", handler);
+      return () => window.removeEventListener("storage", handler);
+    },
+    [key]
+  );
+  const getSnapshot = useCallback(
+    () => localStorage.getItem(key) === "true",
+    [key]
+  );
+  const getServerSnapshot = useCallback(() => false, []);
+  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+}
+
 export default function ChecklistItem({
   id,
   label,
   children,
 }: ChecklistItemProps) {
-  const [checked, setChecked] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem(getStorageKey(id));
-    if (stored === "true") {
-      setChecked(true);
-    }
-    setMounted(true);
-  }, [id]);
+  const storedChecked = useLocalStorageChecked(id);
+  const [localChecked, setLocalChecked] = useState<boolean | null>(null);
+  const checked = localChecked ?? storedChecked;
+  const mounted = typeof window !== "undefined";
 
   function handleToggle() {
     const next = !checked;
-    setChecked(next);
+    setLocalChecked(next);
     localStorage.setItem(getStorageKey(id), String(next));
   }
 
