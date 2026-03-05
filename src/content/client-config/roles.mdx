@@ -27,7 +27,7 @@ Search this document for `[CLIENT:` to find all fields that need your input.
 | **Orange** (Reviewed Build) | Technical reviewer | Security, data handling, branding, access controls, third-party services |
 | **Red** (Protected Build) | Designated reviewer | Everything above, plus compliance, privacy impact, age-appropriate design, incident response plan |
 
-<Collapsible title="WHY different reviewers for different paths">
+<Collapsible variant="why" title="WHY different reviewers for different paths">
 
 Green builds are low-risk — a self-check is enough. As risk increases, you need reviewers with more expertise. A peer can check if a tool works correctly. A technical reviewer can check if it is secure. A designated reviewer can check if it is compliant. Matching reviewer expertise to risk level keeps the process efficient without cutting corners.
 
@@ -39,43 +39,33 @@ Green builds are low-risk — a self-check is enough. As risk increases, you nee
 
 When you are not sure what to do, follow this path:
 
-```
-Start here
-    |
-    v
-Can you solve it yourself using the framework docs?
-    |
-   YES --> Solve it and document in your Build Log
-    |
-   NO
-    |
-    v
-Is it a question about how to build something?
-    |
-   YES --> Ask the Framework contact
-    |
-   NO
-    |
-    v
-Is it a security or data concern?
-    |
-   YES --> Contact the Technical reviewer
-    |
-   NO
-    |
-    v
-Is it a compliance, legal, or safety issue?
-    |
-   YES --> Contact the Designated reviewer
-    |
-   NO
-    |
-    v
-Is something broken in a live tool?
-    |
-   YES --> Contact the Emergency contact
-         and file an Incident Report
-```
+<DecisionFlow>
+  <DecisionStep
+    question="Can you solve it yourself using the framework docs?"
+    yes="Solve it and document in your Build Log"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Is it a question about how to build something?"
+    yes="Ask the Framework contact"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Is it a security or data concern?"
+    yes="Contact the Technical reviewer"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Is it a compliance, legal, or safety issue?"
+    yes="Contact the Designated reviewer"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Is something broken in a live tool?"
+    yes="Contact the Emergency contact and file an Incident Report"
+    isLast
+  />
+</DecisionFlow>
 
 See [When to Escalate](/guides/when-to-escalate) for more detailed guidance.
 

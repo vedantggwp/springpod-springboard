@@ -14,7 +14,7 @@ These are the same items from the [Green Checklist](/checklists/green-checklist)
 
 <ChecklistItem id="orange-checklist-1" label="I have filled out a [Project Brief](/forms/project-brief)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 A Reviewed Build affects real people outside your team. The brief ensures everyone agrees on scope, audience, and success criteria before you invest significant effort.
 
@@ -24,7 +24,7 @@ A Reviewed Build affects real people outside your team. The brief ensures everyo
 
 <ChecklistItem id="orange-checklist-2" label="My work is saved somewhere recoverable" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Save to a version-controlled repository (GitHub, GitLab) — not just a cloud folder. You need the ability to roll back changes.
 
@@ -32,13 +32,13 @@ Save to a version-controlled repository (GitHub, GitLab) — not just a cloud fo
 
 <ChecklistItem id="orange-checklist-3" label="I have tested it with realistic inputs (not just &quot;test123&quot;)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Problems appear with real data. Test with names containing apostrophes, accents, and hyphens. Test with empty fields, very long text, and special characters.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Test with names: O'Brien, Müller, Smith-Jones, 日本語の名前
     2. Test with empty forms, maximum-length inputs, and special characters
@@ -52,7 +52,7 @@ Problems appear with real data. Test with names containing apostrophes, accents,
 
 <ChecklistItem id="orange-checklist-4" label="It does what the project brief says it does" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Walk through every "done" criterion in your project brief. Every single one must work.
 
@@ -60,13 +60,13 @@ Walk through every "done" criterion in your project brief. Every single one must
 
 <ChecklistItem id="orange-checklist-5" label="No secrets (API keys, passwords) are visible in the code" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 With external users, exposed secrets are a direct path to data breaches.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Search your code for: `sk-`, `api_key`, `secret`, `password`, `token`, `DATABASE_URL`
     2. Check your repository history — secrets removed from code may still be in git history
@@ -76,7 +76,7 @@ With external users, exposed secrets are a direct path to data breaches.
 
 <ChecklistItem id="orange-checklist-6" label="There is a way to turn it off if something goes wrong" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 For a Reviewed Build, the kill switch should be fast (under 5 minutes) and documented. You may need to use it urgently.
 
@@ -90,7 +90,7 @@ These are the same items from the [Yellow Checklist](/checklists/yellow-checklis
 
 <ChecklistItem id="orange-checklist-7" label="Someone other than me has used this tool and given feedback" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 A fresh pair of eyes catches problems you cannot see because you built it.
 
@@ -100,7 +100,7 @@ A fresh pair of eyes catches problems you cannot see because you built it.
 
     Saved in a [Build Log](/forms/build-log) or `prompts.md` file alongside the project.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 If someone needs to modify this tool, they need the original prompts.
 
@@ -110,7 +110,7 @@ If someone needs to modify this tool, they need the original prompts.
 
     See the [Branding Standard](/standards/branding).
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 External users see this as a company product. It must match your brand.
 
@@ -118,7 +118,7 @@ External users see this as a company product. It must match your brand.
 
 <ChecklistItem id="orange-checklist-10" label="A peer has reviewed and approved it" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Peer review catches obvious issues before the more thorough technical review.
 
@@ -134,13 +134,13 @@ These items are specific to Orange builds and above.
 
     Personal data is encrypted, not over-collected, and not sent to unauthorized services.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 When you handle personal data, you are responsible for protecting it. "I did not know" is not an acceptable excuse if data is exposed.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. List every piece of personal data your tool collects
     2. For each item: is it strictly necessary? If not, remove it
@@ -155,13 +155,13 @@ When you handle personal data, you are responsible for protecting it. "I did not
 
     No user can access another user's information — not through the interface, not by changing the URL, not through the API.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 This is one of the most common security failures in web applications. The tool "works" — it just shows the wrong person's data.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Create two test accounts
     2. Log in as Account A and note the URL when viewing personal data
@@ -174,13 +174,13 @@ This is one of the most common security failures in web applications. The tool "
 
     This is a structured review, not a casual look. Use the [Review Request](/forms/review-request) template and submit to your technical reviewer (see [Roles](/client-config/roles)).
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Orange builds handle personal data or serve external users. A peer review catches usability issues. A technical review catches security and data handling issues that non-technical reviewers will miss.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO PREPARE">
+    <Collapsible variant="how" title="HOW TO PREPARE">
 
 1. Complete all items above first
     2. Fill out the [Review Request](/forms/review-request) form
@@ -195,13 +195,13 @@ Orange builds handle personal data or serve external users. A peer review catche
 
     Users see "Something went wrong. Please try again or contact support." Not a stack trace, database name, or file path.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Technical error messages tell attackers how your tool is built. They also confuse and alarm non-technical users.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Try actions that might fail: disconnect from the internet, submit invalid data, access a page that does not exist
     2. Check what the user sees for each

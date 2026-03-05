@@ -14,7 +14,7 @@ These are the same items from the [Green Checklist](/checklists/green-checklist)
 
 <ChecklistItem id="yellow-checklist-1" label="I have filled out a [Project Brief](/forms/project-brief)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 A Standard Build is not a throwaway — it will be used by your team for real work. The brief ensures everyone agrees on what "done" means before you invest significant time.
 
@@ -24,7 +24,7 @@ A Standard Build is not a throwaway — it will be used by your team for real wo
 
 <ChecklistItem id="yellow-checklist-2" label="My work is saved somewhere recoverable" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 If your laptop dies, can you get your work back? Save to a cloud tool (Replit, GitHub, Google Drive) — not just your desktop.
 
@@ -32,13 +32,13 @@ If your laptop dies, can you get your work back? Save to a cloud tool (Replit, G
 
 <ChecklistItem id="yellow-checklist-3" label="I have tested it with realistic inputs (not just &quot;test123&quot;)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Problems appear with real data, not test data. A name like "O'Brien" or a 200-character address will break things that "John Smith" never will.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Try entering names with apostrophes, accents, and hyphens (O'Brien, Müller, Smith-Jones)
     2. Try entering empty fields — does the tool handle them?
@@ -52,7 +52,7 @@ Problems appear with real data, not test data. A name like "O'Brien" or a 200-ch
 
 <ChecklistItem id="yellow-checklist-4" label="It does what the project brief says it does" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Open your project brief. Walk through each item under "What does done look like?" Does the tool do all of them?
 
@@ -60,13 +60,13 @@ Open your project brief. Walk through each item under "What does done look like?
 
 <ChecklistItem id="yellow-checklist-5" label="No secrets (API keys, passwords) are visible in the code" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Anyone who sees your code can use your accounts and access your data.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Search your code for: `sk-`, `api_key`, `secret`, `password`, `token`, `DATABASE_URL`
     2. Search for any long random string that looks like a key
@@ -77,7 +77,7 @@ Anyone who sees your code can use your accounts and access your data.
 
 <ChecklistItem id="yellow-checklist-6" label="There is a way to turn it off if something goes wrong" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 You need a kill switch. Know how to take the tool offline before you need to.
 
@@ -93,13 +93,13 @@ These items are specific to Yellow builds and above.
 
     Not "looked at" — actually used it. Asked them to complete the main task without help. Watched where they got confused.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 You already know how your tool works. A fresh pair of eyes will find problems you cannot see because you built it. This is the single most effective quality check you can do.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO DO THIS">
+    <Collapsible variant="how" title="HOW TO DO THIS">
 
 1. Pick someone who was not involved in building the tool
     2. Give them the URL and a task: "Find [X] and do [Y]"
@@ -113,13 +113,13 @@ You already know how your tool works. A fresh pair of eyes will find problems yo
 
     Saved alongside your project in a [Build Log](/forms/build-log) or a `prompts.md` file.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 If someone needs to modify your tool later, they need to know what instructions you gave the AI. Without the original prompts, the next person has to guess how the tool was built.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO DO THIS">
+    <Collapsible variant="how" title="HOW TO DO THIS">
 
 1. Open the [Build Log](/forms/build-log) template
     2. For each major feature, paste the prompt you used
@@ -132,13 +132,13 @@ If someone needs to modify your tool later, they need to know what instructions 
 
     Correct colors, logo, and tone of voice. See the [Branding Standard](/standards/branding).
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Every tool your team uses represents your brand. Generic AI-generated styling signals "we did not care enough to make this ours."
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Open your tool next to your company website
     2. Compare: buttons, headers, link colors, background, fonts
@@ -151,13 +151,13 @@ Every tool your team uses represents your brand. Generic AI-generated styling si
 
     Use the [Review Request](/forms/review-request) template to submit for review.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 A peer review catches issues you missed. It does not need to be a formal process — a colleague spending 15 minutes with your tool is enough.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO DO THIS">
+    <Collapsible variant="how" title="HOW TO DO THIS">
 
 1. Fill out the [Review Request](/forms/review-request) form
     2. Send it to a peer reviewer (see [Roles](/client-config/roles))

@@ -10,7 +10,7 @@ Complete every item before going live. Expand any item for details.
 
 <ChecklistItem id="green-checklist-1" label="I have filled out a [Project Brief](/forms/project-brief)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Even a quick build needs a sentence describing what it does and what "done" looks like. If you cannot describe it, you are not ready to build it.
 
@@ -20,7 +20,7 @@ Even a quick build needs a sentence describing what it does and what "done" look
 
 <ChecklistItem id="green-checklist-2" label="My work is saved somewhere recoverable" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 If your laptop dies, can you get your work back? Save to a cloud tool (Replit, GitHub, Google Drive) — not just your desktop.
 
@@ -28,13 +28,13 @@ If your laptop dies, can you get your work back? Save to a cloud tool (Replit, G
 
 <ChecklistItem id="green-checklist-3" label="I have tested it with realistic inputs (not just &quot;test123&quot;)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 "test123" will not reveal problems. Use realistic names, numbers, and edge cases (empty fields, very long text, special characters like accents or apostrophes).
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Try entering a name with an apostrophe (e.g., "O'Brien")
     2. Try entering an empty form — does it handle it?
@@ -48,7 +48,7 @@ If your laptop dies, can you get your work back? Save to a cloud tool (Replit, G
 
 <ChecklistItem id="green-checklist-4" label="It does what the project brief says it does" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Open your project brief. Walk through each item under "What does done look like?" Does the tool do all of them? Not some — all.
 
@@ -56,13 +56,13 @@ Open your project brief. Walk through each item under "What does done look like?
 
 <ChecklistItem id="green-checklist-5" label="No secrets (API keys, passwords) are visible in the code" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Anyone who sees your code can use your accounts and access your data. This is the most common security mistake in AI-assisted development.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Search your code for: `sk-`, `api_key`, `secret`, `password`, `token`, `DATABASE_URL`
     2. Search for any long random string that looks like a key
@@ -73,7 +73,7 @@ Anyone who sees your code can use your accounts and access your data. This is th
 
 <ChecklistItem id="green-checklist-6" label="There is a way to turn it off if something goes wrong" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 You need a kill switch. "I can delete the deployment" counts. "I can set it to private" counts. Know how to do it before you need to.
 

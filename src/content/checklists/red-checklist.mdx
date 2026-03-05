@@ -14,7 +14,7 @@ These are the same items from the [Green Checklist](/checklists/green-checklist)
 
 <ChecklistItem id="red-checklist-1" label="I have filled out a [Project Brief](/forms/project-brief)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 A Protected Build has the highest stakes. The brief must be thorough — explicitly state what protected data you are handling, who your users are, and what compliance requirements apply.
 
@@ -24,7 +24,7 @@ A Protected Build has the highest stakes. The brief must be thorough — explici
 
 <ChecklistItem id="red-checklist-2" label="My work is saved somewhere recoverable" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Use version-controlled repositories with access controls. You must be able to track every change and roll back if needed.
 
@@ -32,13 +32,13 @@ Use version-controlled repositories with access controls. You must be able to tr
 
 <ChecklistItem id="red-checklist-3" label="I have tested it with realistic inputs (not just &quot;test123&quot;)" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Test with data representative of your actual users. If your users are students aged 14-18, test with inputs typical of that age group.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Test with names, characters, and input patterns your actual users would produce
     2. Test with empty fields, maximum-length inputs, and special characters
@@ -51,7 +51,7 @@ Test with data representative of your actual users. If your users are students a
 
 <ChecklistItem id="red-checklist-4" label="It does what the project brief says it does" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Walk through every "done" criterion. For protected builds, partial delivery is not acceptable.
 
@@ -59,13 +59,13 @@ Walk through every "done" criterion. For protected builds, partial delivery is n
 
 <ChecklistItem id="red-checklist-5" label="No secrets (API keys, passwords) are visible in the code" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Exposed secrets in a protected build can lead to a data breach affecting vulnerable users.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Search your code for: `sk-`, `api_key`, `secret`, `password`, `token`, `DATABASE_URL`
     2. Search your git history for accidentally committed secrets
@@ -76,7 +76,7 @@ Exposed secrets in a protected build can lead to a data breach affecting vulnera
 
 <ChecklistItem id="red-checklist-6" label="There is a way to turn it off if something goes wrong" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 The kill switch must be documented, tested, and known to at least two people. Document it in your incident response plan.
 
@@ -90,7 +90,7 @@ These are the same items from the [Yellow Checklist](/checklists/yellow-checklis
 
 <ChecklistItem id="red-checklist-7" label="Someone other than me has used this tool and given feedback" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Fresh eyes catch problems you cannot see.
 
@@ -98,7 +98,7 @@ Fresh eyes catch problems you cannot see.
 
 <ChecklistItem id="red-checklist-8" label="My AI prompts are documented" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Full prompt documentation is essential for auditing and maintenance.
 
@@ -106,7 +106,7 @@ Full prompt documentation is essential for auditing and maintenance.
 
 <ChecklistItem id="red-checklist-9" label="It looks and feels like our company" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Users interacting with protected data need to trust that the tool is legitimate and official.
 
@@ -114,7 +114,7 @@ Users interacting with protected data need to trust that the tool is legitimate 
 
 <ChecklistItem id="red-checklist-10" label="A peer has reviewed and approved it" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 First line of review before the more thorough technical and designated reviews.
 
@@ -130,13 +130,13 @@ These are the same items from the [Orange Checklist](/checklists/orange-checklis
 
     Personal data is encrypted at rest and in transit, not over-collected, and only sent to approved services.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Protected data breaches have legal, financial, and reputational consequences.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. List every piece of personal or protected data your tool collects
     2. Confirm HTTPS is active (lock icon in browser)
@@ -147,13 +147,13 @@ Protected data breaches have legal, financial, and reputational consequences.
 
 <ChecklistItem id="red-checklist-12" label="Users can only see their own data" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Access control failures in protected builds can expose vulnerable users' data.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Create two test accounts
     2. Verify that Account B cannot access Account A's data through the interface, URL manipulation, or API
@@ -163,7 +163,7 @@ Access control failures in protected builds can expose vulnerable users' data.
 
 <ChecklistItem id="red-checklist-13" label="Someone with technical or security knowledge has reviewed it" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Technical review catches security and data handling issues before the designated reviewer sign-off.
 
@@ -171,7 +171,7 @@ Technical review catches security and data handling issues before the designated
 
 <ChecklistItem id="red-checklist-14" label="Error messages show helpful text, not technical details" />
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Technical errors can reveal system architecture to attackers and confuse vulnerable users.
 
@@ -187,13 +187,13 @@ These items are specific to Red builds.
 
     If your tool handles data about anyone under 18: no behavioral tracking, no unnecessary data sharing, parental notification if required by policy. Compliance with applicable regulations (COPPA, GDPR, FERPA) has been confirmed.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Children and young people have special legal protections. Non-compliance can result in significant fines and reputational damage, and — most importantly — can harm the people you are trying to serve.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. List every piece of data collected about users under 18
     2. For each: is it strictly necessary? If not, remove it
@@ -209,13 +209,13 @@ Children and young people have special legal protections. Non-compliance can res
 
     Before going live, you have written down: what happens if data is exposed? Who gets notified? What is the first action? Where are the credentials to shut things down?
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 When something goes wrong, you do not have time to figure out what to do. A plan means you respond in minutes, not hours.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO DO THIS">
+    <Collapsible variant="how" title="HOW TO DO THIS">
 
 1. Use the [Incident Report](/forms/incident-report) template as your starting point
     2. Fill in: first responder name, emergency contact, kill switch instructions, notification list
@@ -229,13 +229,13 @@ When something goes wrong, you do not have time to figure out what to do. A plan
 
     A named person has reviewed and approved this build. Their name and the date of approval are recorded.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Protected builds require accountability. Someone with the authority and expertise to evaluate compliance and safety must explicitly approve the launch. This is not a formality — it is a safeguard for your users.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO DO THIS">
+    <Collapsible variant="how" title="HOW TO DO THIS">
 
 1. Complete all items above
     2. Submit a [Review Request](/forms/review-request) to your designated reviewer (see [Roles](/client-config/roles))
@@ -249,13 +249,13 @@ Protected builds require accountability. Someone with the authority and expertis
 
     Within 30 days of launch or at the first significant usage milestone, re-run the [Project Intake](/intake/project-intake) to verify the build path is still correct.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Tools change after launch. Users behave differently than expected. Data volumes grow. A re-intake catches silent escalations — when a tool has become more risky than originally assessed. Schedule it now, while you are thinking about it.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO DO THIS">
+    <Collapsible variant="how" title="HOW TO DO THIS">
 
 1. Pick a date: 30 days from launch, or after 100 users, whichever comes first
     2. Put it in someone's calendar with a reminder
