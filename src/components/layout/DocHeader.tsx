@@ -86,7 +86,7 @@ export function DocHeader() {
 
       {/* GitHub link */}
       <a
-        href="https://github.com"
+        href="https://github.com/vedantggwp/SP-VibeFrame"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="GitHub"
