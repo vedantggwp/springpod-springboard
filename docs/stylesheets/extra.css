@@ -1,28 +1,24 @@
 /* ==========================================================================
    Vibe Coding Framework — Custom Theme
-   Design tokens adapted from Figma Make design language
+   Design language adapted from Figma Make (4nRBUCcGLbPIpvX6p3jv9h)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   A. Color Scheme — CSS Custom Property Overrides
+   A. Design Tokens & Color Scheme
    -------------------------------------------------------------------------- */
 
 :root {
-  /* Primary palette */
+  /* Material overrides */
   --md-primary-fg-color: #16254C;
   --md-primary-fg-color--light: #2D3B5E;
   --md-primary-fg-color--dark: #0f1a38;
-
-  /* Accent palette */
   --md-accent-fg-color: #0BB3B7;
   --md-accent-fg-color--transparent: rgba(11, 179, 183, 0.1);
-
-  /* Text colors */
   --md-default-fg-color: #16254C;
   --md-default-fg-color--light: #5C6682;
   --md-default-fg-color--lighter: #8B92A6;
 
-  /* Design tokens */
+  /* VCF tokens */
   --vcf-navy: #16254C;
   --vcf-navy-light: #2D3B5E;
   --vcf-teal: #0BB3B7;
@@ -33,34 +29,224 @@
   --vcf-border: #B9BEC9;
   --vcf-surface: #E9E9ED;
   --vcf-warning: #FF475A;
+  --vcf-radius: 0.75rem;
+  --vcf-radius-sm: 0.5rem;
 }
 
 /* --------------------------------------------------------------------------
-   B. Admonitions — Rounded callouts with left border
+   B. Page Background & Content Area
+   Figma: bg-[#E9E9ED]/30 body, white content area
+   -------------------------------------------------------------------------- */
+
+.md-main {
+  background: rgba(233, 233, 237, 0.3);
+}
+
+.md-content {
+  background: #fff;
+  border-radius: var(--vcf-radius);
+  margin: 1rem 0;
+  padding: 0.5rem;
+  box-shadow: 0 1px 4px rgba(22, 37, 76, 0.06);
+}
+
+/* --------------------------------------------------------------------------
+   C. Header — Gradient logo, clean border
+   -------------------------------------------------------------------------- */
+
+.md-header {
+  box-shadow: 0 1px 4px rgba(22, 37, 76, 0.1);
+}
+
+.md-header__topic:first-child {
+  font-weight: 600;
+}
+
+/* Search bar — matches Figma's rounded surface input */
+.md-search__form {
+  border-radius: var(--vcf-radius) !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.md-search__form:hover {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+.md-tabs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* --------------------------------------------------------------------------
+   D. Typography — Figma: weight 500, spacious line-height
+   -------------------------------------------------------------------------- */
+
+.md-typeset {
+  line-height: 1.75;
+  font-size: 0.82rem;
+}
+
+.md-typeset h1 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+  color: var(--vcf-navy);
+}
+
+.md-typeset h2 {
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--vcf-navy);
+  margin-top: 2.5rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--vcf-surface);
+}
+
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
+  font-weight: 500;
+  color: var(--vcf-navy);
+}
+
+.md-typeset a {
+  color: var(--vcf-teal);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.md-typeset a:hover {
+  color: var(--vcf-navy);
+  text-decoration: underline;
+}
+
+/* --------------------------------------------------------------------------
+   E. Navigation Sidebar — Figma: rounded links, gradient active state
+   -------------------------------------------------------------------------- */
+
+/* Sidebar background */
+.md-sidebar--primary .md-sidebar__inner {
+  padding: 0.5rem;
+}
+
+.md-nav__link {
+  border-radius: var(--vcf-radius-sm);
+  padding: 0.4rem 0.6rem !important;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  margin: 1px 0;
+}
+
+.md-nav__link:hover {
+  background-color: var(--vcf-surface);
+}
+
+.md-nav__link--active {
+  background: linear-gradient(135deg, rgba(156, 246, 246, 0.2), rgba(11, 179, 183, 0.12));
+  border-left: 3px solid var(--vcf-teal);
+  color: var(--vcf-navy) !important;
+  font-weight: 500;
+}
+
+.md-nav__item--nested > .md-nav__link {
+  font-weight: 500;
+  color: var(--vcf-navy);
+}
+
+/* TOC right panel — Figma: "ON THIS PAGE" style */
+.md-nav--secondary > .md-nav__title {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vcf-text-muted);
+  font-weight: 600;
+}
+
+.md-nav--secondary .md-nav__link {
+  font-size: 0.72rem;
+  color: var(--vcf-text-muted);
+}
+
+.md-nav--secondary .md-nav__link--active {
+  color: var(--vcf-teal);
+  background: rgba(156, 246, 246, 0.12);
+  border-left: 2px solid var(--vcf-teal);
+}
+
+/* --------------------------------------------------------------------------
+   F. Grid Cards — Figma: white bg, border, hover shadow + lift, gradient icons
+   -------------------------------------------------------------------------- */
+
+.md-typeset .grid {
+  gap: 1rem;
+}
+
+.md-typeset .grid > .card {
+  background: #fff;
+  border: 1px solid var(--vcf-border);
+  border-radius: var(--vcf-radius);
+  padding: 1.5rem;
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+}
+
+.md-typeset .grid > .card:hover {
+  box-shadow: 0 8px 24px rgba(22, 37, 76, 0.12);
+  transform: translateY(-3px);
+  border-color: var(--vcf-teal);
+}
+
+/* Card icon — gradient-tinted */
+.md-typeset .grid > .card .twemoji,
+.md-typeset .grid > .card .emojione {
+  color: var(--vcf-teal);
+}
+
+/* Card links — teal with arrow */
+.md-typeset .grid > .card a {
+  color: var(--vcf-teal);
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.md-typeset .grid > .card a:hover {
+  color: var(--vcf-navy);
+}
+
+/* --------------------------------------------------------------------------
+   G. Admonitions — Figma: gradient bg, left border, rounded
    -------------------------------------------------------------------------- */
 
 .md-typeset .admonition,
 .md-typeset details {
   border: none;
   border-left: 4px solid var(--vcf-teal);
-  border-radius: 0.75rem;
-  box-shadow: 0 1px 3px rgba(22, 37, 76, 0.08);
+  border-radius: var(--vcf-radius);
+  box-shadow: 0 1px 4px rgba(22, 37, 76, 0.06);
   overflow: hidden;
+  margin: 1.5rem 0;
 }
 
 .md-typeset .admonition > .admonition-title,
 .md-typeset details > summary {
-  border-radius: 0.75rem 0.75rem 0 0;
+  border-radius: var(--vcf-radius) var(--vcf-radius) 0 0;
   font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  margin: 0;
 }
 
-/* Info / Note — teal gradient */
+.md-typeset .admonition > .admonition-title::before,
+.md-typeset details > summary::before {
+  vertical-align: middle;
+}
+
+/* Info / Note */
 .md-typeset .admonition.note,
 .md-typeset .admonition.info,
 .md-typeset details.note,
 .md-typeset details.info {
   border-left-color: var(--vcf-teal);
-  background: linear-gradient(135deg, rgba(156, 246, 246, 0.15), rgba(11, 179, 183, 0.06));
+  background: linear-gradient(135deg, rgba(156, 246, 246, 0.18), rgba(11, 179, 183, 0.06));
 }
 
 .md-typeset .admonition.note > .admonition-title,
@@ -68,9 +254,10 @@
 .md-typeset details.note > summary,
 .md-typeset details.info > summary {
   background-color: rgba(11, 179, 183, 0.12);
+  color: var(--vcf-navy);
 }
 
-/* Warning / Important — red accent */
+/* Warning / Danger / Important */
 .md-typeset .admonition.warning,
 .md-typeset .admonition.danger,
 .md-typeset .admonition.important,
@@ -88,15 +275,16 @@
 .md-typeset details.danger > summary,
 .md-typeset details.important > summary {
   background-color: rgba(255, 71, 90, 0.1);
+  color: var(--vcf-navy);
 }
 
-/* Tip / Success — teal */
+/* Tip / Success */
 .md-typeset .admonition.tip,
 .md-typeset .admonition.success,
 .md-typeset details.tip,
 .md-typeset details.success {
   border-left-color: var(--vcf-teal);
-  background: linear-gradient(135deg, rgba(156, 246, 246, 0.12), rgba(11, 179, 183, 0.05));
+  background: linear-gradient(135deg, rgba(11, 179, 183, 0.12), rgba(156, 246, 246, 0.08));
 }
 
 .md-typeset .admonition.tip > .admonition-title,
@@ -104,15 +292,16 @@
 .md-typeset details.tip > summary,
 .md-typeset details.success > summary {
   background-color: rgba(11, 179, 183, 0.1);
+  color: var(--vcf-navy);
 }
 
-/* Abstract / Summary — navy */
+/* Abstract / Summary */
 .md-typeset .admonition.abstract,
 .md-typeset .admonition.summary,
 .md-typeset details.abstract,
 .md-typeset details.summary {
   border-left-color: var(--vcf-navy);
-  background: linear-gradient(135deg, rgba(22, 37, 76, 0.08), rgba(45, 59, 94, 0.04));
+  background: linear-gradient(135deg, rgba(22, 37, 76, 0.08), rgba(45, 59, 94, 0.03));
 }
 
 .md-typeset .admonition.abstract > .admonition-title,
@@ -120,50 +309,92 @@
 .md-typeset details.abstract > summary,
 .md-typeset details.summary > summary {
   background-color: rgba(22, 37, 76, 0.08);
+  color: var(--vcf-navy);
+}
+
+/* Example / Question */
+.md-typeset .admonition.example,
+.md-typeset .admonition.question,
+.md-typeset details.example,
+.md-typeset details.question {
+  border-left-color: var(--vcf-blue);
+  background: linear-gradient(135deg, rgba(68, 109, 246, 0.08), rgba(68, 109, 246, 0.03));
+}
+
+.md-typeset .admonition.example > .admonition-title,
+.md-typeset .admonition.question > .admonition-title,
+.md-typeset details.example > summary,
+.md-typeset details.question > summary {
+  background-color: rgba(68, 109, 246, 0.08);
+  color: var(--vcf-navy);
+}
+
+/* Admonition body padding */
+.md-typeset .admonition > :last-child,
+.md-typeset details > :last-child {
+  margin-bottom: 0.8rem;
 }
 
 /* --------------------------------------------------------------------------
-   C. Details / Summary (Collapsibles)
+   H. Details / Summary (Collapsibles) — WHY/HOW TO sections
    -------------------------------------------------------------------------- */
 
 .md-typeset details {
-  border-radius: 0.75rem;
   transition: box-shadow 0.2s ease;
 }
 
 .md-typeset details[open] {
-  box-shadow: 0 2px 8px rgba(22, 37, 76, 0.12);
+  box-shadow: 0 2px 12px rgba(22, 37, 76, 0.1);
 }
 
 .md-typeset details > summary {
   cursor: pointer;
-  font-weight: 500;
-  padding: 0.6rem 1rem;
 }
 
 .md-typeset details[open] > summary {
-  border-bottom: 1px solid rgba(11, 179, 183, 0.2);
+  border-bottom: 1px solid rgba(11, 179, 183, 0.15);
+  margin-bottom: 0;
 }
 
 .md-typeset details > summary:hover {
-  background-color: rgba(11, 179, 183, 0.06);
+  filter: brightness(0.97);
 }
 
 /* --------------------------------------------------------------------------
-   D. Code Blocks — Dark navy theme
+   I. Code Blocks — Figma: navy gradient bg, teal text, header bar
    -------------------------------------------------------------------------- */
 
-.md-typeset pre > code,
-.md-typeset .highlight > pre > code {
-  background: var(--vcf-navy);
-  color: var(--vcf-light-teal);
-  border-radius: 0.75rem;
+/* Highlight wrapper — the outer container */
+.md-typeset .highlight {
+  border-radius: var(--vcf-radius);
+  overflow: hidden;
 }
 
 .md-typeset pre,
 .md-typeset .highlight > pre {
+  background: linear-gradient(135deg, var(--vcf-navy), var(--vcf-navy-light));
+  border-radius: var(--vcf-radius);
+  margin: 1rem 0;
+}
+
+.md-typeset pre > code,
+.md-typeset .highlight > pre > code {
+  background: transparent;
+  color: var(--vcf-light-teal);
+}
+
+/* Code block language label (Material's built-in) */
+.md-typeset .highlight > .filename {
   background: var(--vcf-navy);
-  border-radius: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--vcf-text-muted);
+  font-size: 0.72rem;
+  border-radius: var(--vcf-radius) var(--vcf-radius) 0 0;
+}
+
+/* Code annotations */
+.md-typeset .highlight code > .annotate > span {
+  background: rgba(11, 179, 183, 0.15);
 }
 
 /* Inline code */
@@ -171,20 +402,22 @@
   background-color: rgba(11, 179, 183, 0.08);
   color: var(--vcf-navy);
   border-radius: 0.25rem;
-  padding: 0.1em 0.35em;
+  padding: 0.1em 0.4em;
   font-size: 0.85em;
+  border: 1px solid rgba(11, 179, 183, 0.12);
 }
 
-/* Ensure code inside pre doesn't get inline styling */
+/* Reset for code inside pre */
 .md-typeset pre code {
   background: transparent;
   color: inherit;
   padding: 0;
   border-radius: 0;
   font-size: inherit;
+  border: none;
 }
 
-/* Code copy button */
+/* Copy button */
 .md-typeset .highlight .md-clipboard {
   color: var(--vcf-text-muted);
 }
@@ -195,153 +428,178 @@
 
 /* Line numbers */
 .md-typeset .highlight .linenodiv pre {
-  background: var(--vcf-navy);
-  color: var(--vcf-text-muted);
+  background: transparent;
+  color: rgba(156, 246, 246, 0.3);
 }
 
 /* --------------------------------------------------------------------------
-   E. Navigation Sidebar — Active state styling
-   -------------------------------------------------------------------------- */
-
-.md-nav__link--active {
-  border-left: 3px solid var(--vcf-teal);
-  padding-left: 0.6rem;
-  background-color: rgba(11, 179, 183, 0.06);
-  border-radius: 0 0.25rem 0.25rem 0;
-  color: var(--vcf-teal) !important;
-  font-weight: 500;
-}
-
-.md-nav__link:hover {
-  background-color: var(--vcf-surface);
-  border-radius: 0.25rem;
-}
-
-.md-nav__item--nested > .md-nav__link {
-  color: var(--vcf-navy);
-  font-weight: 500;
-}
-
-/* --------------------------------------------------------------------------
-   F. Header — Sticky top bar refinements
-   -------------------------------------------------------------------------- */
-
-.md-header {
-  box-shadow: 0 1px 3px rgba(22, 37, 76, 0.1);
-}
-
-.md-tabs {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* --------------------------------------------------------------------------
-   G. Tables — Clean styling
+   J. Tables — Figma: navy header, alternating rows, hover
    -------------------------------------------------------------------------- */
 
 .md-typeset table:not([class]) {
   border: 1px solid var(--vcf-border);
-  border-radius: 0.5rem;
+  border-radius: var(--vcf-radius-sm);
   overflow: hidden;
   border-collapse: separate;
   border-spacing: 0;
+  width: 100%;
+  margin: 1.5rem 0;
 }
 
 .md-typeset table:not([class]) thead {
-  background-color: var(--vcf-navy);
+  background: linear-gradient(135deg, var(--vcf-navy), var(--vcf-navy-light));
 }
 
 .md-typeset table:not([class]) th {
   color: #fff;
   font-weight: 500;
   padding: 0.75rem 1rem;
-  border-bottom: 2px solid var(--vcf-navy-light);
+  border-bottom: none;
+  font-size: 0.78rem;
+  text-align: left;
 }
 
 .md-typeset table:not([class]) td {
   padding: 0.65rem 1rem;
   border-bottom: 1px solid var(--vcf-surface);
+  font-size: 0.78rem;
 }
 
 .md-typeset table:not([class]) tbody tr:nth-child(even) {
-  background-color: rgba(233, 233, 237, 0.3);
+  background-color: rgba(233, 233, 237, 0.35);
 }
 
 .md-typeset table:not([class]) tbody tr:hover {
-  background-color: rgba(11, 179, 183, 0.04);
+  background-color: rgba(11, 179, 183, 0.06);
+}
+
+.md-typeset table:not([class]) tbody tr:last-child td {
+  border-bottom: none;
 }
 
 /* --------------------------------------------------------------------------
-   H. Homepage Cards — Grid card refinements
+   K. Buttons — Figma: gradient CTA buttons
    -------------------------------------------------------------------------- */
 
-.md-typeset .grid .card,
 .md-typeset .md-button {
-  border: 1px solid var(--vcf-border);
-  border-radius: 0.75rem;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.md-typeset .grid .card:hover {
-  box-shadow: 0 4px 16px rgba(22, 37, 76, 0.12);
-  transform: translateY(-2px);
+  border-radius: var(--vcf-radius);
+  font-weight: 500;
+  padding: 0.6rem 1.4rem;
+  transition: all 0.2s ease;
 }
 
 .md-typeset .md-button--primary {
-  background-color: var(--vcf-blue);
-  border-color: var(--vcf-blue);
-  border-radius: 0.5rem;
+  background: linear-gradient(135deg, var(--vcf-teal), var(--vcf-blue));
+  border: none;
+  color: #fff;
 }
 
 .md-typeset .md-button--primary:hover {
+  background: linear-gradient(135deg, var(--vcf-navy), var(--vcf-blue));
+  box-shadow: 0 4px 12px rgba(68, 109, 246, 0.25);
+  transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   L. Horizontal Rules — subtle, spaced
+   -------------------------------------------------------------------------- */
+
+.md-typeset hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--vcf-border), transparent);
+  margin: 2.5rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   M. Footer — clean
+   -------------------------------------------------------------------------- */
+
+.md-footer {
   background-color: var(--vcf-navy);
-  border-color: var(--vcf-navy);
+}
+
+.md-footer-meta {
+  background-color: var(--vcf-navy-light);
 }
 
 /* --------------------------------------------------------------------------
-   I. Typography — Refinements
+   N. Tabbed Content — rounded tabs with teal active
    -------------------------------------------------------------------------- */
 
-.md-typeset h1,
-.md-typeset h2,
-.md-typeset h3,
-.md-typeset h4,
-.md-typeset h5,
-.md-typeset h6 {
+.md-typeset .tabbed-labels > label {
+  border-radius: var(--vcf-radius-sm) var(--vcf-radius-sm) 0 0;
   font-weight: 500;
-  color: var(--vcf-navy);
+  transition: background-color 0.15s ease;
 }
 
-.md-typeset h1 {
-  letter-spacing: -0.02em;
+.md-typeset .tabbed-labels > label:hover {
+  background-color: rgba(11, 179, 183, 0.06);
 }
 
-.md-typeset {
-  line-height: 1.7;
-}
-
-.md-typeset a {
-  color: var(--vcf-teal);
-  text-decoration: none;
-}
-
-.md-typeset a:hover {
-  color: var(--vcf-navy);
-  text-decoration: underline;
-}
-
-/* TOC right-side panel */
-.md-typeset .md-nav--secondary .md-nav__link {
-  color: var(--vcf-text-muted);
-  font-size: 0.75rem;
-}
-
-.md-typeset .md-nav--secondary .md-nav__link--active {
+.md-typeset .tabbed-set > input:checked + label {
+  border-color: var(--vcf-teal);
   color: var(--vcf-teal);
 }
 
 /* --------------------------------------------------------------------------
-   J. Dark Mode (Slate Scheme)
+   O. Lists — slightly more spacing
    -------------------------------------------------------------------------- */
+
+.md-typeset ul li,
+.md-typeset ol li {
+  margin-bottom: 0.3rem;
+}
+
+/* Checklist items */
+.md-typeset .task-list-indicator::before {
+  background-color: var(--vcf-teal);
+}
+
+/* --------------------------------------------------------------------------
+   P. Scrollbar — subtle, themed
+   -------------------------------------------------------------------------- */
+
+.md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 4px;
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background: var(--vcf-border);
+  border-radius: 2px;
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background: var(--vcf-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Q. Content Tabs (.tabbed-content) — rounded panels
+   -------------------------------------------------------------------------- */
+
+.md-typeset .tabbed-content {
+  border: 1px solid var(--vcf-surface);
+  border-radius: 0 0 var(--vcf-radius-sm) var(--vcf-radius-sm);
+  padding: 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   R. Back-to-top Button — themed
+   -------------------------------------------------------------------------- */
+
+.md-top {
+  background-color: var(--vcf-navy);
+  color: #fff;
+  border-radius: var(--vcf-radius);
+}
+
+.md-top:hover {
+  background-color: var(--vcf-teal);
+}
+
+/* ==========================================================================
+   DARK MODE (Slate Scheme)
+   ========================================================================== */
 
 [data-md-color-scheme="slate"] {
   --md-primary-fg-color: #1a2d55;
@@ -354,7 +612,17 @@
   --md-default-fg-color--lighter: rgba(255, 255, 255, 0.38);
 }
 
-/* Dark mode headings */
+/* Dark body + content */
+[data-md-color-scheme="slate"] .md-main {
+  background: #0d1117;
+}
+
+[data-md-color-scheme="slate"] .md-content {
+  background: #161b22;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark headings */
 [data-md-color-scheme="slate"] .md-typeset h1,
 [data-md-color-scheme="slate"] .md-typeset h2,
 [data-md-color-scheme="slate"] .md-typeset h3,
@@ -364,35 +632,40 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
-/* Dark mode code blocks */
+[data-md-color-scheme="slate"] .md-typeset h2 {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Dark code blocks */
 [data-md-color-scheme="slate"] .md-typeset pre,
 [data-md-color-scheme="slate"] .md-typeset .highlight > pre {
-  background: #0d1527;
+  background: linear-gradient(135deg, #0a0f1e, #151d33);
 }
 
-[data-md-color-scheme="slate"] .md-typeset pre > code,
-[data-md-color-scheme="slate"] .md-typeset .highlight > pre > code {
-  background: #0d1527;
+[data-md-color-scheme="slate"] .md-typeset .highlight > .filename {
+  background: #0a0f1e;
 }
 
-/* Dark mode inline code */
+/* Dark inline code */
 [data-md-color-scheme="slate"] .md-typeset code {
-  background-color: rgba(11, 179, 183, 0.15);
+  background-color: rgba(11, 179, 183, 0.12);
   color: var(--vcf-light-teal);
+  border-color: rgba(11, 179, 183, 0.15);
 }
 
 [data-md-color-scheme="slate"] .md-typeset pre code {
   background: transparent;
   color: inherit;
+  border: none;
 }
 
-/* Dark mode tables */
+/* Dark tables */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
 [data-md-color-scheme="slate"] .md-typeset table:not([class]) thead {
-  background-color: #0d1527;
-}
-
-[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
-  border-bottom-color: #2D3B5E;
+  background: linear-gradient(135deg, #0a0f1e, #151d33);
 }
 
 [data-md-color-scheme="slate"] .md-typeset table:not([class]) td {
@@ -400,20 +673,24 @@
 }
 
 [data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:nth-child(even) {
-  background-color: rgba(255, 255, 255, 0.03);
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
-/* Dark mode admonitions */
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) tbody tr:hover {
+  background-color: rgba(11, 179, 183, 0.06);
+}
+
+/* Dark admonitions */
 [data-md-color-scheme="slate"] .md-typeset .admonition,
 [data-md-color-scheme="slate"] .md-typeset details {
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
 }
 
 [data-md-color-scheme="slate"] .md-typeset .admonition.note,
 [data-md-color-scheme="slate"] .md-typeset .admonition.info,
 [data-md-color-scheme="slate"] .md-typeset details.note,
 [data-md-color-scheme="slate"] .md-typeset details.info {
-  background: linear-gradient(135deg, rgba(156, 246, 246, 0.08), rgba(11, 179, 183, 0.04));
+  background: linear-gradient(135deg, rgba(156, 246, 246, 0.06), rgba(11, 179, 183, 0.03));
 }
 
 [data-md-color-scheme="slate"] .md-typeset .admonition.warning,
@@ -422,10 +699,26 @@
 [data-md-color-scheme="slate"] .md-typeset details.warning,
 [data-md-color-scheme="slate"] .md-typeset details.danger,
 [data-md-color-scheme="slate"] .md-typeset details.important {
-  background: linear-gradient(135deg, rgba(255, 71, 90, 0.08), rgba(255, 71, 90, 0.03));
+  background: linear-gradient(135deg, rgba(255, 71, 90, 0.06), rgba(255, 71, 90, 0.02));
 }
 
-/* Dark mode links */
+[data-md-color-scheme="slate"] .md-typeset .admonition > .admonition-title,
+[data-md-color-scheme="slate"] .md-typeset details > summary {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Dark cards */
+[data-md-color-scheme="slate"] .md-typeset .grid > .card {
+  background: #161b22;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-md-color-scheme="slate"] .md-typeset .grid > .card:hover {
+  border-color: var(--vcf-teal);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark links */
 [data-md-color-scheme="slate"] .md-typeset a {
   color: var(--vcf-teal);
 }
@@ -434,24 +727,44 @@
   color: var(--vcf-light-teal);
 }
 
-/* Dark mode sidebar */
+/* Dark sidebar */
 [data-md-color-scheme="slate"] .md-nav__link:hover {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
 [data-md-color-scheme="slate"] .md-nav__link--active {
-  background-color: rgba(11, 179, 183, 0.1);
+  background: rgba(11, 179, 183, 0.1);
 }
 
 [data-md-color-scheme="slate"] .md-nav__item--nested > .md-nav__link {
   color: rgba(255, 255, 255, 0.87);
 }
 
-/* Dark mode navigation secondary */
-[data-md-color-scheme="slate"] .md-typeset .md-nav--secondary .md-nav__link {
-  color: rgba(255, 255, 255, 0.4);
+/* Dark secondary nav */
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__link {
+  color: rgba(255, 255, 255, 0.38);
 }
 
-[data-md-color-scheme="slate"] .md-typeset .md-nav--secondary .md-nav__link--active {
+[data-md-color-scheme="slate"] .md-nav--secondary .md-nav__link--active {
   color: var(--vcf-teal);
+  background: rgba(11, 179, 183, 0.08);
+}
+
+/* Dark HR */
+[data-md-color-scheme="slate"] .md-typeset hr {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+}
+
+/* Dark tabs */
+[data-md-color-scheme="slate"] .md-typeset .tabbed-content {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Dark buttons */
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary {
+  background: linear-gradient(135deg, var(--vcf-teal), var(--vcf-blue));
+}
+
+[data-md-color-scheme="slate"] .md-typeset .md-button--primary:hover {
+  background: linear-gradient(135deg, var(--vcf-blue), var(--vcf-teal));
 }
