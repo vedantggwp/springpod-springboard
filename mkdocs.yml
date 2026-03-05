@@ -93,5 +93,8 @@ nav:
     - Verification Log: verification-log.md
     - Version History: version.md
 
+extra_css:
+  - stylesheets/extra.css
+
 extra:
   generator: false
