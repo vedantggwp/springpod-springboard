@@ -29,7 +29,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans:** 1/1 plans complete
 
 Plans:
-- [ ] 01-01-PLAN.md — Create private GitHub repo, pin dependencies in requirements.txt, push all code
+- [x] 01-01-PLAN.md — Create private GitHub repo, pin dependencies in requirements.txt, push all code
 
 ### Phase 2: CI/CD and Live Hosting
 **Goal**: Every push to main automatically builds and deploys the site; the live URL is accessible only to invited collaborators
@@ -41,11 +41,11 @@ Plans:
   3. The site is reachable at the GitHub Pages URL (e.g., `username.github.io/repo-name`) and renders the MkDocs Material theme correctly
   4. An unauthenticated browser session receives an access-denied response — the site is not publicly visible
   5. Branch protection on main prevents merging a PR if the CI workflow has not passed
-**Plans**: TBD
+**Plans:** 2 plans
 
 Plans:
-- [ ] 02-01: Create GitHub Actions workflow (build + deploy to gh-pages branch), enable GitHub Pages in repo settings
-- [ ] 02-02: Verify live URL, confirm private access, configure branch protection rule on main
+- [ ] 02-01-PLAN.md — Create GitHub Actions workflow, update site_url, trigger first deploy, enable GitHub Pages
+- [ ] 02-02-PLAN.md — Configure branch protection, document HOST-02 limitation, verify live site
 
 ## Progress
 
