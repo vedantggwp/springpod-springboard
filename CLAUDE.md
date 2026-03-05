@@ -10,7 +10,7 @@ This is **not an application**. There is no backend, no database. All content is
 
 ## Tech Stack
 
-- **Next.js 16** (App Router, static export via `output: 'export'`)
+- **Next.js 16** (App Router, SSG via `generateStaticParams`)
 - **Tailwind CSS v4** with VCF design tokens
 - **next-mdx-remote** for rendering MDX content
 - **shiki** for code syntax highlighting
@@ -28,7 +28,7 @@ npm install
 # Local development server (hot reload)
 npm run dev
 
-# Build search index + static site (outputs to /out/, gitignored)
+# Build search index + Next.js site
 npm run build
 
 # Type checking
@@ -80,4 +80,4 @@ Navy/teal theme defined as Tailwind CSS v4 `@theme` tokens in `src/app/globals.c
 
 - **No tests** — This is documentation, not code. Quality is verified via manual checklists.
 - **Custom theme** — Navy/teal design language from Figma. Design tokens in `globals.css`, component styling via Tailwind.
-- **Static export** — `output: 'export'` in next.config.ts. No server-side features (API routes, middleware, etc.).
+- **Vercel deployment** — SSG with `generateStaticParams`. No server-side features (API routes, middleware, etc.).

@@ -24,7 +24,3 @@ npm-debug.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-# legacy mkdocs
-site/
-__pycache__/
