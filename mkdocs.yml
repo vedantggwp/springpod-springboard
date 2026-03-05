@@ -1,6 +1,6 @@
 site_name: Vibe Coding Framework
 site_description: A structured framework for building AI-powered tools with consistency, safety, and speed.
-site_url: ""
+site_url: https://vedantggwp.github.io/SP-VibeFrame/
 
 theme:
   name: material
