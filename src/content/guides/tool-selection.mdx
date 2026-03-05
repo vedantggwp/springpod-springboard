@@ -94,31 +94,23 @@ When your project handles personal data, serves external users, or needs to meet
 
 Use this flow to pick your tool tier:
 
-```
-Start here
-    |
-    v
-Is this a quick prototype or internal tool
-with no sensitive data?
-    |
-   YES --> No-Code tools (Lovable, Bolt, v0)
-    |
-   NO
-    |
-    v
-Does it handle business data or need moderate
-customization?
-    |
-   YES --> Low-Code tools (Replit Agent)
-    |
-   NO
-    |
-    v
-Does it handle personal/protected data, serve
-external users, or need full control?
-    |
-   YES --> Pro Tools (Cursor, Claude Code)
-```
+<DecisionFlow>
+  <DecisionStep
+    question="Is this a quick prototype or internal tool with no sensitive data?"
+    yes="No-Code tools (Lovable, Bolt, v0)"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Does it handle business data or need moderate customization?"
+    yes="Low-Code tools (Replit Agent)"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Does it handle personal/protected data, serve external users, or need full control?"
+    yes="Pro Tools (Cursor, Claude Code)"
+    isLast
+  />
+</DecisionFlow>
 
 ---
 

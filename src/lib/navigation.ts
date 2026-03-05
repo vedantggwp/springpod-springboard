@@ -3,11 +3,13 @@ import { Navigation } from "@/types/navigation";
 export const navigation: Navigation = [
   {
     title: "Home",
-    items: [{ title: "Home", href: "/" }],
+    href: "/",
+    items: [],
   },
   {
     title: "Intake",
-    items: [{ title: "Project Intake", href: "/intake/project-intake" }],
+    href: "/intake/project-intake",
+    items: [],
   },
   {
     title: "Standards",
@@ -21,19 +23,19 @@ export const navigation: Navigation = [
   {
     title: "Build Guides",
     items: [
-      { title: "Green - Quick Build", href: "/build-guides/green-quick-build" },
-      { title: "Yellow - Standard Build", href: "/build-guides/yellow-standard-build" },
-      { title: "Orange - Reviewed Build", href: "/build-guides/orange-reviewed-build" },
-      { title: "Red - Protected Build", href: "/build-guides/red-protected-build" },
+      { title: "🟢 Green — Quick Build", href: "/build-guides/green-quick-build" },
+      { title: "🟡 Yellow — Standard Build", href: "/build-guides/yellow-standard-build" },
+      { title: "🟠 Orange — Reviewed Build", href: "/build-guides/orange-reviewed-build" },
+      { title: "🔴 Red — Protected Build", href: "/build-guides/red-protected-build" },
     ],
   },
   {
     title: "Checklists",
     items: [
-      { title: "Green Checklist", href: "/checklists/green-checklist" },
-      { title: "Yellow Checklist", href: "/checklists/yellow-checklist" },
-      { title: "Orange Checklist", href: "/checklists/orange-checklist" },
-      { title: "Red Checklist", href: "/checklists/red-checklist" },
+      { title: "🟢 Green Checklist", href: "/checklists/green-checklist" },
+      { title: "🟡 Yellow Checklist", href: "/checklists/yellow-checklist" },
+      { title: "🟠 Orange Checklist", href: "/checklists/orange-checklist" },
+      { title: "🔴 Red Checklist", href: "/checklists/red-checklist" },
     ],
   },
   {
@@ -74,9 +76,13 @@ export const navigation: Navigation = [
 ];
 
 export function findNavItem(slug: string) {
+  const currentHref = slug === "" ? "/" : `/${slug}`;
   for (const section of navigation) {
+    if (section.href === currentHref) {
+      return { section, item: { title: section.title, href: section.href } };
+    }
     for (const item of section.items) {
-      if (item.href === `/${slug}` || (slug === "" && item.href === "/")) {
+      if (item.href === currentHref) {
         return { section, item };
       }
     }
@@ -84,13 +90,21 @@ export function findNavItem(slug: string) {
   return null;
 }
 
+function allNavItems() {
+  return navigation.flatMap((s) =>
+    s.href && s.items.length === 0
+      ? [{ title: s.title, href: s.href }]
+      : s.items
+  );
+}
+
 export function findAdjacentPages(slug: string) {
-  const allItems = navigation.flatMap((s) => s.items);
+  const items = allNavItems();
   const currentHref = slug === "" ? "/" : `/${slug}`;
-  const index = allItems.findIndex((item) => item.href === currentHref);
+  const index = items.findIndex((item) => item.href === currentHref);
 
   return {
-    prev: index > 0 ? allItems[index - 1] : null,
-    next: index < allItems.length - 1 ? allItems[index + 1] : null,
+    prev: index > 0 ? items[index - 1] : null,
+    next: index < items.length - 1 ? items[index + 1] : null,
   };
 }

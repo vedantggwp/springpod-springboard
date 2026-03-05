@@ -149,6 +149,8 @@ function MobileNavSection({
   pathname,
   onNavigate,
 }: MobileNavSectionProps) {
+  const Icon = SECTION_ICONS[section.title] ?? Folder;
+  const isDirectLink = Boolean(section.href) && section.items.length === 0;
   const hasActiveChild = section.items.some((item) => pathname === item.href);
   const [isExpanded, setIsExpanded] = useState<boolean>(hasActiveChild || true);
 
@@ -156,7 +158,26 @@ function MobileNavSection({
     setIsExpanded((prev) => !prev);
   }, []);
 
-  const Icon = SECTION_ICONS[section.title] ?? Folder;
+  if (isDirectLink) {
+    const isActive = pathname === section.href;
+    return (
+      <div className="mb-1">
+        <Link
+          href={section.href!}
+          onClick={onNavigate}
+          className={`flex w-full items-center gap-2 rounded-lg px-3 py-2
+            text-sm font-medium transition-colors ${
+              isActive
+                ? "bg-gradient-to-r from-[#9CF6F6]/30 to-[#0BB3B7]/20 text-[#16254C] dark:text-white"
+                : "text-[#5C6682] hover:bg-[#E9E9ED] hover:text-[#16254C] dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white/80"
+            }`}
+        >
+          <Icon size={16} className="shrink-0" />
+          <span className="flex-1 text-left">{section.title}</span>
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div className="mb-1">

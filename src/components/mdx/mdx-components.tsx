@@ -96,8 +96,8 @@ export const mdxComponents = {
   td: ({ children }: WrapProps) => <DataTableCell>{children}</DataTableCell>,
 
   pre: ({ children }: WrapProps) => (
-    <div className="group relative my-4 overflow-hidden rounded-xl bg-gradient-to-br from-[#16254C] to-[#2D3B5E]">
-      <pre className="overflow-x-auto px-6 py-4 text-sm leading-relaxed text-[#9CF6F6]">
+    <div className="group relative my-4 overflow-hidden rounded-xl border border-[#B9BEC9] bg-gray-50 dark:border-white/10 dark:bg-[#0d1117]">
+      <pre className="overflow-x-auto px-6 py-4 text-sm leading-relaxed text-gray-700 dark:text-white/70 [&>code]:bg-transparent [&>code]:p-0">
         {children}
       </pre>
     </div>

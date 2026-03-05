@@ -40,17 +40,21 @@ export function DocFooter({ prev, next }: DocFooterProps) {
         {next ? (
           <Link
             href={next.href}
-            className="group flex items-center gap-2 rounded-xl bg-gradient-to-r
-              from-[#0BB3B7] to-[#446DF6] px-5 py-3 text-sm text-white
-              shadow-md transition-shadow hover:shadow-lg"
+            className="group flex items-center gap-2 rounded-xl px-4 py-3
+              text-sm text-[#5C6682] transition-colors
+              hover:text-[#16254C]
+              dark:text-white/50 dark:hover:text-white/80"
           >
-            <div>
-              <p className="text-xs text-white/70">Next</p>
-              <p className="font-medium">{next.title}</p>
+            <div className="text-left">
+              <p className="text-xs text-[#8B92A6]">Next</p>
+              <p className="font-medium text-[#16254C] dark:text-white/87">
+                {next.title}
+              </p>
             </div>
             <ChevronRight
               size={16}
-              className="transition-transform group-hover:translate-x-0.5"
+              className="text-[#8B92A6] transition-transform
+                group-hover:translate-x-0.5 group-hover:text-[#0BB3B7]"
             />
           </Link>
         ) : (

@@ -5,6 +5,7 @@ export interface NavItem {
 
 export interface NavSection {
   readonly title: string;
+  readonly href?: string;
   readonly items: readonly NavItem[];
 }
 

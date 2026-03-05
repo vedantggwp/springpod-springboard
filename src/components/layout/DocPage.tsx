@@ -14,6 +14,10 @@ import Checklist from "@/components/mdx/Checklist";
 import ChecklistItem from "@/components/mdx/ChecklistItem";
 import HeroBadge from "@/components/mdx/HeroBadge";
 import StepCard from "@/components/mdx/StepCard";
+import {
+  DecisionFlow,
+  DecisionStep,
+} from "@/components/mdx/DecisionFlow";
 
 interface DocPageProps {
   readonly raw: string;
@@ -34,6 +38,8 @@ const components = {
   ChecklistItem,
   HeroBadge,
   StepCard,
+  DecisionFlow,
+  DecisionStep,
 };
 
 export function DocPage({
