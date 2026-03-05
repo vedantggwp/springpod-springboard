@@ -8,13 +8,13 @@ This document defines the security rules for every tool built using VCF. You do 
 
 Never put sensitive information in your code. Not passwords, not API keys, not secret tokens, not database URLs. Ever.
 
-<Collapsible title="WHY">
+<Collapsible variant="why" title="WHY">
 
 If sensitive information is in your code, anyone who can see the code can access your accounts, your data, and your users' data. This is the most common security mistake in AI-assisted development — and the easiest to prevent.
 
 </Collapsible>
 
-<Collapsible title="HOW TO CHECK">
+<Collapsible variant="how" title="HOW TO CHECK">
 
 1. Open your project in whatever tool you used to build it
 2. Use the search function (Ctrl+F on Windows, Cmd+F on Mac)
@@ -35,13 +35,13 @@ If sensitive information is in your code, anyone who can see the code can access
 
     Every page of your tool should show a lock icon in the browser's address bar. If it does not, your data is being sent unprotected.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Without HTTPS, anyone on the same network (a coffee shop, a school) can read the data your tool sends and receives. This includes passwords, personal information, and anything else your users type.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Open your tool in a browser
     2. Look at the address bar — it should start with `https://` and show a lock icon
@@ -54,7 +54,7 @@ Without HTTPS, anyone on the same network (a coffee shop, a school) can read the
 
     If your tool does not need someone's date of birth, do not ask for it. Every piece of data you collect is data you must protect.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Data you do not have cannot be stolen. The safest way to protect information is to never collect it in the first place.
 
@@ -64,13 +64,13 @@ Data you do not have cannot be stolen. The safest way to protect information is 
 
     If your tool sends data to an external API, you need to know where that data goes and who has access to it.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 AI tools sometimes send data to third-party services for processing. If you did not choose and approve that service, you do not know what happens to your data.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. List every external service your tool connects to (AI APIs, databases, analytics, etc.)
     2. Check each one against your company's [Approved Tools](/client-config/approved-tools) list
@@ -86,13 +86,13 @@ AI tools sometimes send data to third-party services for processing. If you did 
 
     If a field expects a number, it should reject text. If a field expects an email, it should reject "hello."
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Unvalidated input is the most common way attackers exploit tools. It can also cause your tool to crash or show wrong data.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Find every form, text field, or input in your tool
     2. Try typing something unexpected in each one (text in a number field, symbols in a name field, an extremely long string)
@@ -104,7 +104,7 @@ Unvalidated input is the most common way attackers exploit tools. It can also ca
 
     Users should see "Something went wrong. Please try again or contact support." Not a stack trace, database name, or file path.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Technical error messages tell attackers exactly how your tool is built, what database you use, and where to find vulnerabilities. They are a roadmap for exploitation.
 
@@ -118,13 +118,13 @@ Technical error messages tell attackers exactly how your tool is built, what dat
 
     "At rest" means stored in a database. "In transit" means sent between the user's browser and your server. Both need encryption.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 If someone gains access to your database or intercepts network traffic, encrypted data is unreadable without the key. Unencrypted data is immediately exposed.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. **In transit:** Confirmed if you use HTTPS (checked above)
     2. **At rest:** Check your database provider's documentation — most modern services (Supabase, Firebase, AWS RDS) encrypt by default. Confirm this is enabled.
@@ -136,13 +136,13 @@ If someone gains access to your database or intercepts network traffic, encrypte
 
     If User A logs in, they must not be able to see User B's information. Not through the interface, not by changing the URL, not through the API.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 This is one of the most common security failures in web applications. It is easy to miss because the tool "works" — it just shows the wrong person's data.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Create two test accounts
     2. Log in as Account A and note the URL when viewing personal data
@@ -155,7 +155,7 @@ This is one of the most common security failures in web applications. It is easy
 
     Decide before you launch: how long do you keep user data? What happens when that period ends? Document it.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Keeping data forever increases your risk. Many regulations require you to delete data when you no longer need it.
 
@@ -165,7 +165,7 @@ Keeping data forever increases your risk. Many regulations require you to delete
 
     Create a written list of every service your tool sends data to, what data it sends, and why.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 You cannot protect data you do not know is leaving your system. This list is required for security reviews and compliance audits.
 
@@ -179,7 +179,7 @@ You cannot protect data you do not know is leaving your system. This list is req
 
     A structured review of what personal data you collect, why, how it is stored, who can access it, and when it is deleted. Use a template from your compliance team or see [ROLES.md](/client-config/roles) for who can help.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 For tools handling protected data (especially data about minors), a privacy impact assessment may be a legal requirement, not just a best practice.
 
@@ -194,13 +194,13 @@ For tools handling protected data (especially data about minors), a privacy impa
     - Parental or guardian notification if required by policy
     - Default privacy settings set to maximum protection
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Children and young people have special legal protections. In the US, COPPA applies to children under 13. In the EU, GDPR Article 8 sets thresholds at 13-16 depending on the country. Your company policy may set stricter limits.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. List every piece of data your tool collects about users under 18
     2. For each item: is it strictly necessary for the tool to function? If not, remove it
@@ -214,7 +214,7 @@ Children and young people have special legal protections. In the US, COPPA appli
 
     Your designated reviewer (not you) confirms that the tool meets applicable privacy regulations for your users and jurisdiction.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Privacy compliance is a specialist skill. Even well-meaning builders can miss requirements. This is why Red builds require sign-off from a designated reviewer.
 
@@ -224,13 +224,13 @@ Privacy compliance is a specialist skill. Even well-meaning builders can miss re
 
     Before you go live, write down: what happens if data is exposed? Who gets notified? What is the first action? Where are the credentials to shut things down? Use the [Incident Report](/forms/incident-report) template.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 When something goes wrong, you do not have time to figure out what to do. Having a plan means you respond in minutes, not hours.
 
 </Collapsible>
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Open your incident response plan (or create one using the [Incident Report template](/forms/incident-report))
     2. Can you answer: who is called first? How do you turn the tool off? Where are the access credentials?
@@ -242,7 +242,7 @@ When something goes wrong, you do not have time to figure out what to do. Having
 
     If your tool sends personal or protected data to an external service, you need a written agreement with that service about how they handle your data.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 You are responsible for your users' data even after you send it to someone else. A data processing agreement makes the third party legally accountable too.
 
@@ -258,7 +258,7 @@ You are responsible for your users' data even after you send it to someone else.
 
     Public pages (marketing, documentation) can be open. Anything showing personal data requires a login.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Without a login, anyone with the URL can access your users' data.
 
@@ -268,7 +268,7 @@ Without a login, anyone with the URL can access your users' data.
 
     Minimum 8 characters (15+ recommended). Block commonly compromised passwords. Do not require special characters — length matters more than complexity.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Current guidance from NIST (SP 800-63B) recommends longer passwords over complex ones. A passphrase like "correct horse battery staple" is stronger and more memorable than "P@ssw0rd!".
 
@@ -278,7 +278,7 @@ Current guidance from NIST (SP 800-63B) recommends longer passwords over complex
 
     If someone walks away from their computer, the tool should log them out after a reasonable period (e.g., 30 minutes for standard tools, 15 minutes for sensitive data).
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 An unlocked session on an unattended computer is an open door to someone's data.
 
@@ -290,7 +290,7 @@ An unlocked session on an unattended computer is an open door to someone's data.
 
     Anyone who can change settings, view all users' data, or modify the tool itself must use multi-factor authentication (a second verification step beyond a password).
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Admin accounts are the highest-value target. If an attacker gets one admin password, MFA prevents them from accessing the system.
 
@@ -300,7 +300,7 @@ Admin accounts are the highest-value target. If an attacker gets one admin passw
 
     Keep a record of every login, every data access, and every change to settings. This log must not be editable by the people it tracks.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 If something goes wrong, the audit log tells you what happened, when, and who was involved. Without it, you are investigating blind.
 

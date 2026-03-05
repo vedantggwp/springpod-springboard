@@ -168,3 +168,11 @@
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+/* ── Decorative gradient divider ─────────────────────────────────── */
+.vcf-gradient-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #0BB3B7, transparent);
+  border: none;
+  margin: 2rem 0;
+}

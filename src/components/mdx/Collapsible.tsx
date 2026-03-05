@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 
-type CollapsibleVariant = "info" | "warning" | "tip" | "example";
+type CollapsibleVariant = "info" | "warning" | "tip" | "example" | "why" | "how";
 
 interface CollapsibleProps {
   readonly title: string;
@@ -43,6 +43,23 @@ const variantStyles: Record<CollapsibleVariant, VariantStyle> = {
     border: "border-[#446DF6]",
     chevronColor: "text-[#446DF6]",
   },
+  why: {
+    gradient: "from-[#446DF6]/10 to-[#446DF6]/5",
+    darkGradient: "dark:from-[#446DF6]/8 dark:to-[#446DF6]/3",
+    border: "border-[#446DF6]",
+    chevronColor: "text-[#446DF6]",
+  },
+  how: {
+    gradient: "from-[#10B981]/10 to-[#10B981]/5",
+    darkGradient: "dark:from-[#10B981]/8 dark:to-[#10B981]/3",
+    border: "border-[#10B981]",
+    chevronColor: "text-[#10B981]",
+  },
+};
+
+const variantEmoji: Partial<Record<CollapsibleVariant, string>> = {
+  why: "\u{1F4A1} ",
+  how: "\u{1F527} ",
 };
 
 export default function Collapsible({
@@ -77,7 +94,7 @@ export default function Collapsible({
           ].join(" ")}
         />
         <span className="font-medium text-[#16254C] dark:text-white">
-          {title}
+          {variantEmoji[variant] ?? ""}{title}
         </span>
       </button>
 

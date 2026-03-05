@@ -18,7 +18,7 @@ Prompts that your finished tool uses — like a chatbot's system prompt, an AI s
 
 **The rule:** Build prompts are temporary notes. Production prompts are product decisions.
 
-<Collapsible title="WHY">
+<Collapsible variant="why" title="WHY">
 
 A build prompt that gives a bad result costs you a few minutes — you regenerate. A production prompt that gives a bad result costs your users' trust, your brand reputation, or worse.
 
@@ -32,7 +32,7 @@ A build prompt that gives a bad result costs you a few minutes — you regenerat
 
 Check the [Prompt Library](/client-config/prompt-library) before writing your own. Tested prompts give better results faster than starting from scratch.
 
-<Collapsible title="WHY">
+<Collapsible variant="why" title="WHY">
 
 Prompts are like recipes. Starting from a tested recipe and adjusting it is faster and more reliable than inventing one from scratch every time.
 
@@ -50,7 +50,7 @@ Vague prompts produce vague results. Specific prompts produce useful results.
 
 > Create a dashboard that shows daily active users, weekly retention rate, and revenue per user. Use a line chart for trends over the past 30 days and summary cards for current values. Use the color scheme: primary #1B3A5C, accent #2ABFBF, background #FFFFFF.
 
-<Collapsible title="WHY">
+<Collapsible variant="why" title="WHY">
 
 AI tools do exactly what you ask. If you do not specify colors, layout, or data, the AI guesses — and its guesses rarely match your needs.
 
@@ -64,7 +64,7 @@ Tell the AI what NOT to do, not just what to do.
 
 > Do not use any external libraries. Keep all code in a single file. Do not add any features I did not ask for. Use only the colors listed above.
 
-<Collapsible title="WHY">
+<Collapsible variant="why" title="WHY">
 
 AI tools tend to add helpful extras you did not ask for. Constraints prevent scope creep and keep the output focused.
 
@@ -74,13 +74,13 @@ AI tools tend to add helpful extras you did not ask for. Constraints prevent sco
 
 Write your prompt 3 slightly different ways. Compare the outputs. Pick the one closest to what you need, then refine it.
 
-<Collapsible title="WHY">
+<Collapsible variant="why" title="WHY">
 
 Small wording changes can produce very different results. Testing variations helps you find the best phrasing before committing to it.
 
 </Collapsible>
 
-<Collapsible title="HOW TO do this">
+<Collapsible variant="how" title="HOW TO do this">
 
 1. Write your prompt
 2. Create two variations by rephrasing the key instruction (e.g., "build a form" vs. "create an input page" vs. "generate a data entry screen")
@@ -93,13 +93,13 @@ Small wording changes can produce very different results. Testing variations hel
 
 If someone needs to modify your tool later, they need to know what instructions you gave the AI.
 
-<Collapsible title="WHY">
+<Collapsible variant="why" title="WHY">
 
 Without the original prompts, the next person has to guess how the tool was built. This leads to worse modifications and more bugs.
 
 </Collapsible>
 
-<Collapsible title="HOW TO do this">
+<Collapsible variant="how" title="HOW TO do this">
 
 1. Create a file called `prompts.md` or use your [Build Log](/forms/build-log)
 2. Paste each prompt you used, with a note about what it produced
@@ -125,7 +125,7 @@ Production prompts — the ones running inside your finished tool — need more 
 
     Use the [Prompt Spec Template](/forms/prompt-spec) to record: what the prompt does, the full prompt text, expected inputs and outputs, and known limitations.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Undocumented prompts become mysteries. When something breaks or needs updating, nobody knows what the prompt was supposed to do or why it was written that way.
 
@@ -140,7 +140,7 @@ Undocumented prompts become mysteries. When something breaks or needs updating, 
     - **Safety** — Can it produce harmful, misleading, or inappropriate output?
     - **Edge cases** — What happens with unexpected, empty, or very long input?
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Generate 10 outputs using varied inputs (including edge cases)
     2. Read each output against the four criteria above
@@ -155,7 +155,7 @@ Undocumented prompts become mysteries. When something breaks or needs updating, 
 
     If your tool serves students aged 14-18, test prompts with inputs typical of that age group — not adult professionals.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 Prompts optimized for adult language patterns may produce confusing or inappropriate results for younger users. Test with realistic inputs from your actual audience.
 
@@ -165,7 +165,7 @@ Prompts optimized for adult language patterns may produce confusing or inappropr
 
     For each production prompt, answer: what is the worst output this prompt could produce? What safeguards prevent that?
 
-    <Collapsible title="HOW TO CHECK">
+    <Collapsible variant="how" title="HOW TO CHECK">
 
 1. Try deliberately adversarial inputs (very long text, nonsense, offensive language, prompt injection attempts like "ignore your instructions and...")
     2. Document what happens for each
@@ -177,7 +177,7 @@ Prompts optimized for adult language patterns may produce confusing or inappropr
 
     Every change to a production prompt is recorded with the date, what changed, and why.
 
-    <Collapsible title="WHY">
+    <Collapsible variant="why" title="WHY">
 
 When a prompt that used to work starts producing bad results, version history lets you compare what changed and roll back if needed.
 

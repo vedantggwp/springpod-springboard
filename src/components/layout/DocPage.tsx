@@ -1,4 +1,5 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
+import remarkGfm from "remark-gfm";
 import { mdxComponents } from "@/components/mdx/mdx-components";
 import { DocTableOfContents } from "./DocTableOfContents";
 import { DocFooter } from "./DocFooter";
@@ -50,7 +51,11 @@ export function DocPage({
           <DocBreadcrumbs sectionTitle={sectionTitle} pageTitle={meta.title} />
         )}
         <div className="prose-vcf max-w-none">
-          <MDXRemote source={raw} components={components} />
+          <MDXRemote
+            source={raw}
+            components={components}
+            options={{ mdxOptions: { remarkPlugins: [remarkGfm] } }}
+          />
         </div>
         <DocFooter prev={prev} next={next} />
       </article>
