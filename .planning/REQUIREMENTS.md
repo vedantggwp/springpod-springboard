@@ -13,13 +13,13 @@
 
 ### CI/CD
 
-- [ ] **CICD-01**: GitHub Actions workflow builds MkDocs site on push to main
-- [ ] **CICD-02**: GitHub Actions workflow deploys built site to GitHub Pages automatically
-- [ ] **CICD-03**: Build failure prevents deployment (workflow fails visibly)
+- [x] **CICD-01**: GitHub Actions workflow builds MkDocs site on push to main
+- [x] **CICD-02**: GitHub Actions workflow deploys built site to GitHub Pages automatically
+- [x] **CICD-03**: Build failure prevents deployment (workflow fails visibly)
 
 ### Hosting
 
-- [ ] **HOST-01**: Site is accessible at GitHub Pages URL (e.g., `username.github.io/repo-name`)
+- [x] **HOST-01**: Site is accessible at GitHub Pages URL (e.g., `username.github.io/repo-name`)
 - [ ] **HOST-02**: Site is private — only repository collaborators can view it
 
 ### Quality
@@ -57,10 +57,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 | REPO-01 | Phase 1 | Complete |
 | REPO-02 | Phase 1 | Complete |
 | REPO-03 | Phase 1 | Complete |
-| CICD-01 | Phase 2 | Pending |
-| CICD-02 | Phase 2 | Pending |
-| CICD-03 | Phase 2 | Pending |
-| HOST-01 | Phase 2 | Pending |
+| CICD-01 | Phase 2 | Complete |
+| CICD-02 | Phase 2 | Complete |
+| CICD-03 | Phase 2 | Complete |
+| HOST-01 | Phase 2 | Complete |
 | HOST-02 | Phase 2 | Pending |
 | QUAL-01 | Phase 2 | Pending |
 
