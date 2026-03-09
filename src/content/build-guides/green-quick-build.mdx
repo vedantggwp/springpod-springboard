@@ -14,22 +14,22 @@ Fill out the [Project Brief](/forms/project-brief). This is a short form that ca
 
 **Example completed brief:**
 
-> **Project name:** Team Directory
+> **Project name:** Employer Engagement Tracker
 >
-> **What are you building?** A simple web page that shows everyone on our team — their name, role, and contact info. Used by new joiners to find who does what.
+> **What are you building?** A simple internal page showing which employer partners have upcoming virtual work experience programmes, their status (confirmed, pending, completed), and the key contact for each.
 >
-> **What problem does it solve?** New team members currently ask Slack "who handles X?" multiple times a week. A directory saves everyone time.
+> **What problem does it solve?** The partnerships team currently tracks employer programmes across multiple spreadsheets and Slack threads. This page gives everyone a single view of what is coming up.
 >
 > **What does "done" look like?**
-> 1. Shows all team members with name, role, email, and photo
-> 2. Searchable by name or role
+> 1. Shows all employer partners with programme name, date, status, and key contact
+> 2. Filterable by status (confirmed, pending, completed)
 > 3. Works on mobile
 >
 > **Tools:** Lovable (fast for simple pages, no backend needed)
 
 ### Accelerator
 
-Before you start building, check with your team — someone may have already built something similar. A 2-minute Slack message could save you hours of work.
+Before you start building, check with your team at Springpod — someone may have already built something similar. A 2-minute Slack message could save you hours of work.
 
 ---
 
@@ -37,7 +37,7 @@ Before you start building, check with your team — someone may have already bui
 
 For a Quick Build, almost any AI tool works. Pick what you are most comfortable with.
 
-**Never used an AI coding tool before?** Check the [Tool Selection Guide](/guides/tool-selection) for an overview, then pick one from your company's [Approved Tools](/client-config/approved-tools) list.
+**Never used an AI coding tool before?** Check the [Tool Selection Guide](/guides/tool-selection) for an overview, then pick one from Springpod's [Approved Tools](/client-config/approved-tools) list.
 
 **Quick rule of thumb for Green builds:**
 
@@ -57,14 +57,14 @@ Open your AI tool and describe what you want. The more specific your prompt, the
 
 Start from the [Prompt Library](/client-config/prompt-library). These prompts have been tested and produce better results than starting from scratch.
 
-**Example prompt for a team directory:**
+**Example prompt for an employer engagement tracker:**
 
 ```
-Create a team directory page that shows team members in a card layout.
-Each card shows: name, role, email address, and a placeholder for a photo.
-Include a search bar at the top that filters by name or role.
+Create an employer engagement tracker page that shows employer partners in a card layout.
+Each card shows: employer name, programme name, date, status (confirmed/pending/completed), and key contact name.
+Include a filter bar at the top that filters by status.
 Make it responsive so it works on mobile.
-Use these colors: primary #1B3A5C, background #FFFFFF, text #333333.
+Use these colors: primary #0BB3B7, background #FFFFFF, text #333333.
 Do not use any external libraries. Keep it simple.
 ```
 
@@ -83,8 +83,8 @@ Try using your tool the way a real person would. Do not just check that it opens
 
 **Test these things:**
 
-1. **Happy path** — Does the main feature work? (e.g., can you search for a team member and find them?)
-2. **Empty state** — What happens if there is no data? (e.g., search for someone who does not exist)
+1. **Happy path** — Does the main feature work? (e.g., can you filter by status and see the right employer partners?)
+2. **Empty state** — What happens if there is no data? (e.g., filter for a status with no results)
 3. **Bad input** — What happens if someone types something unexpected? (e.g., very long text, special characters)
 4. **Different devices** — Does it work on your phone? (Open the URL on your phone or use your browser's device preview)
 
@@ -116,7 +116,7 @@ Make your tool accessible to your team.
 
 ## Done
 
-You just completed your first VCF build. Here is what you did:
+You just completed your first SpringBoard build. Here is what you did:
 
 1. Defined what you were building (Project Brief)
 2. Picked a tool

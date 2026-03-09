@@ -1,8 +1,8 @@
 # Your First Build
 
-This walkthrough takes you through building a simple tool using the Vibe Coding Framework from start to finish. By the end, you will have a working tool and know how the framework works.
+This walkthrough takes you through building a simple tool using SpringBoard from start to finish. By the end, you will have a working tool and know how the framework works.
 
-**What you will build:** A team directory page — a simple web page showing your team members' names, roles, and contact information.
+**What you will build:** An employer engagement tracker — a simple internal page showing which employer partners have upcoming virtual work experience programmes, their status, and key contact.
 
 **Time:** About 30-60 minutes total, including the framework steps.
 
@@ -10,11 +10,11 @@ This walkthrough takes you through building a simple tool using the Vibe Coding 
 
 ## Step 1: Classify your project (3 min)
 
-Open the [Project Intake](/intake/project-intake) and answer the 5 questions. For our team directory, the answers would be:
+Open the [Project Intake](/intake/project-intake) and answer the 5 questions. For our employer engagement tracker, the answers would be:
 
 > **Q1: Who will use this tool?** → Just me or my immediate team (internal)
 >
-> **Q2: What kind of data will this tool handle?** → Non-sensitive internal data (team names, roles, emails)
+> **Q2: What kind of data will this tool handle?** → Non-sensitive internal data (employer names, programme dates, contact names)
 >
 > **Q3: What happens if this tool breaks or gives wrong information?** → Minor inconvenience — we can work around it
 >
@@ -40,9 +40,9 @@ The framework has four paths (Green → Yellow → Orange → Red), each adding 
 
 ## Step 3: Fill out the Project Brief (5 min)
 
-Open the [Project Brief](/forms/project-brief) and fill it in. For our team directory:
+Open the [Project Brief](/forms/project-brief) and fill it in. For our employer engagement tracker:
 
-> **Project name:** Team Directory
+> **Project name:** Employer Engagement Tracker
 >
 > **Builder:** [Your name]
 >
@@ -50,13 +50,13 @@ Open the [Project Brief](/forms/project-brief) and fill it in. For our team dire
 >
 > **Build path:** Green (Quick Build)
 >
-> **What are you building?** A simple web page that shows everyone on our team — their name, role, and contact info. Used by new joiners to find who does what.
+> **What are you building?** A simple internal page showing which employer partners have upcoming virtual work experience programmes, their status (confirmed, pending, completed), and the key contact for each.
 >
-> **What problem does it solve?** New team members ask "who handles X?" several times a week. A directory answers this instantly.
+> **What problem does it solve?** The partnerships team currently tracks employer programmes across multiple spreadsheets and Slack threads. This page gives everyone a single view of what is coming up.
 >
 > **What does "done" look like?**
-> 1. Shows all team members with name, role, and email
-> 2. Searchable by name or role
+> 1. Shows all employer partners with programme name, date, status, and key contact
+> 2. Filterable by status (confirmed, pending, completed)
 > 3. Works on mobile
 >
 > **What tools will you use?** Lovable (fast for simple pages, no backend needed)
@@ -68,11 +68,11 @@ Open the [Project Brief](/forms/project-brief) and fill it in. For our team dire
 Open your AI coding tool and describe what you want. Here is a prompt you can adapt:
 
 ```
-Create a team directory page that shows team members in a card layout.
-Each card shows: name, role, and email address.
-Include a search bar at the top that filters by name or role.
+Create an employer engagement tracker page that shows employer partners in a card layout.
+Each card shows: employer name, programme name, date, status (confirmed/pending/completed), and key contact name.
+Include a filter bar at the top that filters by status.
 Make it responsive so it works on mobile.
-Use these colors: primary #1B3A5C, background #FFFFFF, text #333333.
+Use these colors: primary #0BB3B7, background #FFFFFF, text #333333.
 Do not use any external libraries. Keep it simple.
 Do not add any features I did not ask for.
 ```
@@ -89,10 +89,10 @@ Do not add any features I did not ask for.
 
 Try using the tool the way a real person would:
 
-1. **Search for someone** — does the search work?
-2. **Search for something that does not exist** — does it show a clear "no results" message?
+1. **Filter by status** — does the filter work for each status?
+2. **Filter for something with no results** — does it show a clear "no results" message?
 3. **Open it on your phone** — does it still work?
-4. **Try typing special characters** in the search (accents, apostrophes) — does it handle them?
+4. **Try entering special characters** in any search or filter fields — does it handle them?
 
 If anything is broken, tell the AI tool and ask it to fix it.
 
@@ -102,7 +102,7 @@ If anything is broken, tell the AI tool and ask it to fix it.
 
 Search your code for any of these: `sk-`, `api_key`, `secret`, `password`, `token`
 
-For a simple team directory, you probably will not have any. But check anyway — it is a habit worth building.
+For a simple employer engagement tracker, you probably will not have any. But check anyway — it is a habit worth building.
 
 If you find any, move them to your tool's environment variables (usually in Settings or Secrets).
 
@@ -118,7 +118,7 @@ If you find any, move them to your tool's environment variables (usually in Sett
 
 ## Done
 
-You just completed your first VCF build. Here is what you did:
+You just completed your first SpringBoard build. Here is what you did:
 
 | Step | What you did | Framework document |
 |------|--------------|--------------------|

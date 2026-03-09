@@ -1,112 +1,96 @@
 # Company Context
 
-This document captures your company's specific values, constraints, and policies that affect how AI tools are built. Fill in each section before rolling out VCF to your team.
-
-Search this document for `[CLIENT:` to find all fields that need your input.
+This document captures Springpod's values, constraints, and policies that shape how we build AI tools.
 
 ---
 
-## About your company
+## About Springpod
 
-**Company name:** [CLIENT: Your company name]
+**Company name:** Springpod
 
-**Industry:** [CLIENT: e.g., Education, Healthcare, Financial Services, Non-profit]
+**Industry:** EdTech — virtual work experience and careers education platform
 
-**Size:** [CLIENT: e.g., 50 employees, 500 employees, 5000 employees]
+**Size:** ~80 employees
 
-**Primary AI use cases:** [CLIENT: What does your company want to use AI-built tools for? e.g., "Internal dashboards, student engagement tracking, automated reporting, parent communication tools"]
+**Mission:** Enable all young people to select and secure their brightest future by democratising access to quality work experience and careers education
+
+**Founded by:** Sam Hyams (CEO) and Oliver Fisher (Co-Founder & CPO), London
+
+**Scale:** 1M+ student enrolments, 4,000+ partner schools, 300+ employer and university partners
+
+**Primary AI use cases:** Internal dashboards, student engagement tools, content generation, employer reporting, AI-powered interview skills coach, automated assessment aids, curriculum content tools
 
 ---
 
 ## Company values that affect how we build
 
-[CLIENT: What principles guide your work? These values will be referenced throughout the framework when making build decisions.]
+These principles guide our work and are referenced throughout the framework when making build decisions.
 
-Examples:
-
-- "Student safety comes before speed of delivery"
-- "Every tool must be accessible to users with disabilities"
-- "We move fast on internal tools but carefully on anything student-facing"
-- "Data minimization — we only collect what we strictly need"
-
-Your values:
-
-1. ___
-2. ___
-3. ___
+1. Student safety and wellbeing come before speed of delivery
+2. Democratise access — remove barriers of geography, cost, and connections
+3. Measurable impact — every feature must demonstrate real outcomes
+4. Move fast on internal tools, carefully on anything student-facing (ages 13+)
+5. Data minimisation — collect only what we strictly need
 
 ---
 
 ## Constraints
 
-[CLIENT: What are the hard limits on what you can build or how you can build it?]
+These are the hard limits on what we can build and how we can build it.
 
-Examples:
-
-- "No tools hosted outside the EU"
-- "All student data must stay on-premise or in approved cloud services"
-- "No tools that require credit card information from users"
-- "All tools must work on school-issued Chromebooks"
-- "No tools requiring app installation — browser-only"
-
-Your constraints:
-
-1. ___
-2. ___
-3. ___
+1. All student data must comply with UK GDPR and Data Protection Act 2018
+2. No tools that process under-18 data may use unapproved third-party services
+3. Student-facing tools must meet WCAG AA accessibility standards
+4. No behavioural profiling or recommendation algorithms on student data without explicit review
+5. All tools must work on school-issued devices (Chromebooks, iPads, locked-down browsers)
 
 ---
 
 ## Compliance requirements
 
-[CLIENT: What regulations apply to your tools and data?]
-
 | Regulation | Applies? | Notes |
 |------------|----------|-------|
-| GDPR (EU data protection) | Yes / No | [CLIENT: Details] |
-| COPPA (US children's privacy) | Yes / No | [CLIENT: Details] |
-| FERPA (US student records) | Yes / No | [CLIENT: Details] |
-| CCPA (California privacy) | Yes / No | [CLIENT: Details] |
-| [CLIENT: Other regulations] | Yes / No | [CLIENT: Details] |
+| UK GDPR | Yes | All personal data processing, ICO registered (ZA195343) |
+| COPPA (US children's privacy) | Monitoring | US expansion underway, will apply when serving US students under 13 |
+| FERPA (US student records) | Not yet | Will apply with US school partnerships |
+| CCPA (California privacy) | Not yet | Will apply with California users |
+| Data Protection Act 2018 | Yes | Primary UK legislation |
+| PECR | Yes | Electronic communications to students and parents |
+| Gatsby Benchmarks | Yes | Platform aligned to 8 Gatsby career education benchmarks |
 
 ---
 
 ## AI policy
 
-[CLIENT: Your company's official position on AI usage]
-
-Questions to answer:
-
-- Is AI-assisted development allowed? For what types of tools?
-- Must AI-generated outputs be human-reviewed before going to users?
-- Are there specific AI models or services that are approved or restricted?
-- Do users need to be told when they are interacting with AI?
-
-Your policy:
-
-___
+- AI-assisted development is encouraged for all build paths
+- AI-generated content that students see must be human-reviewed before publication
+- The AI-Powered Interview Skills Coach is an approved student-facing AI feature
+- AI models processing student data must be approved by the Data team
+- Student-facing AI features must disclose AI involvement with age-appropriate language (e.g., "This feedback was created with the help of AI")
+- No AI-generated content may make promises about career outcomes
 
 ---
 
 ## Data classification
 
-[CLIENT: How does your company classify data sensitivity?]
-
 | Classification | Description | Example | Build path |
 |---------------|-------------|---------|------------|
-| Public | No restriction | Marketing content, public reports | Green |
-| Internal | Business use only | Staff directories, internal metrics | Yellow |
-| Confidential | Restricted access | Financial data, HR records | Orange |
-| Protected | Highest protection | Student data, health records, minors' data | Red |
+| Public | No restriction | Marketing content, blog posts, public programme listings | Green |
+| Internal | Business use only | Staff directories, internal metrics, employer pipeline data, team dashboards | Yellow |
+| Confidential | Restricted access | Financial data, HR records, partnership agreements, employer contracts | Orange |
+| Protected | Highest protection | Student personal data, under-18 data, school records, health/SEND information | Red |
 
 ---
 
-## How to use this document
+## Keeping this current
 
-1. Fill in every `[CLIENT: ...]` section above
-2. Share this document with everyone who will use VCF
-3. Reference it when completing the [Project Intake](/intake/project-intake) — your data classification determines your build path
-4. Review and update this document at least once a year or when policies change
+This document should be reviewed at least once a year or whenever company policies, compliance requirements, or AI practices change. Key triggers for an update include:
+
+- New regulatory requirements (e.g., entering the US market triggers COPPA/FERPA obligations)
+- Changes to the approved AI model list or data processing agreements
+- Updates to the Springpod data classification scheme
+- New student-facing AI features being approved or retired
+- Changes to the ICO registration or data protection impact assessments
 
 ---
 
@@ -114,4 +98,4 @@ ___
 
 - [Approved Tools](/client-config/approved-tools) — which tools your team can use
 - [Roles](/client-config/roles) — who reviews and approves at each level
-- [Branding Standard](/standards/branding) — visual and voice identity (has its own `[CLIENT: ...]` markers)
+- [Branding Standard](/standards/branding) — Springpod's visual and voice identity guidelines
