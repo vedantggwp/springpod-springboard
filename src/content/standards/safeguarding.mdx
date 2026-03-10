@@ -1,0 +1,272 @@
+# Safeguarding & Under-18s
+
+Springpod serves students aged 13 and above. Over a million young people have enrolled through the platform. Every tool you build has the potential to interact with minors — and that means safeguarding is not optional, it is foundational.
+
+This page covers what you need to know when building AI-powered tools that may be used by, or collect data about, young people. You do not need a legal background to follow these rules. If something feels unclear, that is a signal to ask — not to guess.
+
+---
+
+## The one rule
+
+**Assume every user is under 18 until your tool proves otherwise.**
+
+<Collapsible variant="why" title="WHY">
+
+At Springpod, the default user is a student. Unlike most platforms where minors are a special case, here they are the primary audience. Designing for adults and then retrofitting protections for young people does not work — it leaves gaps. Start with the assumption that your user is a young person, and you will build something safer for everyone.
+
+</Collapsible>
+
+---
+
+## Safeguarding requirements by build path
+
+### All build paths
+
+<ChecklistItem id="safeguarding-1" label="You know whether your tool will be seen by students" />
+
+    Before you build anything, answer this question: could a student (aged 13-18) use this tool, see its output, or have their data processed by it? If the answer is yes, or even maybe, every rule on this page applies.
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Look at who the tool is for — is it student-facing, school-facing, or internal-only?
+    2. Even internal tools may process student data (e.g., a reporting dashboard showing student engagement)
+    3. If you are not sure, assume yes and treat it as student-facing
+    4. Document your answer in your [Project Brief](/forms/project-brief)
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-2" label="No inappropriate content can reach students" />
+
+    Your tool must not display, generate, or link to content that is unsuitable for a 13-year-old. This includes AI-generated text, images, and any third-party content your tool pulls in.
+
+    <Collapsible variant="why" title="WHY">
+
+AI tools can produce unexpected output. A prompt that seems harmless can generate content that is violent, sexual, discriminatory, or otherwise inappropriate. Because your users may be children, you cannot rely on them to filter this themselves.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Test your tool with a range of inputs, including edge cases and unusual prompts
+    2. Try inputs that a curious teenager might try — unexpected questions, boundary-pushing language, attempts to bypass instructions
+    3. Check that all AI-generated output is appropriate for a school setting
+    4. If your tool displays third-party content, verify that content source is age-appropriate
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-3" label="Contact channels do not allow unsupervised private messaging" />
+
+    If your tool includes any form of communication (chat, messaging, comments, feedback), it must not enable unsupervised private contact between adults and young people.
+
+    <Collapsible variant="why" title="WHY">
+
+Private, unmonitored communication channels between adults and minors are a safeguarding risk. This is a core principle in child protection — not a technical detail.
+
+</Collapsible>
+
+---
+
+### Yellow: Standard Build (and above)
+
+<ChecklistItem id="safeguarding-4" label="AI-generated content has basic moderation" />
+
+    If your tool uses AI to generate text, summaries, or recommendations, you must have at least one layer of content filtering. This could be system prompt instructions, an output filter, or a review step before content reaches the student.
+
+    <Collapsible variant="why" title="WHY">
+
+System prompts alone are not foolproof — they can be bypassed. A moderation layer catches output that slips through. For Yellow builds this does not need to be sophisticated, but it must exist.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Review your AI system prompt — does it explicitly instruct the model to produce age-appropriate content?
+    2. Test with 10-15 varied prompts, including attempts to generate inappropriate content
+    3. Document what moderation is in place (system prompt rules, output filtering, human review)
+    4. If any inappropriate content gets through, strengthen your moderation before shipping
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-5" label="Data collection is limited to what the tool actually needs" />
+
+    Do not ask students for information your tool does not use. No date of birth if you only need age range. No home address if location is irrelevant. No phone number if you communicate by email.
+
+    <Collapsible variant="why" title="WHY">
+
+This is the principle of data minimisation, and it applies to everyone — but it is especially important for children's data. Under UK GDPR and the Children's Code, you must only collect the minimum data needed to provide the service.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. List every piece of information your tool collects from or about students
+    2. For each item, write down why the tool needs it
+    3. If you cannot give a clear reason, remove that data field
+    4. Cross-reference with the [Security Standard](/standards/security) data handling rules
+
+</Collapsible>
+
+---
+
+### Orange: Reviewed Build (and above)
+
+<ChecklistItem id="safeguarding-6" label="Age-appropriate design principles applied" />
+
+    Your tool must follow the ICO's Age Appropriate Design Code (also called the Children's Code). The key principles that affect builders:
+
+    - **Default to maximum privacy** — do not make students opt out of data sharing; make them opt in
+    - **No nudge techniques** — do not use design patterns that encourage young people to weaken their privacy settings or share more data
+    - **No profiling for marketing** — do not use student data to build behavioural profiles for marketing purposes
+    - **Transparency** — explain what data you collect in language a 13-year-old can understand
+
+    <Collapsible variant="why" title="WHY">
+
+The ICO's Children's Code is UK law (enforced under the Data Protection Act 2018). It applies to any online service likely to be accessed by children. Since Springpod's primary users are students aged 13+, this code applies to virtually everything we build.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Review your tool's default settings — are they set to maximum privacy?
+    2. Look for any design patterns that encourage students to share more (e.g., "Complete your profile" prompts that collect unnecessary data)
+    3. Check that any privacy notice or data explanation is written in plain, age-appropriate language
+    4. Confirm that no student data is used for behavioural profiling or marketing
+    5. If you are unsure about any of these, flag it in your [Review Request](/forms/review-request)
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-7" label="Content moderation includes automated and human layers" />
+
+    For Orange builds and above, relying solely on system prompts is not enough. You need at least two moderation layers — for example, system prompt instructions plus an automated content filter, or an automated filter plus a human review step.
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Document each moderation layer your tool uses
+    2. Test whether inappropriate content can bypass the first layer — does the second layer catch it?
+    3. If your tool generates content at scale (e.g., personalised recommendations for many students), a human review step for every output may not be practical — use automated filtering and sample-based human review
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-8" label="Student data is segregated from other data" />
+
+    Data about students (especially under-18s) should be clearly identified and stored separately from general business data. This makes it easier to apply the right protections and respond to data requests.
+
+    <Collapsible variant="why" title="WHY">
+
+When student data is mixed in with everything else, it is easy to accidentally include it in reports, exports, or data shares that were never meant to contain children's information.
+
+</Collapsible>
+
+---
+
+### Red: Protected Build
+
+<ChecklistItem id="safeguarding-9" label="Data Protection Impact Assessment (DPIA) completed for children's data" />
+
+    A DPIA is a structured process for identifying and minimising data protection risks. It is legally required under UK GDPR when processing children's data at scale or using new technologies (including AI).
+
+    <Collapsible variant="why" title="WHY">
+
+This is not optional for Red builds that handle student data. The ICO can take enforcement action if you process children's data at scale without a DPIA. Your designated reviewer or data protection lead can help you complete this.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Contact your [designated reviewer](/client-config/roles) or data protection lead
+    2. Use the ICO's DPIA template or Springpod's internal template
+    3. Document: what data you collect, why, how it is stored, who has access, what risks exist, and how you mitigate them
+    4. The DPIA must be completed and approved before your tool goes live
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-10" label="Parental/guardian consent mechanism in place (where required)" />
+
+    For students under 13 (if applicable) or where Springpod policy requires it, your tool must obtain verifiable parental or guardian consent before collecting personal data.
+
+    <Collapsible variant="why" title="WHY">
+
+Under UK GDPR, children aged 13+ can generally consent to data processing for online services. However, some types of processing (sensitive data, automated decision-making) may still require parental consent regardless of age. Springpod policy may set stricter thresholds than the legal minimum.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Check whether your tool collects any data that requires parental consent under Springpod's policies
+    2. If consent is required, verify that the consent mechanism is genuine (not just a checkbox that anyone can tick)
+    3. Consent records must be stored and auditable — you need to prove consent was given
+    4. Discuss the approach with your [designated reviewer](/client-config/roles) before implementing
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-11" label="Full safeguarding review completed with designated reviewer" />
+
+    A safeguarding review goes beyond data protection. It covers content safety, contact risks, behavioural design, and the overall impact of your tool on young people. This review must be conducted by someone with safeguarding expertise, not just a technical reviewer.
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Identify the right reviewer — this may be your [designated reviewer](/client-config/roles), a safeguarding lead, or someone from the compliance team
+    2. Walk them through your tool: what it does, who uses it, what data it processes, what content it generates
+    3. Get written sign-off before going live
+    4. Document the review outcome in your [Build Log](/forms/build-log)
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-12" label="Automated decision-making is explainable and has human oversight" />
+
+    If your tool uses AI to make decisions about students (e.g., recommending work experience placements, filtering applications, scoring engagement), those decisions must be explainable in plain language, and a human must be able to review and override them.
+
+    <Collapsible variant="why" title="WHY">
+
+Under UK GDPR, individuals have the right not to be subject to solely automated decisions that significantly affect them. For children, the bar is even higher. A student should never be disadvantaged by an AI decision with no human in the loop.
+
+</Collapsible>
+
+---
+
+## Springpod-specific considerations
+
+These rules apply specifically to the types of tools commonly built at Springpod.
+
+<ChecklistItem id="safeguarding-13" label="Virtual work experience content is appropriate and accurate" />
+
+    If your tool generates, curates, or displays content related to virtual work experience (VWE), verify that it is factually accurate, age-appropriate, and does not misrepresent what an employer or career path involves.
+
+<ChecklistItem id="safeguarding-14" label="Employer data and student data are never mixed inappropriately" />
+
+    Springpod connects students with employer partners. Your tool must ensure that employer-facing data (commercial terms, internal notes, recruitment targets) is never visible to students, and that student data (personal details, engagement metrics) is never shared with employers beyond what is agreed and consented to.
+
+<ChecklistItem id="safeguarding-15" label="Student profiles default to minimal visibility" />
+
+    If your tool includes any form of student profile, the default must be minimal visibility. Students should actively choose to share more, not have to opt out of sharing.
+
+    <Collapsible variant="why" title="WHY">
+
+Young people may not fully understand the implications of making their information widely visible. Defaulting to minimal visibility protects them while still giving them the option to share more if they choose.
+
+</Collapsible>
+
+<ChecklistItem id="safeguarding-16" label="School and institutional relationships are respected" />
+
+    Many students access Springpod through their school. Tools must respect the role of the school as an intermediary — schools may have their own safeguarding requirements that go beyond Springpod's baseline.
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Check whether your tool will be used in a school context
+    2. If yes, verify that your data handling aligns with what schools expect and have agreed to
+    3. Do not introduce new data collection that schools have not been informed about
+
+</Collapsible>
+
+---
+
+## What to do if you are unsure
+
+Safeguarding is one area where asking is always the right choice. There is no penalty for being cautious.
+
+1. **If you are not sure whether your tool affects young people** — assume it does and follow this page
+2. **If you are not sure about a specific requirement** — ask your [designated reviewer](/client-config/roles)
+3. **If you discover a safeguarding concern in an existing tool** — escalate immediately using [When to Escalate](/guides/when-to-escalate). Do not wait for the next review cycle.
+4. **If you need help with a DPIA or safeguarding review** — your [designated reviewer](/client-config/roles) can connect you with the right people
+
+Building tools for young people is a responsibility. SpringBoard exists to make that responsibility manageable — not to make it feel like a burden. Follow these rules, ask when you are unsure, and you will build tools that Springpod's students can trust.
