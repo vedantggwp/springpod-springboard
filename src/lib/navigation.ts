@@ -69,6 +69,16 @@ export const navigation: Navigation = [
     ],
   },
   {
+    title: "For Your Role",
+    items: [
+      { title: "Curriculum Designers", href: "/roles/curriculum-designer", isNew: true },
+      { title: "Ops & Partnerships", href: "/roles/ops-partnerships", isNew: true },
+      { title: "Product & Engineering", href: "/roles/product-engineering", isNew: true },
+      { title: "Marketing", href: "/roles/marketing", isNew: true },
+      { title: "Leadership", href: "/roles/leadership", isNew: true },
+    ],
+  },
+  {
     title: "Updates",
     items: [
       { title: "Updates Feed", href: "/updates/feed", isNew: true },

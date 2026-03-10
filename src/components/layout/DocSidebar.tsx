@@ -16,6 +16,7 @@ import {
   Palette,
   Settings,
   Shield,
+  Users,
 } from "lucide-react";
 import type { Navigation, NavSection } from "@/types/navigation";
 
@@ -28,6 +29,7 @@ const SECTION_ICONS: Record<string, React.ElementType> = {
   "Forms & Templates": Folder,
   Guides: HelpCircle,
   "Client Config": Settings,
+  "For Your Role": Users,
   Updates: Bell,
   "Design System": Palette,
   Reference: BookOpen,

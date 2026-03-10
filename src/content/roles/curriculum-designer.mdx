@@ -1,0 +1,81 @@
+# Start Here: Curriculum Designers
+
+Welcome! If you design courses, quizzes, learning pathways, or educational content at Springpod, this page is your starting point. You're probably wondering things like "Can I use AI to generate quiz questions?" or "What if it hallucinates wrong answers?" — SpringBoard has answers for all of that.
+
+This page won't teach you everything. It points you to the right pages in the right order.
+
+---
+
+## Your Build Path
+
+Most curriculum tools (quiz generators, content formatters, resource organisers) fall into the Green path. Start here to confirm yours.
+
+<CardGrid columns={3}>
+  <Card title="Take the Intake Quiz" href="/intake/project-intake">
+    Answer 5 questions to find your risk level and get your build path.
+  </Card>
+  <Card title="Green Build Guide" href="/build-guides/green-quick-build">
+    Most curriculum tools are Green path — follow this step-by-step guide.
+  </Card>
+  <Card title="Your First Build" href="/guides/first-build">
+    Never used SpringBoard before? This walkthrough takes you through the whole process.
+  </Card>
+</CardGrid>
+
+---
+
+## Standards That Apply to You
+
+Curriculum content has specific risks — hallucinated facts in educational material, safeguarding requirements for under-18s, and prompt reliability.
+
+<CardGrid columns={3}>
+  <Card title="Safeguarding & Under-18s" href="/standards/safeguarding">
+    Critical reading if your content reaches students. Covers age-appropriate AI use and data handling.
+  </Card>
+  <Card title="Quality Standards" href="/standards/quality">
+    Accuracy requirements for AI-generated content — especially important for educational material.
+  </Card>
+  <Card title="Prompt Management" href="/standards/prompts">
+    How to test AI outputs for hallucinations and manage prompts that generate student-facing content.
+  </Card>
+</CardGrid>
+
+---
+
+## Tools & Templates
+
+Pick the right tool, check what's already approved, and start your project with a proper brief.
+
+<CardGrid columns={3}>
+  <Card title="Tooling Strategy" href="/guides/tool-selection">
+    How to evaluate and pick the right AI tool for your use case.
+  </Card>
+  <Card title="Approved Tools" href="/client-config/approved-tools">
+    Tools that are already pre-approved for use at Springpod.
+  </Card>
+  <Card title="Project Brief Template" href="/forms/project-brief">
+    Fill this in before you start building — it takes 5 minutes and keeps you on track.
+  </Card>
+</CardGrid>
+
+---
+
+## Common Scenarios
+
+<Collapsible variant="tip" title="I want to generate quiz questions from course content">
+
+This is typically a **Green path** project — internal tooling that helps you draft questions faster. However, you must test for hallucinated facts before using any AI-generated questions with students. Check the [Prompt Management](/standards/prompts) page for testing requirements, and always have a subject-matter expert review the output before it goes live.
+
+</Collapsible>
+
+<Collapsible variant="tip" title="I'm building a student-facing content tool">
+
+If students interact with your tool directly, this is likely a **Yellow path** (or higher) due to the under-18 audience. Take the [Intake Quiz](/intake/project-intake) to confirm, and read the [Safeguarding & Under-18s](/standards/safeguarding) standards before you start. Student-facing tools need additional review and safeguards.
+
+</Collapsible>
+
+<Collapsible variant="tip" title="I need to review AI-generated educational content">
+
+See the [Quality Standards](/standards/quality) page for accuracy checks and review workflows. The [Prompt Management](/standards/prompts) page covers AI testing techniques — including how to catch hallucinations, check for bias, and validate factual claims before content reaches students.
+
+</Collapsible>

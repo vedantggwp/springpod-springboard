@@ -1,0 +1,70 @@
+# Start Here: Product & Engineering
+
+Welcome. You build and ship the platform — student-facing features, internal tools, integrations, and everything in between. This page maps you to the SpringBoard pages that matter most for your work, so you can answer questions like *"What standards apply to student-facing features?"* and *"When does this need pen testing?"* without searching.
+
+---
+
+## Your Build Path
+
+<CardGrid columns={3}>
+  <Card title="Take the Intake Quiz" href="/intake/project-intake">
+    Answer 5 questions to classify your project and get the right build path.
+  </Card>
+  <Card title="Orange Build Guide" href="/build-guides/orange-reviewed-build">
+    Most platform features land here — partner integrations, new user-facing screens, API work.
+  </Card>
+  <Card title="Red Build Guide" href="/build-guides/red-protected-build">
+    Student-facing AI features, anything touching under-18 data at scale.
+  </Card>
+</CardGrid>
+
+---
+
+## Standards You Must Know
+
+<CardGrid columns={2}>
+  <Card title="🛡️ Security Standards" href="/standards/security">
+    Pen test triggers, access controls, secret management, and API security requirements.
+  </Card>
+  <Card title="🧒 Safeguarding & Under-18s" href="/standards/safeguarding">
+    Mandatory for any feature students interact with — age-gating, content moderation, parental consent.
+  </Card>
+  <Card title="📊 Data Workflows" href="/standards/data-workflows">
+    PII classification, data warehouse requirements, retention rules, and GDPR obligations.
+  </Card>
+  <Card title="🤖 Prompt Management" href="/standards/prompts">
+    AI testing standards, prompt injection prevention, and output guardrails.
+  </Card>
+</CardGrid>
+
+---
+
+## Process & Templates
+
+<CardGrid columns={3}>
+  <Card title="📋 Review Request" href="/forms/review-request">
+    Submit your project for architecture or security review before launch.
+  </Card>
+  <Card title="🚨 Incident Report" href="/forms/incident-report">
+    If something goes wrong in production — log it here immediately.
+  </Card>
+  <Card title="📞 When to Escalate" href="/guides/when-to-escalate">
+    Not sure who to ask? This page maps common situations to escalation paths.
+  </Card>
+</CardGrid>
+
+---
+
+## Common Scenarios
+
+<Collapsible variant="tip" title="I'm adding AI to a student-facing feature">
+Red path. This requires a safeguarding review, AI testing (prompt injection, output safety), and a pen test. Start with the [Intake Quiz](/intake/project-intake) and expect a full review cycle. Budget extra time — this is the highest-scrutiny path for good reason.
+</Collapsible>
+
+<Collapsible variant="tip" title="I need to integrate a new third-party API">
+Orange path minimum. Check [Security Standards](/standards/security) for API requirements (auth, rate limiting, data in transit) and file a [Review Request](/forms/review-request) before going live. If the API handles student PII, this may escalate to Red.
+</Collapsible>
+
+<Collapsible variant="tip" title="I'm building an internal tool that queries the database">
+Green or Yellow depending on data sensitivity. If you are querying anonymised or aggregate data, Green is fine. If the tool accesses student PII or partner data, check [Data Workflows](/standards/data-workflows) for classification — you may need Yellow or Orange controls.
+</Collapsible>
