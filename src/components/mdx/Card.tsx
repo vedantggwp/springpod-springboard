@@ -9,22 +9,22 @@ export default function Card({ title, children, href, icon }: CardProps) {
   const content = (
     <div
       className={[
-        "rounded-xl border border-[#B9BEC9] bg-white p-5",
+        "rounded-xl border border-sp-border bg-white p-5",
         "transition-shadow duration-200",
-        "hover:border-[#0BB3B7] hover:shadow-lg",
+        "hover:border-sp-teal hover:shadow-lg",
         "dark:border-white/10 dark:bg-[#161b22]",
-        "dark:hover:border-[#0BB3B7]",
+        "dark:hover:border-sp-teal",
       ].join(" ")}
     >
       <div className="flex items-start gap-3">
         {icon && (
-          <span className="mt-0.5 shrink-0 text-[#0BB3B7]">{icon}</span>
+          <span className="mt-0.5 shrink-0 text-sp-teal">{icon}</span>
         )}
         <div className="min-w-0 flex-1">
-          <h3 className="mb-1 text-lg font-medium text-[#16254C] dark:text-white">
+          <h3 className="mb-1 text-lg font-medium text-sp-navy dark:text-white">
             {title}
           </h3>
-          <div className="text-sm text-[#5C6682] dark:text-white/60">
+          <div className="text-sm text-sp-text-secondary dark:text-white/60">
             {children}
           </div>
         </div>

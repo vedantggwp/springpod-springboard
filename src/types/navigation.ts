@@ -1,6 +1,7 @@
 export interface NavItem {
   readonly title: string;
   readonly href: string;
+  readonly isNew?: boolean;
 }
 
 export interface NavSection {

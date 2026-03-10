@@ -18,6 +18,8 @@ export const navigation: Navigation = [
       { title: "Security", href: "/standards/security" },
       { title: "Branding", href: "/standards/branding" },
       { title: "Prompt Management", href: "/standards/prompts" },
+      { title: "Safeguarding & Under-18s", href: "/standards/safeguarding", isNew: true },
+      { title: "Data Workflows", href: "/standards/data-workflows", isNew: true },
     ],
   },
   {
@@ -52,7 +54,7 @@ export const navigation: Navigation = [
     title: "Guides",
     items: [
       { title: "Your First Build", href: "/guides/first-build" },
-      { title: "Tool Selection", href: "/guides/tool-selection" },
+      { title: "Tooling Strategy", href: "/guides/tool-selection", isNew: true },
       { title: "When to Escalate", href: "/guides/when-to-escalate" },
       { title: "Glossary", href: "/guides/glossary" },
     ],
@@ -64,6 +66,12 @@ export const navigation: Navigation = [
       { title: "Approved Tools", href: "/client-config/approved-tools" },
       { title: "Roles & Contacts", href: "/client-config/roles" },
       { title: "Prompt Library", href: "/client-config/prompt-library" },
+    ],
+  },
+  {
+    title: "Updates",
+    items: [
+      { title: "Updates Feed", href: "/updates/feed", isNew: true },
     ],
   },
   {

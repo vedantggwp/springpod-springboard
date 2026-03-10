@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useState } from "react";
 import {
+  Bell,
   BookOpen,
   ChevronRight,
   ClipboardCheck,
@@ -12,6 +13,7 @@ import {
   HelpCircle,
   Home,
   Layers,
+  Palette,
   Settings,
   Shield,
 } from "lucide-react";
@@ -26,6 +28,8 @@ const SECTION_ICONS: Record<string, React.ElementType> = {
   "Forms & Templates": Folder,
   Guides: HelpCircle,
   "Client Config": Settings,
+  Updates: Bell,
+  "Design System": Palette,
   Reference: BookOpen,
 };
 
@@ -79,8 +83,8 @@ function SidebarSection({ section, pathname }: SidebarSectionProps) {
           className={`flex w-full items-center gap-2 rounded-lg px-3 py-2
             text-sm font-medium transition-colors ${
               isActive
-                ? "bg-gradient-to-r from-[#9CF6F6]/30 to-[#0BB3B7]/20 text-[#16254C] dark:text-white"
-                : "text-[#5C6682] hover:bg-[#E9E9ED] hover:text-[#16254C] dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white/80"
+                ? "bg-gradient-to-r from-sp-teal-light/30 to-sp-teal/20 text-sp-navy dark:text-white"
+                : "text-sp-text-secondary hover:bg-sp-surface hover:text-sp-navy dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white/80"
             }`}
         >
           <Icon size={16} className="shrink-0" />
@@ -96,15 +100,15 @@ function SidebarSection({ section, pathname }: SidebarSectionProps) {
         type="button"
         onClick={toggle}
         className="flex w-full items-center gap-2 rounded-lg px-3 py-2
-          text-sm font-medium text-[#5C6682] transition-colors
-          hover:bg-[#E9E9ED] hover:text-[#16254C]
+          text-sm font-medium text-sp-text-secondary transition-colors
+          hover:bg-sp-surface hover:text-sp-navy
           dark:text-white/60 dark:hover:bg-white/10 dark:hover:text-white/80"
       >
         <Icon size={16} className="shrink-0" />
         <span className="flex-1 text-left">{section.title}</span>
         <ChevronRight
           size={14}
-          className={`shrink-0 text-[#8B92A6] transition-transform duration-200
+          className={`shrink-0 text-sp-text-muted transition-transform duration-200
             dark:text-white/40 ${isExpanded ? "rotate-90" : ""}`}
         />
       </button>
@@ -117,13 +121,18 @@ function SidebarSection({ section, pathname }: SidebarSectionProps) {
               <li key={item.href} className="ml-6">
                 <Link
                   href={item.href}
-                  className={`block rounded-md px-2 py-1.5 text-sm transition-colors ${
+                  className={`flex items-center rounded-md px-2 py-1.5 text-sm transition-colors ${
                     isActive
-                      ? "border-l-2 border-[#0BB3B7] bg-gradient-to-r from-[#9CF6F6]/30 to-[#0BB3B7]/20 pl-3 font-medium text-[#16254C] dark:text-white"
-                      : "text-[#5C6682] hover:bg-[#E9E9ED] hover:text-[#16254C] dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/80"
+                      ? "border-l-2 border-sp-teal bg-gradient-to-r from-sp-teal-light/30 to-sp-teal/20 pl-3 font-medium text-sp-navy dark:text-white"
+                      : "text-sp-text-secondary hover:bg-sp-surface hover:text-sp-navy dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/80"
                   }`}
                 >
-                  {item.title}
+                  <span className="flex-1">{item.title}</span>
+                  {item.isNew && (
+                    <span className="ml-2 rounded-full bg-sp-teal px-1.5 py-0.5 text-[10px] font-semibold text-white">
+                      NEW
+                    </span>
+                  )}
                 </Link>
               </li>
             );
