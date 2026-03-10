@@ -56,7 +56,7 @@ export function DocPage({
         {sectionTitle && sectionTitle !== "Home" && (
           <DocBreadcrumbs sectionTitle={sectionTitle} pageTitle={meta.title} />
         )}
-        <div className="prose-vcf max-w-none">
+        <div className="prose-sp max-w-none">
           <MDXRemote
             source={raw}
             components={components}

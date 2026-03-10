@@ -1,4 +1,4 @@
-# Tool Selection Guide
+# Tooling Strategy
 
 Choosing the right AI coding tool is one of the first decisions you make. This guide helps you pick a tool that matches your project's needs, your skill level, and your build path.
 
@@ -161,8 +161,142 @@ For Green builds, cost is rarely a concern. For Yellow+ builds that will scale, 
 
 ---
 
-## Your company's approved tools
+## Springpod's approved tools
 
-Your company may have specific tools that are pre-approved or restricted. Check the [Approved Tools](/client-config/approved-tools) list before choosing.
+Springpod has specific tools that are pre-approved or restricted. Check the [Approved Tools](/client-config/approved-tools) list before choosing.
 
 If you want to use a tool that is not on the approved list, follow the approval process described there.
+
+---
+
+## Platform deep dives
+
+Brief evaluations of each major platform Springpod uses or evaluates. These are starting points — capabilities change fast, so re-evaluate every few months.
+
+### v0 by Vercel — AI-generated UI components
+
+| | |
+|---|---|
+| **Best for** | Quick UI prototypes, React components, design-to-code |
+| **Limitations** | Frontend only — needs a separate backend for data or logic |
+| **Springpod use case** | Marketing landing pages, internal dashboard UIs, component exploration |
+
+v0 is excellent for generating polished UI quickly, but it does not handle databases, authentication, or server logic. Pair it with a backend tool or hand the output to a developer for production use.
+
+### Lovable — full-stack app generation
+
+| | |
+|---|---|
+| **Best for** | Complete web apps generated from a description |
+| **Limitations** | Less control over architecture, harder to debug complex issues |
+| **Springpod use case** | Quick internal tools, form-based workflows, event feedback collectors |
+
+Lovable handles both frontend and backend, making it a strong choice for Green builds that need a database. For anything handling personal data (Yellow+), verify its data storage and access controls before proceeding.
+
+### Replit — AI-assisted development environment
+
+| | |
+|---|---|
+| **Best for** | Full-stack apps with built-in hosting, databases, and deployment |
+| **Limitations** | Performance at scale, vendor lock-in, data residency considerations |
+| **Springpod use case** | Yellow-path internal tools, prototypes that need a backend, team dashboards |
+
+Replit Agent is a strong middle ground — you get AI generation with code visibility and built-in infrastructure. The code is exportable if you outgrow it, but plan the migration before you need it.
+
+### Cursor — AI-powered code editor
+
+| | |
+|---|---|
+| **Best for** | Professional development with AI assistance across full codebases |
+| **Limitations** | Requires coding experience to use effectively |
+| **Springpod use case** | Orange and Red builds, production systems, tools requiring compliance controls |
+
+Cursor gives you full control over code while using AI to write it faster. It works with any language, any framework, and any hosting provider. Best suited for team members with development experience.
+
+### Claude Code — CLI-based AI development
+
+| | |
+|---|---|
+| **Best for** | Complex, multi-file projects requiring deep reasoning |
+| **Limitations** | Command-line interface, steep learning curve for non-developers |
+| **Springpod use case** | Red builds, infrastructure work, complex backend systems, large refactors |
+
+Claude Code operates in the terminal and excels at understanding and modifying large codebases. It is the most powerful option but requires the most technical comfort. Reserve it for builds where architectural quality matters.
+
+---
+
+## Collaboration and handoff
+
+When multiple people work on a tool, or when the original builder moves on, continuity becomes critical. Evaluate every tool against these questions before starting a Yellow+ build:
+
+| Question | Why it matters |
+|----------|---------------|
+| Can others access and edit the project? | If only one person can access the tool, the project is at risk when they are unavailable |
+| Is there version control? | Without version history, you cannot undo mistakes or understand what changed |
+| Can the project be exported? | If the platform shuts down or changes pricing, you need to take your work elsewhere |
+| What happens if the original builder leaves? | Documentation and access handoff must be planned, not improvised |
+
+<Collapsible variant="why" title="WHY plan handoff early">
+
+At Springpod, team members move between projects and roles. A tool that only one person can access or understand creates a single point of failure. For any tool that becomes part of ongoing operations, document how to access it, how to modify it, and who has credentials.
+
+</Collapsible>
+
+---
+
+## Cost planning
+
+Budget expectations by build path. These are rough guides — actual costs depend on usage, user count, and hosting choices.
+
+| Build path | Typical monthly cost | What you are paying for |
+|-----------|---------------------|------------------------|
+| **Green** (Quick Build) | £0 — free tiers | Tool access only, minimal hosting |
+| **Yellow** (Standard Build) | £20–50/month | Paid tool tiers, basic hosting, possibly a database |
+| **Orange** (Reviewed Build) | £50–200/month | Professional hosting, tooling subscriptions, monitoring |
+| **Red** (Protected Build) | £200+/month | Production hosting, security tools, compliance features, backups |
+
+<Collapsible title="Cost tips">
+
+- **Start on free tiers** and upgrade only when you hit limits. Most tools offer enough for prototyping at no cost.
+- **Watch for per-seat pricing** — tools that charge per user can escalate quickly as teams grow.
+- **Factor in hosting separately** — Pro Tools give you code, but you still need somewhere to run it. Vercel, Railway, and Fly.io all have reasonable starter plans.
+- **Set billing alerts** — cloud costs can spike unexpectedly. Set alerts at 50% and 80% of your budget.
+
+</Collapsible>
+
+---
+
+## Evaluation checklist for new tools
+
+Before using any new AI tool at Springpod, run through this checklist. If you cannot answer "yes" to the items marked as required for your build path, escalate to your line manager or the tech team.
+
+### Data and security (required for all builds)
+
+<ChecklistItem id="tooling-1">The tool's privacy policy has been reviewed and is acceptable</ChecklistItem>
+<ChecklistItem id="tooling-2">Data storage location is known (UK/EU preferred for personal data)</ChecklistItem>
+<ChecklistItem id="tooling-3">The tool does not train on your data, or you can opt out</ChecklistItem>
+<ChecklistItem id="tooling-4">You understand what data the tool can access and transmit</ChecklistItem>
+
+### Suitability (required for all builds)
+
+<ChecklistItem id="tooling-5">The tool is appropriate for your build path (see table above)</ChecklistItem>
+<ChecklistItem id="tooling-6">You have tested the tool with a small, non-sensitive prototype first</ChecklistItem>
+<ChecklistItem id="tooling-7">The tool produces output you can review and understand</ChecklistItem>
+
+### Collaboration (required for Yellow+ builds)
+
+<ChecklistItem id="tooling-8">At least one other team member can access the project</ChecklistItem>
+<ChecklistItem id="tooling-9">The project can be exported or version-controlled</ChecklistItem>
+<ChecklistItem id="tooling-10">Access credentials are stored in a shared, secure location</ChecklistItem>
+
+### Compliance (required for Orange+ builds)
+
+<ChecklistItem id="tooling-11">The tool meets Springpod's data protection requirements</ChecklistItem>
+<ChecklistItem id="tooling-12">Under-18 data handling has been assessed if applicable</ChecklistItem>
+<ChecklistItem id="tooling-13">The tool is on Springpod's [approved tools list](/client-config/approved-tools) or has been submitted for approval</ChecklistItem>
+
+### Long-term viability (recommended for all builds)
+
+<ChecklistItem id="tooling-14">The tool has been around for at least 6 months with active development</ChecklistItem>
+<ChecklistItem id="tooling-15">There is a realistic exit plan if the tool becomes unavailable</ChecklistItem>
+<ChecklistItem id="tooling-16">Cost at expected scale has been estimated and is within budget</ChecklistItem>

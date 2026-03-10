@@ -13,20 +13,20 @@ export function DocBreadcrumbs({ sectionTitle, pageTitle }: DocBreadcrumbsProps)
         <li>
           <Link
             href="/"
-            className="flex items-center transition-colors hover:text-[#16254C]
+            className="flex items-center transition-colors hover:text-sp-navy
               dark:hover:text-white/80"
           >
             <Home size={14} />
           </Link>
         </li>
         <li>
-          <ChevronRight size={12} className="text-[#B9BEC9] dark:text-white/30" />
+          <ChevronRight size={12} className="text-sp-border dark:text-white/30" />
         </li>
         <li>
           <span className="transition-colors">{sectionTitle}</span>
         </li>
         <li>
-          <ChevronRight size={12} className="text-[#B9BEC9] dark:text-white/30" />
+          <ChevronRight size={12} className="text-sp-border dark:text-white/30" />
         </li>
         <li>
           <span className="font-medium text-gray-900 dark:text-white/87">

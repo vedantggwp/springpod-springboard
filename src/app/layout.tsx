@@ -9,11 +9,11 @@ import { navigation } from "@/lib/navigation";
 
 export const metadata: Metadata = {
   title: {
-    default: "Vibe Coding Framework",
-    template: "%s | VCF",
+    default: "SpringBoard",
+    template: "%s | SpringBoard",
   },
   description:
-    "A structured framework for building AI-powered tools with consistency, safety, and speed.",
+    "Springpod's AI knowledge base — standards, guides, and tools for building with AI.",
 };
 
 export default function RootLayout({
@@ -25,13 +25,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
       <body
         className="antialiased"
-        style={{ background: "var(--vcf-bg)" }}
+        style={{ background: "var(--sp-bg)" }}
       >
         <ThemeProvider>
           <DocHeader />

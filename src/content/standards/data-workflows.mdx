@@ -1,0 +1,249 @@
+# Data Workflows
+
+This document defines when your tool needs sign-off from the Data team, what triggers a penetration test, and how to handle backups. These rules protect Springpod's students, schools, and employer partners.
+
+---
+
+## Data classification
+
+Every piece of data your tool touches falls into one of four categories. The category determines your build path and what approvals you need.
+
+| Data type | Examples | Build path | Data team sign-off? |
+|-----------|----------|------------|---------------------|
+| **Public** | Marketing copy, published course descriptions, public event listings | Green | No |
+| **Business** | Internal metrics, team KPIs, pipeline reports, anonymised aggregates | Yellow | Only if connecting to DWH |
+| **Personal** | Names, email addresses, school names linked to individuals, employer contacts | Orange | Yes |
+| **Protected** | Student data (under-18s), assessment results, health information, safeguarding records | Red | Yes — mandatory review |
+
+<Collapsible variant="why" title="WHY">
+
+Springpod works with students aged 13+. Data about minors carries the highest legal obligations under UK GDPR, DPA 2018, and the Children's Code (Age Appropriate Design Code). Getting the classification wrong can mean building a Green-path tool when you actually need Red-path protections — putting students at risk.
+
+</Collapsible>
+
+<Collapsible variant="how" title="HOW TO CHECK">
+
+1. List every piece of data your tool will read, write, display, or send
+2. For each item, ask: "Could this identify a real person?" If yes, it is at least **Personal**
+3. Then ask: "Could this person be under 18?" If yes, it is **Protected**
+4. If you are unsure about any item, treat it as the higher category and flag it in your [Review Request](/forms/review-request)
+
+</Collapsible>
+
+---
+
+## When to involve the Data team
+
+You must get Data team sign-off before you ship if your tool does any of the following.
+
+### All build paths
+
+<ChecklistItem id="data-workflows-1" label="Connecting to any database or data warehouse" />
+
+    This includes read-only connections. Even viewing data requires approval because it creates a new access point.
+
+    <Collapsible variant="why" title="WHY">
+
+Every connection to a database is a potential entry point. The Data team needs to know who and what is connecting so they can monitor access and revoke it if something goes wrong.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Does your tool use a database URL, connection string, or API endpoint that points to a Springpod database?
+2. Does it connect to the data warehouse (DWH) — even through a dashboard tool like Metabase or Looker?
+3. If the answer to either is yes, contact the Data team before going further. See [ROLES](/client-config/roles) for who to reach.
+
+</Collapsible>
+
+<ChecklistItem id="data-workflows-2" label="Importing or exporting data files (CSVs, spreadsheets, JSON)" />
+
+    Moving data between systems via files is one of the most common ways data leaks happen. A CSV on someone's laptop is unencrypted and untracked.
+
+    <Collapsible variant="why" title="WHY">
+
+Files downloaded from one system and uploaded to another bypass all the access controls built into those systems. Once data is in a spreadsheet, you have lost control of who copies it, emails it, or leaves it on a shared drive.
+
+</Collapsible>
+
+<ChecklistItem id="data-workflows-3" label="Using external APIs that receive Springpod data" />
+
+    If your tool sends any Springpod data to an external service (including AI APIs like OpenAI or Anthropic), the Data team must review what data is being sent and where.
+
+    <Collapsible variant="why" title="WHY">
+
+When you send data to an external API, you are sending it outside Springpod's control. The Data team checks that the service is approved, the data is appropriate to share, and a data processing agreement is in place. See also [Security Standard — third-party services](/standards/security).
+
+</Collapsible>
+
+### Orange and Red paths
+
+<ChecklistItem id="data-workflows-4" label="Any tool that reads, writes, or displays student data" />
+
+    Student data includes names, emails, enrolment records, school affiliations, programme progress, and anything else tied to a student account. No exceptions.
+
+    <Collapsible variant="why" title="WHY">
+
+Springpod's students are predominantly under 18. Their data has the highest protection requirements under UK law. The Data team must verify that your tool collects only what it needs, stores it correctly, and restricts access appropriately.
+
+</Collapsible>
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Search your tool for any reference to students, enrolments, schools, or programmes
+2. Check whether your tool displays any information that could identify a student
+3. If your tool shows aggregated numbers (e.g., "450 students enrolled"), confirm the numbers cannot be narrowed down to identify individuals (e.g., filtering by school + programme + date could reveal a single student)
+4. If any of these apply, raise a [Review Request](/forms/review-request) and tag the Data team
+
+</Collapsible>
+
+<ChecklistItem id="data-workflows-5" label="Any tool that creates new data stores or tables" />
+
+    If your tool creates a new database table, a new spreadsheet, or a new collection of records, the Data team needs to know. New data stores must follow Springpod's data architecture standards.
+
+---
+
+## Penetration testing triggers
+
+A penetration test (pen test) is a controlled attempt to break into your tool, performed by a specialist. You do not run it yourself — but you need to know when one is required.
+
+### Your tool needs a pen test if any of these are true
+
+<ChecklistItem id="data-workflows-6" label="Your tool is external-facing and has a login" />
+
+    If someone outside Springpod (students, schools, employers) can access your tool and it requires authentication, a pen test is required before launch.
+
+    <Collapsible variant="why" title="WHY">
+
+A login page is the most common target for attackers. External-facing tools are discoverable by anyone on the internet. A pen test finds weaknesses before an attacker does.
+
+</Collapsible>
+
+<ChecklistItem id="data-workflows-7" label="Your tool processes personal or protected data" />
+
+    Any tool handling personal data (Orange path) or protected data (Red path) must pass a pen test before going live.
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Check your data classification from the table above
+2. If your tool is Orange or Red path, flag it for pen testing in your [Review Request](/forms/review-request)
+3. The reviewer will coordinate with the security team to schedule the test
+4. Do not schedule a launch date until the pen test is complete
+
+</Collapsible>
+
+<ChecklistItem id="data-workflows-8" label="Your tool connects to production databases" />
+
+    Any tool with a direct connection to a production database — not a copy, not a staging environment, the real thing — must be pen tested.
+
+    <Collapsible variant="why" title="WHY">
+
+A vulnerability in a tool connected to production means an attacker could access real user data. There is no "we can restore from backup" when personal data has been exposed — the damage is the exposure itself.
+
+</Collapsible>
+
+### What happens during a pen test
+
+You do not need to do anything technical. The process:
+
+1. You flag the requirement in your [Review Request](/forms/review-request)
+2. The designated reviewer coordinates with the security team
+3. The security team tests your tool (typically 1–3 days)
+4. You receive a report with findings rated Critical / High / Medium / Low
+5. Critical and High findings must be fixed before launch
+6. Medium findings should be fixed within 30 days of launch
+
+---
+
+## Backup requirements
+
+### All build paths
+
+<ChecklistItem id="data-workflows-9" label="You know where your tool's data lives and who is responsible for backing it up" />
+
+    Before you launch, you must be able to answer: "If this tool lost all its data right now, how would we recover?" If you cannot answer that, stop and sort it out.
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. List every place your tool stores data (database, file storage, spreadsheet, third-party service)
+2. For each one, confirm: is it backed up? How often? Who manages the backups?
+3. If your tool uses a managed service (Supabase, Firebase, Airtable), check the provider's backup policy in their documentation
+4. If your tool uses Springpod's DWH, the Data team manages backups — but you must confirm your data is included
+
+</Collapsible>
+
+### Yellow path and above
+
+<ChecklistItem id="data-workflows-10" label="Automated backups run at least daily" />
+
+    Manual backups are not reliable enough for business data. Your data store must have automated daily backups at minimum.
+
+    <Collapsible variant="why" title="WHY">
+
+People forget. People leave. Automated backups happen whether or not anyone remembers to run them. A day of lost data is recoverable. A month of lost data can be catastrophic.
+
+</Collapsible>
+
+### Orange and Red paths
+
+<ChecklistItem id="data-workflows-11" label="Backups are encrypted and access-controlled" />
+
+    Backups of personal or protected data must be encrypted. Only authorised personnel should be able to access or restore them.
+
+    <Collapsible variant="why" title="WHY">
+
+An unencrypted backup is a copy of all your sensitive data sitting in a second location with potentially weaker security. If someone accesses your backups, they access everything.
+
+</Collapsible>
+
+<ChecklistItem id="data-workflows-12" label="Backup restoration has been tested at least once" />
+
+    A backup you have never tried to restore is not a backup — it is a hope. Before launch, restore from a backup to confirm it works.
+
+    <Collapsible variant="how" title="HOW TO CHECK">
+
+1. Ask the Data team or your hosting provider to perform a test restore
+2. Verify the restored data is complete and correct
+3. Document when the test was performed and the result
+4. If the restore fails, fix the backup process before launching
+
+</Collapsible>
+
+### Data warehouse (DWH) considerations
+
+<ChecklistItem id="data-workflows-13" label="Any tool writing to the DWH has been reviewed by the Data team" />
+
+    Reading from the DWH requires sign-off (covered above). Writing to the DWH has stricter requirements because bad data flowing in can corrupt reports and dashboards used across the company.
+
+    <Collapsible variant="why" title="WHY">
+
+The DWH feeds Springpod's reporting, analytics, and business decisions. A tool that writes incorrect or duplicated data to the DWH can cause wrong numbers in board reports, inaccurate school dashboards, or broken partner metrics. The Data team must validate your data schema, transformation logic, and write frequency.
+
+</Collapsible>
+
+<ChecklistItem id="data-workflows-14" label="DWH backup schedule confirmed with Data team" />
+
+    The DWH has its own backup schedule managed by the Data team. If your tool depends on DWH data, confirm the backup frequency meets your tool's recovery requirements.
+
+---
+
+## Quick reference
+
+| What your tool does | Data classification | Build path | Data team sign-off | Pen test required | Backup requirement |
+|---------------------|-------------------|------------|-------------------|-------------------|-------------------|
+| Displays public content only | Public | Green | No | No | Provider default |
+| Reads internal metrics from DWH | Business | Yellow | Yes | No | Daily automated |
+| Imports employer contact CSVs | Personal | Orange | Yes | Yes (if external) | Daily, encrypted |
+| Shows student enrolment data | Protected | Red | Yes — mandatory | Yes | Daily, encrypted, tested |
+| Writes to production database | Depends on data | Orange or Red | Yes | Yes | Daily, encrypted, tested |
+| Sends data to external AI API | Depends on data | Orange or Red | Yes | Depends on data type | Depends on data type |
+
+---
+
+## What to do if you are unsure
+
+If you are not sure how to classify your data, whether you need a pen test, or what backup approach to use — ask. It is always safer to check than to guess.
+
+1. Start with [When to Escalate](/guides/when-to-escalate) for guidance on who to contact
+2. Raise a [Review Request](/forms/review-request) and describe what your tool does with data
+3. The Data team and your [designated reviewer](/client-config/roles) will help you get it right

@@ -1,8 +1,6 @@
 # Roles and Contacts
 
-This document defines who does what in the VCF framework — who reviews builds, who approves tools, and who to contact when something goes wrong.
-
-Search this document for `[CLIENT:` to find all fields that need your input.
+This document defines who does what in SpringBoard — who reviews builds, who approves tools, and who to contact when something goes wrong.
 
 ---
 
@@ -11,10 +9,10 @@ Search this document for `[CLIENT:` to find all fields that need your input.
 | Role | Person | Contact | Responsibilities |
 |------|--------|---------|------------------|
 | **Peer reviewer** | Any team member | — | Reviews Yellow builds. Checks that the builder followed the checklist and the tool works as described. |
-| **Technical reviewer** | [CLIENT: Name] | [CLIENT: Email] | Reviews Orange builds. Checks security, data handling, access controls, and technical architecture. |
-| **Designated reviewer** | [CLIENT: Name] | [CLIENT: Email] | Signs off Red builds. Verifies compliance, privacy impact, and age-appropriate design. Has authority to approve or block launch. |
-| **Framework contact** | [CLIENT: Name] | [CLIENT: Email] | Answers questions about VCF itself. Updates framework documents. Runs training sessions. |
-| **Emergency contact** | [CLIENT: Name] | [CLIENT: Phone] | First call for critical incidents (data exposure, safety risk, compliance breach). Available outside business hours. |
+| **Technical reviewer** | Engineering Lead (Product & Engineering tribe) | tech-review@springpod.com | Reviews Orange builds. Checks security, data handling, access controls, and technical architecture. |
+| **Designated reviewer** | Oliver Fisher (CPO) or delegate | designated-review@springpod.com | Signs off Red builds. Verifies compliance, privacy impact, and age-appropriate design. Has authority to approve or block launch. |
+| **Framework contact** | SpringBoard Admin | springboard@springpod.com | Answers questions about SpringBoard itself. Updates framework documents. Runs training sessions. |
+| **Emergency contact** | On-call Engineering | emergency@springpod.com / Slack: #incident-response | First call for critical incidents (data exposure, safety risk, compliance breach). Available outside business hours. |
 
 ---
 
@@ -73,27 +71,23 @@ See [When to Escalate](/guides/when-to-escalate) for more detailed guidance.
 
 ## Backup contacts
 
-[CLIENT: For each role above, who is the backup if the primary person is unavailable?]
-
 | Role | Backup person | Backup contact |
 |------|---------------|----------------|
-| Technical reviewer | [CLIENT: Name] | [CLIENT: Email] |
-| Designated reviewer | [CLIENT: Name] | [CLIENT: Email] |
-| Emergency contact | [CLIENT: Name] | [CLIENT: Phone] |
+| Technical reviewer | Senior Engineer (rotating) | tech-review-backup@springpod.com |
+| Designated reviewer | Tom Hyams (COO) | designated-review-backup@springpod.com |
+| Emergency contact | Sam Hyams (CEO) | ceo@springpod.com |
 
 ---
 
 ## Response time expectations
 
-[CLIENT: How quickly should each role respond?]
-
 | Role | Expected response time |
 |------|----------------------|
-| Peer reviewer | [CLIENT: e.g., Within 3 business days] |
-| Technical reviewer | [CLIENT: e.g., Within 5 business days] |
-| Designated reviewer | [CLIENT: e.g., Within 5 business days] |
-| Framework contact | [CLIENT: e.g., Within 2 business days] |
-| Emergency contact | [CLIENT: e.g., Within 1 hour for Critical severity] |
+| Peer reviewer | Within 2 business days |
+| Technical reviewer | Within 3 business days |
+| Designated reviewer | Within 5 business days |
+| Framework contact | Within 1 business day |
+| Emergency contact | Within 1 hour for Critical severity, 4 hours for High |
 
 ---
 
@@ -102,4 +96,4 @@ See [When to Escalate](/guides/when-to-escalate) for more detailed guidance.
 - [Review Request](/forms/review-request) — the form to submit when requesting a review
 - [Incident Report](/forms/incident-report) — the form to submit when something goes wrong
 - [When to Escalate](/guides/when-to-escalate) — guidance on when to ask for help
-- [Company Context](/client-config/company-context) — your company's values and constraints
+- [Company Context](/client-config/company-context) — Springpod's values and constraints

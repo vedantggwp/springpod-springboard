@@ -20,34 +20,34 @@ interface VariantStyle {
 
 const variantStyles: Record<CollapsibleVariant, VariantStyle> = {
   info: {
-    gradient: "from-[#9CF6F6]/30 to-[#0BB3B7]/10",
-    darkGradient: "dark:from-[#9CF6F6]/10 dark:to-[#0BB3B7]/5",
-    border: "border-[#0BB3B7]",
-    chevronColor: "text-[#0BB3B7]",
+    gradient: "from-sp-teal-light/30 to-sp-teal/10",
+    darkGradient: "dark:from-sp-teal-light/10 dark:to-sp-teal/5",
+    border: "border-sp-teal",
+    chevronColor: "text-sp-teal",
   },
   warning: {
-    gradient: "from-[#FF475A]/10 to-[#FF475A]/5",
-    darkGradient: "dark:from-[#FF475A]/8 dark:to-[#FF475A]/3",
-    border: "border-[#FF475A]",
-    chevronColor: "text-[#FF475A]",
+    gradient: "from-sp-red/10 to-sp-red/5",
+    darkGradient: "dark:from-sp-red/8 dark:to-sp-red/3",
+    border: "border-sp-red",
+    chevronColor: "text-sp-red",
   },
   tip: {
-    gradient: "from-[#0BB3B7]/10 to-[#9CF6F6]/20",
-    darkGradient: "dark:from-[#0BB3B7]/8 dark:to-[#9CF6F6]/5",
-    border: "border-[#0BB3B7]",
-    chevronColor: "text-[#0BB3B7]",
+    gradient: "from-sp-teal/10 to-sp-teal-light/20",
+    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal-light/5",
+    border: "border-sp-teal",
+    chevronColor: "text-sp-teal",
   },
   example: {
-    gradient: "from-[#446DF6]/10 to-[#446DF6]/5",
-    darkGradient: "dark:from-[#446DF6]/8 dark:to-[#446DF6]/3",
-    border: "border-[#446DF6]",
-    chevronColor: "text-[#446DF6]",
+    gradient: "from-sp-blue/10 to-sp-blue/5",
+    darkGradient: "dark:from-sp-blue/8 dark:to-sp-blue/3",
+    border: "border-sp-blue",
+    chevronColor: "text-sp-blue",
   },
   why: {
-    gradient: "from-[#446DF6]/10 to-[#446DF6]/5",
-    darkGradient: "dark:from-[#446DF6]/8 dark:to-[#446DF6]/3",
-    border: "border-[#446DF6]",
-    chevronColor: "text-[#446DF6]",
+    gradient: "from-sp-blue/10 to-sp-blue/5",
+    darkGradient: "dark:from-sp-blue/8 dark:to-sp-blue/3",
+    border: "border-sp-blue",
+    chevronColor: "text-sp-blue",
   },
   how: {
     gradient: "from-[#10B981]/10 to-[#10B981]/5",
@@ -93,7 +93,7 @@ export default function Collapsible({
             isOpen ? "rotate-90" : "",
           ].join(" ")}
         />
-        <span className="font-medium text-[#16254C] dark:text-white">
+        <span className="font-medium text-sp-navy dark:text-white">
           {variantEmoji[variant] ?? ""}{title}
         </span>
       </button>
@@ -103,7 +103,7 @@ export default function Collapsible({
         style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
       >
         <div className="overflow-hidden">
-          <div className="px-6 pb-5 pt-0 text-sm text-[#2D3B5E] dark:text-white/70">
+          <div className="px-6 pb-5 pt-0 text-sm text-sp-navy-light dark:text-white/70">
             {children}
           </div>
         </div>

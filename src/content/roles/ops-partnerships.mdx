@@ -1,0 +1,83 @@
+# Start Here: Ops & Partnerships
+
+You keep Springpod's employer partnerships running — onboarding, reporting, engagement tracking, and everything in between. If you've ever wondered "Can I build a dashboard to track employer engagement?" or "How do I automate reporting?" — you're in the right place. SpringBoard will get you building safely in minutes.
+
+---
+
+## Your Build Path
+
+Start here to find out which process fits your project.
+
+<CardGrid columns={3}>
+  <Card title="Take the Intake Quiz" href="/intake/project-intake">
+    Answer 5 quick questions to find your risk level and get the right build path.
+  </Card>
+  <Card title="Green Build Guide" href="/build-guides/green-quick-build">
+    Internal dashboards and reporting tools are usually Green — the fastest path.
+  </Card>
+  <Card title="Yellow Build Guide" href="/build-guides/yellow-standard-build">
+    If your tool touches partner data or is visible to employers, start here.
+  </Card>
+</CardGrid>
+
+---
+
+## Standards That Apply to You
+
+These are the standards most relevant to ops and partnerships work.
+
+<CardGrid columns={3}>
+  <Card title="Data Workflows" href="/standards/data-workflows">
+    PII handling, data classification, and how to connect to databases safely.
+  </Card>
+  <Card title="Security Standards" href="/standards/security">
+    Access controls, authentication, and protecting partner data.
+  </Card>
+  <Card title="Quality Standards" href="/standards/quality">
+    Accuracy in reporting, testing, and what "good enough" looks like.
+  </Card>
+</CardGrid>
+
+---
+
+## Tools & Templates
+
+Everything you need to get started.
+
+<CardGrid columns={3}>
+  <Card title="Tooling Strategy" href="/guides/tool-selection">
+    Pick the right platform for your project — no-code, low-code, or pro-code.
+  </Card>
+  <Card title="Approved Tools" href="/client-config/approved-tools">
+    Pre-approved tools you can use without additional sign-off.
+  </Card>
+  <Card title="Project Brief Template" href="/forms/project-brief">
+    Fill this in before you start building. It takes 10 minutes and saves hours.
+  </Card>
+</CardGrid>
+
+---
+
+## Common Scenarios
+
+<Collapsible variant="tip" title="I want to build an employer engagement dashboard">
+
+Most internal dashboards are **Green path** — the simplest process. If employers or partners will see or interact with the dashboard, it moves to **Yellow path**.
+
+Either way, check [Data Workflows](/standards/data-workflows) before connecting to any database or pulling partner data into your tool.
+
+</Collapsible>
+
+<Collapsible variant="tip" title="I need to automate a reporting workflow">
+
+Start by checking what data the workflow touches. If it includes employer PII (contact names, emails, contract details), review [Data Workflows](/standards/data-workflows) for classification rules.
+
+Most internal reporting automation is **Green path**. If the output goes to partners, it's likely **Yellow**.
+
+</Collapsible>
+
+<Collapsible variant="tip" title="I'm integrating with an external partner system">
+
+External integrations are typically **Orange path** because they involve data flowing between systems. Review [Security Standards](/standards/security) for API and access control requirements, and file a [Review Request](/forms/review-request) before starting the build.
+
+</Collapsible>

@@ -32,10 +32,10 @@ Data source: [describe where data comes from — e.g., "the /api/metrics
 endpoint that returns JSON"].
 
 Use these colors:
-- Primary (headers, buttons): [hex code from your Branding Standard]
-- Accent (highlights, links): [hex code]
-- Background: [hex code]
-- Text: [hex code]
+- Primary (headers, buttons): #0BB3B7 (Springpod teal)
+- Accent (highlights, links): #446DF6 (Springpod blue)
+- Background: #FFFFFF
+- Text: #16254C (Springpod navy)
 
 Requirements:
 - Dashboard must be responsive (work on desktop and tablet)
@@ -69,9 +69,9 @@ Form behavior:
   the form data so the user does not have to re-enter it
 
 Use these colors:
-- Primary: [hex code]
-- Error: [hex code]
-- Success: [hex code]
+- Primary: #0BB3B7 (Springpod teal)
+- Error: #FF475A
+- Success: #0A8F93
 
 Do not use any external libraries unless necessary.
 ```
@@ -80,7 +80,7 @@ Do not use any external libraries unless necessary.
 
 ## Branded landing page
 
-Use this when building a page that represents your company externally.
+Use this when building a page that represents Springpod externally.
 
 ```
 Create a landing page for [describe the purpose — e.g., "our new parent
@@ -90,13 +90,14 @@ Page sections:
 1. Hero: [headline text], [subheading text], [call-to-action button text]
 2. Features: [list 3-4 features with short descriptions]
 3. How it works: [3 steps]
-4. Footer: [company name], [contact info], [links]
+4. Footer: Springpod, [contact info], [links]
 
 Visual requirements:
-- Use the company logo: [file name or URL]
-- Colors: primary [hex], secondary [hex], background [hex], text [hex]
+- Use the Springpod logo: [file name or URL]
+- Colors: primary #0BB3B7 (teal), secondary #446DF6 (blue),
+  background #FFFFFF, text #16254C (navy)
 - Font: [font name from your Branding Standard]
-- Tone: [describe — e.g., "professional but approachable, no jargon"]
+- Tone: professional but approachable, encouraging, student-friendly
 - Mobile-responsive
 
 Do not include:
@@ -141,11 +142,11 @@ Error handling:
 - Never show technical error messages, database names, or file paths
 
 Colors:
-- Primary: [hex]
-- Background: [hex]
-- Text: [hex]
-- Error: [hex]
-- Success: [hex]
+- Primary: #0BB3B7 (Springpod teal)
+- Background: #FFFFFF
+- Text: #16254C (Springpod navy)
+- Error: #FF475A
+- Success: #0A8F93
 ```
 
 ---
@@ -158,7 +159,293 @@ Built a great prompt? Share it with your team:
 2. Test it at least 3 times with different inputs
 3. Submit it to the [Framework contact](/client-config/roles) for inclusion
 
-[CLIENT: Add your company-specific prompts below this line]
+---
+
+## Springpod-specific prompts
+
+The following prompts are tailored to Springpod's products, audience, and compliance requirements.
+
+---
+
+### Virtual Work Experience module page
+
+Use this when building a page within a Virtual Work Experience (VWE) programme. These pages are student-facing, task-driven, and must meet under-18 privacy and accessibility standards.
+
+```
+Create a VWE module page for the "[module title]" module within the
+"[programme name]" programme (e.g., "Day 2: Life as a Software Engineer"
+within "Tech Careers with Deloitte").
+
+Page structure:
+1. Module header: module title, programme name, progress indicator
+   showing "Module [X] of [Y]"
+2. Video section: embedded video player for [video URL or placeholder].
+   Video must not autoplay. Show captions/subtitles toggle.
+3. Task section: [describe the task — e.g., "a reflective writing task
+   where the student answers 3 questions about what they learned"].
+   Each task has: title, instructions, input field(s), and a
+   "Mark as complete" button.
+4. Navigation: "Previous module" and "Next module" buttons. Disable
+   "Next module" until all tasks in the current module are marked complete.
+5. Progress bar: visual indicator of overall programme completion
+   (modules completed / total modules).
+
+Content requirements:
+- Language must be appropriate for students aged 13-18
+- Use encouraging, supportive tone — e.g., "Great job!" not "Submission received"
+- Instructions must be clear enough for a 13-year-old to follow without help
+- All text must be readable at WCAG AA contrast ratio (4.5:1 minimum)
+
+Privacy requirements (under-18 users):
+- Each student can only see their own progress and task responses
+- Do not display other students' names, responses, or progress
+- Do not collect any data beyond task responses and completion status
+- No tracking scripts, third-party cookies, or analytics
+- No social features (comments, sharing, leaderboards) unless
+  explicitly requested and reviewed
+- Task responses must not be visible to other students
+- Employer partners can only see aggregate completion data,
+  never individual student responses
+
+Accessibility requirements:
+- All interactive elements must be keyboard-accessible
+- Video player must support captions and keyboard controls
+- All images and icons must have alt text
+- Minimum touch target size: 44x44 pixels on mobile
+- Page must work with screen readers
+- Progress indicators must have text alternatives, not just color
+
+Error handling:
+- If video fails to load: "This video is not available right now.
+  You can still complete the tasks below and come back to watch
+  it later."
+- If task submission fails: "We could not save your response.
+  Your work is still here — please try again in a moment."
+- If progress data fails to load: show the module content anyway
+  with a note: "Your progress might not be up to date right now."
+- Never show technical error messages to students
+
+Colors:
+- Primary (headers, buttons, progress bar): #0BB3B7 (Springpod teal)
+- Secondary (accents, links): #446DF6 (Springpod blue)
+- Dark (text, headings): #16254C (Springpod navy)
+- Background: #FFFFFF
+- Error: #FF475A
+- Success: #0A8F93
+
+Do not add any features not listed above. Do not add gamification,
+badges, or social elements unless specifically requested.
+```
+
+---
+
+### Employer impact dashboard
+
+Use this when building an internal dashboard for employer partners showing their VWE programme performance and social value metrics.
+
+```
+Create an employer impact dashboard for [employer name]'s Virtual Work
+Experience partnership with Springpod.
+
+Dashboard sections:
+1. Summary cards (top row):
+   - Total enrolments (number)
+   - Completion rate (percentage)
+   - Average satisfaction score (out of 5)
+   - Estimated social value (£ amount)
+2. Enrolment trends: line chart showing enrolments over the past
+   [time period — e.g., "12 months"], broken down by programme
+3. Diversity breakdown: bar chart or pie chart showing demographic
+   distribution of participants. Categories: gender, ethnicity,
+   free school meals eligibility, region.
+   Include a note: "All demographic data is self-reported and optional.
+   Percentages are based on students who chose to share this information."
+4. Programme comparison table: rows for each programme, columns for
+   enrolments, completions, completion rate, average rating
+5. Social value summary: show estimated social value (£) using
+   [calculation methodology — e.g., "the HACT social value calculator"]
+   with a clear explanation of how the figure is calculated
+
+Data source: [describe API endpoints — e.g., "the /api/employer/[id]/metrics
+endpoint returns JSON with all required fields"]
+
+Access control:
+- Dashboard is only visible to authenticated employer partner users
+- Each employer can only see their own programmes and data
+- No individual student data is shown — all metrics are aggregates
+- Minimum group size for demographic breakdowns: 10 students.
+  If fewer than 10 students in a category, show "< 10" instead
+  of the exact number (to prevent identification)
+
+Colors:
+- Primary (headers, buttons): #0BB3B7 (Springpod teal)
+- Secondary (chart accents, links): #446DF6 (Springpod blue)
+- Dark (text, headings): #16254C (Springpod navy)
+- Background: #FFFFFF
+- Error: #FF475A
+- Success: #0A8F93
+
+Requirements:
+- Dashboard must be responsive (desktop and tablet)
+- Show loading states while data is being fetched
+- Show a clear error message if any data source is unavailable —
+  still render the sections that did load successfully
+- Charts must include data labels or tooltips for accessibility
+- All charts must have a text-based alternative (e.g., a data table
+  toggle) for screen reader users
+- Export to PDF button for the full dashboard
+- Do not add any features I did not ask for
+```
+
+---
+
+### AI Interview Coach system prompt
+
+Use this as the system prompt for Springpod's AI-powered Interview Skills Coach. This is a Red path tool — it interacts directly with students aged 13+.
+
+```
+You are the Springpod Interview Skills Coach, an AI-powered tool that
+helps students aged 13-18 practise answering interview questions.
+
+Your role:
+- Ask the student one interview question at a time
+- Wait for their response before giving feedback
+- Give specific, encouraging feedback on their answer
+- Suggest one concrete improvement they could make
+- Then move to the next question
+
+Behaviour rules:
+- Be warm, encouraging, and supportive. Students may be nervous.
+- Use clear, simple language appropriate for a 13-year-old
+- After feedback, always highlight something they did well before
+  suggesting an improvement
+- Keep feedback to 3-4 sentences maximum
+- Use "you" language — e.g., "You made a great point about..." not
+  "The candidate demonstrated..."
+
+Question types to cover:
+- "Tell me about yourself" (introductory)
+- Competency-based (e.g., "Tell me about a time you worked in a team")
+- Motivation (e.g., "Why are you interested in this field?")
+- Scenario-based (e.g., "What would you do if you disagreed with a
+  team member?")
+
+You must NEVER:
+- Make promises about job outcomes ("This will help you get the job")
+- Claim to predict hiring decisions
+- Provide legal, medical, or financial advice
+- Ask for or store personal information (address, phone number,
+  school name, etc.)
+- Roleplay as a specific real person or company interviewer
+- Use sarcasm, negative language, or discouraging tone
+- Discuss topics unrelated to interview preparation
+- Rate students with scores or grades — use qualitative feedback only
+
+Disclosure:
+- If asked "Are you a real person?" or similar, always respond:
+  "I am an AI interview coach built by Springpod to help you practise.
+  I am not a real interviewer, and this is just for practice — there
+  are no right or wrong answers."
+- At the start of every session, say: "Hi! I am the Springpod
+  Interview Coach — an AI tool here to help you practise your
+  interview skills. This is just for practice, so there is no
+  pressure. Ready to get started?"
+
+Session structure:
+1. Greeting and disclosure (as above)
+2. Ask which type of role or industry they are interested in
+   (to tailor questions)
+3. Ask 3-5 questions, giving feedback after each
+4. End with a summary: "Here is what you did well today: [list].
+   One thing to keep working on: [suggestion]. Great effort!"
+
+If the student says anything concerning (mentions self-harm, abuse,
+or distress):
+- Respond with: "It sounds like you might be going through something
+  difficult. I am just a practice tool and cannot help with this,
+  but please talk to a trusted adult or contact Childline on
+  0800 1111 (free, confidential, available 24/7)."
+- Do not continue the interview practice
+- Do not attempt to counsel or diagnose
+
+Privacy:
+- Do not store or reference previous sessions
+- Do not ask for the student's full name — first name only is fine
+- Each session is independent with no memory of past conversations
+```
+
+---
+
+### School partnership report
+
+Use this when building a report (PDF or web page) for school partners showing their students' engagement with Springpod programmes.
+
+```
+Create a school partnership report page for [school name] showing
+student engagement with Springpod programmes over [time period —
+e.g., "the 2025-26 academic year"].
+
+Report sections:
+1. Summary header: school name, report period, Springpod logo,
+   date generated
+2. Key statistics cards:
+   - Total students registered (from this school)
+   - Programmes started
+   - Programmes completed
+   - Certificates earned
+3. Programme breakdown table: rows for each programme, columns for
+   students enrolled, students completed, completion rate
+4. Monthly engagement chart: line chart showing active students
+   per month across the report period
+5. Gatsby Benchmark alignment: for each relevant Gatsby Benchmark
+   (1-8), show which Springpod programmes contribute to it and
+   how many students participated. Display as a checklist:
+   - Benchmark 1: A stable careers programme — [X students via Y programmes]
+   - Benchmark 5: Encounters with employers — [X students via Y programmes]
+   - Benchmark 6: Experiences of workplaces — [X students via Y programmes]
+   (include only benchmarks where Springpod programmes apply)
+6. Certificates: total number of certificates earned, broken down
+   by programme
+
+Data source: [describe API endpoint — e.g., "the /api/school/[id]/report
+endpoint returns JSON with all required fields"]
+
+Privacy requirements (critical):
+- All data must be aggregate — no individual student names, emails,
+  or identifiable information
+- School admin users can see totals and percentages only
+- Individual student details are never included unless the student
+  (or parent/guardian for under-16s) has given explicit consent
+- If a cohort has fewer than 5 students in a programme, show
+  "< 5 students" instead of the exact number
+- Do not include demographic breakdowns at school level (risk of
+  identification in small cohorts)
+- Report must include a footer note: "This report contains aggregate
+  data only. Individual student data is not shared without consent.
+  For questions about data handling, see Springpod's Privacy Policy."
+
+Accessibility requirements:
+- All charts must have a text-based data table alternative
+- Colour must not be the only way to convey information in charts
+- All text must meet WCAG AA contrast ratio (4.5:1 minimum)
+- Report must be navigable with a screen reader
+
+Colors:
+- Primary (headers, chart bars): #0BB3B7 (Springpod teal)
+- Secondary (accents, links): #446DF6 (Springpod blue)
+- Dark (text, headings): #16254C (Springpod navy)
+- Background: #FFFFFF
+- Error: #FF475A
+- Success: #0A8F93
+
+Export:
+- "Download as PDF" button that generates a clean, print-friendly
+  version with all charts rendered as static images
+- PDF must include the Springpod logo and the privacy footer note
+
+Do not include any features not listed above. Do not add student-level
+drill-down views unless explicitly requested and reviewed for privacy.
+```
 
 ---
 

@@ -52,7 +52,7 @@ export function DocTableOfContents({ items }: DocTableOfContentsProps) {
       <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto py-8">
         <p
           className="mb-3 px-4 text-sm font-semibold uppercase tracking-wider
-            text-[#8B92A6] dark:text-white/40"
+            text-sp-text-muted dark:text-white/40"
         >
           ON THIS PAGE
         </p>
@@ -66,8 +66,8 @@ export function DocTableOfContents({ items }: DocTableOfContentsProps) {
                   href={`#${item.id}`}
                   className={`block rounded-sm py-1.5 pr-4 text-[13px] leading-snug transition-colors ${indent} ${
                     isActive
-                      ? "border-l-2 border-[#0BB3B7] bg-[#9CF6F6]/20 font-medium text-[#0BB3B7] dark:bg-[#0BB3B7]/10 dark:text-[#9CF6F6]"
-                      : "text-[#5C6682] hover:bg-[#E9E9ED] hover:text-[#16254C] dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/80"
+                      ? "border-l-2 border-sp-teal bg-sp-teal-light/20 font-medium text-sp-teal dark:bg-sp-teal/10 dark:text-sp-teal-light"
+                      : "text-sp-text-secondary hover:bg-sp-surface hover:text-sp-navy dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/80"
                   }`}
                 >
                   {item.text}

@@ -46,7 +46,7 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
         {children}
         <a
           href={`#${id}`}
-          className="ml-2 text-[#0BB3B7] opacity-0 transition-opacity group-hover:opacity-100"
+          className="ml-2 text-sp-teal opacity-0 transition-opacity group-hover:opacity-100"
           aria-label={`Link to ${id}`}
         >
           #
@@ -77,7 +77,7 @@ export const mdxComponents = {
   a: ({ href, children, ...props }: ComponentPropsWithoutRef<"a">) => (
     <a
       href={href}
-      className="text-[#0BB3B7] underline-offset-2 transition-colors hover:underline dark:text-[#0BB3B7]"
+      className="text-sp-teal underline-offset-2 transition-colors hover:underline dark:text-sp-teal"
       {...props}
     >
       {children}
@@ -85,7 +85,7 @@ export const mdxComponents = {
   ),
 
   hr: () => (
-    <hr className="my-8 border-t border-[#B9BEC9]/40 dark:border-white/10" />
+    <hr className="my-8 border-t border-sp-border/40 dark:border-white/10" />
   ),
 
   table: ({ children }: WrapProps) => <DataTable>{children}</DataTable>,
@@ -96,7 +96,7 @@ export const mdxComponents = {
   td: ({ children }: WrapProps) => <DataTableCell>{children}</DataTableCell>,
 
   pre: ({ children }: WrapProps) => (
-    <div className="group relative my-4 overflow-hidden rounded-xl border border-[#B9BEC9] bg-gray-50 dark:border-white/10 dark:bg-[#0d1117]">
+    <div className="group relative my-4 overflow-hidden rounded-xl border border-sp-border bg-gray-50 dark:border-white/10 dark:bg-[#0d1117]">
       <pre className="overflow-x-auto px-6 py-4 text-sm leading-relaxed text-gray-700 dark:text-white/70 [&>code]:bg-transparent [&>code]:p-0">
         {children}
       </pre>
@@ -126,12 +126,12 @@ export const mdxComponents = {
   },
 
   ul: ({ children }: WrapProps) => (
-    <ul className="my-3 ml-6 list-disc space-y-1.5 text-gray-700 marker:text-[#0BB3B7] dark:text-white/80">
+    <ul className="my-3 ml-6 list-disc space-y-1.5 text-gray-700 marker:text-sp-teal dark:text-white/80">
       {children}
     </ul>
   ),
   ol: ({ children }: WrapProps) => (
-    <ol className="my-3 ml-6 list-decimal space-y-1.5 text-gray-700 marker:text-[#0BB3B7] dark:text-white/80">
+    <ol className="my-3 ml-6 list-decimal space-y-1.5 text-gray-700 marker:text-sp-teal dark:text-white/80">
       {children}
     </ol>
   ),
@@ -140,7 +140,7 @@ export const mdxComponents = {
   ),
 
   blockquote: ({ children }: WrapProps) => (
-    <blockquote className="my-4 rounded-r-lg border-l-4 border-l-[#0BB3B7] bg-[#9CF6F6]/10 py-3 pl-4 pr-4 italic text-gray-600 dark:bg-[#9CF6F6]/5 dark:text-white/60">
+    <blockquote className="my-4 rounded-r-lg border-l-4 border-l-sp-teal bg-sp-teal-light/10 py-3 pl-4 pr-4 italic text-gray-600 dark:bg-sp-teal-light/5 dark:text-white/60">
       {children}
     </blockquote>
   ),

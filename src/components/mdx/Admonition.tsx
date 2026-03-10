@@ -25,50 +25,50 @@ interface AdmonitionStyle {
 const admonitionConfig: Record<AdmonitionType, AdmonitionStyle> = {
   info: {
     icon: Info,
-    gradient: "from-[#9CF6F6]/30 to-[#0BB3B7]/10",
-    darkGradient: "dark:from-[#9CF6F6]/10 dark:to-[#0BB3B7]/5",
-    border: "border-[#0BB3B7]",
-    iconColor: "text-[#0BB3B7]",
+    gradient: "from-sp-teal-light/30 to-sp-teal/10",
+    darkGradient: "dark:from-sp-teal-light/10 dark:to-sp-teal/5",
+    border: "border-sp-teal",
+    iconColor: "text-sp-teal",
     defaultTitle: "Info",
   },
   note: {
     icon: Info,
-    gradient: "from-[#9CF6F6]/30 to-[#0BB3B7]/10",
-    darkGradient: "dark:from-[#9CF6F6]/10 dark:to-[#0BB3B7]/5",
-    border: "border-[#0BB3B7]",
-    iconColor: "text-[#0BB3B7]",
+    gradient: "from-sp-teal-light/30 to-sp-teal/10",
+    darkGradient: "dark:from-sp-teal-light/10 dark:to-sp-teal/5",
+    border: "border-sp-teal",
+    iconColor: "text-sp-teal",
     defaultTitle: "Note",
   },
   warning: {
     icon: AlertCircle,
-    gradient: "from-[#FF475A]/10 to-[#FF475A]/5",
-    darkGradient: "dark:from-[#FF475A]/8 dark:to-[#FF475A]/3",
-    border: "border-[#FF475A]",
-    iconColor: "text-[#FF475A]",
+    gradient: "from-sp-red/10 to-sp-red/5",
+    darkGradient: "dark:from-sp-red/8 dark:to-sp-red/3",
+    border: "border-sp-red",
+    iconColor: "text-sp-red",
     defaultTitle: "Warning",
   },
   danger: {
     icon: AlertCircle,
-    gradient: "from-[#FF475A]/10 to-[#FF475A]/5",
-    darkGradient: "dark:from-[#FF475A]/8 dark:to-[#FF475A]/3",
-    border: "border-[#FF475A]",
-    iconColor: "text-[#FF475A]",
+    gradient: "from-sp-red/10 to-sp-red/5",
+    darkGradient: "dark:from-sp-red/8 dark:to-sp-red/3",
+    border: "border-sp-red",
+    iconColor: "text-sp-red",
     defaultTitle: "Danger",
   },
   tip: {
     icon: CheckCircle2,
-    gradient: "from-[#0BB3B7]/10 to-[#9CF6F6]/20",
-    darkGradient: "dark:from-[#0BB3B7]/8 dark:to-[#9CF6F6]/5",
-    border: "border-[#0BB3B7]",
-    iconColor: "text-[#0BB3B7]",
+    gradient: "from-sp-teal/10 to-sp-teal-light/20",
+    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal-light/5",
+    border: "border-sp-teal",
+    iconColor: "text-sp-teal",
     defaultTitle: "Tip",
   },
   success: {
     icon: CheckCircle2,
-    gradient: "from-[#0BB3B7]/10 to-[#9CF6F6]/20",
-    darkGradient: "dark:from-[#0BB3B7]/8 dark:to-[#9CF6F6]/5",
-    border: "border-[#0BB3B7]",
-    iconColor: "text-[#0BB3B7]",
+    gradient: "from-sp-teal/10 to-sp-teal-light/20",
+    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal-light/5",
+    border: "border-sp-teal",
+    iconColor: "text-sp-teal",
     defaultTitle: "Success",
   },
 };
@@ -94,10 +94,10 @@ export default function Admonition({
       <div className="flex gap-3">
         <Icon size={20} className={`${config.iconColor} mt-0.5 shrink-0`} />
         <div className="min-w-0 flex-1">
-          <p className="mb-1 font-medium text-[#16254C] dark:text-white">
+          <p className="mb-1 font-medium text-sp-navy dark:text-white">
             {title ?? config.defaultTitle}
           </p>
-          <div className="text-sm text-[#2D3B5E] dark:text-white/70">
+          <div className="text-sm text-sp-navy-light dark:text-white/70">
             {children}
           </div>
         </div>

@@ -1,0 +1,79 @@
+# Typography
+
+Springpod uses two fonts: **Poppins** for headings and **Inter** for body text. This mirrors the student-facing springpod.com site.
+
+---
+
+## Font families
+
+### Poppins — Headings
+
+- CSS: `font-family: var(--font-heading)`
+- Tailwind: `font-heading`
+- Weights: 400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold)
+- Usage: All h1–h6 headings, logo text, hero text
+
+### Inter — Body text
+
+- CSS: `font-family: var(--font-sans)`
+- Tailwind: `font-sans`
+- Weights: 400–700
+- Usage: Body copy, labels, buttons, navigation, form fields
+
+### JetBrains Mono — Code
+
+- CSS: `font-family: var(--font-mono)`
+- Tailwind: `font-mono`
+- Usage: Code blocks, inline code, technical references
+
+---
+
+## Type scale
+
+# Heading 1 — text-4xl/text-5xl, font-medium
+
+## Heading 2 — text-3xl, font-semibold
+
+### Heading 3 — text-2xl, font-semibold
+
+#### Heading 4 — text-xl, font-medium
+
+##### Heading 5 — text-lg, font-medium
+
+###### Heading 6 — text-sm, font-medium, uppercase
+
+Body text is rendered in Inter at 16px (1rem) with a line height of 1.75.
+
+---
+
+## Font weights
+
+| Weight | Value | Usage |
+|--------|-------|-------|
+| Regular | 400 | Body text, descriptions |
+| Medium | 500 | Nav items, card titles, emphasis |
+| Semibold | 600 | Section headings (h2, h3) |
+| Bold | 700 | Page titles, logo, strong emphasis |
+
+---
+
+## Line heights
+
+| Context | Line height | When to use |
+|---------|------------|-------------|
+| Headings | 1.15 | All h1–h6 elements |
+| Body text | 1.75 | Paragraphs, lists, general content |
+| Compact | 1.5 | Labels, badges, navigation items |
+
+---
+
+## Usage guidelines
+
+<Admonition type="warning" title="Typography rules">
+
+- Headings are always Poppins. Do not use Inter for headings.
+- Body text is always Inter. Do not use Poppins for body copy.
+- When building with AI tools, specify "Poppins for headings, Inter for body text" in your prompts.
+- Minimum body text size is 14px (0.875rem). Never go smaller for content that students will read.
+
+</Admonition>

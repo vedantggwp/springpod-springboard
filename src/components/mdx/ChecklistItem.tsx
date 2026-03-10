@@ -9,7 +9,7 @@ interface ChecklistItemProps {
 }
 
 function getStorageKey(id: string): string {
-  return `vcf-checklist-${id}`;
+  return `sp-checklist-${id}`;
 }
 
 function useLocalStorageChecked(id: string) {
@@ -56,10 +56,10 @@ export default function ChecklistItem({
           checked={checked}
           onChange={handleToggle}
           className={[
-            "h-4 w-4 shrink-0 cursor-pointer rounded-[4px] border-2 border-[#B9BEC9]",
+            "h-4 w-4 shrink-0 cursor-pointer rounded-[4px] border-2 border-sp-border",
             "appearance-none transition-colors duration-150",
-            "checked:border-[#0BB3B7] checked:bg-[#0BB3B7]",
-            "dark:border-white/20 dark:checked:border-[#0BB3B7] dark:checked:bg-[#0BB3B7]",
+            "checked:border-sp-teal checked:bg-sp-teal",
+            "dark:border-white/20 dark:checked:border-sp-teal dark:checked:bg-sp-teal",
           ].join(" ")}
           style={
             mounted && checked
@@ -76,15 +76,15 @@ export default function ChecklistItem({
         />
         <span
           className={[
-            "text-sm text-[#16254C] transition-colors duration-150 dark:text-white",
-            checked ? "text-[#8B92A6] line-through dark:text-white/40" : "",
+            "text-sm text-sp-navy transition-colors duration-150 dark:text-white",
+            checked ? "text-sp-text-muted line-through dark:text-white/40" : "",
           ].join(" ")}
         >
           {label}
         </span>
       </label>
       {children && (
-        <div className="ml-7 text-sm text-[#5C6682] dark:text-white/60">
+        <div className="ml-7 text-sm text-sp-text-secondary dark:text-white/60">
           {children}
         </div>
       )}
