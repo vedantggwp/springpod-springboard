@@ -75,6 +75,14 @@ export const navigation: Navigation = [
     ],
   },
   {
+    title: "Design System",
+    items: [
+      { title: "Color Palette", href: "/design-system/colors", isNew: true },
+      { title: "Typography", href: "/design-system/typography", isNew: true },
+      { title: "Components", href: "/design-system/components", isNew: true },
+    ],
+  },
+  {
     title: "Reference",
     items: [
       { title: "Verification Log", href: "/reference/verification-log" },

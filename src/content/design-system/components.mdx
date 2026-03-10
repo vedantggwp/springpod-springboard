@@ -1,0 +1,243 @@
+# Components
+
+Every component available in SpringBoard content pages. Use these when writing MDX content — they render consistently across the site.
+
+---
+
+## Admonition
+
+Callout boxes for highlighting important information. Six types available.
+
+<Admonition type="info" title="Info">
+  Use for general information that adds context.
+</Admonition>
+
+<Admonition type="tip" title="Tip">
+  Use for helpful suggestions and best practices.
+</Admonition>
+
+<Admonition type="warning" title="Warning">
+  Use for important cautions the reader should be aware of.
+</Admonition>
+
+<Admonition type="danger" title="Danger">
+  Use for critical warnings about actions that could cause harm.
+</Admonition>
+
+<Admonition type="note" title="Note">
+  Use for supplementary information.
+</Admonition>
+
+<Admonition type="success" title="Success">
+  Use for confirmation of completed actions.
+</Admonition>
+
+### MDX syntax
+
+```mdx
+<Admonition type="info" title="Your title">
+  Content goes here.
+</Admonition>
+```
+
+Available types: `info`, `tip`, `warning`, `danger`, `note`, `success`
+
+---
+
+## Collapsible
+
+Expandable sections. Six variants with different colors.
+
+<Collapsible title="Default collapsible (info)">
+  Content hidden until the reader clicks. Good for supplementary detail.
+</Collapsible>
+
+<Collapsible variant="why" title="WHY">
+  Explains the reasoning behind a rule or recommendation.
+</Collapsible>
+
+<Collapsible variant="how" title="HOW TO CHECK">
+  Step-by-step instructions for verifying a requirement.
+</Collapsible>
+
+<Collapsible variant="example" title="Example">
+  Shows a concrete example of a concept.
+</Collapsible>
+
+<Collapsible variant="warning" title="Warning">
+  Cautionary detail that expands on a warning.
+</Collapsible>
+
+<Collapsible variant="tip" title="Tip">
+  Helpful suggestion with more detail.
+</Collapsible>
+
+### MDX syntax
+
+```mdx
+<Collapsible variant="why" title="WHY">
+  Your content here.
+</Collapsible>
+```
+
+Variants: `info` (default), `why`, `how`, `example`, `warning`, `tip`
+
+---
+
+## Card and CardGrid
+
+Cards for organizing related content. Use CardGrid for responsive layouts.
+
+<CardGrid columns={2}>
+  <Card title="Simple card">
+    Basic card with a title and description text.
+  </Card>
+  <Card title="Card with link" href="/guides/first-build">
+    Cards can link to other pages. Click to navigate.
+  </Card>
+</CardGrid>
+
+### MDX syntax
+
+```mdx
+<CardGrid columns={2}>
+  <Card title="Card title" href="/optional-link">
+    Card content goes here.
+  </Card>
+</CardGrid>
+```
+
+---
+
+## ChecklistItem
+
+Interactive checkboxes that persist state in localStorage.
+
+<ChecklistItem id="demo-1" label="This is an unchecked item" />
+<ChecklistItem id="demo-2" label="Click any checkbox to toggle it" />
+
+### MDX syntax
+
+```mdx
+<ChecklistItem id="unique-id" label="Requirement text" />
+```
+
+The `id` must be unique across the entire site.
+
+---
+
+## DecisionFlow
+
+Decision trees for guiding readers through choices.
+
+<DecisionFlow>
+  <DecisionStep
+    question="Is this a quick prototype with no sensitive data?"
+    yes="Use a No-Code tool"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Does it handle personal or protected data?"
+    yes="Use a Pro Tool (Cursor, Claude Code)"
+    isLast
+  />
+</DecisionFlow>
+
+### MDX syntax
+
+```mdx
+<DecisionFlow>
+  <DecisionStep
+    question="Your question here?"
+    yes="Answer if yes"
+    no="Continue"
+  />
+  <DecisionStep
+    question="Next question?"
+    yes="Final answer"
+    isLast
+  />
+</DecisionFlow>
+```
+
+---
+
+## StepCard
+
+Numbered steps for sequential instructions. Each card shows a step number, title, and description with an optional link.
+
+<StepCard number={1} title="Define the problem">
+  Write a one-sentence description of what your tool should do and who it is for.
+</StepCard>
+<StepCard number={2} title="Choose your build path" isLast>
+  Use the Intake classifier to determine whether this is a Green, Yellow, Orange, or Red build.
+</StepCard>
+
+### MDX syntax
+
+```mdx
+<StepCard number={1} title="Step title">
+  Step description here.
+</StepCard>
+<StepCard number={2} title="Final step" href="/next-page" cta="Continue" isLast>
+  Description with an optional call-to-action link.
+</StepCard>
+```
+
+Props: `number`, `title`, `children`, `href` (optional), `cta` (optional), `isLast` (optional)
+
+---
+
+## Code blocks
+
+Fenced code blocks with syntax highlighting powered by Shiki.
+
+```javascript
+// Code blocks are syntax highlighted automatically
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+```
+
+```python
+# Python is supported too
+def greet(name):
+    return f"Hello, {name}!"
+```
+
+---
+
+## Tables
+
+Standard markdown tables render with Springpod styling.
+
+| Feature | Green | Yellow | Orange | Red |
+|---------|-------|--------|--------|-----|
+| Security review | No | Basic | Full | Full + pen test |
+| Data team sign-off | No | Maybe | Yes | Yes |
+| Safeguarding check | No | No | If student-facing | Always |
+
+---
+
+## Blockquotes
+
+> Blockquotes are styled with a teal left border and subtle background.
+> Use them for callouts or attributions.
+
+---
+
+## When to use what
+
+| Need | Component |
+|------|-----------|
+| Highlight important info | Admonition |
+| Hide supplementary detail | Collapsible |
+| Organize related items | CardGrid + Card |
+| Track requirements | ChecklistItem |
+| Guide a decision | DecisionFlow |
+| Show sequential steps | StepCard |
+| Display data | Table |
+
+<Admonition type="tip" title="Composability">
+  These components can be nested and combined. For example, put a ChecklistItem inside a Collapsible, or a DecisionFlow inside a Card. Experiment to find what works best for your content.
+</Admonition>

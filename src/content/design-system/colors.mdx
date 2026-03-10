@@ -1,0 +1,140 @@
+# Color Palette
+
+The Springpod color system used across SpringBoard. Use these tokens consistently — never hardcode hex values in your code or AI prompts without referencing this page first.
+
+---
+
+## Primary colors
+
+These three colors define the Springpod brand. They appear everywhere — navigation, buttons, headings, and interactive elements.
+
+<CardGrid columns={3}>
+<Card title="Springpod Teal" description="#0BB3B7">
+
+- **CSS variable:** `--color-sp-teal`
+- **Tailwind class:** `sp-teal`
+- **Use for:** Primary brand color, buttons, links, accents, active states
+
+**Variants:**
+- Dark: `#0A8F93` (`sp-teal-dark`) — hover states, pressed buttons
+- Light: `#9CF6F6` (`sp-teal-light`) — subtle backgrounds, highlights
+
+</Card>
+<Card title="Springpod Navy" description="#16254C">
+
+- **CSS variable:** `--color-sp-navy`
+- **Tailwind class:** `sp-navy`
+- **Use for:** Primary text, headings, dark backgrounds
+
+**Variants:**
+- Light: `#2D3B5E` (`sp-navy-light`) — secondary text on light backgrounds
+- Dark: `#0f1a38` (`sp-navy-dark`) — deeper backgrounds, dark mode surfaces
+
+</Card>
+<Card title="Springpod Blue" description="#446DF6">
+
+- **CSS variable:** `--color-sp-blue`
+- **Tailwind class:** `sp-blue`
+- **Use for:** Secondary accent, interactive elements, informational callouts
+
+</Card>
+</CardGrid>
+
+---
+
+## Secondary colors
+
+Supporting colors for variety, warmth, and emphasis. Use sparingly alongside the primary palette.
+
+<CardGrid columns={3}>
+<Card title="Orange" description="#F7936F">
+
+- **Tailwind class:** `sp-orange`
+- **Use for:** Warm accent, highlights, decorative elements
+- **Dark variant:** `#D46A51` (`sp-orange-dark`)
+
+</Card>
+<Card title="Red" description="#FF475A">
+
+- **Tailwind class:** `sp-red`
+- **Use for:** Alerts, warnings, destructive actions
+- **Dark variant:** `#C80B1E` (`sp-red-dark`)
+
+</Card>
+<Card title="Purple" description="#7F7EFF">
+
+- **Tailwind class:** `sp-purple`
+- **Use for:** Tertiary accent, variety in content cards
+
+</Card>
+</CardGrid>
+
+---
+
+## Neutrals
+
+The gray scale handles all the supporting visual structure — backgrounds, borders, secondary text, and disabled states.
+
+| Token | Hex | Tailwind | Usage |
+|-------|-----|----------|-------|
+| Gray | `#E4ECF7` | `sp-gray` | Subtle backgrounds, card fills |
+| Gray Light | `#EEEEEF` | `sp-gray-light` | Lighter backgrounds, alternating rows |
+| Text Secondary | `#5C6682` | `sp-text-secondary` | Secondary body text, descriptions |
+| Text Muted | `#8B92A6` | `sp-text-muted` | Placeholder text, disabled states |
+| Border | `#B9BEC9` | `sp-border` | Borders, dividers, outlines |
+| Surface | `#E9E9ED` | `sp-surface` | Surface backgrounds, hover states |
+
+---
+
+## Status colors
+
+System feedback colors for confirmations, warnings, informational messages, and errors. Each has a light variant (for backgrounds) and a dark variant (for text and icons).
+
+| Status | Light | Dark | Usage |
+|--------|-------|------|-------|
+| Success | `#BFF3A5` | `#357E10` | Confirmations, completed states |
+| Warning | `#FEE3AF` | `#8C5E03` | Cautions, pending actions |
+| Info | `#C2E1FF` | `#004A8F` | Informational messages |
+| Error | `#f8b5bb` | `#820D19` | Errors, validation failures |
+
+<Collapsible variant="example" title="Example: status message styling">
+
+A success message would use `#BFF3A5` as the background and `#357E10` as the text color. This gives enough contrast for accessibility while clearly signaling "all good" to the user.
+
+An error message would use `#f8b5bb` as the background and `#820D19` as the text — immediately recognizable as something that needs attention.
+
+</Collapsible>
+
+---
+
+## Gradients
+
+Four branded gradients for decorative use — hero sections, banners, and visual flourishes. Do not use gradients for text or small UI elements.
+
+| Name | Value | Usage |
+|------|-------|-------|
+| Teal gradient | `linear-gradient(225deg, #40D5D5, #09797B)` | Primary decorative, hero sections |
+| Blue gradient | `linear-gradient(225deg, #A1B2EB, #446DF6)` | Secondary decorative, feature cards |
+| Orange gradient | `linear-gradient(225deg, #FFEF5E, #F7936F)` | Warm accent, promotional banners |
+| Red gradient | `linear-gradient(225deg, #FA919B, #C80B1E)` | Alert emphasis, urgent callouts |
+
+---
+
+## Dark mode
+
+Colors adapt automatically via CSS custom properties. The primary brand colors (teal, navy, blue) stay consistent across light and dark modes. Layout tokens — backgrounds, borders, and shadows — switch to their dark variants when the user toggles dark mode.
+
+You do not need to define separate dark-mode colors when building with SpringBoard's design tokens. The system handles it.
+
+---
+
+## Usage guidelines
+
+<Admonition type="tip" title="How to use these colors">
+
+- **Always use token classes** (`text-sp-navy`, `bg-sp-teal`) instead of raw hex values in code.
+- **Reference this page** when building tools to match Springpod's visual identity.
+- **When using AI tools** (Lovable, v0, Replit), paste the hex values from this page into your prompts so the generated UI matches our brand.
+- **Accessibility:** Ensure sufficient contrast between text and background colors. Use dark variants on light backgrounds and light variants on dark backgrounds.
+
+</Admonition>
