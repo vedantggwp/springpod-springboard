@@ -36,13 +36,19 @@ export function DocHeader() {
 
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2.5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sp-navy to-sp-teal">
-          <span className="text-[10px] font-bold text-white">SP</span>
-        </div>
+        <img
+          src="/springpod-logo.svg"
+          alt="Springpod"
+          className="h-8 w-auto dark:hidden"
+        />
+        <img
+          src="/springpod-logo-dark.svg"
+          alt="Springpod"
+          className="hidden h-8 w-auto dark:block"
+        />
         <span
-          className="bg-gradient-to-r from-sp-navy to-sp-teal bg-clip-text
-            font-heading text-lg font-bold tracking-tight text-transparent
-            dark:from-white dark:to-sp-teal"
+          className="border-l border-sp-border pl-2.5 font-heading text-sm
+            font-semibold text-sp-navy dark:border-white/20 dark:text-white"
         >
           SpringBoard
         </span>
