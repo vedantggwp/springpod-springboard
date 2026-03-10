@@ -27,7 +27,7 @@ export function DocHeader() {
         onClick={toggleMobileNav}
         aria-label="Toggle navigation"
         className="mr-3 flex h-9 w-9 items-center justify-center rounded-md
-          text-[#5C6682] transition-colors hover:bg-[#E9E9ED] hover:text-[#16254C]
+          text-sp-text-secondary transition-colors hover:bg-sp-surface hover:text-sp-navy
           dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white
           lg:hidden"
       >
@@ -36,15 +36,15 @@ export function DocHeader() {
 
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2.5">
-        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#16254C] to-[#0BB3B7]">
-          <span className="text-xs font-bold text-white">V</span>
+        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sp-navy to-sp-teal">
+          <span className="text-[10px] font-bold text-white">SP</span>
         </div>
         <span
-          className="bg-gradient-to-r from-[#16254C] to-[#0BB3B7] bg-clip-text
-            text-lg font-bold tracking-tight text-transparent
-            dark:from-white dark:to-[#0BB3B7]"
+          className="bg-gradient-to-r from-sp-navy to-sp-teal bg-clip-text
+            font-heading text-lg font-bold tracking-tight text-transparent
+            dark:from-white dark:to-sp-teal"
         >
-          Documentation
+          SpringBoard
         </span>
       </Link>
 
@@ -55,7 +55,7 @@ export function DocHeader() {
         type="button"
         onClick={openSearch}
         className="mr-3 hidden h-9 w-64 items-center gap-2 rounded-xl
-          bg-[#E9E9ED] px-4 py-2 text-sm text-[#8B92A6]
+          bg-sp-surface px-4 py-2 text-sm text-sp-text-muted
           transition-colors hover:bg-[#dddde1]
           dark:bg-white/10 dark:text-white/50 dark:hover:bg-white/15
           sm:flex"
@@ -63,8 +63,8 @@ export function DocHeader() {
         <Search size={14} className="shrink-0" />
         <span className="flex-1 text-left">Search docs...</span>
         <kbd
-          className="rounded border border-[#B9BEC9] bg-white px-1.5 py-0.5
-            font-mono text-[10px] text-[#8B92A6]
+          className="rounded border border-sp-border bg-white px-1.5 py-0.5
+            font-mono text-[10px] text-sp-text-muted
             dark:border-white/15 dark:bg-white/5 dark:text-white/40"
         >
           ⌘K
@@ -77,7 +77,7 @@ export function DocHeader() {
         onClick={openSearch}
         aria-label="Search"
         className="mr-2 flex h-9 w-9 items-center justify-center rounded-md
-          text-[#5C6682] transition-colors hover:bg-[#E9E9ED] hover:text-[#16254C]
+          text-sp-text-secondary transition-colors hover:bg-sp-surface hover:text-sp-navy
           dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white
           sm:hidden"
       >
@@ -91,7 +91,7 @@ export function DocHeader() {
         rel="noopener noreferrer"
         aria-label="GitHub"
         className="mr-1 flex h-9 w-9 items-center justify-center rounded-md
-          text-[#5C6682] transition-colors hover:bg-[#E9E9ED] hover:text-[#16254C]
+          text-sp-text-secondary transition-colors hover:bg-sp-surface hover:text-sp-navy
           dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
       >
         <Github size={18} />

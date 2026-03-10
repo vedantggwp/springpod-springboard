@@ -9,7 +9,7 @@ interface ChecklistItemProps {
 }
 
 function getStorageKey(id: string): string {
-  return `vcf-checklist-${id}`;
+  return `sp-checklist-${id}`;
 }
 
 function useLocalStorageChecked(id: string) {

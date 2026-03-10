@@ -13,8 +13,8 @@ export function ThemeToggle() {
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className="relative flex h-9 w-9 items-center justify-center rounded-md
-        text-vcf-text-muted transition-colors
-        hover:bg-vcf-surface hover:text-vcf-navy
+        text-sp-text-muted transition-colors
+        hover:bg-sp-surface hover:text-sp-navy
         dark:hover:bg-white/10 dark:hover:text-white"
     >
       {isDark ? <Sun size={18} /> : <Moon size={18} />}

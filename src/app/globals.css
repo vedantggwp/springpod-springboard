@@ -3,20 +3,52 @@
 /* ── Dark mode variant (shadcn convention) ───────────────────────── */
 @custom-variant dark (&:is(.dark *));
 
-/* ── VCF Design Tokens (Tailwind utility classes) ────────────────── */
+/* ── Springpod Design Tokens (Tailwind utility classes) ──────────── */
 @theme inline {
-  /* Brand colors */
-  --color-vcf-navy: #16254C;
-  --color-vcf-navy-light: #2D3B5E;
-  --color-vcf-navy-dark: #0f1a38;
-  --color-vcf-teal: #0BB3B7;
-  --color-vcf-light-teal: #9CF6F6;
-  --color-vcf-blue: #446DF6;
-  --color-vcf-warning: #FF475A;
-  --color-vcf-text-secondary: #5C6682;
-  --color-vcf-text-muted: #8B92A6;
-  --color-vcf-border: #B9BEC9;
-  --color-vcf-surface: #E9E9ED;
+  /* ── Brand Colors ──────────────────────────────────── */
+  --color-sp-teal: #0BB3B7;
+  --color-sp-teal-dark: #0A8F93;
+  --color-sp-teal-light: #9CF6F6;
+  --color-sp-navy: #16254C;
+  --color-sp-navy-light: #2D3B5E;
+  --color-sp-navy-dark: #0f1a38;
+  --color-sp-navy-hover: #0F1A35;
+  --color-sp-blue: #446DF6;
+  --color-sp-blue-2: #1C3DAE;
+
+  /* ── Secondary Palette ─────────────────────────────── */
+  --color-sp-orange: #F7936F;
+  --color-sp-orange-dark: #D46A51;
+  --color-sp-red: #FF475A;
+  --color-sp-red-dark: #C80B1E;
+  --color-sp-purple: #7F7EFF;
+  --color-sp-focus: #4D65FF;
+
+  /* ── Neutrals ──────────────────────────────────────── */
+  --color-sp-gray: #E4ECF7;
+  --color-sp-gray-light: #EEEEEF;
+  --color-sp-gray-50: #F6F7F9;
+  --color-sp-gray-100: #F7FAFC;
+  --color-sp-gray-200: #EDF2F7;
+  --color-sp-gray-300: #E2E8F0;
+  --color-sp-gray-500: #A0AEC0;
+  --color-sp-gray-600: #718096;
+  --color-sp-gray-700: #4A5568;
+  --color-sp-gray-800: #2D3748;
+  --color-sp-text-secondary: #5C6682;
+  --color-sp-text-muted: #8B92A6;
+  --color-sp-border: #B9BEC9;
+  --color-sp-surface: #E9E9ED;
+
+  /* ── Status Colors ─────────────────────────────────── */
+  --color-sp-success-light: #BFF3A5;
+  --color-sp-success-dark: #357E10;
+  --color-sp-warning-light: #FEE3AF;
+  --color-sp-warning-dark: #8C5E03;
+  --color-sp-info-light: #C2E1FF;
+  --color-sp-info-dark: #004A8F;
+  --color-sp-error-light: #f8b5bb;
+  --color-sp-error-dark: #820D19;
 
   /* shadcn-style semantic tokens */
   --color-background: var(--background);
@@ -38,7 +70,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  /* Typography */
+  /* ── Typography ────────────────────────────────────── */
+  --font-heading: "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
@@ -73,17 +106,28 @@
   --input: rgba(0, 0, 0, 0.1);
   --ring: #0BB3B7;
 
-  /* VCF layout tokens — light */
-  --vcf-bg: rgba(233, 233, 237, 0.3);
-  --vcf-content-bg: #ffffff;
-  --vcf-text: #16254C;
-  --vcf-text-light: rgba(255, 255, 255, 0.87);
-  --vcf-code-bg: linear-gradient(135deg, #16254C, #2D3B5E);
-  --vcf-table-header-bg: linear-gradient(135deg, #16254C, #2D3B5E);
-  --vcf-card-bg: #ffffff;
-  --vcf-card-border: #B9BEC9;
-  --vcf-shadow: rgba(22, 37, 76, 0.06);
-  --vcf-shadow-hover: rgba(22, 37, 76, 0.12);
+  /* Springpod layout tokens — light */
+  --sp-bg: rgba(233, 233, 237, 0.3);
+  --sp-content-bg: #ffffff;
+  --sp-text: #16254C;
+  --sp-text-light: rgba(255, 255, 255, 0.87);
+  --sp-code-bg: linear-gradient(135deg, #16254C, #2D3B5E);
+  --sp-table-header-bg: linear-gradient(135deg, #16254C, #2D3B5E);
+  --sp-card-bg: #ffffff;
+  --sp-card-border: #B9BEC9;
+  --sp-shadow: rgba(22, 37, 76, 0.06);
+  --sp-shadow-hover: rgba(22, 37, 76, 0.12);
+
+  /* Springpod gradients */
+  --sp-gradient-teal: linear-gradient(225deg, #40D5D5 0%, #09797B 100%);
+  --sp-gradient-blue: linear-gradient(224.47deg, #A1B2EB 8.18%, #446DF6 95.84%);
+  --sp-gradient-orange: linear-gradient(225deg, #FFEF5E 0%, #F7936F 100%);
+  --sp-gradient-red: linear-gradient(225deg, #FA919B 0%, #C80B1E 100%);
+
+  /* Springpod shadows */
+  --sp-shadow-box: 0 3px 8px -1px rgba(50, 50, 71, 0.05);
+  --sp-shadow-input: 0 1px 2px rgba(50, 50, 71, 0.08), 0 0 1px rgba(50, 50, 71, 0.2);
+  --sp-shadow-search: 0 0 1px rgba(12, 26, 75, 0.1), 0 4px 20px -2px rgba(50, 50, 71, 0.08);
 
   /* Font weights */
   --font-weight-normal: 400;
@@ -114,17 +158,17 @@
   --input: rgba(255, 255, 255, 0.08);
   --ring: #0BB3B7;
 
-  /* VCF layout tokens — dark */
-  --vcf-bg: #0d1117;
-  --vcf-content-bg: #161b22;
-  --vcf-text: rgba(255, 255, 255, 0.87);
-  --vcf-text-light: rgba(255, 255, 255, 0.87);
-  --vcf-code-bg: linear-gradient(135deg, #0a0f1e, #151d33);
-  --vcf-table-header-bg: linear-gradient(135deg, #0a0f1e, #151d33);
-  --vcf-card-bg: #161b22;
-  --vcf-card-border: rgba(255, 255, 255, 0.08);
-  --vcf-shadow: rgba(0, 0, 0, 0.2);
-  --vcf-shadow-hover: rgba(0, 0, 0, 0.3);
+  /* Springpod layout tokens — dark */
+  --sp-bg: #0d1117;
+  --sp-content-bg: #161b22;
+  --sp-text: rgba(255, 255, 255, 0.87);
+  --sp-text-light: rgba(255, 255, 255, 0.87);
+  --sp-code-bg: linear-gradient(135deg, #0a0f1e, #151d33);
+  --sp-table-header-bg: linear-gradient(135deg, #0a0f1e, #151d33);
+  --sp-card-bg: #161b22;
+  --sp-card-border: rgba(255, 255, 255, 0.08);
+  --sp-shadow: rgba(0, 0, 0, 0.2);
+  --sp-shadow-hover: rgba(0, 0, 0, 0.3);
 }
 
 /* ── Base layer ───────────────────────────────────────────────────── */
@@ -140,13 +184,17 @@
   }
 
   body {
-    background: var(--vcf-bg);
+    background: var(--sp-bg);
     color: var(--foreground);
     font-family: var(--font-sans);
     font-weight: var(--font-weight-normal);
     line-height: 1.75;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 }
 
@@ -170,7 +218,7 @@
 }
 
 /* ── Decorative gradient divider ─────────────────────────────────── */
-.vcf-gradient-divider {
+.sp-gradient-divider {
   height: 2px;
   background: linear-gradient(90deg, transparent, #0BB3B7, transparent);
   border: none;
