@@ -52,7 +52,7 @@ export default function StepCard({
             href={href}
             className={[
               "mt-3 inline-flex items-center gap-1.5 text-sm font-semibold",
-              "text-sp-teal hover:text-[#09999c] transition-colors",
+              "text-sp-teal hover:text-sp-teal-dark transition-colors",
             ].join(" ")}
           >
             {cta}
