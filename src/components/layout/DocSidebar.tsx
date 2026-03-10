@@ -68,7 +68,7 @@ function SidebarSection({ section, pathname }: SidebarSectionProps) {
   const Icon = SECTION_ICONS[section.title] ?? Folder;
   const isDirectLink = Boolean(section.href) && section.items.length === 0;
   const hasActiveChild = section.items.some((item) => pathname === item.href);
-  const [isExpanded, setIsExpanded] = useState<boolean>(hasActiveChild || true);
+  const [isExpanded, setIsExpanded] = useState<boolean>(hasActiveChild);
 
   const toggle = useCallback(() => {
     setIsExpanded((prev) => !prev);
