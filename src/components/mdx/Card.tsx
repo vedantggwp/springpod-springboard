@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface CardProps {
   readonly title: string;
   readonly children: React.ReactNode;
@@ -12,7 +14,7 @@ export default function Card({ title, children, href, icon }: CardProps) {
         "rounded-xl border border-sp-border bg-white p-5",
         "transition-shadow duration-200",
         "hover:border-sp-teal hover:shadow-lg",
-        "dark:border-white/10 dark:bg-[#161b22]",
+        "dark:border-white/10 dark:bg-card",
         "dark:hover:border-sp-teal",
       ].join(" ")}
     >
@@ -34,9 +36,9 @@ export default function Card({ title, children, href, icon }: CardProps) {
 
   if (href) {
     return (
-      <a href={href} className="block no-underline">
+      <Link href={href} className="block no-underline">
         {content}
-      </a>
+      </Link>
     );
   }
 

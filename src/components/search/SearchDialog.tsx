@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import { Search, X, FileText, ArrowRight } from "lucide-react";
 import Fuse from "fuse.js";
 import type { SearchEntry } from "@/types/content";
@@ -28,6 +29,7 @@ function groupBySection(
 }
 
 export function SearchDialog() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -116,11 +118,11 @@ export function SearchDialog() {
         e.preventDefault();
         setSelectedIndex((i) => Math.max(i - 1, 0));
       } else if (e.key === "Enter" && results[selectedIndex]) {
-        window.location.href = results[selectedIndex].item.slug;
+        router.push(results[selectedIndex].item.slug);
         close();
       }
     },
-    [results, selectedIndex, close]
+    [results, selectedIndex, close, router]
   );
 
   if (!isOpen) return null;
@@ -143,7 +145,7 @@ export function SearchDialog() {
         className={
           "relative w-full max-w-xl rounded-xl border shadow-2xl " +
           "border-sp-border bg-white " +
-          "dark:border-white/10 dark:bg-[#161b22]"
+          "dark:border-white/10 dark:bg-card"
         }
         onClick={(e) => e.stopPropagation()}
       >

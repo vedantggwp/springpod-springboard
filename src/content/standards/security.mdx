@@ -175,13 +175,13 @@ You cannot protect data you do not know is leaving your system. This list is req
 
 ### Red: Protected Build
 
-<ChecklistItem id="security-10" label="Privacy impact assessment completed" />
+<ChecklistItem id="security-10" label="Data Protection Impact Assessment (DPIA) completed" />
 
     A structured review of what personal data you collect, why, how it is stored, who can access it, and when it is deleted. Use a template from your compliance team or see [ROLES.md](/client-config/roles) for who can help.
 
     <Collapsible variant="why" title="WHY">
 
-For tools handling protected data (especially data about minors), a privacy impact assessment may be a legal requirement, not just a best practice.
+For tools handling protected data (especially data about minors), a Data Protection Impact Assessment (DPIA) may be a legal requirement, not just a best practice.
 
 </Collapsible>
 
@@ -189,14 +189,14 @@ For tools handling protected data (especially data about minors), a privacy impa
 
     If your tool is used by or collects data about anyone under 18:
 
-    - No behavioral tracking or profiling
+    - No behavioural tracking or profiling
     - No data sharing with third parties beyond what is strictly necessary
     - Parental or guardian notification if required by policy
     - Default privacy settings set to maximum protection
 
     <Collapsible variant="why" title="WHY">
 
-Children and young people have special legal protections. In the US, COPPA applies to children under 13. In the EU, GDPR Article 8 sets thresholds at 13-16 depending on the country. Springpod policy may set stricter limits.
+Children and young people have special legal protections. In the UK, the age of consent for data processing in online services is 13 (UK GDPR). In the EU, GDPR Article 8 allows member states to set the threshold between 13 and 16. Springpod policy may set stricter limits.
 
 </Collapsible>
 
@@ -210,7 +210,7 @@ Children and young people have special legal protections. In the US, COPPA appli
 
 </Collapsible>
 
-<ChecklistItem id="security-12" label="GDPR/COPPA compliance verified with designated reviewer" />
+<ChecklistItem id="security-12" label="UK GDPR compliance verified with designated reviewer" />
 
     Your designated reviewer (not you) confirms that the tool meets applicable privacy regulations for your users and jurisdiction.
 
@@ -266,11 +266,11 @@ Without a login, anyone with the URL can access your users' data.
 
 <ChecklistItem id="security-16" label="Passwords meet minimum strength requirements" />
 
-    Minimum 8 characters (15+ recommended). Block commonly compromised passwords. Do not require special characters — length matters more than complexity.
+    Use the NCSC's **"three random words"** method (e.g., "coffeetreeswim"). Block commonly compromised passwords. Do not require special characters or forced rotation — length and randomness matter more than complexity.
 
     <Collapsible variant="why" title="WHY">
 
-Current guidance from NIST (SP 800-63B) recommends longer passwords over complex ones. A passphrase like "correct horse battery staple" is stronger and more memorable than "P@ssw0rd!".
+The [NCSC](https://www.ncsc.gov.uk/collection/passwords) (the UK's National Cyber Security Centre) recommends three random words as the best balance of strength and memorability. Do not force regular password changes — only require a change when compromise is known or suspected. Lock accounts after 10 failed attempts. Encourage password managers and enable multi-factor authentication wherever possible.
 
 </Collapsible>
 

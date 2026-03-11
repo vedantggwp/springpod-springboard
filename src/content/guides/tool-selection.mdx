@@ -18,10 +18,10 @@ Tools like **Lovable**, **Bolt**, and **v0** let you describe what you want in p
 
 | Strength | Limitation |
 |----------|-----------|
-| Fastest way to get a working prototype | Limited customization once generated |
+| Fastest way to get a working prototype | Limited customisation once generated |
 | No coding knowledge needed | Harder to fix when something goes wrong |
 | Great for landing pages, simple forms, static sites | Limited data handling and backend logic |
-| Visual editing after generation | Vendor lock-in — your project lives on their platform |
+| Visual editing after generation | Vendor lock-in varies — some offer code export (Lovable has GitHub sync), others do not |
 
 **Best for:** Green builds, prototypes, landing pages, simple internal tools.
 
@@ -101,7 +101,7 @@ Use this flow to pick your tool tier:
     no="Continue"
   />
   <DecisionStep
-    question="Does it handle business data or need moderate customization?"
+    question="Does it handle business data or need moderate customisation?"
     yes="Low-Code tools (Replit Agent)"
     no="Continue"
   />
@@ -137,7 +137,7 @@ Before committing to a tool, ask: if this tool stops working for us, how hard is
 
 | Tool tier | Exit difficulty | What to plan for |
 |-----------|----------------|-----------------|
-| No-Code | Hard — project often tied to the platform | Accept this for throwaway builds. For anything else, consider starting with Low-Code. |
+| No-Code | Varies — some platforms now offer code export (e.g. Lovable has GitHub sync + ZIP export) | Check export options before committing. For throwaway builds, lock-in is acceptable. For anything else, verify you can extract your code. |
 | Low-Code | Medium — code is exportable but may need refactoring | Keep a local backup of your code. Document any platform-specific features you use. |
 | Pro Tools | Easy — standard code runs anywhere | Minimal exit risk. Document your deployment setup. |
 
@@ -153,11 +153,13 @@ Tools change, companies pivot, pricing increases. If your tool becomes critical 
 
 | Factor | No-Code | Low-Code | Pro Tools |
 |--------|---------|----------|-----------|
-| Getting started | Free tiers available | Free tiers available | Free tiers or one-time purchase |
+| Getting started | Free tiers available | Free tiers available | Credit-based or subscription (Cursor uses credits; Claude Code requires Pro $20/mo or Max $100–200/mo) |
 | Scaling up | Costs increase with usage | Costs increase with usage and compute | Hosting costs are separate (you choose) |
 | At enterprise scale | Can become expensive for many users | Moderate — depends on usage patterns | Most cost-effective at scale (you control infrastructure) |
 
 For Green builds, cost is rarely a concern. For Yellow+ builds that will scale, factor in the cost trajectory before choosing a tool.
+
+*Cost estimates last verified: March 2026.*
 
 ---
 
@@ -173,15 +175,15 @@ If you want to use a tool that is not on the approved list, follow the approval 
 
 Brief evaluations of each major platform Springpod uses or evaluates. These are starting points — capabilities change fast, so re-evaluate every few months.
 
-### v0 by Vercel — AI-generated UI components
+### v0 by Vercel — full-stack AI application builder
 
 | | |
 |---|---|
-| **Best for** | Quick UI prototypes, React components, design-to-code |
-| **Limitations** | Frontend only — needs a separate backend for data or logic |
-| **Springpod use case** | Marketing landing pages, internal dashboard UIs, component exploration |
+| **Best for** | Full-stack web apps, React components, design-to-code, prototyping with server logic |
+| **Limitations** | Best for prototyping — production deployments need careful review of generated server code |
+| **Springpod use case** | Marketing landing pages, internal dashboard UIs, component exploration, prototype apps with auth and data |
 
-v0 is excellent for generating polished UI quickly, but it does not handle databases, authentication, or server logic. Pair it with a backend tool or hand the output to a developer for production use.
+v0 (now v0.app) has evolved from a UI generator into a full-stack application builder with a sandbox runtime for server-side code, database integrations, and authentication. It can generate complete working apps, but generated server code should be reviewed thoroughly before any production deployment.
 
 ### Lovable — full-stack app generation
 
@@ -191,7 +193,7 @@ v0 is excellent for generating polished UI quickly, but it does not handle datab
 | **Limitations** | Less control over architecture, harder to debug complex issues |
 | **Springpod use case** | Quick internal tools, form-based workflows, event feedback collectors |
 
-Lovable handles both frontend and backend, making it a strong choice for Green builds that need a database. For anything handling personal data (Yellow+), verify its data storage and access controls before proceeding.
+Lovable handles both frontend and backend, making it a strong choice for Green and Yellow builds that need a database. It offers GitHub sync (bidirectional on the default branch) and ZIP export, so your code is not locked to the platform. Supabase integration provides data storage and auth. For anything handling personal data (Orange+), verify its data storage and access controls before proceeding.
 
 ### Replit — AI-assisted development environment
 

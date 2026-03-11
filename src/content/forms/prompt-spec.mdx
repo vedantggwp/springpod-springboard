@@ -18,11 +18,28 @@ For background on why production prompts need documentation, see the [Prompt Man
 
 ---
 
+## Model configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Model | *e.g., Claude Sonnet 4, GPT-4o* |
+| Temperature | *e.g., 0.3 for factual, 0.7 for creative* |
+| Max tokens | *e.g., 1024* |
+| Top-p | *e.g., 0.95 (leave default unless you have a reason to change)* |
+
+<Collapsible variant="why" title="WHY this matters">
+
+These settings directly affect output quality and consistency. A high temperature (0.7+) produces varied, creative outputs — good for brainstorming, risky for factual content. A low temperature (0.1-0.3) produces consistent, predictable outputs — better for student-facing tools and compliance-sensitive features. Document these so anyone maintaining the prompt can reproduce your results.
+
+</Collapsible>
+
+---
+
 ## What does this prompt do?
 
 One sentence: This prompt tells the AI to ___.
 
-> Example: "This prompt tells the AI to summarize a student's weekly progress into 3 bullet points suitable for parent communication."
+> Example: "This prompt tells the AI to summarise a student's weekly progress into 3 bullet points suitable for parent communication."
 
 ---
 
@@ -83,6 +100,20 @@ When does this prompt give bad results? What inputs cause problems?
 - ___
 
 > Example: "Gives vague summaries when input contains fewer than 3 data points. Occasionally includes technical terminology not suitable for parents."
+
+---
+
+## Output guardrails (Orange+ builds)
+
+What validation runs on AI outputs before they reach users?
+
+- [ ] **PII filter**: Outputs checked for student names, emails, or personal data
+- [ ] **Toxicity check**: Outputs scanned for inappropriate language or content
+- [ ] **Schema enforcement**: Outputs match expected format (JSON, markdown, etc.)
+- [ ] **Confidence threshold**: Low-confidence outputs flagged for human review
+- [ ] **Fallback behaviour**: What happens when the AI fails or returns an error?
+
+*Not all guardrails apply to every tool. Check the boxes relevant to your build path.*
 
 ---
 

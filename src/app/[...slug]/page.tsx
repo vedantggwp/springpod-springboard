@@ -21,7 +21,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const slugStr = slug.join("/");
   try {
     const { meta } = getContentBySlug(slugStr);
-    return { title: meta.title };
+    return {
+      title: meta.title,
+      ...(meta.description ? { description: meta.description } : {}),
+    };
   } catch {
     return { title: "Not Found" };
   }

@@ -28,11 +28,13 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..800&family=Poppins:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('sp-theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme:dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`,
+          }}
+        />
       </head>
-      <body
-        className="antialiased"
-        style={{ background: "var(--sp-bg)" }}
-      >
+      <body className="antialiased">
         <ThemeProvider>
           <DocHeader />
           <DocSidebar navigation={navigation} />

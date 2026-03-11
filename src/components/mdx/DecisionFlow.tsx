@@ -24,7 +24,7 @@ function DecisionStep({
 
       {/* Node dot */}
       <div
-        className="absolute left-0 top-1 h-[22px] w-[22px] rounded-full border-2 border-sp-teal bg-white dark:bg-[#161b22]"
+        className="absolute left-0 top-1 h-[22px] w-[22px] rounded-full border-2 border-sp-teal bg-white dark:bg-card"
         aria-hidden="true"
       />
 
@@ -73,7 +73,7 @@ interface DecisionFlowProps {
 
 function DecisionFlow({ children }: DecisionFlowProps) {
   return (
-    <div className="my-4 rounded-xl border border-sp-border bg-white p-5 dark:border-white/10 dark:bg-[#161b22]">
+    <div className="my-4 rounded-xl border border-sp-border bg-white p-5 dark:border-white/10 dark:bg-card">
       {children}
     </div>
   );

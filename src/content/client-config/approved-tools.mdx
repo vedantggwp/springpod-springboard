@@ -8,9 +8,9 @@ This document lists the AI coding tools Springpod has approved for use, and what
 
 | Tool | Tier | Approved for | Not approved for | Notes |
 |------|------|-------------|------------------|-------|
-| Lovable | No-Code | Green builds | Yellow+ builds | Quick prototypes only. No code export, limited data handling. Do not use for anything touching student data. |
+| Lovable | No-Code | Green, Yellow builds | Orange+ builds | Quick prototypes only. GitHub sync + ZIP export. Supabase for data. Do not use for anything touching student data. |
 | Replit Agent | Low-Code | Green, Yellow builds | Orange, Red builds | Good for internal tools. Data residency not confirmed for UK GDPR compliance on student data. |
-| Bolt.new | No-Code | Green builds | Yellow+ builds | Fast prototyping. No persistent backend, not suitable for production tools. |
+| Bolt.new | No-Code | Green builds | Yellow+ builds | Fast prototyping. Built-in PostgreSQL + Supabase since V2. Green builds only (platform maturity still being evaluated). |
 | Cursor | Pro Tool | All build paths | — | Full code control, approved by engineering. Preferred for Orange and Red builds. |
 | Claude Code | Pro Tool | All build paths | — | Full code control, CLI-based. Approved for all paths including student-facing features. |
 | GitHub Copilot | Pro Tool | All build paths | — | IDE-integrated code assistant. Code suggestions must be reviewed before committing. |
@@ -19,6 +19,18 @@ This document lists the AI coding tools Springpod has approved for use, and what
 <Collapsible title="What do the tiers mean?">
 
 See the [Tool Selection Guide](/guides/tool-selection) for a full explanation of No-Code, Low-Code, and Pro Tool tiers, including strengths, limitations, and when to use each.
+
+</Collapsible>
+
+<Collapsible variant="how" title="Which Copilot tier?">
+
+GitHub Copilot now offers five tiers: Free, Pro ($10/month), Pro+ ($39/month), Business ($19/user/month), and Enterprise ($39/user/month). For Springpod:
+
+- **Green builds**: Free or Pro tier is sufficient
+- **Yellow builds**: Pro or Business tier (chat + code suggestions)
+- **Orange+ builds**: Business or Enterprise tier recommended (audit logs, policy controls, IP indemnity)
+
+All tiers: code suggestions must be reviewed before committing. Agent mode (available in Pro+ and above) requires the same review discipline as any AI-generated code.
 
 </Collapsible>
 
@@ -59,9 +71,9 @@ Every external tool your team uses is a potential data flow. If a tool sends you
 
 | Tool | Reason not approved | Date evaluated |
 |------|-------------------|----------------|
-| Notion AI | Data processing location unclear, no DPA available for UK GDPR compliance | Jan 2026 |
+| Notion AI | Under re-evaluation — DPA with UK SCCs now published (March 2026). Content moderation controls for under-18 use still unconfirmed. | Mar 2026 |
 | Jasper | Marketing-focused, no controls for age-appropriate content generation | Feb 2026 |
-| Midjourney | No API, no content moderation controls suitable for educational context | Dec 2025 |
+| Midjourney | Restricted enterprise API now available. No content moderation controls suitable for educational context. | Mar 2026 |
 
 ---
 

@@ -50,10 +50,10 @@ const variantStyles: Record<CollapsibleVariant, VariantStyle> = {
     chevronColor: "text-sp-blue",
   },
   how: {
-    gradient: "from-[#10B981]/10 to-[#10B981]/5",
-    darkGradient: "dark:from-[#10B981]/8 dark:to-[#10B981]/3",
-    border: "border-[#10B981]",
-    chevronColor: "text-[#10B981]",
+    gradient: "from-sp-teal/10 to-sp-teal/5",
+    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal/3",
+    border: "border-sp-teal",
+    chevronColor: "text-sp-teal",
   },
 };
 

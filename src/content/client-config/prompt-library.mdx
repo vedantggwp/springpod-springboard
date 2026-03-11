@@ -60,7 +60,7 @@ Example:
 - Department (dropdown: [list options])
 - Notes (text area, optional, max 500 characters)
 
-Form behavior:
+Form behaviour:
 - Validate each field when the user moves to the next field
 - Show validation errors in red text below the field
 - Show a success message after successful submission
@@ -103,7 +103,7 @@ Visual requirements:
 Do not include:
 - Cookie banners (we will add these separately)
 - Analytics scripts
-- Any placeholder images — use solid color blocks if images are needed
+- Any placeholder images — use solid colour blocks if images are needed
 ```
 
 ---
@@ -127,13 +127,13 @@ Privacy requirements:
 - Do not display full names — use first name and last initial only
 - Do not collect or display any data beyond what is listed above
 - No tracking scripts, analytics, or third-party cookies
-- No behavioral profiling or recommendation algorithms
+- No behavioural profiling or recommendation algorithms
 
 Accessibility requirements:
 - All interactive elements must be keyboard-accessible
 - All images must have alt text
 - Page must work with screen readers
-- Minimum touch target size: 44x44 pixels on mobile
+- Minimum touch target size: 24×24 CSS pixels minimum (WCAG 2.2 AA). Use 44×44 for mobile-friendly touch targets.
 
 Error handling:
 - If data fails to load: "We could not load your information right now.
@@ -211,9 +211,9 @@ Accessibility requirements:
 - All interactive elements must be keyboard-accessible
 - Video player must support captions and keyboard controls
 - All images and icons must have alt text
-- Minimum touch target size: 44x44 pixels on mobile
+- Minimum touch target size: 24×24 CSS pixels minimum (WCAG 2.2 AA). Use 44×44 for mobile-friendly touch targets.
 - Page must work with screen readers
-- Progress indicators must have text alternatives, not just color
+- Progress indicators must have text alternatives, not just colour
 
 Error handling:
 - If video fails to load: "This video is not available right now.
@@ -313,6 +313,10 @@ Your role:
 - Give specific, encouraging feedback on their answer
 - Suggest one concrete improvement they could make
 - Then move to the next question
+
+Only provide information based on the provided role description and company
+information. If you are unsure about a fact, say so rather than guessing.
+Do not invent company details, salary figures, or role requirements.
 
 Behaviour rules:
 - Be warm, encouraging, and supportive. Students may be nervous.

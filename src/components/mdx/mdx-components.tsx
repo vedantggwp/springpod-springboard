@@ -18,6 +18,15 @@ function slugify(text: string): string {
     .trim();
 }
 
+/** Track seen slugs to deduplicate heading IDs within a page. */
+const seenSlugs = new Map<string, number>();
+
+function uniqueSlug(base: string): string {
+  const count = seenSlugs.get(base) ?? 0;
+  seenSlugs.set(base, count + 1);
+  return count === 0 ? base : `${base}-${count + 1}`;
+}
+
 type WrapProps = { readonly children: ReactNode };
 
 function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
@@ -36,7 +45,7 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
     ...props
   }: ComponentPropsWithoutRef<typeof Tag>) {
     const text = typeof children === "string" ? children : "";
-    const id = props.id ?? slugify(text);
+    const id = props.id ?? uniqueSlug(slugify(text));
     return (
       <Tag
         id={id}
@@ -69,7 +78,7 @@ export const mdxComponents = {
   h6: createHeading(6),
 
   p: ({ children }: WrapProps) => (
-    <p className="my-3 leading-relaxed text-gray-700 dark:text-white/80">
+    <p className="my-3 leading-relaxed text-sp-gray-700 dark:text-white/80">
       {children}
     </p>
   ),
@@ -96,8 +105,8 @@ export const mdxComponents = {
   td: ({ children }: WrapProps) => <DataTableCell>{children}</DataTableCell>,
 
   pre: ({ children }: WrapProps) => (
-    <div className="group relative my-4 overflow-hidden rounded-xl border border-sp-border bg-gray-50 dark:border-white/10 dark:bg-[#0d1117]">
-      <pre className="overflow-x-auto px-6 py-4 text-sm leading-relaxed text-gray-700 dark:text-white/70 [&>code]:bg-transparent [&>code]:p-0">
+    <div className="group relative my-4 overflow-hidden rounded-xl border border-sp-border bg-sp-gray-50 dark:border-white/10 dark:bg-background">
+      <pre className="overflow-x-auto px-6 py-4 text-sm leading-relaxed text-sp-gray-700 dark:text-white/70 [&>code]:bg-transparent [&>code]:p-0">
         {children}
       </pre>
     </div>
@@ -126,12 +135,12 @@ export const mdxComponents = {
   },
 
   ul: ({ children }: WrapProps) => (
-    <ul className="my-3 ml-6 list-disc space-y-1.5 text-gray-700 marker:text-sp-teal dark:text-white/80">
+    <ul className="my-3 ml-6 list-disc space-y-1.5 text-sp-gray-700 marker:text-sp-teal dark:text-white/80">
       {children}
     </ul>
   ),
   ol: ({ children }: WrapProps) => (
-    <ol className="my-3 ml-6 list-decimal space-y-1.5 text-gray-700 marker:text-sp-teal dark:text-white/80">
+    <ol className="my-3 ml-6 list-decimal space-y-1.5 text-sp-gray-700 marker:text-sp-teal dark:text-white/80">
       {children}
     </ol>
   ),
@@ -140,7 +149,7 @@ export const mdxComponents = {
   ),
 
   blockquote: ({ children }: WrapProps) => (
-    <blockquote className="my-4 rounded-r-lg border-l-4 border-l-sp-teal bg-sp-teal-light/10 py-3 pl-4 pr-4 italic text-gray-600 dark:bg-sp-teal-light/5 dark:text-white/60">
+    <blockquote className="my-4 rounded-r-lg border-l-4 border-l-sp-teal bg-sp-teal-light/10 py-3 pl-4 pr-4 italic text-sp-text-secondary dark:bg-sp-teal-light/5 dark:text-white/60">
       {children}
     </blockquote>
   ),

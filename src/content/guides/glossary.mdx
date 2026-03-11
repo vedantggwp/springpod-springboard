@@ -19,14 +19,14 @@ One of four levels (Green, Yellow, Orange, Red) that determines how much process
 **Build prompt**
 A prompt you type into an AI tool while building your project. These are your instructions to the AI during development. They are temporary — they do not run inside the finished tool. See the [Prompt Management Standard](/standards/prompts).
 
-**COPPA**
-Children's Online Privacy Protection Act. A US law that restricts how websites and tools can collect data from children under 13. Relevant for Red builds serving young users. See the [Security Standard](/standards/security).
+**Children's Code (ICO)**
+The ICO's Age Appropriate Design Code — 15 standards that online services likely to be accessed by under-18s must follow. A statutory code of practice under the Data Protection Act 2018, meaning the ICO can enforce it. Covers defaults, data minimisation, profiling, nudge techniques, and more. See the [Safeguarding Standard](/standards/safeguarding).
 
 **Designated reviewer**
 The person who signs off on Red (Protected Build) projects. They have the authority and expertise to evaluate compliance and safety. See [Roles](/client-config/roles).
 
 **Encryption**
-Scrambling data so that only authorized people can read it. "At rest" means when stored in a database. "In transit" means when sent between the user's browser and your server. Required for Orange+ builds handling personal data.
+Scrambling data so that only authorised people can read it. "At rest" means when stored in a database. "In transit" means when sent between the user's browser and your server. Required for Orange+ builds handling personal data.
 
 **Environment variable**
 A setting stored outside your code that your tool can read at runtime. Used for API keys, database URLs, and other secrets. The safe alternative to putting secrets in your code.
@@ -34,11 +34,11 @@ A setting stored outside your code that your tool can read at runtime. Used for 
 **Escalation**
 Asking for help from someone with more expertise or authority. This is a good thing — not a failure. See [When to Escalate](/guides/when-to-escalate).
 
-**FERPA**
-Family Educational Rights and Privacy Act. A US law that protects student education records. Relevant for Red builds in educational settings.
+**EU AI Act**
+EU regulation classifying AI systems by risk level. Education AI is classified as high-risk. Applies to UK companies if their AI features are used by anyone in the EU (extraterritorial scope). High-risk system requirements enforced from August 2026. See [Company Context](/client-config/company-context).
 
 **GDPR**
-General Data Protection Regulation. An EU law that gives people control over their personal data, including the right to deletion and data portability. Relevant for Orange+ builds serving EU users.
+General Data Protection Regulation. A data protection framework. The UK retains its own version (UK GDPR) which applies to all personal data processing at Springpod, regardless of build path. The EU GDPR applies additionally when serving EU users.
 
 **Green: Quick Build**
 The simplest build path. For internal tools, prototypes, and throwaway projects with no sensitive data. 6 checklist items. No formal review required. See the [Green Guide](/build-guides/green-quick-build).
@@ -55,8 +55,14 @@ A written plan for what to do when something goes wrong with a live tool. Includ
 **Kill switch**
 A way to quickly take your tool offline if something goes wrong. Can be as simple as "delete the deployment" or "set it to private." Required for all builds.
 
+**NCSC**
+The National Cyber Security Centre — the UK's authority on cyber security. Provides password guidance (three random words, no forced rotation), Cyber Essentials certification, and security standards for UK organisations. See the [Security Standard](/standards/security).
+
 **No-Code tools**
 AI tools that let you describe what you want in plain language and generate a working tool without writing code. Examples: Lovable, Bolt, v0. See the [Tool Selection Guide](/guides/tool-selection).
+
+**Online Safety Act 2023**
+UK law placing duties on online platforms to protect users — especially children — from harmful content. Regulated by Ofcom. Applies to services with user-generated content or search features. Fines up to 10% of global revenue. See [Company Context](/client-config/company-context).
 
 **Orange: Reviewed Build**
 The build path for tools handling personal data or serving external users. 14 checklist items. Requires a technical review. See the [Orange Guide](/build-guides/orange-reviewed-build).
@@ -71,7 +77,7 @@ Any information that identifies or could identify a specific person — names, e
 AI coding tools that give you a full development environment with AI assistance. You work directly with code. Examples: Cursor, Claude Code. See the [Tool Selection Guide](/guides/tool-selection).
 
 **Production prompt**
-A prompt that runs inside your finished tool — like a chatbot's system instructions or an AI summarizer's rules. These affect what users see every time they use the tool. Required to be documented for Yellow+ builds. See the [Prompt Management Standard](/standards/prompts).
+A prompt that runs inside your finished tool — like a chatbot's system instructions or an AI summariser's rules. These affect what users see every time they use the tool. Required to be documented for Yellow+ builds. See the [Prompt Management Standard](/standards/prompts).
 
 **Progressive disclosure**
 The approach this framework uses for documentation. Each item has three layers: a one-line summary (for experienced builders), a "WHY" explanation (for those who want to understand), and a "HOW TO CHECK" walkthrough (for those who need step-by-step instructions). You choose how deep to go.
@@ -101,4 +107,4 @@ A person with security or technical expertise who reviews Orange builds. They ch
 Building software tools by describing what you want to an AI system, which then generates the code. The term captures the informal, creative nature of this approach — you set the "vibe" and the AI builds it. SpringBoard provides the governance layer for doing this responsibly.
 
 **Yellow: Standard Build**
-The build path for tools with business data and moderate customization needs. 10 checklist items. Requires peer review. See the [Yellow Guide](/build-guides/yellow-standard-build).
+The build path for tools with business data and moderate customisation needs. 10 checklist items. Requires peer review. See the [Yellow Guide](/build-guides/yellow-standard-build).

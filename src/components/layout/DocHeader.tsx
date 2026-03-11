@@ -1,6 +1,6 @@
 "use client";
 
-import { Github, Menu, Search } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import Link from "next/link";
 import { useCallback } from "react";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
@@ -18,8 +18,8 @@ export function DocHeader() {
 
   return (
     <header
-      className="sticky top-0 z-40 flex h-16 items-center border-b border-gray-200
-        bg-white px-4 dark:border-white/10 dark:bg-[#0d1117] lg:px-6"
+      className="sticky top-0 z-40 flex h-16 items-center border-b border-border
+        bg-white px-4 dark:border-white/10 dark:bg-background lg:px-6"
     >
       {/* Mobile hamburger */}
       <button
@@ -62,7 +62,7 @@ export function DocHeader() {
         onClick={openSearch}
         className="mr-3 hidden h-9 w-64 items-center gap-2 rounded-xl
           bg-sp-surface px-4 py-2 text-sm text-sp-text-muted
-          transition-colors hover:bg-[#dddde1]
+          transition-colors hover:bg-sp-gray
           dark:bg-white/10 dark:text-white/50 dark:hover:bg-white/15
           sm:flex"
       >
@@ -89,19 +89,6 @@ export function DocHeader() {
       >
         <Search size={18} />
       </button>
-
-      {/* GitHub link */}
-      <a
-        href="https://github.com/vedantggwp/SP-VibeFrame"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="GitHub"
-        className="mr-1 flex h-9 w-9 items-center justify-center rounded-md
-          text-sp-text-secondary transition-colors hover:bg-sp-surface hover:text-sp-navy
-          dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white"
-      >
-        <Github size={18} />
-      </a>
 
       {/* Theme toggle */}
       <ThemeToggle />

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import {
+  Bell,
   BookOpen,
   ChevronRight,
   ClipboardCheck,
@@ -12,8 +13,10 @@ import {
   HelpCircle,
   Home,
   Layers,
+  Palette,
   Settings,
   Shield,
+  Users,
   X,
 } from "lucide-react";
 import type { Navigation, NavSection } from "@/types/navigation";
@@ -27,6 +30,9 @@ const SECTION_ICONS: Record<string, React.ElementType> = {
   "Forms & Templates": Folder,
   Guides: HelpCircle,
   "Client Config": Settings,
+  "For Your Role": Users,
+  Updates: Bell,
+  "Design System": Palette,
   Reference: BookOpen,
 };
 
@@ -88,27 +94,33 @@ export function MobileNav({ navigation }: MobileNavProps) {
       {/* Drawer */}
       <div
         className={`fixed inset-y-0 left-0 z-50 w-72 transform overflow-y-auto
-          border-r border-gray-200 bg-white transition-transform duration-300
-          ease-in-out dark:border-white/10 dark:bg-[#161b22]
+          border-r border-border bg-white transition-transform duration-300
+          ease-in-out dark:border-white/10 dark:bg-card
           lg:hidden ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         {/* Drawer header */}
         <div
           className="flex h-16 items-center justify-between border-b
-            border-gray-200 px-4 dark:border-white/10"
+            border-border px-4 dark:border-white/10"
         >
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sp-navy to-sp-teal">
-              <span className="text-xs font-bold text-white">V</span>
-            </div>
+          <Link href="/" className="flex items-center gap-2.5" onClick={close}>
+            <img
+              src="/springpod-logo.svg"
+              alt="Springpod"
+              className="h-7 w-auto dark:hidden"
+            />
+            <img
+              src="/springpod-logo-dark.svg"
+              alt="Springpod"
+              className="hidden h-7 w-auto dark:block"
+            />
             <span
-              className="bg-gradient-to-r from-sp-navy to-sp-teal bg-clip-text
-                text-lg font-bold text-transparent
-                dark:from-white dark:to-sp-teal"
+              className="border-l border-sp-border pl-2.5 font-heading text-sm
+                font-semibold text-sp-navy dark:border-white/20 dark:text-white"
             >
-              Documentation
+              SpringBoard
             </span>
-          </div>
+          </Link>
           <button
             type="button"
             onClick={close}
@@ -152,7 +164,7 @@ function MobileNavSection({
   const Icon = SECTION_ICONS[section.title] ?? Folder;
   const isDirectLink = Boolean(section.href) && section.items.length === 0;
   const hasActiveChild = section.items.some((item) => pathname === item.href);
-  const [isExpanded, setIsExpanded] = useState<boolean>(hasActiveChild || true);
+  const [isExpanded, setIsExpanded] = useState<boolean>(hasActiveChild);
 
   const toggle = useCallback(() => {
     setIsExpanded((prev) => !prev);

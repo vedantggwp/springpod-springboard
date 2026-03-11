@@ -45,8 +45,8 @@ export function DocSidebar({ navigation }: DocSidebarProps) {
   return (
     <aside
       className="fixed bottom-0 left-0 top-16 z-30 hidden w-64 overflow-y-auto
-        border-r border-gray-200 bg-white pb-8 pt-4
-        dark:border-white/10 dark:bg-[#161b22] lg:block"
+        border-r border-border bg-white pb-8 pt-4
+        dark:border-white/10 dark:bg-card lg:block"
     >
       <nav aria-label="Documentation sidebar" className="px-3">
         {navigation.map((section) => (

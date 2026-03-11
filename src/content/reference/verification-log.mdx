@@ -14,17 +14,14 @@ Every factual claim in SpringBoard that references external standards, regulatio
 
 | ID | Claim | Document | Method | Source | Status | Date | Notes |
 |----|-------|----------|--------|--------|--------|------|-------|
-| R-001 | COPPA applies to children under 13 in the US | security.md, red-protected-build.md | official-docs | [ftc.gov/coppa](https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa) | Verified | 2026-03-04 | US jurisdiction only. 2025 rule amendments add new retention/consent requirements but age threshold unchanged. |
 | R-002 | GDPR Article 8 sets age thresholds between 13-16 depending on EU country | security.md, red-protected-build.md | official-docs | [gdpr-info.eu/art-8](https://gdpr-info.eu/art-8-gdpr/) | Verified | 2026-03-04 | Default is 16; member states may lower to 13. Range confirmed across EU. |
-| R-003 | NIST recommends longer passwords over complex ones | security.md | official-docs | [NIST SP 800-63B Rev 4](https://pages.nist.gov/800-63-4/sp800-63b.html) | Verified | 2026-03-04 | NIST eliminates forced complexity requirements; recommends 8 chars minimum, 15+ recommended. |
-| R-004 | FERPA protects student education records in the US | glossary.md | official-docs | [studentprivacy.ed.gov](https://studentprivacy.ed.gov/faq/what-ferpa) | Verified | 2026-03-04 | Applies to schools receiving federal funds. |
-| R-005 | CCPA grants right to know, delete, and opt out | red-protected-build.md | official-docs | [oag.ca.gov/privacy/ccpa](https://oag.ca.gov/privacy/ccpa) | Verified | 2026-03-04 | CPRA amendments (2023) added right to correct and right to limit sensitive data use. |
+| R-003 | NCSC recommends "three random words" over complex passwords | security.md | official-docs | [NCSC Password Guidance](https://www.ncsc.gov.uk/collection/passwords) | Updated | 2026-03-10 | Replaced NIST (US) with NCSC (UK). No forced complexity, no forced rotation, lockout after 10 attempts, encourage MFA and password managers. |
 
 ## Tool Capabilities (T-xxx)
 
 | ID | Claim | Document | Method | Source | Status | Date | Notes |
 |----|-------|----------|--------|--------|--------|------|-------|
-| T-001 | Lovable, Bolt, v0 are No-Code AI app builders | tool-selection.md | official-docs | [lovable.dev](https://lovable.dev), [bolt.new](https://bolt.new), [v0.app](https://v0.app) | Verified | 2026-03-04 | All active. Lovable and Bolt now offer code export; categorization as No-Code still appropriate for target audience. |
+| T-001 | Lovable, Bolt, v0 are No-Code AI app builders | tool-selection.md | official-docs | [lovable.dev](https://lovable.dev), [bolt.new](https://bolt.new), [v0.app](https://v0.app) | Verified | 2026-03-04 | All active. Lovable and Bolt now offer code export; categorisation as No-Code still appropriate for target audience. |
 | T-002 | Replit Agent is a Low-Code AI development environment | tool-selection.md | official-docs | [replit.com](https://replit.com) | Verified | 2026-03-04 | Agent 3 launched Sep 2025. Includes deployments, databases, 30+ integrations. |
 | T-003 | Cursor and Claude Code are Pro Tools | tool-selection.md | official-docs | [cursor.com](https://cursor.com), [claude.com/product/claude-code](https://claude.com/product/claude-code) | Verified | 2026-03-04 | Both active and widely adopted. |
 | T-004 | Vercel and Netlify provide HTTPS automatically | security.md | official-docs | [vercel.com/docs/domains](https://vercel.com/docs/domains/working-with-ssl), [docs.netlify.com](https://docs.netlify.com/manage/domains/secure-domains-with-https/https-ssl/) | Verified | 2026-03-04 | Free SSL via Let's Encrypt, auto-provisioned. |
@@ -34,7 +31,7 @@ Every factual claim in SpringBoard that references external standards, regulatio
 
 | ID | Claim | Document | Method | Source | Status | Date | Notes |
 |----|-------|----------|--------|--------|--------|------|-------|
-| S-001 | Minimum 8 character passwords, block commonly compromised passwords | security.md | official-docs | [NIST SP 800-63B Rev 4](https://pages.nist.gov/800-63-4/sp800-63b/passwords/) | Verified | 2026-03-04 | 8-char is baseline; 15+ recommended for single-factor auth. NIST says block compromised passwords via breach corpus, does not specify a number. |
+| S-001 | Use "three random words" method, block compromised passwords | security.md | official-docs | [NCSC Password Guidance](https://www.ncsc.gov.uk/collection/passwords/updating-your-approach) | Updated | 2026-03-10 | Replaced NIST (US) with NCSC (UK). Three random words for user passwords. Block breached passwords via deny lists. No forced rotation. Lock after 10 failed attempts. |
 
 ## Accessibility Standards (A-xxx)
 

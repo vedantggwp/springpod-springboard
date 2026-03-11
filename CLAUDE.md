@@ -4,14 +4,14 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**Vibe Coding Framework (VCF)** — a documentation-only framework that guides non-technical builders through AI-powered tool development using risk-appropriate processes. Content is organized into build paths (Green/Yellow/Orange/Red) with progressive disclosure.
+**SpringBoard** — Springpod's internal AI knowledge base that guides non-technical builders through AI-powered tool development using risk-appropriate processes. Content is organized into build paths (Green/Yellow/Orange/Red) with progressive disclosure.
 
 This is **not an application**. There is no backend, no database. All content is MDX rendered as a static site.
 
 ## Tech Stack
 
 - **Next.js 16** (App Router, SSG via `generateStaticParams`)
-- **Tailwind CSS v4** with VCF design tokens
+- **Tailwind CSS v4** with Springpod design tokens (`sp-*`)
 - **next-mdx-remote** for rendering MDX content
 - **shiki** for code syntax highlighting
 - **Fuse.js** for client-side search
@@ -63,7 +63,7 @@ All source content lives in `src/content/` as `.mdx` files. Navigation is define
 ## Design Tokens
 
 Navy/teal theme defined as Tailwind CSS v4 `@theme` tokens in `src/app/globals.css`:
-- `vcf-navy` (#16254C), `vcf-teal` (#0BB3B7), `vcf-blue` (#446DF6)
+- `sp-navy` (#16254C), `sp-teal` (#0BB3B7), `sp-blue` (#446DF6)
 - Dark mode uses CSS variables with `.dark` class strategy
 
 ## Planning & Audit Trail

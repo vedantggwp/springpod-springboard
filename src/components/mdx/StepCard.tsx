@@ -38,15 +38,15 @@ export default function StepCard({
         className={[
           "mb-4 flex-1 rounded-xl border border-sp-border bg-white p-5",
           "transition-shadow duration-200 hover:shadow-md",
-          "dark:border-white/10 dark:bg-[#161b22]",
+          "dark:border-white/10 dark:bg-card",
         ].join(" ")}
       >
         <h4 className="mb-1 text-lg font-medium text-sp-navy dark:text-white">
           {title}
         </h4>
-        <p className="text-sm leading-relaxed text-sp-text-secondary dark:text-white/60">
+        <div className="text-sm leading-relaxed text-sp-text-secondary dark:text-white/60">
           {children}
-        </p>
+        </div>
         {href && cta && (
           <a
             href={href}

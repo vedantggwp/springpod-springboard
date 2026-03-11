@@ -6,17 +6,9 @@ This document captures Springpod's values, constraints, and policies that shape 
 
 ## About Springpod
 
-**Company name:** Springpod
-
 **Industry:** EdTech — virtual work experience and careers education platform
 
-**Size:** ~80 employees
-
-**Mission:** Enable all young people to select and secure their brightest future by democratising access to quality work experience and careers education
-
-**Founded by:** Sam Hyams (CEO) and Oliver Fisher (Co-Founder & CPO), London
-
-**Scale:** 1M+ student enrolments, 4,000+ partner schools, 300+ employer and university partners
+**What we do:** Springpod connects young people (ages 13+) with virtual work experience, career insights, and employer partnerships. Our platform serves students, schools, and employers across the UK and US.
 
 **Primary AI use cases:** Internal dashboards, student engagement tools, content generation, employer reporting, AI-powered interview skills coach, automated assessment aids, curriculum content tools
 
@@ -50,13 +42,19 @@ These are the hard limits on what we can build and how we can build it.
 
 | Regulation | Applies? | Notes |
 |------------|----------|-------|
-| UK GDPR | Yes | All personal data processing, ICO registered (ZA195343) |
-| COPPA (US children's privacy) | Monitoring | US expansion underway, will apply when serving US students under 13 |
-| FERPA (US student records) | Not yet | Will apply with US school partnerships |
-| CCPA (California privacy) | Not yet | Will apply with California users |
-| Data Protection Act 2018 | Yes | Primary UK legislation |
-| PECR | Yes | Electronic communications to students and parents |
-| Gatsby Benchmarks | Yes | Platform aligned to 8 Gatsby career education benchmarks |
+| UK GDPR | Yes | All personal data processing |
+| Data Protection Act 2018 | Yes | Primary UK legislation, statutory basis for the Children's Code |
+| ICO Children's Code | Yes | 15 standards for online services accessed by under-18s. Enforceable — up to 4% global turnover |
+| Data (Use and Access) Act 2025 | Yes | Amends UK GDPR. Introduces EdTech-specific code of practice (ICO, expected Spring 2026) |
+| PECR | Yes | Electronic communications to students, parents, and schools |
+| Online Safety Act 2023 | Likely | Applies if any user-generated content or search features. Up to 10% global revenue |
+| Equality Act 2010 | Yes | Digital accessibility — WCAG 2.2 AA is the benchmark for "reasonable adjustments" |
+| EU AI Act | Conditional | Extraterritorial — applies if any EU users. Education AI is high-risk. Deadline: August 2026 |
+| DfE AI Safety Standards | Yes | Generative AI product safety expectations for EdTech. Referenced by KCSIE 2025 |
+| KCSIE 2025 | Indirectly | Schools must ensure EdTech meets filtering, monitoring, and safeguarding requirements |
+| Gatsby Benchmarks | Yes | Platform aligned to 8 Gatsby career education benchmarks (updated Sept 2025) |
+
+For the full regulatory reference with detailed requirements, see [Regulatory Reference](/docs/REGULATORY-REFERENCE.md).
 
 ---
 
@@ -64,7 +62,7 @@ These are the hard limits on what we can build and how we can build it.
 
 - AI-assisted development is encouraged for all build paths
 - AI-generated content that students see must be human-reviewed before publication
-- The AI-Powered Interview Skills Coach is an approved student-facing AI feature
+- The AI-Powered Interview Skills Coach is an approved student-facing AI feature (see [Prompt Library](/client-config/prompt-library))
 - AI models processing student data must be approved by the Data team
 - Student-facing AI features must disclose AI involvement with age-appropriate language (e.g., "This feedback was created with the help of AI")
 - No AI-generated content may make promises about career outcomes
@@ -86,7 +84,7 @@ These are the hard limits on what we can build and how we can build it.
 
 This document should be reviewed at least once a year or whenever company policies, compliance requirements, or AI practices change. Key triggers for an update include:
 
-- New regulatory requirements (e.g., entering the US market triggers COPPA/FERPA obligations)
+- New regulatory requirements or market expansions (e.g., entering new markets may trigger additional regulatory obligations)
 - Changes to the approved AI model list or data processing agreements
 - Updates to the Springpod data classification scheme
 - New student-facing AI features being approved or retired

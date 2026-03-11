@@ -9,7 +9,7 @@ interface DocBreadcrumbsProps {
 export function DocBreadcrumbs({ sectionTitle, pageTitle }: DocBreadcrumbsProps) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6">
-      <ol className="flex items-center gap-1.5 text-sm text-gray-600 dark:text-white/50">
+      <ol className="flex items-center gap-1.5 text-sm text-sp-text-secondary dark:text-white/50">
         <li>
           <Link
             href="/"
@@ -29,7 +29,7 @@ export function DocBreadcrumbs({ sectionTitle, pageTitle }: DocBreadcrumbsProps)
           <ChevronRight size={12} className="text-sp-border dark:text-white/30" />
         </li>
         <li>
-          <span className="font-medium text-gray-900 dark:text-white/87">
+          <span className="font-medium text-foreground dark:text-white/87">
             {pageTitle}
           </span>
         </li>

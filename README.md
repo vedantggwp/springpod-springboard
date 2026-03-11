@@ -1,19 +1,17 @@
-# Vibe Coding Framework (VCF)
+# SpringBoard
 
-A documentation-only framework that guides non-technical builders through AI-powered tool development using risk-appropriate processes.
+Springpod's internal AI knowledge base — standards, guides, and tools for building with AI.
 
-**[Live Site →](https://sp-vibe-frame.vercel.app)**
+## What is SpringBoard?
 
-## What is VCF?
-
-VCF helps you build AI-powered tools — quickly, safely, and consistently. Answer 5 questions about your project, get assigned a build path (Green/Yellow/Orange/Red), and follow step-by-step guidance tailored to your risk level.
+SpringBoard helps Springpod teams build AI-powered tools — quickly, safely, and consistently. Answer 5 questions about your project, get assigned a build path (Green/Yellow/Orange/Red), and follow step-by-step guidance tailored to your risk level.
 
 No backend, no database. All content is MDX rendered as a static site.
 
 ### Framework layers
 
 1. **Intake** — 5-question classifier that assigns your build path
-2. **Standards** — Quality, security, branding, and prompt guidelines
+2. **Standards** — Quality, security, branding, safeguarding, and prompt guidelines
 3. **Build Guides** — Step-by-step walkthroughs for each path
 4. **Checklists** — Binary verification before going live
 5. **Forms & Templates** — Project briefs, reviews, incidents, build logs
@@ -23,7 +21,7 @@ No backend, no database. All content is MDX rendered as a static site.
 ## Tech Stack
 
 - **Next.js 16** (App Router, SSG)
-- **Tailwind CSS v4** with custom design tokens
+- **Tailwind CSS v4** with Springpod design tokens (`sp-*`)
 - **next-mdx-remote** + **remark-gfm** for MDX rendering
 - **shiki** for syntax highlighting
 - **Fuse.js** for client-side search (Cmd+K)

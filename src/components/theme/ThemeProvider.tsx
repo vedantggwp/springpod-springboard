@@ -19,18 +19,12 @@ const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 const STORAGE_KEY = "sp-theme";
 
-function getSystemPreference(): Theme {
-  if (typeof window === "undefined") return "light";
+function getStoredTheme(): Theme {
+  const stored = localStorage.getItem(STORAGE_KEY);
+  if (stored === "light" || stored === "dark") return stored;
   return window.matchMedia("(prefers-color-scheme: dark)").matches
     ? "dark"
     : "light";
-}
-
-function getInitialTheme(): Theme {
-  if (typeof window === "undefined") return "light";
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === "light" || stored === "dark") return stored;
-  return getSystemPreference();
 }
 
 function applyTheme(theme: Theme): void {
@@ -43,18 +37,33 @@ function applyTheme(theme: Theme): void {
 }
 
 export function ThemeProvider({ children }: { readonly children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  // Always SSR as "light" — the blocking script in <head> already applies
+  // .dark to <html> before hydration, so the CSS is correct from first paint.
+  const [theme, setTheme] = useState<Theme>("light");
+  const [mounted, setMounted] = useState(false);
 
+  // Sync React state with what the blocking script already set
   useEffect(() => {
-    applyTheme(theme);
-  }, [theme]);
+    const realTheme = getStoredTheme();
+    setTheme(realTheme);
+    applyTheme(realTheme);
+    setMounted(true);
+  }, []);
 
+  // Keep .dark class in sync when theme changes after mount
+  useEffect(() => {
+    if (mounted) {
+      applyTheme(theme);
+    }
+  }, [theme, mounted]);
+
+  // Listen for system preference changes
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (!stored) {
-        const systemTheme = mediaQuery.matches ? "dark" : "light";
+        const systemTheme: Theme = mediaQuery.matches ? "dark" : "light";
         setTheme(systemTheme);
       }
     };
