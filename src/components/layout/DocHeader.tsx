@@ -52,6 +52,13 @@ export function DocHeader() {
         >
           SpringBoard
         </span>
+        <span
+          className="ml-1.5 rounded-full bg-sp-teal/10 px-2 py-0.5 text-[10px]
+            font-semibold uppercase tracking-wider text-sp-teal
+            dark:bg-sp-teal/20 dark:text-sp-teal"
+        >
+          Beta
+        </span>
       </Link>
 
       <div className="flex-1" />

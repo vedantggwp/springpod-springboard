@@ -1,6 +1,6 @@
 {
   "name": "springpod-springboard",
-  "version": "1.0.0",
+  "version": "0.2.0-beta",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
