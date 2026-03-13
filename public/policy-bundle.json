@@ -1,0 +1,50 @@
+{
+  "version_hash": "sha256:41431ef7adbd046ced380c15e318cd501db83d18704ad7f32389544969eadf57",
+  "built_from_commit": "049105b",
+  "built_at": "2026-03-13T17:56:47.933Z",
+  "source_file": "src/content/intake/project-intake.mdx",
+  "path_mappings": {
+    "audience": {
+      "internal_staff": "green",
+      "partners_vendors": "yellow",
+      "external_customers": "orange",
+      "students_or_minors": "red"
+    },
+    "data_type": {
+      "no_real_data": "green",
+      "internal_business_data": "yellow",
+      "personal_data": "orange",
+      "protected_data": "red"
+    },
+    "impact": {
+      "minor_inconvenience": "green",
+      "team_slowed": "yellow",
+      "external_users_affected": "orange",
+      "legal_safety_financial": "red"
+    },
+    "lifespan": {
+      "throwaway": "green",
+      "ongoing_replaceable": "yellow",
+      "core_to_operations": "orange"
+    },
+    "ai_role": {
+      "ai_built_logic_defined": "green",
+      "ai_generates_content": "orange",
+      "ai_makes_decisions": "red"
+    }
+  },
+  "unsure_defaults": {
+    "audience": "external_customers",
+    "data_type": "personal_data",
+    "impact": "external_users_affected",
+    "lifespan": "ongoing_replaceable",
+    "ai_role": "ai_generates_content"
+  },
+  "path_descriptions": {
+    "green": "Quick Build — low-risk, self-checked",
+    "yellow": "Standard Build — peer-reviewed",
+    "orange": "Reviewed Build — technical review required",
+    "red": "Protected Build — designated reviewer sign-off required"
+  },
+  "raw_source_hash": "e94b8ca6f05262e22545e6283a7bec55e3b42507e9f7605f4565a849b140b7b3"
+}

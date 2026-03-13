@@ -1,0 +1,617 @@
+{
+  "built_at": "2026-03-13T17:56:47.936Z",
+  "built_from_commit": "049105b",
+  "standards": [
+    {
+      "slug": "standards-branding",
+      "title": "Branding Standard",
+      "chunks": [
+        {
+          "heading": "Visual identity",
+          "content": "### Colors\n\n| Usage | Color | Hex |\n|-------|-------|-----|\n| Primary (buttons, headers) | Springpod Teal | #0BB3B7 |\n| Secondary (accents, links) | Springpod Blue | #446DF6 |\n| Dark (text, dark backgrounds) | Springpod Navy | #16254C |\n| Background | White | #FFFFFF |\n| Light background | Light Gray | #E4ECF7 |\n| Text | Springpod Navy | #16254C |\n| Error/warning | Red | #FF475A |\n| Success | Teal (dark) | #0A8F93 |\n| Accent warm | Orange | #F7936F |\n| Accent cool | Purple | #7F7EFF |\n\n---\n\n### Typography\n\n| Usage | Font | Size |\n|-------|------|------|\n| Headings | Poppins SemiBold (600) | 32px / 24px / 20px |\n| Body text | Inter Regular (400) | 16px |\n| Small text / captions | Inter Regular (400) | 14px |\n| UI elements | Inter Medium (500) | 14px |\n\n---\n\n### Logo usage\n\n- **Primary logo:** Springpod wordmark (teal on white, white on navy)\n- **Favicon:** Springpod \"S\" mark\n- **Minimum clear space:** Equal to the height of the \"S\" mark on all sides\n- **Do not** stretch, rotate, recolor, or place on busy backgrounds\n- **On dark backgrounds**, use the white version of the logo\n\n---"
+        },
+        {
+          "heading": "Tone of voice",
+          "content": "Springpod's voice is friendly, encouraging, and clear — especially for students. We avoid jargon and corporate-speak.\n\n| Do | Do not |\n|----|--------|\n| \"Let's get you started\" | \"Please initiate the onboarding process\" |\n| \"Something went wrong — try again in a moment\" | \"Error 500: Internal Server Exception\" |\n| \"You're all set!\" | \"Process completed successfully\" |\n| \"We couldn't find that page\" | \"404 Not Found\" |\n| \"This experience is no longer available\" | \"Resource has been deprecated\" |\n| \"Great work — you've completed this step\" | \"Task execution confirmed\" |\n\n---"
+        },
+        {
+          "heading": "AI-generated content guidelines",
+          "content": "When AI generates text that users see (chatbot responses, summaries, recommendations), it must:\n\n    AI defaults to a neutral, slightly formal tone. Adjust the prompt to match Springpod's friendly, encouraging voice.\n\n    \n\n    Springpod's AI disclosure policy:\n    - **Student-facing AI features** must include age-appropriate disclosure, e.g.: \"This feedback was created with the help of AI. A real person reviewed it before it reached you.\"\n    - **Internal tools** do not require AI disclosure but should note it in the Build Log.\n    - **B2B/partner-facing tools** should mention AI where it adds trust (e.g., \"AI-assisted matching\").\n\n    AI should never say \"I guarantee\" or \"This will definitely work.\" Use language like \"Based on the available information\" or \"This suggests.\"\n\n    \n\n    Springpod's brand is warm and informal for student-facing content. Use friendly language, celebrate progress, and keep things conversational — but avoid slang that may not translate across audiences.\n\n---"
+        },
+        {
+          "heading": "Checking your build against brand",
+          "content": "Use this quick checklist before shipping any Orange+ build:"
+        }
+      ],
+      "token_count": 781
+    },
+    {
+      "slug": "standards-data-workflows",
+      "title": "Data Workflows",
+      "chunks": [
+        {
+          "heading": "Data classification",
+          "content": "Every piece of data your tool touches falls into one of four categories. The category determines your build path and what approvals you need.\n\n| Data type | Examples | Build path | Data team sign-off? |\n|-----------|----------|------------|---------------------|\n| **Public** | Marketing copy, published course descriptions, public event listings | Green | No |\n| **Business** | Internal metrics, team KPIs, pipeline reports, anonymised aggregates | Yellow | Only if connecting to DWH |\n| **Personal** | Names, email addresses, school names linked to individuals, employer contacts | Orange | Yes |\n| **Protected** | Student data (under-18s), assessment results, health information, safeguarding records | Red | Yes — mandatory review |\n\n---"
+        },
+        {
+          "heading": "When to involve the Data team",
+          "content": "You must get Data team sign-off before you ship if your tool does any of the following.\n\n### All build paths\n\n    This includes read-only connections. Even viewing data requires approval because it creates a new access point.\n\n    \n\n    \n\n    Moving data between systems via files is one of the most common ways data leaks happen. A CSV on someone's laptop is unencrypted and untracked.\n\n    \n\n    If your tool sends any Springpod data to an external service (including AI APIs like OpenAI or Anthropic), the Data team must review what data is being sent and where.\n\n    \n\n### Orange and Red paths\n\n    Student data includes names, emails, enrolment records, school affiliations, programme progress, and anything else tied to a student account. No exceptions.\n\n    \n\n    \n\n    If your tool creates a new database table, a new spreadsheet, or a new collection of records, the Data team needs to know. New data stores must follow Springpod's data architecture standards.\n\n---"
+        },
+        {
+          "heading": "Penetration testing triggers",
+          "content": "A penetration test (pen test) is a controlled attempt to break into your tool, performed by a specialist. You do not run it yourself — but you need to know when one is required.\n\n### Your tool needs a pen test if any of these are true\n\n    If someone outside Springpod (students, schools, employers) can access your tool and it requires authentication, a pen test is required before launch.\n\n    \n\n    Any tool handling personal data (Orange path) or protected data (Red path) must pass a pen test before going live.\n\n    \n\n    Any tool with a direct connection to a production database — not a copy, not a staging environment, the real thing — must be pen tested.\n\n    \n\n### What happens during a pen test\n\nYou do not need to do anything technical. The process:\n\n1. You flag the requirement in your [Review Request](/forms/review-request)\n2. The designated reviewer coordinates with the security team\n3. The security team tests your tool (typically 1–3 days)\n4. You receive a report with findings rated Critical / High / Medium / Low\n5. Critical and High findings must be fixed before launch\n6. Medium findings should be fixed within 30 days of launch\n\n---"
+        },
+        {
+          "heading": "Backup requirements",
+          "content": "### All build paths\n\n    Before you launch, you must be able to answer: \"If this tool lost all its data right now, how would we recover?\" If you cannot answer that, stop and sort it out.\n\n    \n\n### Yellow path and above\n\n    Manual backups are not reliable enough for business data. Your data store must have automated daily backups at minimum.\n\n    \n\n### Orange and Red paths\n\n    Backups of personal or protected data must be encrypted. Only authorised personnel should be able to access or restore them.\n\n    \n\n    A backup you have never tried to restore is not a backup — it is a hope. Before launch, restore from a backup to confirm it works.\n\n    \n\n### Data warehouse (DWH) considerations\n\n    Reading from the DWH requires sign-off (covered above). Writing to the DWH has stricter requirements because bad data flowing in can corrupt reports and dashboards used across the company.\n\n    \n\n    The DWH has its own backup schedule managed by the Data team. If your tool depends on DWH data, confirm the backup frequency meets your tool's recovery requirements.\n\n---"
+        },
+        {
+          "heading": "Quick reference",
+          "content": "| What your tool does | Data classification | Build path | Data team sign-off | Pen test required | Backup requirement |\n|---------------------|-------------------|------------|-------------------|-------------------|-------------------|\n| Displays public content only | Public | Green | No | No | Provider default |\n| Reads internal metrics from DWH | Business | Yellow | Yes | No | Daily automated |\n| Imports employer contact CSVs | Personal | Orange | Yes | Yes (if external) | Daily, encrypted |\n| Shows student enrolment data | Protected | Red | Yes — mandatory | Yes | Daily, encrypted, tested |\n| Writes to production database | Depends on data | Orange or Red | Yes | Yes | Daily, encrypted, tested |\n| Sends data to external AI API | Depends on data | Orange or Red | Yes | Depends on data type | Depends on data type |\n\n---"
+        },
+        {
+          "heading": "What to do if you are unsure",
+          "content": "If you are not sure how to classify your data, whether you need a pen test, or what backup approach to use — ask. It is always safer to check than to guess.\n\n1. Start with [When to Escalate](/guides/when-to-escalate) for guidance on who to contact\n2. Raise a [Review Request](/forms/review-request) and describe what your tool does with data\n3. The Data team and your [designated reviewer](/client-config/roles) will help you get it right"
+        }
+      ],
+      "token_count": 1414
+    },
+    {
+      "slug": "standards-prompts",
+      "title": "Prompt Management Standard",
+      "chunks": [
+        {
+          "heading": "Two kinds of prompts",
+          "content": "### Build prompts (used to create your tool)\n\nWhat you type into Replit, Cursor, Claude, or any AI tool to generate code. These are your instructions to the AI while building.\n\nBuild prompts are temporary. They helped you create the tool, but they are not running inside it.\n\n### Production prompts (running inside your tool)\n\nPrompts that your finished tool uses — like a chatbot's system prompt, an AI summariser's instructions, or a recommendation engine's criteria. These affect what your users see every time they use the tool.\n\n**The rule:** Build prompts are temporary notes. Production prompts are product decisions.\n\n---"
+        },
+        {
+          "heading": "Build prompt best practices",
+          "content": "### 1. Start from the prompt library\n\nCheck the [Prompt Library](/client-config/prompt-library) before writing your own. Tested prompts give better results faster than starting from scratch.\n\n### 2. Be specific about what you want\n\nVague prompts produce vague results. Specific prompts produce useful results.\n\n**Instead of this:**\n\n> Make a dashboard\n\n**Write this:**\n\n> Create a dashboard that shows daily active users, weekly retention rate, and revenue per user. Use a line chart for trends over the past 30 days and summary cards for current values. Use the colour scheme: primary #1B3A5C, accent #2ABFBF, background #FFFFFF.\n\n### 3. Include your constraints\n\nTell the AI what NOT to do, not just what to do.\n\n**Example constraints:**\n\n> Do not use any external libraries. Keep all code in a single file. Do not add any features I did not ask for. Use only the colors listed above.\n\n### 4. Test with 3 variations (Orange+ builds)\n\nWrite your prompt 3 slightly different ways. Compare the outputs. Pick the one closest to what you need, then refine it.\n\n### 5. Save your prompts alongside your project (Yellow+ builds)\n\nIf someone needs to modify your tool later, they need to know what instructions you gave the AI.\n\n---"
+        },
+        {
+          "heading": "Production prompt requirements",
+          "content": "Production prompts — the ones running inside your finished tool — need more care because they affect real users every time the tool is used.\n\n### All build paths\n\n    You can describe what the prompt does in one sentence. If you cannot, it is doing too much — split it up.\n\n### Yellow: Standard Build (and above)\n\n    Use the [Prompt Spec Template](/forms/prompt-spec) to record: what the prompt does, the full prompt text, expected inputs and outputs, and known limitations.\n\n    \n\n### Orange: Reviewed Build (and above)\n\n    - **Brand voice alignment** — Does the output match your [Branding Standard](/standards/branding)?\n    - **Bias** — Does it treat all users fairly regardless of background?\n    - **Safety** — Can it produce harmful, misleading, or inappropriate output?\n    - **Edge cases** — What happens with unexpected, empty, or very long input?\n\n    \n\n### Red: Protected Build\n\n    If your tool serves students aged 14-18, test prompts with inputs typical of that age group — not adult professionals.\n\n    \n\n    For each production prompt, answer: what is the worst output this prompt could produce? What safeguards prevent that?\n\n    \n\n    Every change to a production prompt is recorded with the date, what changed, and why.\n\n    \n\n---"
+        },
+        {
+          "heading": "AI testing",
+          "content": "Traditional testing checks whether your code works. AI testing checks whether your AI outputs are accurate, fair, and safe. Because AI can produce different results each time, you need specific testing strategies beyond normal QA.\n\nAI testing is not a separate phase — it is part of building. Every time you add or change a production prompt, run these checks before going live.\n\n### All build paths\n\n    Test your tool with at least 5 inputs where you already know the right answer. Compare what the AI produces to what the answer should be.\n\n    \n\n### Yellow: Standard Build (and above)\n\n    AI tools sometimes present invented information as fact. This is called hallucination. Your tool must not pass made-up facts to users.\n\n    \n\n    \n\n    Your tool should handle unusual inputs gracefully — not crash, produce nonsense, or reveal its system prompt.\n\n    \n\n### Orange: Reviewed Build (and above)\n\n    AI tools can treat people differently based on names, backgrounds, or demographics. Test that your tool gives equally useful outputs regardless of who is using it.\n\n    \n\n    \n\n    Prompt injection is when a user types instructions that try to override your tool's system prompt. Test that your tool resists these attacks.\n\n    \n\n    \n\n### Indirect prompt injection (Orange+ builds)\n\nDirect injection is when a user types something malicious. **Indirect injection** is when malicious instructions are hidden inside content the AI processes — a document, a pasted URL, an email, or uploaded data.\n\n### Red: Protected Build\n\n    Tools serving students aged 13-18 must produce content that is suitable for that audience — in language level, tone, and subject matter.\n\n    \n\n    \n\n    Someone other than the builder must try to break the AI. Builders have blind spots about their own tools.\n\n    \n\n    After launch, you need a plan to catch bad AI outputs that slip through testing. You cannot manually review every interaction.\n\n    \n\n---"
+        },
+        {
+          "heading": "Quick reference",
+          "content": "| What | Build prompts | Production prompts | AI testing |\n|------|--------------|-------------------|------------|\n| When used | While you are building | After the tool is live | Before and after launch |\n| Who sees the output | You (the builder) | Your users | You and reviewers |\n| If it gives a bad result | Regenerate, no harm done | Users are affected | Catch it before users do |\n| Documentation needed | Yellow+: save alongside project | Yellow+: full prompt spec | Orange+: test results documented |\n| Review needed | No | Orange+: bias, safety, brand, edge cases | Red: adversarial review by another person |\n| Version control needed | No | Red: yes | Red: monitoring plan required |"
+        }
+      ],
+      "token_count": 1548
+    },
+    {
+      "slug": "standards-quality",
+      "title": "Quality Standard",
+      "chunks": [
+        {
+          "heading": "Universal quality rules (all build paths)",
+          "content": "These apply to every project, whether it is a quick prototype or a fully protected tool.\n\n### 1. It does what it says it does\n\nIf your project brief says \"show student engagement metrics,\" it shows student engagement metrics. Not some of them — all of them.\n\n---\n\n### 2. It handles mistakes gracefully\n\nIf someone enters wrong information or the tool loses its connection, it shows a clear message — not a blank screen or a cryptic error.\n\n---\n\n### 3. It looks intentional\n\nConsistent colors, aligned elements, readable text. Not polished — intentional. There is a difference between \"simple\" and \"sloppy.\"\n\n---\n\n### 4. It works on the devices your users have\n\nIf your users are on phones, it works on phones. If they use tablets, it works on tablets. You do not get to decide what device people use.\n\n---"
+        },
+        {
+          "heading": "Additional quality rules by build path",
+          "content": "Each path adds requirements on top of the universal rules above.\n\n### Yellow: Standard Build (and above)\n\n    Use real names, real numbers, edge cases (empty fields, very long text, special characters like accents or apostrophes). \"Test123\" will not reveal problems.\n\n    \n\n    Not \"looked at\" — actually used it. Asked them to complete the main task without help. Watched where they got confused.\n\n    \n\n---\n\n### Orange: Reviewed Build (and above)\n\n    Correct colors, logo placement, and tone of voice. See [Branding Standard](/standards/branding) for details.\n\n    \n\n    Test on a connection similar to what your users have, not your office fiber.\n\n    \n\n    \n\n---\n\n### Red: Protected Build\n\n    Keyboard navigation works. Text contrast is sufficient. Images have alt text. Screen readers can parse the page.\n\n    \n\n    \n\n    If your tool is for parents, test with parents. If it is for students, test with students (with appropriate consent).\n\n    \n\n    If 500 people will use this at once, test with 500 simultaneous connections, not just 5."
+        }
+      ],
+      "token_count": 538
+    },
+    {
+      "slug": "standards-safeguarding",
+      "title": "Safeguarding & Under-18s",
+      "chunks": [
+        {
+          "heading": "The one rule",
+          "content": "**Assume every user is under 18 until your tool proves otherwise.**\n\n---"
+        },
+        {
+          "heading": "Safeguarding requirements by build path",
+          "content": "### All build paths\n\n    Before you build anything, answer this question: could a student (aged 13-18) use this tool, see its output, or have their data processed by it? If the answer is yes, or even maybe, every rule on this page applies.\n\n    \n\n    Your tool must not display, generate, or link to content that is unsuitable for a 13-year-old. This includes AI-generated text, images, and any third-party content your tool pulls in.\n\n    \n\n    \n\n    If your tool includes any form of communication (chat, messaging, comments, feedback), it must not enable unsupervised private contact between adults and young people.\n\n    \n\n---\n\n### Yellow: Standard Build (and above)\n\n    If your tool uses AI to generate text, summaries, or recommendations, you must have at least one layer of content filtering. This could be system prompt instructions, an output filter, or a review step before content reaches the student.\n\n    \n\n    \n\n    Do not ask students for information your tool does not use. No date of birth if you only need age range. No home address if location is irrelevant. No phone number if you communicate by email.\n\n    \n\n    \n\n---\n\n### Orange: Reviewed Build (and above)\n\n    Your tool must follow the ICO's Age Appropriate Design Code (also called the Children's Code). The key principles that affect builders:\n\n    - **Default to maximum privacy** — do not make students opt out of data sharing; make them opt in\n    - **No nudge techniques** — do not use design patterns that encourage young people to weaken their privacy settings or share more data\n    - **No profiling for marketing** — do not use student data to build behavioural profiles for marketing purposes\n    - **Transparency** — explain what data you collect in language a 13-year-old can understand\n\n    \n\n    \n\n    For Orange builds and above, relying solely on system prompts is not enough. You need at least two moderation layers — for example, system prompt instructions plus an automated content filter, or an automated filter plus a human review step.\n\n    \n\n    Data about students (especially under-18s) should be clearly identified and stored separately from general business data. This makes it easier to apply the right protections and respond to data requests.\n\n    \n\n---\n\n### Red: Protected Build\n\n    A DPIA is a structured process for identifying and minimising data protection risks. It is legally required under UK GDPR when processing children's data at scale or using new technologies (including AI).\n\n    \n\n    \n\n    For students under 13 (if applicable) or where Springpod policy requires it, your tool must obtain verifiable parental or guardian consent before collecting personal data.\n\n    \n\n    \n\n    A safeguarding review goes beyond data protection. It covers content safety, contact risks, behavioural design, and the overall impact of your tool on young people. This review must be conducted by someone with safeguarding expertise, not just a technical reviewer.\n\n    \n\n    If your tool uses AI to make decisions about students (e.g., recommending work experience placements, filtering applications, scoring engagement), those decisions must be explainable in plain language, and a human must be able to review and override them.\n\n    \n\n---"
+        },
+        {
+          "heading": "Springpod-specific considerations",
+          "content": "These rules apply specifically to the types of tools commonly built at Springpod.\n\n    If your tool generates, curates, or displays content related to virtual work experience (VWE), verify that it is factually accurate, age-appropriate, and does not misrepresent what an employer or career path involves.\n\n    Springpod connects students with employer partners. Your tool must ensure that employer-facing data (commercial terms, internal notes, recruitment targets) is never visible to students, and that student data (personal details, engagement metrics) is never shared with employers beyond what is agreed and consented to.\n\n    If your tool includes any form of student profile, the default must be minimal visibility. Students should actively choose to share more, not have to opt out of sharing.\n\n    \n\n    Many students access Springpod through their school. Tools must respect the role of the school as an intermediary — schools may have their own safeguarding requirements that go beyond Springpod's baseline.\n\n    \n\n---"
+        },
+        {
+          "heading": "What to do if you are unsure",
+          "content": "Safeguarding is one area where asking is always the right choice. There is no penalty for being cautious.\n\n1. **If you are not sure whether your tool affects young people** — assume it does and follow this page\n2. **If you are not sure about a specific requirement** — ask your [designated reviewer](/client-config/roles)\n3. **If you discover a safeguarding concern in an existing tool** — escalate immediately using [When to Escalate](/guides/when-to-escalate). Do not wait for the next review cycle.\n4. **If you need help with a DPIA or safeguarding review** — your [designated reviewer](/client-config/roles) can connect you with the right people\n\nBuilding tools for young people is a responsibility. SpringBoard exists to make that responsibility manageable — not to make it feel like a burden. Follow these rules, ask when you are unsure, and you will build tools that Springpod's students can trust."
+        }
+      ],
+      "token_count": 1489
+    },
+    {
+      "slug": "standards-security",
+      "title": "Security Standard",
+      "chunks": [
+        {
+          "heading": "The one rule",
+          "content": "Never put sensitive information in your code. Not passwords, not API keys, not secret tokens, not database URLs. Ever.\n\n---"
+        },
+        {
+          "heading": "Data handling rules",
+          "content": "### All build paths\n\n    Every page of your tool should show a lock icon in the browser's address bar. If it does not, your data is being sent unprotected.\n\n    \n\n    \n\n    If your tool does not need someone's date of birth, do not ask for it. Every piece of data you collect is data you must protect.\n\n    \n\n    If your tool sends data to an external API, you need to know where that data goes and who has access to it.\n\n    \n\n    \n\n---\n\n### Yellow: Standard Build (and above)\n\n    If a field expects a number, it should reject text. If a field expects an email, it should reject \"hello.\"\n\n    \n\n    \n\n    Users should see \"Something went wrong. Please try again or contact support.\" Not a stack trace, database name, or file path.\n\n    \n\n---\n\n### Orange: Reviewed Build (and above)\n\n    \"At rest\" means stored in a database. \"In transit\" means sent between the user's browser and your server. Both need encryption.\n\n    \n\n    \n\n    If User A logs in, they must not be able to see User B's information. Not through the interface, not by changing the URL, not through the API.\n\n    \n\n    \n\n    Decide before you launch: how long do you keep user data? What happens when that period ends? Document it.\n\n    \n\n    Create a written list of every service your tool sends data to, what data it sends, and why.\n\n    \n\n---\n\n### Red: Protected Build\n\n    A structured review of what personal data you collect, why, how it is stored, who can access it, and when it is deleted. Use a template from your compliance team or see [ROLES.md](/client-config/roles) for who can help.\n\n    \n\n    If your tool is used by or collects data about anyone under 18:\n\n    - No behavioural tracking or profiling\n    - No data sharing with third parties beyond what is strictly necessary\n    - Parental or guardian notification if required by policy\n    - Default privacy settings set to maximum protection\n\n    \n\n    \n\n    Your designated reviewer (not you) confirms that the tool meets applicable privacy regulations for your users and jurisdiction.\n\n    \n\n    Before you go live, write down: what happens if data is exposed? Who gets notified? What is the first action? Where are the credentials to shut things down? Use the [Incident Report](/forms/incident-report) template.\n\n    \n\n    \n\n    If your tool sends personal or protected data to an external service, you need a written agreement with that service about how they handle your data.\n\n    \n\n---"
+        },
+        {
+          "heading": "Authentication and access",
+          "content": "### Orange: Reviewed Build (and above)\n\n    Public pages (marketing, documentation) can be open. Anything showing personal data requires a login.\n\n    \n\n    Use the NCSC's **\"three random words\"** method (e.g., \"coffeetreeswim\"). Block commonly compromised passwords. Do not require special characters or forced rotation — length and randomness matter more than complexity.\n\n    \n\n    If someone walks away from their computer, the tool should log them out after a reasonable period (e.g., 30 minutes for standard tools, 15 minutes for sensitive data).\n\n    \n\n### Red: Protected Build\n\n    Anyone who can change settings, view all users' data, or modify the tool itself must use multi-factor authentication (a second verification step beyond a password).\n\n    \n\n    Keep a record of every login, every data access, and every change to settings. This log must not be editable by the people it tracks.\n\n    \n\n---"
+        },
+        {
+          "heading": "What to do if you think something is wrong",
+          "content": "Stop. Do not try to fix security issues alone.\n\nRead [When to Escalate](/guides/when-to-escalate) and contact your [designated reviewer](/client-config/roles) immediately. It is always better to ask and be wrong than to stay silent and be right."
+        }
+      ],
+      "token_count": 1012
+    }
+  ],
+  "build_guides": [
+    {
+      "slug": "build-guides-green-quick-build",
+      "title": "Green: Quick Build Guide",
+      "chunks": [
+        {
+          "heading": "Step 1: Define what you are building (5 min)",
+          "content": "Fill out the [Project Brief](/forms/project-brief). This is a short form that captures what you are building, why, and what \"done\" looks like.\n\n**Example completed brief:**\n\n> **Project name:** Employer Engagement Tracker\n>\n> **What are you building?** A simple internal page showing which employer partners have upcoming virtual work experience programmes, their status (confirmed, pending, completed), and the key contact for each.\n>\n> **What problem does it solve?** The partnerships team currently tracks employer programmes across multiple spreadsheets and Slack threads. This page gives everyone a single view of what is coming up.\n>\n> **What does \"done\" look like?**\n> 1. Shows all employer partners with programme name, date, status, and key contact\n> 2. Filterable by status (confirmed, pending, completed)\n> 3. Works on mobile\n>\n> **Tools:** Lovable (fast for simple pages, no backend needed)\n\n### Accelerator\n\nBefore you start building, check with your team at Springpod — someone may have already built something similar. A 2-minute Slack message could save you hours of work.\n\n---"
+        },
+        {
+          "heading": "Step 2: Pick your tool",
+          "content": "For a Quick Build, almost any AI tool works. Pick what you are most comfortable with.\n\n**Never used an AI coding tool before?** Check the [Tool Selection Guide](/guides/tool-selection) for an overview, then pick one from Springpod's [Approved Tools](/client-config/approved-tools) list.\n\n**Quick rule of thumb for Green builds:**\n\n- Want it done in minutes with no code? → No-Code tools (Lovable, Bolt, v0)\n- Want to see and tweak the code? → Low-Code tools (Replit Agent)\n- Already comfortable coding? → Pro Tools (Cursor, Claude Code)\n\nAny of these will work for a Green build. Do not overthink it.\n\n---"
+        },
+        {
+          "heading": "Step 3: Build it",
+          "content": "Open your AI tool and describe what you want. The more specific your prompt, the better the result.\n\n### Accelerator\n\nStart from the [Prompt Library](/client-config/prompt-library). These prompts have been tested and produce better results than starting from scratch.\n\n**Example prompt for an employer engagement tracker:**\n\n```\nCreate an employer engagement tracker page that shows employer partners in a card layout.\nEach card shows: employer name, programme name, date, status (confirmed/pending/completed), and key contact name.\nInclude a filter bar at the top that filters by status.\nMake it responsive so it works on mobile.\nUse these colors: primary #0BB3B7, background #FFFFFF, text #333333.\nDo not use any external libraries. Keep it simple.\n```\n\n**Tips for good prompts:**\n\n- Tell the AI what the tool does, not how to code it\n- Include specific details: colors, layout, data fields\n- Say what NOT to do: \"Do not add features I did not ask for\"\n- See the [Prompt Management Standard](/standards/prompts) for more guidance\n\n---"
+        },
+        {
+          "heading": "Step 4: Test it",
+          "content": "Try using your tool the way a real person would. Do not just check that it opens — actually use it.\n\n**Test these things:**\n\n1. **Happy path** — Does the main feature work? (e.g., can you filter by status and see the right employer partners?)\n2. **Empty state** — What happens if there is no data? (e.g., filter for a status with no results)\n3. **Bad input** — What happens if someone types something unexpected? (e.g., very long text, special characters)\n4. **Different devices** — Does it work on your phone? (Open the URL on your phone or use your browser's device preview)\n\n**If something breaks:** Tell the AI tool what went wrong and ask it to fix it. Be specific about what happened versus what you expected.\n\n---"
+        },
+        {
+          "heading": "Step 5: Secure it",
+          "content": "Before sharing your tool, do a quick security check.\n\n1. **Search your code** for any of these: `sk-`, `api_key`, `secret`, `password`, `token`, `DATABASE_URL`\n2. **Search for any long random string** that looks like a key or password\n3. If you find anything, move it to your tool's environment variables (usually in Settings or Secrets)\n\nNot sure how to move secrets to environment variables? See [When to Escalate](/guides/when-to-escalate) — this is a normal question, not a failure.\n\n---"
+        },
+        {
+          "heading": "Step 6: Ship it",
+          "content": "Make your tool accessible to your team.\n\n1. **Share the link** — most AI tools give you a URL. Share it with your team via Slack, email, or wherever your team communicates.\n2. **Note the kill switch** — know how to turn it off if something goes wrong. For most tools, this means setting the deployment to \"private\" or deleting it.\n3. **Tell people it exists** — the best tool is useless if nobody knows about it.\n\n---"
+        },
+        {
+          "heading": "Done",
+          "content": "You just completed your first SpringBoard build. Here is what you did:\n\n1. Defined what you were building (Project Brief)\n2. Picked a tool\n3. Built it with a clear prompt\n4. Tested it with realistic inputs\n5. Checked for exposed secrets\n6. Shipped it with a kill switch\n\nThe checklist version of everything you just did is the [Green Checklist](/checklists/green-checklist). Next time, you might prefer that shorter format.\n\n---"
+        },
+        {
+          "heading": "What if things change?",
+          "content": "Your tool starts as Green, but things change. If your tool starts handling business data, serving external users, or becoming critical to operations, re-run the [Project Intake](/intake/project-intake). You may need to follow a different build path.\n\nThis is not a problem — it means your tool is growing. The framework is designed to scale with you."
+        }
+      ],
+      "token_count": 1439
+    },
+    {
+      "slug": "build-guides-yellow-standard-build",
+      "title": "Yellow: Standard Build Guide",
+      "chunks": [
+        {
+          "heading": "Step 1: Define what you are building (10 min)",
+          "content": "Fill out the [Project Brief](/forms/project-brief). For a Standard Build, be thorough — this tool will be used for real work, so \"done\" criteria matter.\n\n**Example completed brief:**\n\n> **Project name:** Team Performance Dashboard\n>\n> **What are you building?** A dashboard showing weekly team metrics — tasks completed, response times, and satisfaction scores. Used by team leads during Monday standups.\n>\n> **What problem does it solve?** Team leads currently pull data from three spreadsheets manually. Takes 30 minutes per week and the numbers are sometimes wrong.\n>\n> **What does \"done\" look like?**\n> 1. Shows tasks completed per person for the past 4 weeks\n> 2. Shows average response time with trend arrows\n> 3. Shows satisfaction score from the latest survey\n> 4. Filters by team and date range\n> 5. Matches Springpod's branding (colors, logo, fonts)\n>\n> **Tools:** Replit Agent (needs a backend to pull data from multiple sources)\n\n---"
+        },
+        {
+          "heading": "Step 2: Pick your tool",
+          "content": "For a Standard Build, you need a tool that lets you see and edit the code, because you may need to customise beyond what AI generates.\n\n**Recommended for Yellow builds:**\n\n- **Low-Code (Replit Agent)** — good balance of speed and control, handles databases and APIs\n- **Pro Tools (Cursor, Claude Code)** — maximum control, best for complex logic\n\n**Not recommended for Yellow builds:**\n\n- No-Code tools are fast but hard to customise and harder to move away from. If this tool will be used for months, consider starting with Low-Code or Pro.\n\nSee the [Tool Selection Guide](/guides/tool-selection) for a full comparison and Springpod's [Approved Tools](/client-config/approved-tools) for what is available.\n\n---"
+        },
+        {
+          "heading": "Step 3: Build it",
+          "content": "### Accelerator\n\nStart from the [Prompt Library](/client-config/prompt-library). The \"Internal dashboard\" prompt is a good starting point for most Yellow builds.\n\n**Example prompt for a team performance dashboard:**\n\n```\nCreate a dashboard showing team performance metrics.\n\nData sections:\n1. Tasks completed per person for the past 4 weeks (bar chart)\n2. Average response time with trend indicator (summary card)\n3. Satisfaction score from latest survey (gauge or large number)\n\nFeatures:\n- Filter by team (dropdown) and date range (date picker)\n- Data refreshes when filters change\n- Loading state while data is fetching\n- Clear error message if data source is unavailable\n\nColors:\n- Primary (headers, buttons): #1B3A5C\n- Accent (highlights, links): #2ABFBF\n- Background: #FFFFFF\n- Text: #333333\n\nRequirements:\n- Responsive (works on desktop and tablet)\n- No external libraries unless strictly necessary\n- Do not add features I did not ask for\n```\n\n### Keep a Build Log\n\nFor Yellow builds and above, keep a [Build Log](/forms/build-log). Record:\n\n- Each prompt you use and which tool you used\n- Decisions you made and why\n- Issues you encountered and how you resolved them\n\nThis takes 5 minutes per session and saves hours for anyone who needs to modify the tool later.\n\n---"
+        },
+        {
+          "heading": "Step 4: Test it",
+          "content": "Go beyond basic testing. Use realistic data and get someone else to try it.\n\n**Testing checklist:**\n\n1. **Realistic data** — Use real names, real numbers, real edge cases (not \"test123\")\n2. **Edge cases** — Try empty data, very large numbers, very long text, special characters\n3. **Different devices** — Open it on your phone and a tablet (or use browser device preview)\n4. **Fresh eyes** — Ask a colleague to complete the main task without help. Watch where they hesitate.\n\n**Getting feedback:**\n\n1. Pick someone who was not involved in building the tool\n2. Give them a task: \"Using this dashboard, tell me which team member completed the most tasks last week\"\n3. Do not help them — just watch\n4. Note every point of confusion and fix it\n\n---"
+        },
+        {
+          "heading": "Step 5: Match your brand",
+          "content": "Your tool should look and feel like it belongs to Springpod. Check it against the [Branding Standard](/standards/branding).\n\n**Quick brand check:**\n\n1. Open your tool next to Springpod's website\n2. Do the colors match? (buttons, headers, links, backgrounds)\n3. Do the fonts match? (headings, body text)\n4. Is the Springpod logo present?\n5. Do error messages and empty states use your brand voice? (Not generic \"Error 500\" or \"No data\")\n\nIf anything looks off, update the styling to match the branding standard. Most tools let you change colors and fonts in a theme or CSS file.\n\n---"
+        },
+        {
+          "heading": "Step 6: Secure it",
+          "content": "Same secrets check as Green, but more thorough because this tool handles business data.\n\n1. **Search your code** for: `sk-`, `api_key`, `secret`, `password`, `token`, `DATABASE_URL`\n2. **Check your database** — is it password-protected? Is the connection string in environment variables?\n3. **Check error messages** — do they show technical details (database names, file paths, stack traces)? They should not. Users see \"Something went wrong. Please try again.\" Not the internals.\n\nSee the [Security Standard](/standards/security) for the full list of checks.\n\n---"
+        },
+        {
+          "heading": "Step 7: Document your prompts",
+          "content": "Save the prompts you used to build this tool. Use the [Build Log](/forms/build-log) or create a `prompts.md` file in your project.\n\n**Why this matters:** If someone needs to modify this tool in 6 months, they need to know what instructions you gave the AI. Without the original prompts, they are guessing.\n\nFor production prompts (prompts that run inside your finished tool, like a chatbot's instructions), use the [Prompt Spec](/forms/prompt-spec) template to document each one in detail.\n\n---"
+        },
+        {
+          "heading": "Step 8: Request peer review",
+          "content": "Before going live, get a peer review.\n\n1. Fill out the [Review Request](/forms/review-request) form\n2. Send it to a peer reviewer (any colleague — see [Roles](/client-config/roles))\n3. Give them access to the tool and your build log\n4. They check that you followed the checklist and the tool works as described\n5. Address their feedback, then ship\n\n**What a peer review is not:** It is not a formal audit. It is a colleague spending 15-30 minutes making sure nothing obvious is wrong. Do not overthink it.\n\n---"
+        },
+        {
+          "heading": "Step 9: Ship it",
+          "content": "1. **Share the link** with your team\n2. **Note the kill switch** — know how to take it offline\n3. **Tell people it exists** and how to use it\n4. **Monitor it** for the first week — check if people are using it and if anything breaks\n\n---"
+        },
+        {
+          "heading": "Done",
+          "content": "You just completed a Standard Build. Here is what you did:\n\n1. Defined the project (Project Brief)\n2. Chose the right tool\n3. Built it with clear, specific prompts\n4. Tested with realistic data and fresh eyes\n5. Matched Springpod's brand\n6. Secured it (no exposed secrets, no leaking error messages)\n7. Documented your prompts (Build Log)\n8. Got a peer review\n9. Shipped it\n\nThe checklist version is the [Yellow Checklist](/checklists/yellow-checklist). Use that for future builds when you do not need the full walkthrough.\n\n---"
+        },
+        {
+          "heading": "What if things change?",
+          "content": "If your tool starts handling personal data, serves external users, or becomes business-critical, re-run the [Project Intake](/intake/project-intake). You may need to follow the Orange (Reviewed Build) path."
+        }
+      ],
+      "token_count": 1905
+    },
+    {
+      "slug": "build-guides-orange-reviewed-build",
+      "title": "Orange: Reviewed Build Guide",
+      "chunks": [
+        {
+          "heading": "Steps 1-3: Standard Build Foundations",
+          "content": "Follow the [Yellow (Standard Build) Guide](/build-guides/yellow-standard-build) for Steps 1-3. The process is the same:\n\n1. **Define what you are building** — fill out the [Project Brief](/forms/project-brief)\n2. **Pick your tool** — for Orange builds, Low-Code or Pro Tools are recommended. No-Code tools usually lack the security controls you need.\n3. **Build it** — use the [Prompt Library](/client-config/prompt-library) as a starting point. Keep a [Build Log](/forms/build-log).\n\n**One important difference:** For Orange builds, your Project Brief should explicitly state what personal data you are collecting and why.\n\n---"
+        },
+        {
+          "heading": "Step 4: Handle data correctly",
+          "content": "This is where Orange builds differ most from Yellow. You are handling personal data, and that comes with responsibilities.\n\n### 4a: Minimize data collection\n\nFor every piece of data your tool collects, ask: \"Is this strictly necessary for the tool to work?\"\n\nIf the answer is no, do not collect it. Data you do not have cannot be stolen.\n\n**Example:**\n\n| Data field | Necessary? | Decision |\n|-----------|-----------|----------|\n| Parent email | Yes — needed for communication | Keep |\n| Parent date of birth | No — not used by the tool | Remove |\n| Child's full name | Yes — needed to match to records | Keep |\n| Child's photo | No — nice to have but not essential | Remove |\n\n### 4b: Encrypt data\n\n- **In transit:** Your tool must use HTTPS. Check for the lock icon in your browser's address bar.\n- **At rest:** Your database must encrypt stored data. Most modern services (Supabase, Firebase, AWS RDS) do this by default. Confirm it is enabled.\n\n### 4c: Check access controls\n\nEvery user should only see their own data.\n\n1. Create two test accounts\n2. Log in as Account A and note the URL when viewing personal data\n3. Log in as Account B and paste Account A's URL\n4. **If you can see Account A's data while logged in as Account B, stop and fix this immediately.** This is a critical security failure.\n\n### 4d: List your third-party services\n\nCreate a written list of every external service your tool sends data to.\n\n| Service | What data it receives | Why | On approved list? |\n|---------|----------------------|-----|-------------------|\n| ___ | ___ | ___ | Yes / No |\n\nCheck each service against your [Approved Tools](/client-config/approved-tools) list. If any service is not approved, stop and get approval before continuing.\n\nSee the [Security Standard](/standards/security) for the full data handling requirements.\n\n---"
+        },
+        {
+          "heading": "Step 5: Make it accessible",
+          "content": "Your tool will be used by people with different abilities. Basic accessibility is required for all Orange builds.\n\n### What to check\n\n1. **Keyboard navigation** — Can you use the tool with only a keyboard (no mouse)? Tab through every interactive element. Can you reach every button and link?\n2. **Text contrast** — Is all text readable? Use the free [WAVE accessibility checker](https://wave.webaim.org/) to test.\n3. **Alt text** — Do all images have descriptive text for screen readers?\n4. **Mobile** — Does the tool work on phones and tablets? Try completing the main task on a mobile device.\n\n### Quick automated check\n\n1. Open your tool in Chrome\n2. Right-click → Inspect → Lighthouse tab\n3. Check \"Accessibility\" and run the audit\n4. Fix any errors flagged as \"critical\" or \"serious\"\n\nThis takes 10 minutes and catches the most common accessibility issues.\n\n---"
+        },
+        {
+          "heading": "Step 6: Handle errors gracefully",
+          "content": "Users should never see raw error messages, stack traces, or database names.\n\n**What users should see:**\n\n- \"Something went wrong. Please try again in a few minutes.\"\n- \"We could not find that page. Here is a link back to the main page.\"\n- \"Your session has expired. Please log in again.\"\n\n**What users should never see:**\n\n- \"Error 500: Internal Server Error\"\n- \"TypeError: Cannot read properties of undefined\"\n- \"Connection refused: postgres://db-name:5432...\"\n\n### How to check\n\n1. Try actions that might fail: disconnect from the internet, submit invalid data, access a URL that does not exist\n2. For each, note what the user sees\n3. Replace any technical error with a user-friendly message that suggests what to do next\n\n---"
+        },
+        {
+          "heading": "Step 7: Match your brand",
+          "content": "Same as the Yellow guide, but more important for Orange builds because external users will see this tool.\n\nCheck against the [Branding Standard](/standards/branding):\n\n---"
+        },
+        {
+          "heading": "Step 8: Test thoroughly",
+          "content": "Beyond the Yellow testing steps:\n\n1. **Realistic data** — Test with real names, real edge cases, and real data volumes\n2. **Fresh eyes** — Someone who was not involved in building has used it\n3. **Access control test** — Verified that users cannot see each other's data\n4. **Error handling test** — Triggered every possible error and checked the user experience\n5. **Accessibility test** — Ran WAVE or Lighthouse and fixed critical issues\n6. **Performance** — Tool loads in under 5 seconds on a normal connection\n\n---"
+        },
+        {
+          "heading": "Step 9: Request technical review",
+          "content": "Orange builds require a technical review — someone with security or technical knowledge, not just a peer.\n\n1. Complete all items above first\n2. Fill out the [Review Request](/forms/review-request) form\n3. Include:\n   - Your Build Log\n   - Any Prompt Specs for production prompts\n   - Your third-party services list\n   - Any checklist items you could not complete (and why)\n4. Submit to your technical reviewer (see [Roles](/client-config/roles))\n5. **Do not go live until the technical reviewer has approved it**\n\nIf they request changes, make them and re-submit. This is normal — most first reviews come back with feedback.\n\n---"
+        },
+        {
+          "heading": "Step 10: Ship it",
+          "content": "After technical review approval:\n\n1. **Deploy to production** — use your approved hosting service\n2. **Document the kill switch** — write down exactly how to take the tool offline, and share it with at least one other person\n3. **Announce the launch** and provide user documentation or instructions\n4. **Monitor closely** for the first week — check for errors, access issues, and user feedback\n\n---"
+        },
+        {
+          "heading": "Done",
+          "content": "You just completed a Reviewed Build. The checklist version is the [Orange Checklist](/checklists/orange-checklist).\n\nIf your tool evolves to handle protected data (student records, health information) or serves minors, re-run the [Project Intake](/intake/project-intake). You may need the Red (Protected Build) path."
+        }
+      ],
+      "token_count": 1756
+    },
+    {
+      "slug": "build-guides-red-protected-build",
+      "title": "Red: Protected Build Guide",
+      "chunks": [
+        {
+          "heading": "Steps 1-3: Standard Build Foundations",
+          "content": "Follow the [Yellow (Standard Build) Guide](/build-guides/yellow-standard-build) for the basics:\n\n1. **Define what you are building** — fill out the [Project Brief](/forms/project-brief). For Red builds, explicitly state: what protected data you collect, who your users are (especially if they include minors), and what compliance requirements apply.\n2. **Pick your tool** — Pro Tools (Cursor, Claude Code) are strongly recommended. You need full control over security, data handling, and infrastructure.\n3. **Build it** — start from the [Prompt Library](/client-config/prompt-library). The \"Student-facing content page\" prompt includes safety and privacy constraints. Keep a detailed [Build Log](/forms/build-log).\n\n---"
+        },
+        {
+          "heading": "Steps 4-6: Reviewed Build Additions",
+          "content": "Follow the [Orange (Reviewed Build) Guide](/build-guides/orange-reviewed-build) for:\n\n4. **Handle data correctly** — minimise collection, encrypt at rest and in transit, verify access controls, list third-party services\n5. **Make it accessible** — keyboard navigation, text contrast, alt text, mobile support\n6. **Handle errors gracefully** — user-friendly messages, no technical details exposed\n\nThese steps are the same as Orange but more critical for Red builds. Take extra care with each one.\n\n---"
+        },
+        {
+          "heading": "Step 7: Privacy compliance",
+          "content": "This is the most important step unique to Red builds. You are handling data that has legal protections.\n\n### 7a: Data audit\n\nCreate a complete inventory of every piece of protected data your tool handles.\n\n| Data field | Who it belongs to | Why collected | Stored where | Who can access it | Retention period |\n|-----------|------------------|---------------|-------------|-------------------|-----------------|\n| ___ | ___ | ___ | ___ | ___ | ___ |\n\nFor each row, ask:\n\n1. **Is this strictly necessary?** If not, remove it.\n2. **Is it stored securely?** Encrypted at rest and in transit.\n3. **Is access limited?** Only people who need it can see it.\n4. **How long do we keep it?** Define a retention period and a deletion process.\n\n### 7b: Protections for minors\n\nIf your tool is used by or collects data about anyone under 18, these are mandatory:\n\n### 7c: Applicable regulations\n\nCheck each regulation against your tool with your designated reviewer:\n\n| Regulation | Applies? | Key requirements | Status |\n|-----------|----------|-----------------|--------|\n| UK GDPR | ___ | Consent, right to deletion, data portability, privacy by design | ___ |\n| Data Protection Act 2018 | ___ | Lawful basis, data minimisation, retention limits | ___ |\n| Children's Code (Age Appropriate Design Code) | ___ | Best interests of the child, age-appropriate design, default privacy | ___ |\n| Springpod internal policies | ___ | Safeguarding, age-appropriate design, data minimisation | ___ |\n\n**If you are unsure whether a regulation applies:** Ask your designated reviewer. This is exactly what they are for.\n\n---"
+        },
+        {
+          "heading": "Step 8: Write an incident response plan",
+          "content": "Before going live, you need a documented plan for when things go wrong. Not \"if\" — \"when.\"\n\n### What your plan must answer\n\n1. **Who is called first?** Name and phone number.\n2. **How do you turn the tool off?** Step-by-step instructions that someone else could follow.\n3. **Who gets notified?** List of people and how (phone, email, Slack).\n4. **Where are the credentials?** To shut down hosting, revoke API keys, access the database. Not in the tool itself — somewhere you can reach when the tool is down.\n\n### Example incident response plan\n\n> **Tool:** Student Progress Tracker\n>\n> **Kill switch:** Log into Vercel dashboard → Settings → pause deployment. Takes 2 minutes.\n>\n> **First responder:** Jane Smith, +44 7700 900123\n>\n> **Notification list:**\n> 1. Technical reviewer (immediately): John Doe, alex.k@springpod.com\n> 2. Designated reviewer (within 1 hour): Sarah Lee, priya.m@springpod.com\n> 3. Head of department (within 4 hours): Alex Chen, james.w@springpod.com\n>\n> **If student data may be exposed:** Contact designated reviewer immediately. Do not wait. File an [Incident Report](/forms/incident-report) within 24 hours.\n>\n> **Credentials:** Stored in company password manager under \"Student Progress Tracker - Production\"\n\n### Test your kill switch\n\nActually do it. In a test environment, follow the kill switch instructions and confirm the tool goes offline. If it takes more than 5 minutes or does not work, fix the process.\n\n---"
+        },
+        {
+          "heading": "Step 9: Test with your actual users",
+          "content": "Orange builds require \"someone other than the builder\" to test. Red builds go further — test with people representative of your actual users.\n\n- If your tool is for parents, test with parents\n- If your tool is for students aged 14-18, test with students in that age group (with appropriate consent and supervision)\n- If your tool is for people with limited technical skills, test with people who match that profile\n\n**What to look for:**\n\n1. Can they complete the main task without help?\n2. Do they understand the language used? (No jargon, age-appropriate)\n3. Do they feel safe using it? (Especially relevant for tools handling personal data)\n4. Does the tool work on the devices they actually use?\n\n**Document the results** in your Build Log.\n\n---"
+        },
+        {
+          "heading": "Step 10: Production prompt review (if applicable)",
+          "content": "If your tool contains AI prompts that run in production (chatbot responses, content generation, recommendations), each one needs thorough review.\n\nFor each production prompt:\n\n1. Document it using the [Prompt Spec](/forms/prompt-spec) template\n2. Test with 10+ varied inputs, including edge cases and adversarial inputs\n3. Check for bias — does it treat all users fairly regardless of background?\n4. Check for safety — can it produce harmful or inappropriate output?\n5. Check against your age group — if users are 14-18, test with inputs typical of that group\n6. Document failure modes and mitigations\n7. Set up version history — every future change to this prompt must be recorded\n\nSee the [Prompt Management Standard](/standards/prompts) for the full requirements.\n\n---"
+        },
+        {
+          "heading": "Step 11: Request designated reviewer sign-off",
+          "content": "This is the final gate. Your designated reviewer (not your peer, not your technical reviewer — your designated reviewer) must approve this build before it goes live.\n\n1. Complete all items above\n2. Fill out the [Review Request](/forms/review-request) form\n3. Include all supporting documents:\n   - Project Brief\n   - Build Log with all prompts documented\n   - Prompt Specs for every production prompt\n   - Data audit table (from Step 7a)\n   - Third-party services list\n   - Incident response plan\n   - Privacy compliance notes and regulation checklist\n   - User testing results\n4. Submit to your designated reviewer (see [Roles](/client-config/roles))\n5. **Record their name and approval date**\n\nThe designated reviewer may:\n\n- **Approve** — you can go live\n- **Request changes** — make them and re-submit (this is normal and expected)\n- **Escalate** — they may bring in additional expertise (legal, compliance, technical) before approving\n\n---"
+        },
+        {
+          "heading": "Step 12: Schedule a re-intake",
+          "content": "Before you ship, schedule a re-intake date. This is a calendar reminder to re-run the [Project Intake](/intake/project-intake) using your tool's current state — not the state you planned for.\n\n**When:** 30 days after launch, or after reaching 100 users, whichever comes first.\n\n**Why:** Tools change after launch. Users behave differently than expected. Data volumes grow. Features get added. A re-intake catches \"silent escalations\" — when a tool has become more risky than originally assessed.\n\n**How:**\n\n1. Put the re-intake date in someone's calendar (not just yours)\n2. Set a reminder\n3. When the date arrives, answer the intake questions based on how the tool is actually being used (not how you originally planned)\n4. If the build path is still Red, confirm nothing has changed that requires additional review\n5. If requirements have changed, update your documentation and consult your designated reviewer\n\n---"
+        },
+        {
+          "heading": "Step 13: Ship it",
+          "content": "After designated reviewer approval:\n\n1. **Deploy to production** using your approved hosting\n2. **Verify the kill switch works** in production (not just test)\n3. **Share the incident response plan** with everyone on the notification list\n4. **Announce the launch** with user documentation\n5. **Monitor closely** — check daily for the first week, then weekly for the first month\n6. **Keep the re-intake date** on the calendar\n\n---"
+        },
+        {
+          "heading": "Done",
+          "content": "You just completed a Protected Build. The checklist version is the [Red Checklist](/checklists/red-checklist).\n\nThis was the most thorough path in the framework. You built something that protects your users' data, meets compliance requirements, and has safeguards for when things go wrong. That matters.\n\nIf you have feedback on this process — things that were unclear, steps that felt unnecessary, or gaps you noticed — contact the [Framework contact](/client-config/roles). The framework improves when builders share their experience."
+        }
+      ],
+      "token_count": 2499
+    }
+  ],
+  "checklists": [
+    {
+      "slug": "checklists-green-checklist",
+      "title": "Green: Quick Build Checklist",
+      "chunks": [
+        {
+          "heading": "Pre-Build",
+          "content": ""
+        },
+        {
+          "heading": "During Build",
+          "content": ""
+        },
+        {
+          "heading": "Pre-Ship",
+          "content": "---\n\nAll checked? **You are good to go.**\n\nYour tool starts as Green, but if things change — it handles new data, gets new users, or becomes more critical — re-run the [Project Intake](/intake/project-intake) to check if your path has changed."
+        }
+      ],
+      "token_count": 137
+    },
+    {
+      "slug": "checklists-yellow-checklist",
+      "title": "Yellow: Standard Build Checklist",
+      "chunks": [
+        {
+          "heading": "Items 1-6: Quick Build Foundations",
+          "content": "These are the same items from the [Green Checklist](/checklists/green-checklist). Every Yellow build must meet these first.\n\n### Pre-Build\n\n    \n\n### During Build\n\n    \n\n    \n\n    \n\n### Pre-Ship\n\n    \n\n    \n\n    \n\n    \n\n---"
+        },
+        {
+          "heading": "Items 7-10: Standard Build Additions",
+          "content": "These items are specific to Yellow builds and above.\n\n    Not \"looked at\" — actually used it. Asked them to complete the main task without help. Watched where they got confused.\n\n    \n\n    \n\n    Saved alongside your project in a [Build Log](/forms/build-log) or a `prompts.md` file.\n\n    \n\n    \n\n    Correct colors, logo, and tone of voice. See the [Branding Standard](/standards/branding).\n\n    \n\n    \n\n    Use the [Review Request](/forms/review-request) template to submit for review.\n\n    \n\n    \n\n---\n\nAll checked? **You are good to go.**\n\nIf your tool grows — starts handling personal data, serves external users, or becomes business-critical — re-run the [Project Intake](/intake/project-intake) to check if your path has changed."
+        }
+      ],
+      "token_count": 316
+    },
+    {
+      "slug": "checklists-orange-checklist",
+      "title": "Orange: Reviewed Build Checklist",
+      "chunks": [
+        {
+          "heading": "Items 1-6: Quick Build Foundations",
+          "content": "These are the same items from the [Green Checklist](/checklists/green-checklist).\n\n### Pre-Build\n\n    \n\n### During Build\n\n    \n\n    \n\n    \n\n### Pre-Ship\n\n    \n\n    \n\n    \n\n    \n\n---"
+        },
+        {
+          "heading": "Items 7-10: Standard Build Additions",
+          "content": "These are the same items from the [Yellow Checklist](/checklists/yellow-checklist).\n\n    \n\n    Saved in a [Build Log](/forms/build-log) or `prompts.md` file alongside the project.\n\n    \n\n    See the [Branding Standard](/standards/branding).\n\n    \n\n    \n\n---"
+        },
+        {
+          "heading": "Items 11-14: Reviewed Build Additions",
+          "content": "These items are specific to Orange builds and above.\n\n    Personal data is encrypted, not over-collected, and not sent to unauthorised services.\n\n    \n\n    \n\n    No user can access another user's information — not through the interface, not by changing the URL, not through the API.\n\n    \n\n    \n\n    This is a structured review, not a casual look. Use the [Review Request](/forms/review-request) template and submit to your technical reviewer (see [Roles](/client-config/roles)).\n\n    \n\n    \n\n    Users see \"Something went wrong. Please try again or contact support.\" Not a stack trace, database name, or file path.\n\n    \n\n    \n\n---\n\nAll checked? **Submit your [Review Request](/forms/review-request) to your technical reviewer.**\n\nDo not go live until the technical reviewer has approved it. If they request changes, make them and re-submit."
+        }
+      ],
+      "token_count": 412
+    },
+    {
+      "slug": "checklists-red-checklist",
+      "title": "Red: Protected Build Checklist",
+      "chunks": [
+        {
+          "heading": "Items 1-6: Quick Build Foundations",
+          "content": "These are the same items from the [Green Checklist](/checklists/green-checklist).\n\n### Pre-Build\n\n    \n\n### During Build\n\n    \n\n    \n\n    \n\n### Pre-Ship\n\n    \n\n    \n\n    \n\n    \n\n---"
+        },
+        {
+          "heading": "Items 7-10: Standard Build Additions",
+          "content": "These are the same items from the [Yellow Checklist](/checklists/yellow-checklist).\n\n    \n\n    \n\n    \n\n    \n\n---"
+        },
+        {
+          "heading": "Items 11-14: Reviewed Build Additions",
+          "content": "These are the same items from the [Orange Checklist](/checklists/orange-checklist).\n\n    Personal data is encrypted at rest and in transit, not over-collected, and only sent to approved services.\n\n    \n\n    \n\n    \n\n    \n\n    \n\n    \n\n---"
+        },
+        {
+          "heading": "Items 15-18: Protected Build Additions",
+          "content": "These items are specific to Red builds.\n\n    If your tool handles data about anyone under 18: no behavioural tracking, no unnecessary data sharing, parental notification if required by policy. Compliance with applicable regulations (UK GDPR, DPA 2018, Children's Code) has been confirmed.\n\n    \n\n    \n\n    Before going live, you have written down: what happens if data is exposed? Who gets notified? What is the first action? Where are the credentials to shut things down?\n\n    \n\n    \n\n    A named person has reviewed and approved this build. Their name and the date of approval are recorded.\n\n    \n\n    \n\n    Within 30 days of launch or at the first significant usage milestone, re-run the [Project Intake](/intake/project-intake) to verify the build path is still correct.\n\n    \n\n    \n\n---\n\nAll checked? **Submit your [Review Request](/forms/review-request) to your designated reviewer.**\n\nDo not go live until the designated reviewer has signed off. This is not negotiable for Protected builds. If they request changes, make them and re-submit."
+        }
+      ],
+      "token_count": 515
+    }
+  ],
+  "forms": [
+    {
+      "slug": "forms-build-log",
+      "title": "Build Log",
+      "chunks": [
+        {
+          "heading": "How to use this log",
+          "content": "Copy the entry template below for each work session. Date each entry. Focus on decisions and problems, not just what you did.\n\n---"
+        },
+        {
+          "heading": "Entry template",
+          "content": "Copy everything below the line for each new entry.\n\n---\n\n### Date: ___\n\n**What I did:**\n\n[Brief description of work done this session]\n\n**Decisions made:**\n\n[Any choices you made and why. Be specific.]\n\n> Example: \"Used Chart.js instead of D3 because Chart.js was simpler for basic line charts and had better documentation for beginners.\"\n\n**AI prompts used:**\n\n[Paste or summarise the prompts you gave the AI tool. Include the tool name.]\n\n> Example: \"Replit Agent — 'Create a line chart showing daily attendance percentage for the last 30 days. Use Chart.js. Data comes from the /api/attendance endpoint. Use the Springpod colors: primary #0BB3B7, accent #446DF6.'\"\n\n**Issues encountered:**\n\n[Anything that went wrong, surprised you, or took longer than expected]\n\n**Next steps:**\n\n[What you plan to do in the next session]\n\n---"
+        },
+        {
+          "heading": "Tips for effective entries",
+          "content": "- **Be honest about problems.** \"The AI generated code that crashed when the database was empty\" is useful. \"Everything went fine\" is not.\n- **Save your prompts.** Especially the ones that worked well. They save time when building similar features later.\n- **Note what you changed from AI output.** If the AI generated something and you modified it, record what you changed and why.\n- **Keep entries short.** A few sentences per section is enough. This is a log, not an essay.\n\n---"
+        },
+        {
+          "heading": "Related documents",
+          "content": "- [Project Brief](/forms/project-brief) — what you planned to build\n- [Prompt Spec](/forms/prompt-spec) — for documenting production prompts in detail\n- [Prompt Management Standard](/standards/prompts) — build vs production prompt rules"
+        }
+      ],
+      "token_count": 528
+    },
+    {
+      "slug": "forms-incident-report",
+      "title": "Incident Report",
+      "chunks": [
+        {
+          "heading": "Severity",
+          "content": "Check one:\n\n---"
+        },
+        {
+          "heading": "What happened?",
+          "content": "Describe what went wrong in plain language. Include what users saw, when it started, and how it was discovered.\n\n---"
+        },
+        {
+          "heading": "Who is affected?",
+          "content": "- **User type:** ___ (internal staff / external users / students / parents)\n- **Approximate number affected:** ___\n- **Are minors affected?** Yes / No / Unknown\n\n---"
+        },
+        {
+          "heading": "What did you do immediately?",
+          "content": "List the steps you took as soon as you discovered the issue. If you turned the tool off, say so.\n\n1. ___\n2. ___\n3. ___\n\n---"
+        },
+        {
+          "heading": "Root cause (if known)",
+          "content": "What caused this? Check any that apply:\n\n**Details:** ___\n\n---"
+        },
+        {
+          "heading": "What needs to happen next?",
+          "content": "| Action | Who | By when |\n|--------|-----|---------|\n| ___ | ___ | ___ |\n| ___ | ___ | ___ |\n| ___ | ___ | ___ |\n\n---"
+        },
+        {
+          "heading": "Notifications",
+          "content": "Who has been told about this incident?\n\n| Person / Team | How notified | When |\n|---------------|-------------|------|\n| ___ | ___ | ___ |\n| ___ | ___ | ___ |\n\n---"
+        },
+        {
+          "heading": "Lessons learned (fill in after resolution)",
+          "content": "**Date resolved:** ___\n\n**What would prevent this from happening again?**\n\n- ___\n- ___\n\n**Changes made as a result:**\n\n- ___\n- ___\n\n---"
+        },
+        {
+          "heading": "Related documents",
+          "content": "- [When to Escalate](/guides/when-to-escalate)\n- [Security Standard](/standards/security)\n- [Roles and Contacts](/client-config/roles)"
+        }
+      ],
+      "token_count": 409
+    },
+    {
+      "slug": "forms-project-brief",
+      "title": "Project Brief",
+      "chunks": [
+        {
+          "heading": "What are you building?",
+          "content": "Describe in 2-3 sentences what this tool does and who it is for.\n\n> Example: \"A dashboard that shows daily attendance data for Year 7-9 students. Used by heads of year to spot patterns and follow up with students who have irregular attendance.\"\n\n---"
+        },
+        {
+          "heading": "What problem does it solve?",
+          "content": "Why does this tool need to exist? What is the current pain point?\n\n> Example: \"Right now, attendance data lives in three spreadsheets that are updated manually. Heads of year spend 2 hours a week merging data before they can spot trends.\"\n\n---"
+        },
+        {
+          "heading": "What does \"done\" look like?",
+          "content": "List 3-5 specific things this tool must do to be complete. Be as concrete as possible — these become your acceptance criteria.\n\n1. ___\n2. ___\n3. ___\n4. ___ (optional)\n5. ___ (optional)\n\n> Example:\n> 1. Shows daily attendance percentage per student for the last 30 days\n> 2. Highlights students below 90% attendance in red\n> 3. Allows filtering by year group and form\n> 4. Exports filtered view as CSV\n\n---"
+        },
+        {
+          "heading": "What tools will you use?",
+          "content": "Which AI tool(s) will you use to build this? See the [Tool Selection Guide](/guides/tool-selection) for help choosing.\n\n**Tool:** ___\n\n**Why this tool:** ___\n\n---"
+        },
+        {
+          "heading": "Who needs to know about this?",
+          "content": "List anyone who should review this project, will be affected by it, or needs to approve it before it goes live.\n\n| Person | Role | Why they need to know |\n|--------|------|-----------------------|\n| ___ | ___ | ___ |\n| ___ | ___ | ___ |\n\n---"
+        },
+        {
+          "heading": "Target go-live date: ___",
+          "content": "---"
+        },
+        {
+          "heading": "What happens next",
+          "content": "1. Complete the [Project Intake](/intake/project-intake) to determine your build path (if you have not already)\n2. Read the build guide for your path: [Green](/build-guides/green-quick-build), [Yellow](/build-guides/yellow-standard-build), [Orange](/build-guides/orange-reviewed-build), or [Red](/build-guides/red-protected-build)\n3. Start building, using the [Build Log](/forms/build-log) to track progress\n4. When ready, submit a [Review Request](/forms/review-request) (Yellow+ builds)"
+        }
+      ],
+      "token_count": 578
+    },
+    {
+      "slug": "forms-prompt-spec",
+      "title": "Prompt Specification",
+      "chunks": [
+        {
+          "heading": "Model configuration",
+          "content": "| Parameter | Value |\n|-----------|-------|\n| Model | *e.g., Claude Sonnet 4, GPT-4o* |\n| Temperature | *e.g., 0.3 for factual, 0.7 for creative* |\n| Max tokens | *e.g., 1024* |\n| Top-p | *e.g., 0.95 (leave default unless you have a reason to change)* |\n\n---"
+        },
+        {
+          "heading": "What does this prompt do?",
+          "content": "One sentence: This prompt tells the AI to ___.\n\n> Example: \"This prompt tells the AI to summarise a student's weekly progress into 3 bullet points suitable for parent communication.\"\n\n---"
+        },
+        {
+          "heading": "The prompt text",
+          "content": "```\n[Paste the full prompt here, exactly as it runs in production]\n```\n\n---"
+        },
+        {
+          "heading": "Expected input",
+          "content": "What kind of data does this prompt receive? Include 1-2 example inputs.\n\n**Input type:** ___ (e.g., free text, structured data, user question)\n\n**Example input 1:**\n\n```\n[Paste an example of typical input]\n```\n\n**Example input 2:**\n\n```\n[Paste a second example, ideally an edge case]\n```\n\n---"
+        },
+        {
+          "heading": "Expected output",
+          "content": "What should the AI produce? Include 1-2 example outputs.\n\n**Output format:** ___ (e.g., paragraph, bullet points, JSON, single sentence)\n\n**Example output 1:**\n\n```\n[Paste what the AI should produce for example input 1]\n```\n\n**Example output 2:**\n\n```\n[Paste what the AI should produce for example input 2]\n```\n\n---"
+        },
+        {
+          "heading": "Known limitations",
+          "content": "When does this prompt give bad results? What inputs cause problems?\n\n- ___\n- ___\n- ___\n\n> Example: \"Gives vague summaries when input contains fewer than 3 data points. Occasionally includes technical terminology not suitable for parents.\"\n\n---"
+        },
+        {
+          "heading": "Output guardrails (Orange+ builds)",
+          "content": "What validation runs on AI outputs before they reach users?\n\n- [ ] **PII filter**: Outputs checked for student names, emails, or personal data\n- [ ] **Toxicity check**: Outputs scanned for inappropriate language or content\n- [ ] **Schema enforcement**: Outputs match expected format (JSON, markdown, etc.)\n- [ ] **Confidence threshold**: Low-confidence outputs flagged for human review\n- [ ] **Fallback behaviour**: What happens when the AI fails or returns an error?\n\n*Not all guardrails apply to every tool. Check the boxes relevant to your build path.*\n\n---"
+        },
+        {
+          "heading": "Testing results",
+          "content": "| Test input | Expected output | Actual output | Pass? |\n|------------|-----------------|---------------|-------|\n| ___ | ___ | ___ | Y / N |\n| ___ | ___ | ___ | Y / N |\n| ___ | ___ | ___ | Y / N |\n\n---"
+        },
+        {
+          "heading": "Review status (Orange+ builds)",
+          "content": "---"
+        },
+        {
+          "heading": "Version history (Red builds)",
+          "content": "| Version | Date | What changed | Why |\n|---------|------|-------------|-----|\n| 1.0 | ___ | Initial version | ___ |\n| ___ | ___ | ___ | ___ |"
+        }
+      ],
+      "token_count": 756
+    },
+    {
+      "slug": "forms-review-request",
+      "title": "Review Request",
+      "chunks": [
+        {
+          "heading": "What to review",
+          "content": "**Link to the tool:** ___\n\n**Brief description:** What does this tool do, in 1-2 sentences?\n\n---"
+        },
+        {
+          "heading": "Checklist status",
+          "content": "---"
+        },
+        {
+          "heading": "Items I could not complete or was not sure about",
+          "content": "List any checklist items you skipped, could not complete, or were unsure about. Explain why for each.\n\n| Checklist item | Status | Reason |\n|----------------|--------|--------|\n| ___ | Skipped / Unsure | ___ |\n| ___ | Skipped / Unsure | ___ |\n\nIf all items are complete, write \"All checklist items complete\" and delete the table.\n\n---"
+        },
+        {
+          "heading": "Specific areas I want feedback on",
+          "content": "What are you most uncertain about? What would you like the reviewer to pay special attention to?\n\n1. ___\n2. ___\n3. ___\n\n---"
+        },
+        {
+          "heading": "Supporting documents",
+          "content": "Link any relevant documents:\n\n---"
+        },
+        {
+          "heading": "Deadline for review: ___",
+          "content": "---"
+        },
+        {
+          "heading": "For the reviewer",
+          "content": "After reviewing, respond with one of:\n\n- **Approved** — ready to go live\n- **Approved with notes** — can go live, but address these items soon\n- **Changes needed** — must address these items before going live\n- **Escalate** — needs review by someone with more expertise (see [Roles](/client-config/roles))"
+        }
+      ],
+      "token_count": 366
+    }
+  ],
+  "pecr": {
+    "slug": "content-bundle-pecr",
+    "title": "PECR Compliance (extracted)",
+    "chunks": [
+      {
+        "heading": "Data handling rules",
+        "content": "### All build paths\n\n\n\n    Every page of your tool should show a lock icon in the browser's address bar. If it does not, your data is being sent unprotected.\n\n    \n\n    \n\n\n\n    If your tool does not need someone's date of birth, do not ask for it. Every piece of data you collect is data you must protect.\n\n    \n\n\n\n    If your tool sends data to an external API, you need to know where that data goes and who has access to it.\n\n    \n\n    \n\n---\n\n### Yellow: Standard Build (and above)\n\n\n\n    If a field expects a number, it should reject text. If a field expects an email, it should reject \"hello.\"\n\n    \n\n    \n\n\n\n    Users should see \"Something went wrong. Please try again or contact support.\" Not a stack trace, database name, or file path.\n\n    \n\n---\n\n### Orange: Reviewed Build (and above)\n\n\n\n    \"At rest\" means stored in a database. \"In transit\" means sent between the user's browser and your server. Both need encryption.\n\n    \n\n    \n\n\n\n    If User A logs in, they must not be able to see User B's information. Not through the interface, not by changing the URL, not through the API.\n\n    \n\n    \n\n\n\n    Decide before you launch: how long do you keep user data? What happens when that period ends? Document it.\n\n    \n\n\n\n    Create a written list of every service your tool sends data to, what data it sends, and why.\n\n    \n\n---\n\n### Red: Protected Build\n\n\n\n    A structured review of what personal data you collect, why, how it is stored, who can access it, and when it is deleted. Use a template from your compliance team or see [ROLES.md](/client-config/roles) for who can help.\n\n    \n\n\n\n    If your tool is used by or collects data about anyone under 18:\n\n    - No behavioural tracking or profiling\n    - No data sharing with third parties beyond what is strictly necessary\n    - Parental or guardian notification if required by policy\n    - Default privacy settings set to maximum protection\n\n    \n\n    \n\n\n\n    Your designated reviewer (not you) confirms that the tool meets applicable privacy regulations for your users and jurisdiction.\n\n    \n\n\n\n    Before you go live, write down: what happens if data is exposed? Who gets notified? What is the first action? Where are the credentials to shut things down? Use the [Incident Report](/forms/incident-report) template.\n\n    \n\n    \n\n\n\n    If your tool sends personal or protected data to an external service, you need a written agreement with that service about how they handle your data.\n\n    \n\n---"
+      },
+      {
+        "heading": "Authentication and access",
+        "content": "### Orange: Reviewed Build (and above)\n\n\n\n    Public pages (marketing, documentation) can be open. Anything showing personal data requires a login.\n\n    \n\n\n\n    Use the NCSC's **\"three random words\"** method (e.g., \"coffeetreeswim\"). Block commonly compromised passwords. Do not require special characters or forced rotation — length and randomness matter more than complexity.\n\n    \n\n\n\n    If someone walks away from their computer, the tool should log them out after a reasonable period (e.g., 30 minutes for standard tools, 15 minutes for sensitive data).\n\n    \n\n### Red: Protected Build\n\n\n\n    Anyone who can change settings, view all users' data, or modify the tool itself must use multi-factor authentication (a second verification step beyond a password).\n\n    \n\n\n\n    Keep a record of every login, every data access, and every change to settings. This log must not be editable by the people it tracks.\n\n    \n\n---"
+      },
+      {
+        "heading": "Data classification",
+        "content": "Every piece of data your tool touches falls into one of four categories. The category determines your build path and what approvals you need.\n\n| Data type | Examples | Build path | Data team sign-off? |\n|-----------|----------|------------|---------------------|\n| **Public** | Marketing copy, published course descriptions, public event listings | Green | No |\n| **Business** | Internal metrics, team KPIs, pipeline reports, anonymised aggregates | Yellow | Only if connecting to DWH |\n| **Personal** | Names, email addresses, school names linked to individuals, employer contacts | Orange | Yes |\n| **Protected** | Student data (under-18s), assessment results, health information, safeguarding records | Red | Yes — mandatory review |\n\n\n\n\n\n---"
+      },
+      {
+        "heading": "When to involve the Data team",
+        "content": "You must get Data team sign-off before you ship if your tool does any of the following.\n\n### All build paths\n\n\n\n    This includes read-only connections. Even viewing data requires approval because it creates a new access point.\n\n    \n\n    \n\n\n\n    Moving data between systems via files is one of the most common ways data leaks happen. A CSV on someone's laptop is unencrypted and untracked.\n\n    \n\n\n\n    If your tool sends any Springpod data to an external service (including AI APIs like OpenAI or Anthropic), the Data team must review what data is being sent and where.\n\n    \n\n### Orange and Red paths\n\n\n\n    Student data includes names, emails, enrolment records, school affiliations, programme progress, and anything else tied to a student account. No exceptions.\n\n    \n\n    \n\n\n\n    If your tool creates a new database table, a new spreadsheet, or a new collection of records, the Data team needs to know. New data stores must follow Springpod's data architecture standards.\n\n---"
+      }
+    ],
+    "token_count": 1278
+  },
+  "file_count": 19
+}

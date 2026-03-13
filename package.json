@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "build:dates": "tsx scripts/build-content-dates.ts",
     "build:search": "tsx scripts/build-search-index.ts",
-    "build": "npm run build:search && next build",
+    "build:bundles": "tsx scripts/build-bundles.ts",
+    "build": "npm run build:dates && npm run build:search && npm run build:bundles && next build",
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"

@@ -1,0 +1,74 @@
+{
+  "built_at": "2026-03-13T17:56:47.943Z",
+  "built_from_commit": "049105b",
+  "tokens": {
+    "primary": "bg-sp-teal / text-sp-teal",
+    "primary_dark": "bg-sp-teal-dark",
+    "secondary": "bg-sp-blue / text-sp-blue",
+    "text": "text-sp-navy",
+    "text_secondary": "text-[--color-sp-text-secondary]",
+    "text_muted": "text-[--color-sp-text-muted]",
+    "background": "bg-background",
+    "card": "bg-card",
+    "border": "border-[--color-sp-border]",
+    "error": "text-sp-red",
+    "success": "text-sp-teal-dark",
+    "heading_font": "font-[family-name:var(--font-heading)]",
+    "body_font": "font-sans"
+  },
+  "raw": {
+    "primary": "#0BB3B7",
+    "primary_dark": "#0A8F93",
+    "secondary": "#446DF6",
+    "text": "#16254C",
+    "text_secondary": "#5C6682",
+    "background": "#FFFFFF",
+    "surface": "#E4ECF7",
+    "error": "#FF475A",
+    "success": "#0A8F93",
+    "orange_accent": "#F7936F",
+    "purple_accent": "#7F7EFF",
+    "heading_font": "Poppins SemiBold 600",
+    "heading_sizes": [
+      "32px",
+      "24px",
+      "20px"
+    ],
+    "body_font": "Inter Regular 400",
+    "body_size": "16px",
+    "small_size": "14px",
+    "ui_font": "Inter Medium 500, 14px"
+  },
+  "tone_of_voice": [
+    {
+      "heading": "Tone of voice",
+      "content": "Springpod's voice is friendly, encouraging, and clear — especially for students. We avoid jargon and corporate-speak.\n\n| Do | Do not |\n|----|--------|\n| \"Let's get you started\" | \"Please initiate the onboarding process\" |\n| \"Something went wrong — try again in a moment\" | \"Error 500: Internal Server Exception\" |\n| \"You're all set!\" | \"Process completed successfully\" |\n| \"We couldn't find that page\" | \"404 Not Found\" |\n| \"This experience is no longer available\" | \"Resource has been deprecated\" |\n| \"Great work — you've completed this step\" | \"Task execution confirmed\" |\n\n---"
+    },
+    {
+      "heading": "AI-generated content guidelines",
+      "content": "When AI generates text that users see (chatbot responses, summaries, recommendations), it must:\n\n    AI defaults to a neutral, slightly formal tone. Adjust the prompt to match Springpod's friendly, encouraging voice.\n\n    \n\n    Springpod's AI disclosure policy:\n    - **Student-facing AI features** must include age-appropriate disclosure, e.g.: \"This feedback was created with the help of AI. A real person reviewed it before it reached you.\"\n    - **Internal tools** do not require AI disclosure but should note it in the Build Log.\n    - **B2B/partner-facing tools** should mention AI where it adds trust (e.g., \"AI-assisted matching\").\n\n    AI should never say \"I guarantee\" or \"This will definitely work.\" Use language like \"Based on the available information\" or \"This suggests.\"\n\n    \n\n    Springpod's brand is warm and informal for student-facing content. Use friendly language, celebrate progress, and keep things conversational — but avoid slang that may not translate across audiences.\n\n---"
+    }
+  ],
+  "design_system": [
+    {
+      "slug": "design-system-colors",
+      "content": "# Color Palette\n\nThe Springpod colour system used across SpringBoard. Use these tokens consistently — never hardcode hex values in your code or AI prompts without referencing this page first.\n\n---\n\n## Primary colors\n\nThese three colors define the Springpod brand. They appear everywhere — navigation, buttons, headings, and interactive elements.\n\n\n\n\n</CardGrid>\n\n---\n\n## Secondary colors\n\nSupporting colors for variety, warmth, and emphasis. Use sparingly alongside the primary palette.\n\n\n\n\n</CardGrid>\n\n---\n\n## Neutrals\n\nThe gray scale handles all the supporting visual structure — backgrounds, borders, secondary text, and disabled states.\n\n| Token | Hex | Tailwind | Usage |\n|-------|-----|----------|-------|\n| Gray | `#E4ECF7` | `sp-gray` | Subtle backgrounds, card fills |\n| Gray Light | `#EEEEEF` | `sp-gray-light` | Lighter backgrounds, alternating rows |\n| Text Secondary | `#5C6682` | `sp-text-secondary` | Secondary body text, descriptions |\n| Text Muted | `#8B92A6` | `sp-text-muted` | Placeholder text, disabled states |\n| Border | `#B9BEC9` | `sp-border` | Borders, dividers, outlines |\n| Surface | `#E9E9ED` | `sp-surface` | Surface backgrounds, hover states |\n\n---\n\n## Status colors\n\nSystem feedback colors for confirmations, warnings, informational messages, and errors. Each has a light variant (for backgrounds) and a dark variant (for text and icons).\n\n| Status | Light | Dark | Usage |\n|--------|-------|------|-------|\n| Success | `#BFF3A5` | `#357E10` | Confirmations, completed states |\n| Warning | `#FEE3AF` | `#8C5E03` | Cautions, pending actions |\n| Info | `#C2E1FF` | `#004A8F` | Informational messages |\n| Error | `#f8b5bb` | `#820D19` | Errors, validation failures |\n\n\n\n---\n\n## Gradients\n\nFour branded gradients for decorative use — hero sections, banners, and visual flourishes. Do not use gradients for text or small UI elements.\n\n| Name | Value | Usage |\n|------|-------|-------|\n| Teal gradient | `linear-gradient(225deg, #40D5D5, #09797B)` | Primary decorative, hero sections |\n| Blue gradient | `linear-gradient(225deg, #A1B2EB, #446DF6)` | Secondary decorative, feature cards |\n| Orange gradient | `linear-gradient(225deg, #FFEF5E, #F7936F)` | Warm accent, promotional banners |\n| Red gradient | `linear-gradient(225deg, #FA919B, #C80B1E)` | Alert emphasis, urgent callouts |\n\n---\n\n## Dark mode\n\nColors adapt automatically via CSS custom properties. The primary brand colors (teal, navy, blue) stay consistent across light and dark modes. Layout tokens — backgrounds, borders, and shadows — switch to their dark variants when the user toggles dark mode.\n\nYou do not need to define separate dark-mode colors when building with SpringBoard's design tokens. The system handles it.\n\n---\n\n## Usage guidelines\n\n\n",
+      "token_count": 686
+    },
+    {
+      "slug": "design-system-typography",
+      "content": "# Typography\n\nSpringpod uses two fonts: **Poppins** for headings and **Inter** for body text. This mirrors the student-facing springpod.com site.\n\n---\n\n## Font families\n\n### Poppins — Headings\n\n- CSS: `font-family: var(--font-heading)`\n- Tailwind: `font-heading`\n- Weights: 400 (Regular), 500 (Medium), 600 (Semibold), 700 (Bold)\n- Usage: All h1–h6 headings, logo text, hero text\n\n### Inter — Body text\n\n- CSS: `font-family: var(--font-sans)`\n- Tailwind: `font-sans`\n- Weights: 400–700\n- Usage: Body copy, labels, buttons, navigation, form fields\n\n### JetBrains Mono — Code\n\n- CSS: `font-family: var(--font-mono)`\n- Tailwind: `font-mono`\n- Usage: Code blocks, inline code, technical references\n\n---\n\n## Type scale\n\n# Heading 1 — text-4xl/text-5xl, font-medium\n\n## Heading 2 — text-3xl, font-semibold\n\n### Heading 3 — text-2xl, font-semibold\n\n#### Heading 4 — text-xl, font-medium\n\n##### Heading 5 — text-lg, font-medium\n\n###### Heading 6 — text-sm, font-medium, uppercase\n\nBody text is rendered in Inter at 16px (1rem) with a line height of 1.75.\n\n---\n\n## Font weights\n\n| Weight | Value | Usage |\n|--------|-------|-------|\n| Regular | 400 | Body text, descriptions |\n| Medium | 500 | Nav items, card titles, emphasis |\n| Semibold | 600 | Section headings (h2, h3) |\n| Bold | 700 | Page titles, logo, strong emphasis |\n\n---\n\n## Line heights\n\n| Context | Line height | When to use |\n|---------|------------|-------------|\n| Headings | 1.15 | All h1–h6 elements |\n| Body text | 1.75 | Paragraphs, lists, general content |\n| Compact | 1.5 | Labels, badges, navigation items |\n\n---\n\n## Usage guidelines\n\n\n",
+      "token_count": 401
+    },
+    {
+      "slug": "design-system-components",
+      "content": "# Components\n\nEvery component available in SpringBoard content pages. Use these when writing MDX content — they render consistently across the site.\n\n---\n\n## Admonition\n\nCallout boxes for highlighting important information. Six types available.\n\n\n\n\n\n\n\n\n\n\n\n\n\n### MDX syntax\n\n```mdx\n\n```\n\nAvailable types: `info`, `tip`, `warning`, `danger`, `note`, `success`\n\n---\n\n## Collapsible\n\nExpandable sections. Six variants with different colors.\n\n\n\n\n\n\n\n\n\n\n\n\n\n### MDX syntax\n\n```mdx\n\n```\n\nVariants: `info` (default), `why`, `how`, `example`, `warning`, `tip`\n\n---\n\n## Card and CardGrid\n\nCards for organising related content. Use CardGrid for responsive layouts.\n\n\n  \n</CardGrid>\n\n### MDX syntax\n\n```mdx\n\n</CardGrid>\n```\n\n---\n\n## ChecklistItem\n\nInteractive checkboxes that persist state in localStorage.\n\n\n\n\n### MDX syntax\n\n```mdx\n\n```\n\nThe `id` must be unique across the entire site.\n\n---\n\n## DecisionFlow\n\nDecision trees for guiding readers through choices.\n\n\n\n### MDX syntax\n\n```mdx\n\n```\n\n---\n\n## StepCard\n\nNumbered steps for sequential instructions. Each card shows a step number, title, and description with an optional link.\n\n\n\n\n### MDX syntax\n\n```mdx\n\n\n```\n\nProps: `number`, `title`, `children`, `href` (optional), `cta` (optional), `isLast` (optional)\n\n---\n\n## Code blocks\n\nFenced code blocks with syntax highlighting powered by Shiki.\n\n```javascript\n// Code blocks are syntax highlighted automatically\nfunction greet(name) {\n  return `Hello, ${name}!`;\n}\n```\n\n```python\n# Python is supported too\ndef greet(name):\n    return f\"Hello, {name}!\"\n```\n\n---\n\n## Tables\n\nStandard markdown tables render with Springpod styling.\n\n| Feature | Green | Yellow | Orange | Red |\n|---------|-------|--------|--------|-----|\n| Security review | No | Basic | Full | Full + pen test |\n| Data team sign-off | No | Maybe | Yes | Yes |\n| Safeguarding check | No | No | If student-facing | Always |\n\n---\n\n## Blockquotes\n\n> Blockquotes are styled with a teal left border and subtle background.\n> Use them for callouts or attributions.\n\n---\n\n## When to use what\n\n| Need | Component |\n|------|-----------|\n| Highlight important info | Admonition |\n| Hide supplementary detail | Collapsible |\n| Organize related items | CardGrid + Card |\n| Track requirements | ChecklistItem |\n| Guide a decision | DecisionFlow |\n| Show sequential steps | StepCard |\n| Display data | Table |\n\n\n",
+      "token_count": 587
+    }
+  ],
+  "logo": {
+    "light": "/springpod-logo.svg",
+    "dark": "/springpod-logo-dark.svg",
+    "rules": "Do not stretch, rotate, recolor, or place on busy backgrounds. On dark backgrounds, use the white version."
+  }
+}

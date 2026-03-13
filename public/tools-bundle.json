@@ -1,0 +1,153 @@
+{
+  "built_at": "2026-03-13T17:56:47.950Z",
+  "built_from_commit": "049105b",
+  "ai_coding_tools": [
+    {
+      "name": "Lovable",
+      "tier": "No-Code",
+      "approved_paths": [
+        "green",
+        "yellow"
+      ],
+      "restricted_paths": [
+        "orange"
+      ],
+      "notes": "Quick prototypes only. GitHub sync + ZIP export. Supabase for data. Do not use for anything touching student data."
+    },
+    {
+      "name": "Replit Agent",
+      "tier": "Low-Code",
+      "approved_paths": [
+        "green",
+        "yellow"
+      ],
+      "restricted_paths": [
+        "orange",
+        "red"
+      ],
+      "notes": "Good for internal tools. Data residency not confirmed for UK GDPR compliance on student data."
+    },
+    {
+      "name": "Bolt.new",
+      "tier": "No-Code",
+      "approved_paths": [
+        "green"
+      ],
+      "restricted_paths": [
+        "yellow"
+      ],
+      "notes": "Fast prototyping. Built-in PostgreSQL + Supabase since V2. Green builds only (platform maturity still being evaluated)."
+    },
+    {
+      "name": "Cursor",
+      "tier": "Pro Tool",
+      "approved_paths": [
+        "green",
+        "yellow",
+        "orange",
+        "red"
+      ],
+      "restricted_paths": [],
+      "notes": "Full code control, approved by engineering. Preferred for Orange and Red builds."
+    },
+    {
+      "name": "Claude Code",
+      "tier": "Pro Tool",
+      "approved_paths": [
+        "green",
+        "yellow",
+        "orange",
+        "red"
+      ],
+      "restricted_paths": [],
+      "notes": "Full code control, CLI-based. Approved for all paths including student-facing features."
+    },
+    {
+      "name": "GitHub Copilot",
+      "tier": "Pro Tool",
+      "approved_paths": [
+        "green",
+        "yellow",
+        "orange",
+        "red"
+      ],
+      "restricted_paths": [],
+      "notes": "IDE-integrated code assistant. Code suggestions must be reviewed before committing."
+    },
+    {
+      "name": "ChatGPT / Claude (chat)",
+      "tier": "Assistant",
+      "approved_paths": [],
+      "restricted_paths": [],
+      "notes": "Never paste real student data, employer contracts, or financial information into chat interfaces."
+    }
+  ],
+  "other_services": [
+    {
+      "name": "Vercel",
+      "type": "Hosting",
+      "approved_for": "Green, Yellow, Orange",
+      "notes": "Preferred for frontend deployments. Red builds require additional security review."
+    },
+    {
+      "name": "Supabase",
+      "type": "Database",
+      "approved_for": "All build paths (with review for Red)",
+      "notes": "Row-level security must be enabled for any student data tables."
+    },
+    {
+      "name": "OpenAI API",
+      "type": "AI API",
+      "approved_for": "Orange, Red (with Data team sign-off)",
+      "notes": "Must not send raw student PII. Use anonymised or aggregated data only."
+    },
+    {
+      "name": "Anthropic API",
+      "type": "AI API",
+      "approved_for": "Orange, Red (with Data team sign-off)",
+      "notes": "Same data handling rules as OpenAI. Preferred for the Interview Skills Coach."
+    },
+    {
+      "name": "Google Analytics",
+      "type": "Analytics",
+      "approved_for": "Green, Yellow only",
+      "notes": "Not approved for tools serving students under 18. Use privacy-respecting alternatives for student-facing tools."
+    },
+    {
+      "name": "PostHog",
+      "type": "Analytics",
+      "approved_for": "All build paths",
+      "notes": "Self-hosted option available. Approved for student-facing with anonymised tracking."
+    },
+    {
+      "name": "HubSpot",
+      "type": "CRM/Marketing",
+      "approved_for": "Internal and partner-facing only",
+      "notes": "Not for student-facing tools."
+    },
+    {
+      "name": "Segment",
+      "type": "Data Pipeline",
+      "approved_for": "Internal analytics only",
+      "notes": "Do not route student PII through Segment."
+    }
+  ],
+  "not_approved": [
+    {
+      "name": "Notion AI",
+      "reason": "Under re-evaluation — DPA with UK SCCs now published (March 2026). Content moderation controls for under-18 use still unconfirmed.",
+      "date": "Mar 2026"
+    },
+    {
+      "name": "Jasper",
+      "reason": "Marketing-focused, no controls for age-appropriate content generation",
+      "date": "Feb 2026"
+    },
+    {
+      "name": "Midjourney",
+      "reason": "Restricted enterprise API now available. No content moderation controls suitable for educational context.",
+      "date": "Mar 2026"
+    }
+  ],
+  "request_process": "Post in #tools-and-tech Slack channel with: tool name, intended use, build path, and whether it will touch student data. Engineering Lead reviews within 5 business days."
+}

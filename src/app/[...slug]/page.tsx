@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { getContentBySlug, getAllSlugs } from "@/lib/mdx";
 import { extractToc } from "@/lib/toc";
 import { findNavItem, findAdjacentPages } from "@/lib/navigation";
+import { getLastUpdated, formatLastUpdated } from "@/lib/content-dates";
 import { DocPage } from "@/components/layout/DocPage";
 import type { Metadata } from "next";
 
@@ -39,6 +40,8 @@ export default async function DocPageRoute({ params }: PageProps) {
     const toc = extractToc(raw);
     const navInfo = findNavItem(slugStr);
     const adjacent = findAdjacentPages(slugStr);
+    const dateIso = getLastUpdated(slugStr);
+    const lastUpdated = dateIso ? formatLastUpdated(dateIso) : undefined;
 
     return (
       <DocPage
@@ -46,8 +49,10 @@ export default async function DocPageRoute({ params }: PageProps) {
         meta={meta}
         toc={toc}
         sectionTitle={navInfo?.section.title ?? ""}
+        slug={slugStr}
         prev={adjacent.prev}
         next={adjacent.next}
+        lastUpdated={lastUpdated}
       />
     );
   } catch {

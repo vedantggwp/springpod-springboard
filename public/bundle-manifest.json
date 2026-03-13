@@ -1,0 +1,31 @@
+{
+  "built_at": "2026-03-13T17:56:47.972Z",
+  "built_from_commit": "049105b",
+  "bundles": {
+    "policy": {
+      "hash": "sha256:41431ef7adbd046ced380c15e318cd501db83d18704ad7f32389544969eadf57",
+      "tokens": 380
+    },
+    "content": {
+      "hash": "sha256:8b662ac26edf1703c2d5f0b79c2cb66d41448218212db06c4a1484f46fc57cc3",
+      "tokens": 20970
+    },
+    "design": {
+      "hash": "sha256:01fa0b35e1a4ac9a6a799f9df817fc24ddcc146320573c93f30ad8ea199cbc01",
+      "tokens": 2643
+    },
+    "tools": {
+      "hash": "sha256:e319485e025f9e12acf6809bfffea3b76f2c81804e8a6c40c3003f4adf63d698",
+      "tokens": 1168
+    },
+    "roles": {
+      "hash": "sha256:553f519ffae99d8b5e38a66e01995613b57be83147f24c5e8e8f14ba8869db98",
+      "tokens": 1891
+    },
+    "prompts": {
+      "hash": "sha256:22648d8dc8be0bfbb5e2758e24084cbce93db83dea14db62796448ae29d88475",
+      "tokens": 3186
+    }
+  },
+  "total_tokens": 30238
+}

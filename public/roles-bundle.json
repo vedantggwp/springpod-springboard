@@ -1,0 +1,119 @@
+{
+  "built_at": "2026-03-13T17:56:47.957Z",
+  "built_from_commit": "049105b",
+  "contacts": [
+    {
+      "role": "Peer reviewer",
+      "person": "Any team member",
+      "contact": "—",
+      "responsibilities": "Reviews Yellow builds. Checks that the builder followed the checklist and the tool works as described."
+    },
+    {
+      "role": "Technical reviewer",
+      "person": "Engineering Lead (Product & Engineering tribe)",
+      "contact": "tech-review@springpod.com",
+      "responsibilities": "Reviews Orange builds. Checks security, data handling, access controls, and technical architecture."
+    },
+    {
+      "role": "Designated reviewer",
+      "person": "Oliver Fisher (CPO) or delegate",
+      "contact": "designated-review@springpod.com",
+      "responsibilities": "Signs off Red builds. Verifies compliance, privacy impact, and age-appropriate design. Has authority to approve or block launch."
+    },
+    {
+      "role": "Framework contact",
+      "person": "SpringBoard Admin",
+      "contact": "springboard@springpod.com",
+      "responsibilities": "Answers questions about SpringBoard itself. Updates framework documents. Runs training sessions."
+    },
+    {
+      "role": "Emergency contact",
+      "person": "On-call Engineering",
+      "contact": "emergency@springpod.com / Slack: #incident-response",
+      "responsibilities": "First call for critical incidents (data exposure, safety risk, compliance breach). Available outside business hours."
+    }
+  ],
+  "review_requirements": [
+    {
+      "build_path": "green",
+      "reviewer_role": "No formal review required",
+      "checks": "Builder self-checks using the [Green Checklist](/checklists/green-checklist)"
+    },
+    {
+      "build_path": "yellow",
+      "reviewer_role": "Peer reviewer",
+      "checks": "Checklist completion, basic functionality, realistic data testing"
+    },
+    {
+      "build_path": "orange",
+      "reviewer_role": "Technical reviewer",
+      "checks": "Security, data handling, branding, access controls, third-party services"
+    },
+    {
+      "build_path": "red",
+      "reviewer_role": "Designated reviewer",
+      "checks": "Everything above, plus compliance, privacy impact, age-appropriate design, incident response plan"
+    }
+  ],
+  "response_times": [
+    {
+      "role": "Peer reviewer",
+      "time": "Within 2 business days"
+    },
+    {
+      "role": "Technical reviewer",
+      "time": "Within 3 business days"
+    },
+    {
+      "role": "Designated reviewer",
+      "time": "Within 5 business days"
+    },
+    {
+      "role": "Framework contact",
+      "time": "Within 1 business day"
+    },
+    {
+      "role": "Emergency contact",
+      "time": "Within 1 hour for Critical severity, 4 hours for High"
+    }
+  ],
+  "role_guidance": [
+    {
+      "slug": "curriculum-designer",
+      "title": "Start Here: Curriculum Designers",
+      "content": "# Start Here: Curriculum Designers\n\nWelcome! If you design courses, quizzes, learning pathways, or educational content at Springpod, this page is your starting point. You're probably wondering things like \"Can I use AI to generate quiz questions?\" or \"What if it hallucinates wrong answers?\" — SpringBoard has answers for all of that.\n\nThis page won't teach you everything. It points you to the right pages in the right order.\n\n---\n\n## Your Build Path\n\nMost curriculum tools (quiz generators, content formatters, resource organisers) fall into the Green path. Start here to confirm yours.\n\n  \n  \n</CardGrid>\n\n---\n\n## Standards That Apply to You\n\nCurriculum content has specific risks — hallucinated facts in educational material, safeguarding requirements for under-18s, and prompt reliability.\n\n  \n  \n</CardGrid>\n\n---\n\n## Tools & Templates\n\nPick the right tool, check what's already approved, and start your project with a proper brief.\n\n  \n  \n</CardGrid>\n\n---\n\n## Common Scenarios",
+      "token_count": 248
+    },
+    {
+      "slug": "leadership",
+      "title": "Start Here: Leadership",
+      "content": "# Start Here: Leadership\n\nWelcome. If you are a director, head of department, or senior leader at Springpod, this page is your starting point. You are probably asking things like \"What's our AI policy?\", \"What risk are we carrying?\", and \"How do I make budget decisions about AI tools?\" — SpringBoard has answers for all of that.\n\nThis page won't teach you everything. It points you to the right pages in the right order.\n\n---\n\n## Policy & Risk Overview\n\nThese are the standards that govern how AI tools are built and used across Springpod.\n\n  \n  \n  \n</CardGrid>\n\n---\n\n## Understanding the Framework\n\nHow SpringBoard classifies and manages AI projects by risk level.\n\n  \n  \n</CardGrid>\n\n---\n\n## Oversight & Reporting\n\nWho is responsible for what, what tools are in use, and how to stay informed.\n\n  \n  \n  \n</CardGrid>\n\n---\n\n## Key Questions Answered",
+      "token_count": 215
+    },
+    {
+      "slug": "marketing",
+      "title": "Start Here: Marketing",
+      "content": "# Start Here: Marketing\n\nWelcome to SpringBoard, your guide to building AI-powered tools at Springpod. Whether you're wondering \"Can I use AI for student-facing copy?\" or \"How do I maintain brand voice with AI?\" — this page points you to the right answers. Follow the links below to navigate the parts of SpringBoard most relevant to your role.\n\n---\n\n## Your Build Path\n\n  \n  \n</CardGrid>\n\n---\n\n## Standards That Apply to You\n\n  \n  \n</CardGrid>\n\n---\n\n## Tools & Templates\n\n  \n  \n</CardGrid>\n\n---\n\n## Common Scenarios",
+      "token_count": 132
+    },
+    {
+      "slug": "ops-partnerships",
+      "title": "Start Here: Ops & Partnerships",
+      "content": "# Start Here: Ops & Partnerships\n\nYou keep Springpod's employer partnerships running — onboarding, reporting, engagement tracking, and everything in between. If you've ever wondered \"Can I build a dashboard to track employer engagement?\" or \"How do I automate reporting?\" — you're in the right place. SpringBoard will get you building safely in minutes.\n\n---\n\n## Your Build Path\n\nStart here to find out which process fits your project.\n\n  \n  \n</CardGrid>\n\n---\n\n## Standards That Apply to You\n\nThese are the standards most relevant to ops and partnerships work.\n\n  \n  \n</CardGrid>\n\n---\n\n## Tools & Templates\n\nEverything you need to get started.\n\n  \n  \n</CardGrid>\n\n---\n\n## Common Scenarios",
+      "token_count": 175
+    },
+    {
+      "slug": "product-engineering",
+      "title": "Start Here: Product & Engineering",
+      "content": "# Start Here: Product & Engineering\n\nWelcome. You build and ship the platform — student-facing features, internal tools, integrations, and everything in between. This page maps you to the SpringBoard pages that matter most for your work, so you can answer questions like *\"What standards apply to student-facing features?\"* and *\"When does this need pen testing?\"* without searching.\n\n---\n\n## Your Build Path\n\n  \n  \n</CardGrid>\n\n---\n\n## Standards You Must Know\n\n  \n  \n  \n</CardGrid>\n\n---\n\n## Process & Templates\n\n  \n  \n</CardGrid>\n\n---\n\n## Common Scenarios",
+      "token_count": 142
+    }
+  ],
+  "escalation_path": [
+    "1. Check framework docs yourself",
+    "2. Building question → Framework contact",
+    "3. Security or data concern → Technical reviewer",
+    "4. Compliance, legal, or safety → Designated reviewer",
+    "5. Something broken in live tool → Emergency contact + Incident Report"
+  ]
+}
