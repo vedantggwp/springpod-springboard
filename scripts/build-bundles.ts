@@ -28,16 +28,72 @@ function readMdx(relativePath: string): string {
   return fs.readFileSync(path.join(contentDir, relativePath), "utf-8");
 }
 
-function stripMdxComponents(text: string): string {
-  // Remove JSX component tags (ChecklistItem, Collapsible, DecisionFlow, etc.)
-  return text
-    .replace(/<ChecklistItem[^/]*\/>/g, "")
-    .replace(/<Collapsible[^>]*>[\s\S]*?<\/Collapsible>/g, "")
-    .replace(/<DecisionFlow>[\s\S]*?<\/DecisionFlow>/g, "")
-    .replace(/<DecisionStep[\s\S]*?\/>/g, "")
-    .replace(/<StepCard[^>]*>[\s\S]*?<\/StepCard>/g, "")
-    .replace(/<[A-Z][a-zA-Z]*[^>]*\/>/g, "") // self-closing custom components
-    .replace(/<[A-Z][a-zA-Z]*[^>]*>[\s\S]*?<\/[A-Z][a-zA-Z]*>/g, ""); // paired custom components
+function extractTextFromComponents(text: string): string {
+  // ChecklistItem: extract label and children
+  // <ChecklistItem id="..." label="Do X">Optional detail</ChecklistItem>
+  // → "- [ ] Do X\n  Optional detail"
+  // Also handle self-closing: <ChecklistItem id="..." label="Do X" />
+  text = text.replace(
+    /<ChecklistItem[^>]*\blabel="([^"]*)"[^>]*\/>/g,
+    (_, label) => `- [ ] ${label}`
+  );
+  text = text.replace(
+    /<ChecklistItem[^>]*\blabel="([^"]*)"[^>]*>([\s\S]*?)<\/ChecklistItem>/g,
+    (_, label, children) => {
+      const trimmed = children.trim();
+      return trimmed ? `- [ ] ${label}\n  ${trimmed}` : `- [ ] ${label}`;
+    }
+  );
+
+  // Collapsible: extract title and content
+  // <Collapsible title="Why?" variant="why">Content</Collapsible>
+  // → "**Why?**\nContent"
+  text = text.replace(
+    /<Collapsible[^>]*\btitle="([^"]*)"[^>]*>([\s\S]*?)<\/Collapsible>/g,
+    (_, title, content) => `**${title}**\n${content.trim()}`
+  );
+
+  // StepCard: extract number, title, and content
+  // <StepCard number={1} title="Do this">Detail</StepCard>
+  text = text.replace(
+    /<StepCard[^>]*\bnumber=\{?(\d+)\}?[^>]*\btitle="([^"]*)"[^>]*>([\s\S]*?)<\/StepCard>/g,
+    (_, num, title, content) => `**Step ${num}: ${title}**\n${content.trim()}`
+  );
+
+  // DecisionStep: extract structured data
+  // <DecisionStep condition="..." result="..." action="..." />
+  text = text.replace(
+    /<DecisionStep[^>]*\bcondition="([^"]*)"[^>]*\bresult="([^"]*)"[^>]*\baction="([^"]*)"[^>]*\/>/g,
+    (_, condition, result, action) => `If ${condition} → ${result}: ${action}`
+  );
+
+  // DecisionFlow wrapper — just unwrap
+  text = text.replace(/<\/?DecisionFlow>/g, "");
+
+  // Admonition: extract type and content
+  text = text.replace(
+    /<Admonition[^>]*\btype="([^"]*)"[^>]*(?:\btitle="([^"]*)")?[^>]*>([\s\S]*?)<\/Admonition>/g,
+    (_, type, title, content) => {
+      const heading = title || type.charAt(0).toUpperCase() + type.slice(1);
+      return `**${heading}:** ${content.trim()}`;
+    }
+  );
+
+  // Card: extract title and content
+  text = text.replace(
+    /<Card[^>]*\btitle="([^"]*)"[^>]*>([\s\S]*?)<\/Card>/g,
+    (_, title, content) => `**${title}**\n${content.trim()}`
+  );
+
+  // HeroBadge, CardGrid, Checklist — wrapper components, just unwrap
+  text = text.replace(/<\/?(HeroBadge|CardGrid|Checklist)[^>]*>/g, "");
+
+  // Remaining self-closing custom components — remove
+  text = text.replace(/<[A-Z][a-zA-Z]*[^>]*\/>/g, "");
+  // Remaining paired custom components — extract inner text
+  text = text.replace(/<[A-Z][a-zA-Z]*[^>]*>([\s\S]*?)<\/[A-Z][a-zA-Z]*>/g, "$1");
+
+  return text;
 }
 
 function stripFrontmatter(text: string): string {
@@ -208,6 +264,10 @@ function buildContentBundle() {
     "forms/review-request.mdx",
   ];
 
+  const guideFiles = [
+    "guides/when-to-escalate.mdx",
+  ];
+
   function processFiles(
     files: readonly string[]
   ): readonly {
@@ -218,7 +278,7 @@ function buildContentBundle() {
   }[] {
     return files.map((file) => {
       const raw = stripFrontmatter(readMdx(file));
-      const cleaned = stripMdxComponents(raw);
+      const cleaned = extractTextFromComponents(raw);
       const titleMatch = cleaned.match(/^#\s+(.+)$/m);
       const title = titleMatch?.[1] ?? file;
       const slug = file.replace(/\.mdx$/, "").replace(/\//g, "-");
@@ -240,10 +300,11 @@ function buildContentBundle() {
   const buildGuides = processFiles(buildGuideFiles);
   const checklists = processFiles(checklistFiles);
   const forms = processFiles(formFiles);
+  const guides = processFiles(guideFiles);
 
   // Extract PECR content as a dedicated addressable chunk from security + data-workflows
-  const securityRaw = stripMdxComponents(stripFrontmatter(readMdx("standards/security.mdx")));
-  const dataWorkflowsRaw = stripMdxComponents(stripFrontmatter(readMdx("standards/data-workflows.mdx")));
+  const securityRaw = extractTextFromComponents(stripFrontmatter(readMdx("standards/security.mdx")));
+  const dataWorkflowsRaw = extractTextFromComponents(stripFrontmatter(readMdx("standards/data-workflows.mdx")));
 
   const pecrChunks: { heading: string; content: string }[] = [];
   for (const chunk of chunkByHeading(securityRaw)) {
@@ -264,6 +325,7 @@ function buildContentBundle() {
     build_guides: buildGuides,
     checklists,
     forms,
+    guides,
     pecr: {
       slug: "content-bundle-pecr",
       title: "PECR Compliance (extracted)",
@@ -271,7 +333,7 @@ function buildContentBundle() {
       token_count: estimateTokens(pecrChunks.map((c) => c.content).join("\n")),
     },
     file_count:
-      standardFiles.length + buildGuideFiles.length + checklistFiles.length + formFiles.length,
+      standardFiles.length + buildGuideFiles.length + checklistFiles.length + formFiles.length + guideFiles.length,
   };
 }
 
@@ -283,7 +345,7 @@ function buildDesignBundle() {
   // Design system files
   const designFiles = ["design-system/colors.mdx", "design-system/typography.mdx", "design-system/components.mdx"];
   const designChunks = designFiles.map((file) => {
-    const raw = stripMdxComponents(stripFrontmatter(readMdx(file)));
+    const raw = extractTextFromComponents(stripFrontmatter(readMdx(file)));
     const slug = file.replace(/\.mdx$/, "").replace(/\//g, "-");
     return { slug, content: raw, token_count: estimateTokens(raw) };
   });
@@ -306,15 +368,15 @@ function buildDesignBundle() {
   };
 
   const raw = {
-    primary: "#0BB3B7",
-    primary_dark: "#0A8F93",
-    secondary: "#446DF6",
+    primary: "#00a5ac",
+    primary_dark: "#088d96",
+    secondary: "#1549f4",
     text: "#16254C",
-    text_secondary: "#5C6682",
+    text_secondary: "#5a6581",
     background: "#FFFFFF",
-    surface: "#E4ECF7",
+    surface: "#e0e5ea",
     error: "#FF475A",
-    success: "#0A8F93",
+    success: "#088d96",
     orange_accent: "#F7936F",
     purple_accent: "#7F7EFF",
     heading_font: "Poppins SemiBold 600",
@@ -326,7 +388,7 @@ function buildDesignBundle() {
   };
 
   // Extract tone of voice from branding standard
-  const brandingCleaned = stripMdxComponents(stripFrontmatter(brandingRaw));
+  const brandingCleaned = extractTextFromComponents(stripFrontmatter(brandingRaw));
   const toneChunks = chunkByHeading(brandingCleaned).filter(
     (c) => /tone|voice|ai.generated|disclosure/i.test(c.heading)
   );
@@ -353,7 +415,7 @@ function buildDesignBundle() {
 
 function buildToolsBundle() {
   const raw = readMdx("client-config/approved-tools.mdx");
-  const cleaned = stripMdxComponents(stripFrontmatter(raw));
+  const cleaned = extractTextFromComponents(stripFrontmatter(raw));
 
   // Parse the AI coding tools table
   const aiToolsTable = cleaned.match(
@@ -469,7 +531,7 @@ function buildToolsBundle() {
 
 function buildRolesBundle() {
   const rolesConfig = readMdx("client-config/roles.mdx");
-  const cleanedConfig = stripMdxComponents(stripFrontmatter(rolesConfig));
+  const cleanedConfig = extractTextFromComponents(stripFrontmatter(rolesConfig));
 
   // Parse framework roles table
   const rolesTable = cleanedConfig.match(
@@ -558,7 +620,7 @@ function buildRolesBundle() {
   ];
 
   const roleGuidance = roleFiles.map((file) => {
-    const raw = stripMdxComponents(stripFrontmatter(readMdx(file)));
+    const raw = extractTextFromComponents(stripFrontmatter(readMdx(file)));
     const titleMatch = raw.match(/^#\s+(.+)$/m);
     const slug = path.basename(file, ".mdx");
     return {
@@ -590,7 +652,7 @@ function buildRolesBundle() {
 
 function buildPromptsBundle() {
   const raw = readMdx("client-config/prompt-library.mdx");
-  const cleaned = stripMdxComponents(stripFrontmatter(raw));
+  const cleaned = extractTextFromComponents(stripFrontmatter(raw));
 
   // Extract each prompt template (identified by ## or ### headings followed by code blocks)
   const promptPattern = /###?\s+(.+?)(?:\n[\s\S]*?)?```([\s\S]*?)```/g;
