@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import remarkGfm from "remark-gfm";
-import { mdxComponents } from "@/components/mdx/mdx-components";
+import { mdxComponents, resetSeenSlugs } from "@/components/mdx/mdx-components";
 import { DocTableOfContents } from "./DocTableOfContents";
 import { DocFooter } from "./DocFooter";
 import { DocBreadcrumbs } from "./DocBreadcrumbs";
@@ -56,6 +56,9 @@ export function DocPage({
   next,
   lastUpdated,
 }: DocPageProps) {
+  // Reset slug tracker so each page gets unique heading IDs during SSG
+  resetSeenSlugs();
+
   return (
     <div className="flex gap-8">
       <article className="min-w-0 max-w-4xl flex-1 px-4 py-8 sm:px-6 lg:px-8">
@@ -68,7 +71,7 @@ export function DocPage({
             <span>{lastUpdated}</span>
           </p>
         )}
-        <div className="prose-sp max-w-none">
+        <div className="max-w-none">
           <MDXRemote
             source={raw}
             components={components}

@@ -15,7 +15,8 @@ export function ThemeToggle() {
       className="relative flex h-9 w-9 items-center justify-center rounded-md
         text-sp-text-muted transition-colors
         hover:bg-sp-surface hover:text-sp-navy
-        dark:hover:bg-white/10 dark:hover:text-white"
+        dark:hover:bg-white/10 dark:hover:text-white
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)]"
     >
       {isDark ? <Sun size={18} /> : <Moon size={18} />}
     </button>

@@ -12,54 +12,42 @@ interface CollapsibleProps {
 }
 
 interface VariantStyle {
-  readonly gradient: string;
-  readonly darkGradient: string;
+  readonly bg: string;
   readonly border: string;
   readonly chevronColor: string;
 }
 
 const variantStyles: Record<CollapsibleVariant, VariantStyle> = {
   info: {
-    gradient: "from-sp-teal-light/30 to-sp-teal/10",
-    darkGradient: "dark:from-sp-teal-light/10 dark:to-sp-teal/5",
+    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
     border: "border-sp-teal",
     chevronColor: "text-sp-teal",
   },
   warning: {
-    gradient: "from-sp-red/10 to-sp-red/5",
-    darkGradient: "dark:from-sp-red/8 dark:to-sp-red/3",
+    bg: "bg-sp-red/[0.04] dark:bg-sp-red/[0.06]",
     border: "border-sp-red",
     chevronColor: "text-sp-red",
   },
   tip: {
-    gradient: "from-sp-teal/10 to-sp-teal-light/20",
-    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal-light/5",
+    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
     border: "border-sp-teal",
     chevronColor: "text-sp-teal",
   },
   example: {
-    gradient: "from-sp-blue/10 to-sp-blue/5",
-    darkGradient: "dark:from-sp-blue/8 dark:to-sp-blue/3",
+    bg: "bg-sp-blue/[0.04] dark:bg-sp-blue/[0.06]",
     border: "border-sp-blue",
     chevronColor: "text-sp-blue",
   },
   why: {
-    gradient: "from-sp-blue/10 to-sp-blue/5",
-    darkGradient: "dark:from-sp-blue/8 dark:to-sp-blue/3",
+    bg: "bg-sp-blue/[0.04] dark:bg-sp-blue/[0.06]",
     border: "border-sp-blue",
     chevronColor: "text-sp-blue",
   },
   how: {
-    gradient: "from-sp-teal/10 to-sp-teal/5",
-    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal/3",
+    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
     border: "border-sp-teal",
     chevronColor: "text-sp-teal",
   },
-};
-
-const variantEmoji: Partial<Record<CollapsibleVariant, string>> = {
-  why: "\u{1F4A1} ",
-  how: "\u{1F527} ",
 };
 
 export default function Collapsible({
@@ -73,33 +61,32 @@ export default function Collapsible({
   return (
     <div
       className={[
-        "my-4 overflow-hidden rounded-xl border-l-4 bg-gradient-to-r",
-        styles.gradient,
-        styles.darkGradient,
-        styles.border,
+        "my-4 overflow-hidden rounded-lg",
+        isOpen ? `border-l-4 ${styles.bg} ${styles.border}` : "",
       ].join(" ")}
     >
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full items-center gap-3 px-6 py-4 text-left"
+        className="flex w-full items-center gap-3 px-6 py-4 text-left
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)]"
         aria-expanded={isOpen}
       >
         <ChevronRight
           size={18}
           className={[
-            "shrink-0 transition-transform duration-200",
+            "shrink-0 transition-transform duration-150 ease-out",
             styles.chevronColor,
             isOpen ? "rotate-90" : "",
           ].join(" ")}
         />
         <span className="font-medium text-sp-navy dark:text-white">
-          {variantEmoji[variant] ?? ""}{title}
+          {title}
         </span>
       </button>
 
       <div
-        className="grid transition-[grid-template-rows] duration-200 ease-in-out"
+        className="grid transition-[grid-template-rows] duration-150 ease-out"
         style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
       >
         <div className="overflow-hidden">

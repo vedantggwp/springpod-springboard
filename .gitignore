@@ -21,6 +21,9 @@ npm-debug.log*
 # vercel
 .vercel
 
+# internal research (confidential)
+.internal-research/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

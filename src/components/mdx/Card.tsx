@@ -11,9 +11,9 @@ export default function Card({ title, children, href, icon }: CardProps) {
   const content = (
     <div
       className={[
-        "rounded-xl border border-sp-border bg-white p-5",
-        "transition-shadow duration-200",
-        "hover:border-sp-teal hover:shadow-lg",
+        "rounded-lg border border-transparent bg-white p-5 max-sm:rounded-none max-sm:border-x-0",
+        "shadow-sp-box transition-shadow duration-150 ease-out",
+        "hover:border-sp-teal hover:shadow-sp-hover",
         "dark:border-white/10 dark:bg-card",
         "dark:hover:border-sp-teal",
       ].join(" ")}
@@ -36,7 +36,7 @@ export default function Card({ title, children, href, icon }: CardProps) {
 
   if (href) {
     return (
-      <Link href={href} className="block no-underline">
+      <Link href={href} className="block no-underline focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)] rounded-lg">
         {content}
       </Link>
     );

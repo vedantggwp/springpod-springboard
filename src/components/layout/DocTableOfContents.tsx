@@ -47,11 +47,11 @@ export function DocTableOfContents({ items }: DocTableOfContentsProps) {
   return (
     <nav
       aria-label="Table of contents"
-      className="hidden w-64 shrink-0 xl:block"
+      className="hidden w-64 shrink-0 opacity-60 transition-opacity duration-150 ease-out hover:opacity-100 xl:block"
     >
       <div className="sticky top-24 max-h-[calc(100vh-8rem)] overflow-y-auto py-8">
         <p
-          className="mb-3 px-4 text-sm font-semibold uppercase tracking-wider
+          className="mb-3 px-4 text-xs font-semibold uppercase tracking-wider
             text-sp-text-muted dark:text-white/40"
         >
           ON THIS PAGE
@@ -64,10 +64,10 @@ export function DocTableOfContents({ items }: DocTableOfContentsProps) {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className={`block rounded-sm py-1.5 pr-4 text-[13px] leading-snug transition-colors ${indent} ${
+                  className={`block rounded-sm py-1.5 pr-4 text-xs leading-snug transition-colors ${indent} ${
                     isActive
                       ? "border-l-2 border-sp-teal bg-sp-teal-light/20 font-medium text-sp-teal dark:bg-sp-teal/10 dark:text-sp-teal-light"
-                      : "text-sp-text-secondary hover:bg-sp-surface hover:text-sp-navy dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/80"
+                      : "text-sp-text-muted hover:bg-sp-surface hover:text-sp-navy dark:text-white/50 dark:hover:bg-white/5 dark:hover:text-white/80"
                   }`}
                 >
                   {item.text}

@@ -18,8 +18,13 @@ function slugify(text: string): string {
     .trim();
 }
 
-/** Track seen slugs to deduplicate heading IDs within a page. */
+/** Track seen slugs to deduplicate heading IDs within a page.
+ *  Must be reset before each page render (see resetSeenSlugs). */
 const seenSlugs = new Map<string, number>();
+
+export function resetSeenSlugs(): void {
+  seenSlugs.clear();
+}
 
 function uniqueSlug(base: string): string {
   const count = seenSlugs.get(base) ?? 0;
@@ -32,12 +37,12 @@ type WrapProps = { readonly children: ReactNode };
 function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
   const Tag = `h${level}` as const;
   const sizes: Record<number, string> = {
-    1: "text-4xl md:text-5xl font-medium mt-10 mb-4",
-    2: "text-3xl font-semibold mt-12 mb-4",
-    3: "text-2xl font-semibold mt-8 mb-4",
+    1: "text-4xl md:text-5xl font-medium mt-10 mb-4 tracking-tight",
+    2: "text-3xl font-semibold mt-12 mb-4 tracking-tight",
+    3: "text-2xl font-semibold mt-8 mb-4 tracking-tight",
     4: "text-xl font-medium mt-6 mb-2",
     5: "text-lg font-medium mt-5 mb-2",
-    6: "text-sm font-medium mt-4 mb-1 uppercase tracking-wide",
+    6: "text-sm font-medium mt-4 mb-1 uppercase tracking-normal",
   };
 
   function Heading({
@@ -86,7 +91,7 @@ export const mdxComponents = {
   a: ({ href, children, ...props }: ComponentPropsWithoutRef<"a">) => (
     <a
       href={href}
-      className="text-sp-teal underline-offset-2 transition-colors hover:underline dark:text-sp-teal"
+      className="text-sp-blue underline-offset-2 transition-colors hover:text-sp-blue-2 hover:underline dark:text-sp-teal"
       {...props}
     >
       {children}
@@ -105,7 +110,7 @@ export const mdxComponents = {
   td: ({ children }: WrapProps) => <DataTableCell>{children}</DataTableCell>,
 
   pre: ({ children }: WrapProps) => (
-    <div className="group relative my-4 overflow-hidden rounded-xl border border-sp-border bg-sp-gray-50 dark:border-white/10 dark:bg-background">
+    <div className="group relative my-4 overflow-hidden rounded-lg border border-sp-border bg-sp-gray-50 dark:border-white/10 dark:bg-background">
       <pre className="overflow-x-auto px-6 py-4 text-sm leading-relaxed text-sp-gray-700 dark:text-white/70 [&>code]:bg-transparent [&>code]:p-0">
         {children}
       </pre>

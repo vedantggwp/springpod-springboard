@@ -15,8 +15,7 @@ interface AdmonitionProps {
 
 interface AdmonitionStyle {
   readonly icon: LucideIcon;
-  readonly gradient: string;
-  readonly darkGradient: string;
+  readonly bg: string;
   readonly border: string;
   readonly iconColor: string;
   readonly defaultTitle: string;
@@ -25,48 +24,42 @@ interface AdmonitionStyle {
 const admonitionConfig: Record<AdmonitionType, AdmonitionStyle> = {
   info: {
     icon: Info,
-    gradient: "from-sp-teal-light/30 to-sp-teal/10",
-    darkGradient: "dark:from-sp-teal-light/10 dark:to-sp-teal/5",
+    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
     border: "border-sp-teal",
     iconColor: "text-sp-teal",
     defaultTitle: "Info",
   },
   note: {
     icon: Info,
-    gradient: "from-sp-teal-light/30 to-sp-teal/10",
-    darkGradient: "dark:from-sp-teal-light/10 dark:to-sp-teal/5",
+    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
     border: "border-sp-teal",
     iconColor: "text-sp-teal",
     defaultTitle: "Note",
   },
   warning: {
     icon: AlertCircle,
-    gradient: "from-sp-red/10 to-sp-red/5",
-    darkGradient: "dark:from-sp-red/8 dark:to-sp-red/3",
+    bg: "bg-sp-red/[0.04] dark:bg-sp-red/[0.06]",
     border: "border-sp-red",
     iconColor: "text-sp-red",
     defaultTitle: "Warning",
   },
   danger: {
     icon: AlertCircle,
-    gradient: "from-sp-red/10 to-sp-red/5",
-    darkGradient: "dark:from-sp-red/8 dark:to-sp-red/3",
+    bg: "bg-sp-red/[0.04] dark:bg-sp-red/[0.06]",
     border: "border-sp-red",
     iconColor: "text-sp-red",
     defaultTitle: "Danger",
   },
   tip: {
     icon: CheckCircle2,
-    gradient: "from-sp-teal/10 to-sp-teal-light/20",
-    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal-light/5",
+    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
     border: "border-sp-teal",
     iconColor: "text-sp-teal",
     defaultTitle: "Tip",
   },
   success: {
     icon: CheckCircle2,
-    gradient: "from-sp-teal/10 to-sp-teal-light/20",
-    darkGradient: "dark:from-sp-teal/8 dark:to-sp-teal-light/5",
+    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
     border: "border-sp-teal",
     iconColor: "text-sp-teal",
     defaultTitle: "Success",
@@ -84,9 +77,8 @@ export default function Admonition({
   return (
     <div
       className={[
-        "my-4 rounded-xl border-l-4 bg-gradient-to-r p-6",
-        config.gradient,
-        config.darkGradient,
+        "my-4 rounded-lg border-l-4 p-6",
+        config.bg,
         config.border,
       ].join(" ")}
       role="note"

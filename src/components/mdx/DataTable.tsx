@@ -4,7 +4,7 @@ interface DataTableProps {
 
 export default function DataTable({ children }: DataTableProps) {
   return (
-    <div className="my-6 overflow-hidden rounded-lg border border-border">
+    <div className="my-6 overflow-hidden rounded-lg border border-sp-border dark:border-white/10">
       <div className="overflow-x-auto">
         <table className="w-full caption-bottom text-sm">{children}</table>
       </div>
@@ -14,7 +14,7 @@ export default function DataTable({ children }: DataTableProps) {
 
 export function DataTableHead({ children }: { readonly children: React.ReactNode }) {
   return (
-    <thead className="border-b bg-muted/50 text-left">
+    <thead className="border-b bg-sp-gray-50 dark:bg-white/5 text-left">
       {children}
     </thead>
   );
@@ -26,7 +26,7 @@ export function DataTableBody({ children }: { readonly children: React.ReactNode
 
 export function DataTableRow({ children }: { readonly children: React.ReactNode }) {
   return (
-    <tr className="border-b transition-colors hover:bg-muted/50">
+    <tr className="border-b transition-colors hover:bg-sp-gray-50 dark:hover:bg-white/5">
       {children}
     </tr>
   );
@@ -34,7 +34,7 @@ export function DataTableRow({ children }: { readonly children: React.ReactNode 
 
 export function DataTableHeader({ children }: { readonly children: React.ReactNode }) {
   return (
-    <th className="p-2 align-middle font-medium text-foreground">
+    <th className="p-2 align-middle font-medium text-sp-navy dark:text-white/90">
       {children}
     </th>
   );
@@ -42,7 +42,7 @@ export function DataTableHeader({ children }: { readonly children: React.ReactNo
 
 export function DataTableCell({ children }: { readonly children: React.ReactNode }) {
   return (
-    <td className="p-2 align-middle text-muted-foreground">
+    <td className="p-2 align-middle text-sp-text-secondary dark:text-white/60">
       {children}
     </td>
   );

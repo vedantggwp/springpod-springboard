@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 interface StepCardProps {
   readonly number: number;
   readonly title: string;
@@ -21,23 +23,23 @@ export default function StepCard({
       <div className="flex flex-col items-center">
         <div
           className={[
-            "flex h-10 w-10 shrink-0 items-center justify-center rounded-full",
-            "border-2 border-sp-teal bg-sp-teal/10",
-            "text-base font-bold text-sp-teal",
+            "flex h-8 w-8 shrink-0 items-center justify-center rounded-full",
+            "bg-sp-teal",
+            "text-sm font-semibold text-white",
           ].join(" ")}
         >
           {number}
         </div>
         {!isLast && (
-          <div className="w-0.5 flex-1 bg-sp-teal/20" aria-hidden="true" />
+          <div className="w-px flex-1 bg-sp-border" aria-hidden="true" />
         )}
       </div>
 
       {/* Card content */}
       <div
         className={[
-          "mb-4 flex-1 rounded-xl border border-sp-border bg-white p-5",
-          "transition-shadow duration-200 hover:shadow-md",
+          "mb-4 flex-1 rounded-lg border border-sp-border bg-white p-5",
+          "transition-shadow duration-150 ease-out hover:shadow-sp-hover",
           "dark:border-white/10 dark:bg-card",
         ].join(" ")}
       >
@@ -48,7 +50,7 @@ export default function StepCard({
           {children}
         </div>
         {href && cta && (
-          <a
+          <Link
             href={href}
             className={[
               "mt-3 inline-flex items-center gap-1.5 text-sm font-semibold",
@@ -57,7 +59,7 @@ export default function StepCard({
           >
             {cta}
             <span aria-hidden="true">→</span>
-          </a>
+          </Link>
         )}
       </div>
     </div>

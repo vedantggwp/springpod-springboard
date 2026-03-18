@@ -6,15 +6,15 @@
 /* ── Springpod Design Tokens (Tailwind utility classes) ──────────── */
 @theme inline {
   /* ── Brand Colors ──────────────────────────────────── */
-  --color-sp-teal: #0BB3B7;
-  --color-sp-teal-dark: #0A8F93;
-  --color-sp-teal-light: #9CF6F6;
+  --color-sp-teal: #00a5ac;
+  --color-sp-teal-dark: #088d96;
+  --color-sp-teal-light: #9cf6f6;
   --color-sp-navy: #16254C;
   --color-sp-navy-light: #2D3B5E;
   --color-sp-navy-dark: #0f1a38;
   --color-sp-navy-hover: #0F1A35;
-  --color-sp-blue: #446DF6;
-  --color-sp-blue-2: #1C3DAE;
+  --color-sp-blue: #1549f4;
+  --color-sp-blue-2: #143ae1;
 
   /* ── Secondary Palette ─────────────────────────────── */
   --color-sp-orange: #F7936F;
@@ -23,22 +23,27 @@
   --color-sp-red-dark: #C80B1E;
   --color-sp-purple: #7F7EFF;
   --color-sp-focus: #4D65FF;
+  --color-sp-green: #42d2ab;
+  --color-sp-green-dark: #089375;
+  --color-sp-ruby: #d81159;
+  --color-sp-yellow: #fac748;
+  --color-sp-orange-secondary: #fe9000;
 
   /* ── Neutrals ──────────────────────────────────────── */
   --color-sp-gray: #E4ECF7;
   --color-sp-gray-light: #EEEEEF;
-  --color-sp-gray-50: #F6F7F9;
-  --color-sp-gray-100: #F7FAFC;
-  --color-sp-gray-200: #EDF2F7;
-  --color-sp-gray-300: #E2E8F0;
-  --color-sp-gray-500: #A0AEC0;
-  --color-sp-gray-600: #718096;
-  --color-sp-gray-700: #4A5568;
-  --color-sp-gray-800: #2D3748;
-  --color-sp-text-secondary: #5C6682;
-  --color-sp-text-muted: #8B92A6;
-  --color-sp-border: #B9BEC9;
-  --color-sp-surface: #E9E9ED;
+  --color-sp-gray-50: #f7fafc;
+  --color-sp-gray-100: #f7fafc;
+  --color-sp-gray-200: #e0e5ea;
+  --color-sp-gray-300: #cacfd9;
+  --color-sp-gray-500: #9da5b6;
+  --color-sp-gray-600: #8790a4;
+  --color-sp-gray-700: #5a6581;
+  --color-sp-gray-800: #43506f;
+  --color-sp-text-secondary: #5a6581;
+  --color-sp-text-muted: #8790a4;
+  --color-sp-border: #b3bac7;
+  --color-sp-surface: #e0e5ea;
 
   /* ── Status Colors ─────────────────────────────────── */
   --color-sp-success-light: #BFF3A5;
@@ -71,9 +76,19 @@
   --color-ring: var(--ring);
 
   /* ── Typography ────────────────────────────────────── */
-  --font-heading: "Poppins", ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* ── Letter Spacing ─────────────────────────────────── */
+  --tracking-tight: -0.025em;
+  --tracking-tighter: -0.05em;
+
+  /* ── Shadow Utilities ─────────────────────────────── */
+  --shadow-sp-box: 0 3px 8px -1px rgba(50, 50, 71, 0.05);
+  --shadow-sp-search: 0 0 1px rgba(12, 26, 75, 0.1), 0 4px 20px -2px rgba(50, 50, 71, 0.08);
+  --shadow-sp-input: 0 1px 2px rgba(50, 50, 71, 0.08), 0 0 1px rgba(50, 50, 71, 0.2);
+  --shadow-sp-hover: 0 8px 24px -4px rgba(22, 37, 76, 0.12);
 
   /* Radius */
   --radius-sm: calc(var(--radius) - 4px);
@@ -93,9 +108,9 @@
   --card-foreground: #16254C;
   --popover: #ffffff;
   --popover-foreground: #16254C;
-  --primary: #0BB3B7;
+  --primary: #00a5ac;
   --primary-foreground: #ffffff;
-  --secondary: #E9E9ED;
+  --secondary: #e0e5ea;
   --secondary-foreground: #16254C;
   --muted: #ececf0;
   --muted-foreground: #5C6682;
@@ -104,17 +119,17 @@
   --destructive: #FF475A;
   --border: rgba(0, 0, 0, 0.1);
   --input: rgba(0, 0, 0, 0.1);
-  --ring: #0BB3B7;
+  --ring: #00a5ac;
 
   /* Springpod layout tokens — light */
-  --sp-bg: rgba(233, 233, 237, 0.3);
+  --sp-bg: #f7fafc;
   --sp-content-bg: #ffffff;
   --sp-text: #16254C;
   --sp-text-light: rgba(255, 255, 255, 0.87);
   --sp-code-bg: linear-gradient(135deg, #16254C, #2D3B5E);
   --sp-table-header-bg: linear-gradient(135deg, #16254C, #2D3B5E);
   --sp-card-bg: #ffffff;
-  --sp-card-border: #B9BEC9;
+  --sp-card-border: #b3bac7;
   --sp-shadow: rgba(22, 37, 76, 0.06);
   --sp-shadow-hover: rgba(22, 37, 76, 0.12);
 
@@ -134,6 +149,8 @@
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+
+  --sp-ring-offset: #ffffff;
 }
 
 /* ── Dark mode ────────────────────────────────────────────────────── */
@@ -141,34 +158,36 @@
   /* Semantic colors — dark */
   --background: #0d1117;
   --foreground: rgba(255, 255, 255, 0.87);
-  --card: #161b22;
+  --card: #1c2128;
   --card-foreground: rgba(255, 255, 255, 0.87);
-  --popover: #161b22;
+  --popover: #1c2128;
   --popover-foreground: rgba(255, 255, 255, 0.87);
-  --primary: #0BB3B7;
+  --primary: #00a5ac;
   --primary-foreground: #ffffff;
   --secondary: #1c2333;
   --secondary-foreground: rgba(255, 255, 255, 0.87);
   --muted: #1c2333;
   --muted-foreground: #8B92A6;
-  --accent: #0BB3B7;
+  --accent: #00a5ac;
   --accent-foreground: #ffffff;
   --destructive: #FF475A;
   --border: rgba(255, 255, 255, 0.08);
   --input: rgba(255, 255, 255, 0.08);
-  --ring: #0BB3B7;
+  --ring: #00a5ac;
 
   /* Springpod layout tokens — dark */
   --sp-bg: #0d1117;
-  --sp-content-bg: #161b22;
+  --sp-content-bg: #1c2128;
   --sp-text: rgba(255, 255, 255, 0.87);
   --sp-text-light: rgba(255, 255, 255, 0.87);
   --sp-code-bg: linear-gradient(135deg, #0a0f1e, #151d33);
   --sp-table-header-bg: linear-gradient(135deg, #0a0f1e, #151d33);
-  --sp-card-bg: #161b22;
+  --sp-card-bg: #1c2128;
   --sp-card-border: rgba(255, 255, 255, 0.08);
   --sp-shadow: rgba(0, 0, 0, 0.2);
   --sp-shadow-hover: rgba(0, 0, 0, 0.3);
+
+  --sp-ring-offset: #0d1117;
 }
 
 /* ── Base layer ───────────────────────────────────────────────────── */
@@ -181,20 +200,25 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
   }
 
   body {
     background: var(--sp-bg);
     color: var(--foreground);
-    font-family: var(--font-sans);
+    font-family: var(--font-sans-nf), "Inter", ui-sans-serif, system-ui, sans-serif;
     font-weight: var(--font-weight-normal);
-    line-height: 1.75;
+    line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-heading);
+    font-family: var(--font-heading-nf), "Poppins", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  code, pre {
+    font-family: var(--font-mono-nf), "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   }
 }
 
@@ -205,7 +229,7 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B9BEC9;
+  background: var(--color-sp-border);
   border-radius: 3px;
 }
 
@@ -220,7 +244,25 @@
 /* ── Decorative gradient divider ─────────────────────────────────── */
 .sp-gradient-divider {
   height: 2px;
-  background: linear-gradient(90deg, transparent, #0BB3B7, transparent);
+  background: linear-gradient(90deg, transparent, #00a5ac, transparent);
   border: none;
   margin: 2rem 0;
+}
+
+/* ── Checkbox checkmark (pure CSS replacement for inline SVG) ──── */
+input[type="checkbox"].sp-check:checked {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ── Reduced motion ──────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

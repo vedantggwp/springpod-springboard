@@ -40,7 +40,6 @@ export default function ChecklistItem({
   const storedChecked = useLocalStorageChecked(id);
   const [localChecked, setLocalChecked] = useState<boolean | null>(null);
   const checked = localChecked ?? storedChecked;
-  const mounted = typeof window !== "undefined";
 
   function handleToggle() {
     const next = !checked;
@@ -56,22 +55,11 @@ export default function ChecklistItem({
           checked={checked}
           onChange={handleToggle}
           className={[
-            "h-4 w-4 shrink-0 cursor-pointer rounded-[4px] border-2 border-sp-border",
+            "sp-check h-4 w-4 shrink-0 cursor-pointer rounded-[4px] border-2 border-sp-border",
             "appearance-none transition-colors duration-150",
             "checked:border-sp-teal checked:bg-sp-teal",
             "dark:border-white/20 dark:checked:border-sp-teal dark:checked:bg-sp-teal",
           ].join(" ")}
-          style={
-            mounted && checked
-              ? {
-                  backgroundImage:
-                    "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E\")",
-                  backgroundSize: "100%",
-                  backgroundPosition: "center",
-                  backgroundRepeat: "no-repeat",
-                }
-              : undefined
-          }
           aria-label={label}
         />
         <span

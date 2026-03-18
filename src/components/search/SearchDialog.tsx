@@ -36,6 +36,8 @@ export function SearchDialog() {
   const [fuse, setFuse] = useState<Fuse<SearchEntry> | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const resultsRef = useRef<HTMLUListElement>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<Element | null>(null);
 
   // Load search index lazily on first open
   const loadIndex = useCallback(async () => {
@@ -56,6 +58,7 @@ export function SearchDialog() {
   }, [fuse]);
 
   const open = useCallback(() => {
+    triggerRef.current = document.activeElement;
     setIsOpen(true);
     loadIndex();
   }, [loadIndex]);
@@ -64,6 +67,11 @@ export function SearchDialog() {
     setIsOpen(false);
     setQuery("");
     setSelectedIndex(0);
+    // Restore focus to the element that opened the dialog
+    if (triggerRef.current instanceof HTMLElement) {
+      triggerRef.current.focus();
+    }
+    triggerRef.current = null;
   }, []);
 
   // Listen for open-search event and Cmd+K
@@ -120,6 +128,41 @@ export function SearchDialog() {
       } else if (e.key === "Enter" && results[selectedIndex]) {
         router.push(results[selectedIndex].item.slug);
         close();
+      } else if (e.key === "Tab") {
+        // Focus trap within dialog
+        e.preventDefault();
+        const dialog = dialogRef.current;
+        if (!dialog) return;
+        const focusable = dialog.querySelectorAll<HTMLElement>(
+          'input, button, a[href], [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            last.focus();
+          } else {
+            // Find previous focusable
+            for (let i = focusable.length - 1; i >= 0; i--) {
+              if (focusable[i] === document.activeElement && i > 0) {
+                focusable[i - 1].focus();
+                break;
+              }
+            }
+          }
+        } else {
+          if (document.activeElement === last) {
+            first.focus();
+          } else {
+            for (let i = 0; i < focusable.length; i++) {
+              if (focusable[i] === document.activeElement && i < focusable.length - 1) {
+                focusable[i + 1].focus();
+                break;
+              }
+            }
+          }
+        }
       }
     },
     [results, selectedIndex, close, router]
@@ -138,16 +181,21 @@ export function SearchDialog() {
       onClick={close}
     >
       {/* Backdrop */}
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" aria-hidden="true" />
 
       {/* Dialog */}
       <div
+        ref={dialogRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search documentation"
         className={
-          "relative w-full max-w-xl rounded-xl border shadow-2xl " +
+          "relative w-full max-w-xl rounded-lg border shadow-sp-search " +
           "border-sp-border bg-white " +
           "dark:border-white/10 dark:bg-card"
         }
         onClick={(e) => e.stopPropagation()}
+        onKeyDown={handleKeyDown}
       >
         {/* ── Search Input ────────────────────────────────────────── */}
         <div
@@ -166,20 +214,21 @@ export function SearchDialog() {
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
             placeholder="Search documentation..."
             className={
-              "h-14 flex-1 bg-transparent text-sm outline-none " +
+              "h-14 flex-1 bg-transparent text-sm " +
               "text-sp-navy placeholder:text-sp-text-muted " +
-              "dark:text-white/90 dark:placeholder:text-sp-text-muted"
+              "dark:text-white/90 dark:placeholder:text-sp-text-muted " +
+              "focus:outline-none"
             }
           />
           <button
             onClick={close}
             className={
-              "rounded-lg p-1.5 transition-colors " +
+              "rounded-md p-1.5 transition-colors duration-150 ease-out " +
               "text-sp-text-muted hover:bg-sp-surface hover:text-sp-navy " +
-              "dark:hover:bg-white/10 dark:hover:text-white"
+              "dark:hover:bg-white/10 dark:hover:text-white " +
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)]"
             }
             aria-label="Close search"
           >
@@ -215,9 +264,10 @@ export function SearchDialog() {
                           <a
                             href={result.item.slug}
                             className={
-                              "flex items-center gap-3 rounded-lg px-3 py-2.5 transition-colors " +
+                              "flex items-center gap-3 rounded-md px-3 py-2.5 transition-colors duration-150 ease-out " +
+                              "focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)] " +
                               (isActive
-                                ? "bg-gradient-to-r from-sp-teal-light/30 to-sp-teal/20 "
+                                ? "bg-sp-teal/[0.08] "
                                 : "hover:bg-sp-surface dark:hover:bg-white/5 ")
                             }
                             onMouseEnter={() =>

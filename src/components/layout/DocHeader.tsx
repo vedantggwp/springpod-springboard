@@ -18,7 +18,7 @@ export function DocHeader() {
 
   return (
     <header
-      className="sticky top-0 z-40 flex h-16 items-center border-b border-border
+      className="sticky top-0 z-40 flex h-12 items-center border-b border-border
         bg-white px-4 dark:border-white/10 dark:bg-background lg:px-6"
     >
       {/* Mobile hamburger */}
@@ -29,6 +29,7 @@ export function DocHeader() {
         className="mr-3 flex h-9 w-9 items-center justify-center rounded-md
           text-sp-text-secondary transition-colors hover:bg-sp-surface hover:text-sp-navy
           dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)]
           lg:hidden"
       >
         <Menu size={20} />
@@ -39,11 +40,15 @@ export function DocHeader() {
         <img
           src="/springpod-logo.svg"
           alt="Springpod"
+          width={120}
+          height={32}
           className="h-8 w-auto dark:hidden"
         />
         <img
           src="/springpod-logo-dark.svg"
           alt="Springpod"
+          width={120}
+          height={32}
           className="hidden h-8 w-auto dark:block"
         />
         <span
@@ -53,9 +58,7 @@ export function DocHeader() {
           SpringBoard
         </span>
         <span
-          className="ml-1.5 rounded-full bg-sp-teal/10 px-2 py-0.5 text-[10px]
-            font-semibold uppercase tracking-wider text-sp-teal
-            dark:bg-sp-teal/20 dark:text-sp-teal"
+          className="ml-1.5 text-[10px] font-medium uppercase tracking-wider text-sp-text-muted"
         >
           Beta
         </span>
@@ -71,6 +74,7 @@ export function DocHeader() {
           bg-sp-surface px-4 py-2 text-sm text-sp-text-muted
           transition-colors hover:bg-sp-gray
           dark:bg-white/10 dark:text-white/50 dark:hover:bg-white/15
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)]
           sm:flex"
       >
         <Search size={14} className="shrink-0" />
@@ -92,6 +96,7 @@ export function DocHeader() {
         className="mr-2 flex h-9 w-9 items-center justify-center rounded-md
           text-sp-text-secondary transition-colors hover:bg-sp-surface hover:text-sp-navy
           dark:text-white/70 dark:hover:bg-white/10 dark:hover:text-white
+          focus:outline-none focus-visible:ring-2 focus-visible:ring-sp-teal focus-visible:ring-offset-2 ring-offset-[var(--sp-ring-offset)]
           sm:hidden"
       >
         <Search size={18} />
