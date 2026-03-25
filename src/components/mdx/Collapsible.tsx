@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
+import { tealVariant, redVariant, blueVariant } from "./variant-styles";
 
 type CollapsibleVariant = "info" | "warning" | "tip" | "example" | "why" | "how";
 
@@ -18,36 +19,12 @@ interface VariantStyle {
 }
 
 const variantStyles: Record<CollapsibleVariant, VariantStyle> = {
-  info: {
-    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
-    border: "border-sp-teal",
-    chevronColor: "text-sp-teal",
-  },
-  warning: {
-    bg: "bg-sp-red/[0.04] dark:bg-sp-red/[0.06]",
-    border: "border-sp-red",
-    chevronColor: "text-sp-red",
-  },
-  tip: {
-    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
-    border: "border-sp-teal",
-    chevronColor: "text-sp-teal",
-  },
-  example: {
-    bg: "bg-sp-blue/[0.04] dark:bg-sp-blue/[0.06]",
-    border: "border-sp-blue",
-    chevronColor: "text-sp-blue",
-  },
-  why: {
-    bg: "bg-sp-blue/[0.04] dark:bg-sp-blue/[0.06]",
-    border: "border-sp-blue",
-    chevronColor: "text-sp-blue",
-  },
-  how: {
-    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
-    border: "border-sp-teal",
-    chevronColor: "text-sp-teal",
-  },
+  info: { ...tealVariant, chevronColor: tealVariant.accentColor },
+  warning: { ...redVariant, chevronColor: redVariant.accentColor },
+  tip: { ...tealVariant, chevronColor: tealVariant.accentColor },
+  example: { ...blueVariant, chevronColor: blueVariant.accentColor },
+  why: { ...blueVariant, chevronColor: blueVariant.accentColor },
+  how: { ...tealVariant, chevronColor: tealVariant.accentColor },
 };
 
 export default function Collapsible({

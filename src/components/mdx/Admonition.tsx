@@ -4,6 +4,7 @@ import {
   CheckCircle2,
   type LucideIcon,
 } from "lucide-react";
+import { tealVariant, redVariant } from "./variant-styles";
 
 type AdmonitionType = "note" | "warning" | "tip" | "info" | "danger" | "success";
 
@@ -22,48 +23,12 @@ interface AdmonitionStyle {
 }
 
 const admonitionConfig: Record<AdmonitionType, AdmonitionStyle> = {
-  info: {
-    icon: Info,
-    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
-    border: "border-sp-teal",
-    iconColor: "text-sp-teal",
-    defaultTitle: "Info",
-  },
-  note: {
-    icon: Info,
-    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
-    border: "border-sp-teal",
-    iconColor: "text-sp-teal",
-    defaultTitle: "Note",
-  },
-  warning: {
-    icon: AlertCircle,
-    bg: "bg-sp-red/[0.04] dark:bg-sp-red/[0.06]",
-    border: "border-sp-red",
-    iconColor: "text-sp-red",
-    defaultTitle: "Warning",
-  },
-  danger: {
-    icon: AlertCircle,
-    bg: "bg-sp-red/[0.04] dark:bg-sp-red/[0.06]",
-    border: "border-sp-red",
-    iconColor: "text-sp-red",
-    defaultTitle: "Danger",
-  },
-  tip: {
-    icon: CheckCircle2,
-    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
-    border: "border-sp-teal",
-    iconColor: "text-sp-teal",
-    defaultTitle: "Tip",
-  },
-  success: {
-    icon: CheckCircle2,
-    bg: "bg-sp-teal/[0.04] dark:bg-sp-teal/[0.06]",
-    border: "border-sp-teal",
-    iconColor: "text-sp-teal",
-    defaultTitle: "Success",
-  },
+  info: { icon: Info, ...tealVariant, iconColor: tealVariant.accentColor, defaultTitle: "Info" },
+  note: { icon: Info, ...tealVariant, iconColor: tealVariant.accentColor, defaultTitle: "Note" },
+  warning: { icon: AlertCircle, ...redVariant, iconColor: redVariant.accentColor, defaultTitle: "Warning" },
+  danger: { icon: AlertCircle, ...redVariant, iconColor: redVariant.accentColor, defaultTitle: "Danger" },
+  tip: { icon: CheckCircle2, ...tealVariant, iconColor: tealVariant.accentColor, defaultTitle: "Tip" },
+  success: { icon: CheckCircle2, ...tealVariant, iconColor: tealVariant.accentColor, defaultTitle: "Success" },
 };
 
 export default function Admonition({

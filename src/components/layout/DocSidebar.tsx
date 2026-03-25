@@ -37,7 +37,7 @@ interface SidebarSectionProps {
 
 function SidebarSection({ section, pathname }: SidebarSectionProps) {
   return (
-    <div className="mb-1 mt-4 first:mt-0">
+    <div className="mb-1 mt-6 first:mt-0">
       <NavSectionGroup
         section={section}
         pathname={pathname}

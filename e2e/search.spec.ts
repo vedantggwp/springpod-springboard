@@ -39,9 +39,9 @@ test.describe("Search", () => {
 
   test("no results shows empty state", async ({ page }) => {
     await page.keyboard.press("Meta+k");
+    await page.waitForTimeout(300);
     await page.keyboard.type("xyznonexistent123");
-    await page.waitForTimeout(500);
-    await expect(page.locator('[role="dialog"]')).toContainText("No results found");
+    await expect(page.locator('[role="dialog"]')).toContainText("No results found", { timeout: 5000 });
   });
 
   test("Escape closes and restores focus", async ({ page }) => {
