@@ -1,29 +1,29 @@
 {
-  "built_at": "2026-03-17T19:02:53.494Z",
-  "built_from_commit": "93b85d1",
+  "built_at": "2026-03-25T13:59:08.046Z",
+  "built_from_commit": "74344e6",
   "bundles": {
     "policy": {
-      "hash": "sha256:dc5850dc4822e69e6831dc82519be8cb01993d4c48ac6f8f6ef236ed69219e8d",
+      "hash": "sha256:1553c1df8d3f7f8d7e37d04e5369f392b4133fa3455b9abb4e95195338830dba",
       "tokens": 380
     },
     "content": {
-      "hash": "sha256:f26bce202b83c352cd80ae43f5b2ec1fcfff98c3aaf9fa21c2b30df7ae1d1053",
+      "hash": "sha256:7275c5b65fcd69f67acda1016d2242397ea9f009344ec14ff6def186b71fa155",
       "tokens": 39399
     },
     "design": {
-      "hash": "sha256:35206bef574f93c0af3e03af42fe1b7eb386564b146014ab7500b518a59e61e5",
+      "hash": "sha256:9f4928d7b22b09f0f7467ce99c39ca118f03b94c941fdc5626d641db03a1f653",
       "tokens": 3926
     },
     "tools": {
-      "hash": "sha256:33c089d3b292f9ce0f3e4ee4af761974d31eefe9386145da0b3d477ae49760fe",
+      "hash": "sha256:8bc0f5e3a75914cf40bea9b3c5528f120e015131cbeb5e2b59adf8d2c49c7e2c",
       "tokens": 1168
     },
     "roles": {
-      "hash": "sha256:db60fa4069f40406478fe1ea200cc3734e41ff2c5836b6ce8f70d6f0233370b4",
+      "hash": "sha256:1ca1d3becd383f5bf807f5f28ff312a00c27cdbb8b6924f8075633c5ee48474e",
       "tokens": 4379
     },
     "prompts": {
-      "hash": "sha256:6d1f2030a2fc598a53c6db853b02cc05416b158dca5b39abca9cc1bff75e858a",
+      "hash": "sha256:c09e711ee04cae2f52ce6bc7d3339af3ba487075602ea6ca40dd016afd5f6c10",
       "tokens": 3186
     }
   },

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useSyncExternalStore } from "react";
+import { useState, useCallback, useRef, useSyncExternalStore } from "react";
 import { ThumbsUp, ThumbsDown } from "lucide-react";
 
 interface FeedbackWidgetProps {
@@ -20,6 +20,15 @@ function getStorageKey(slug: string): string {
 function useFeedbackStore(slug: string): FeedbackData | null {
   const key = getStorageKey(slug);
 
+  // Cache the last raw string so getSnapshot returns a stable reference when
+  // the underlying data has not changed. Without this, JSON.parse produces a
+  // new object on every call and useSyncExternalStore treats every render as a
+  // store update, preventing the submitted state from ever stabilising.
+  const cacheRef = useRef<{ raw: string | undefined; value: FeedbackData | null }>({
+    raw: undefined,
+    value: null,
+  });
+
   const subscribe = useCallback(
     (callback: () => void) => {
       const handler = (e: StorageEvent) => {
@@ -32,14 +41,20 @@ function useFeedbackStore(slug: string): FeedbackData | null {
   );
 
   const getSnapshot = useCallback((): FeedbackData | null => {
-    const raw = localStorage.getItem(key);
-    if (!raw) return null;
-    try {
-      return JSON.parse(raw) as FeedbackData;
-    } catch {
+    const raw = localStorage.getItem(key) ?? undefined;
+    if (raw === cacheRef.current.raw) return cacheRef.current.value;
+    cacheRef.current.raw = raw;
+    if (!raw) {
+      cacheRef.current.value = null;
       return null;
     }
-  }, [key]);
+    try {
+      cacheRef.current.value = JSON.parse(raw) as FeedbackData;
+    } catch {
+      cacheRef.current.value = null;
+    }
+    return cacheRef.current.value;
+  }, [key]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const getServerSnapshot = useCallback((): FeedbackData | null => null, []);
 

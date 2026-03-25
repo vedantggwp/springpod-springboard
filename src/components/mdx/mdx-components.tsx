@@ -54,7 +54,7 @@ function createHeading(level: 1 | 2 | 3 | 4 | 5 | 6) {
     return (
       <Tag
         id={id}
-        className={`group text-foreground ${sizes[level]}`}
+        className={`group text-sp-navy dark:text-white/90 ${sizes[level]}`}
         {...props}
       >
         {children}
@@ -125,7 +125,7 @@ export const mdxComponents = {
     if (!className) {
       return (
         <code
-          className="rounded-md bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground dark:bg-white/10"
+          className="rounded-md bg-sp-surface px-1.5 py-0.5 font-mono text-sm text-sp-navy dark:bg-white/10 dark:text-white/85"
           {...props}
         >
           {children}

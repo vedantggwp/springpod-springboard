@@ -42,9 +42,12 @@ export function ThemeProvider({ children }: { readonly children: React.ReactNode
   const [theme, setTheme] = useState<Theme>("light");
   const [mounted, setMounted] = useState(false);
 
-  // Sync React state with what the blocking script already set
+  // Sync React state with what the blocking script already set.
+  // Intentional SSR-safe hydration pattern: the blocking <script> in <head> already
+  // applied .dark before paint; this effect aligns React state to match without FOUC.
   useEffect(() => {
     const realTheme = getStoredTheme();
+    /* eslint-disable-next-line react-hooks/set-state-in-effect */
     setTheme(realTheme);
     applyTheme(realTheme);
     setMounted(true);

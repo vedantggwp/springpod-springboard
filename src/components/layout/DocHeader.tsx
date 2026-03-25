@@ -19,7 +19,7 @@ export function DocHeader() {
   return (
     <header
       className="sticky top-0 z-40 flex h-12 items-center border-b border-border
-        bg-white px-4 dark:border-white/10 dark:bg-background lg:px-6"
+        bg-[var(--sp-content-bg)] px-4 dark:border-white/10 dark:bg-background lg:px-6"
     >
       {/* Mobile hamburger */}
       <button
@@ -80,7 +80,7 @@ export function DocHeader() {
         <Search size={14} className="shrink-0" />
         <span className="flex-1 text-left">Search docs...</span>
         <kbd
-          className="rounded border border-sp-border bg-white px-1.5 py-0.5
+          className="rounded border border-sp-border bg-[var(--sp-content-bg)] px-1.5 py-0.5
             font-mono text-[10px] text-sp-text-muted
             dark:border-white/15 dark:bg-white/5 dark:text-white/40"
         >
