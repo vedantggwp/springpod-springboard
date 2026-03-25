@@ -37,7 +37,7 @@ npm install
 # Start dev server
 npm run dev
 
-# Production build (includes search index)
+# Production build (includes search index + content bundles)
 npm run build
 
 # Type check
@@ -45,28 +45,38 @@ npm run typecheck
 
 # Lint
 npm run lint
+
+# E2E tests (149 tests, desktop + mobile)
+npx playwright test
 ```
 
 ## Project Structure
 
 ```
 src/
-├── app/              # Next.js App Router pages
+├── app/              # Next.js App Router pages + globals.css
 ├── components/
-│   ├── layout/       # DocHeader, DocSidebar, DocPage, etc.
-│   ├── mdx/          # Collapsible, Admonition, CardGrid, StepCard, etc.
-│   ├── search/       # SearchDialog (Cmd+K)
-│   └── theme/        # ThemeProvider, ThemeToggle
-├── content/          # All MDX source content
+│   ├── layout/       # DocHeader, DocSidebar, DocPage, NavSection, etc.
+│   ├── mdx/          # Collapsible, Admonition, CardGrid, StepCard, variant-styles, etc.
+│   ├── feedback/     # FeedbackWidget (per-page vote + comment)
+│   ├── search/       # SearchDialog (Cmd+K, Fuse.js)
+│   └── theme/        # ThemeProvider, ThemeToggle (3-layer dark mode)
+├── content/          # All MDX source content (40 pages)
 │   ├── intake/
 │   ├── standards/
 │   ├── build-guides/
 │   ├── checklists/
 │   ├── forms/
 │   ├── guides/
-│   └── client-config/
+│   ├── client-config/
+│   ├── roles/
+│   ├── updates/
+│   ├── design-system/
+│   └── reference/
 ├── lib/              # Navigation config, content utilities
 └── types/            # TypeScript type definitions
+e2e/                  # Playwright E2E tests (7 spec files)
+scripts/              # Build scripts (search index, content bundles, dates)
 ```
 
 ## License

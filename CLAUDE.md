@@ -9,15 +9,16 @@
 ## Commands
 
 ```bash
-npm install          # Install dependencies
-npm run dev          # Dev server
-npm run build        # Build search index + Next.js site (38 pages)
-npm run typecheck    # TypeScript
-npm run lint         # ESLint
-node test-site.mjs   # Playwright verification (26 screenshots, checks dark mode/hydration/console errors)
+npm install              # Install dependencies
+npm run dev              # Dev server
+npm run build            # Build search index + bundles + Next.js site (46 pages)
+npm run typecheck        # TypeScript
+npm run lint             # ESLint
+npx playwright test      # E2E tests (149 tests, desktop + mobile) — requires build + server
+node test-site.mjs       # Legacy screenshot suite (233 assertions) — requires server on :3000
 ```
 
-Run `node test-site.mjs` after any component or theme changes. It catches hydration errors, FOUC, broken dark mode, and console warnings that won't show up in `npm run build`.
+Run `npx playwright test` after any component or theme changes. It covers all 40 pages, dark mode, FOUC, search, navigation, checklists, feedback, accessibility, and responsive layouts across desktop (1440x900) and mobile (375x812).
 
 ## Content Structure
 
@@ -31,8 +32,11 @@ IMPORTANT: All colors use `sp-*` token classes defined in `src/app/globals.css`.
 
 - **NEVER use hardcoded hex colors** like `bg-[#161b22]` — use semantic tokens (`dark:bg-card`, `dark:bg-background`)
 - **NEVER use generic Tailwind grays** like `text-gray-700`, `border-gray-200` — use `sp-*` equivalents (`text-sp-gray-700`, `border-border`)
+- **NEVER use shadcn defaults** like `text-foreground`, `bg-muted`, `text-muted-foreground` — use `text-sp-navy`, `bg-sp-surface`, `text-sp-text-secondary`
+- **NEVER use `bg-white`** for header/sidebar — use `bg-[var(--sp-content-bg)]` so it matches the layout token
 - Brand colors: `sp-teal` (primary), `sp-navy` (text/headers), `sp-blue` (accent)
 - The Springpod logo SVGs are sacred — never alter them, only swap between light/dark variants
+- Variant styles (bg/border/accent for info/warning/danger/etc) live in `src/components/mdx/variant-styles.ts` — shared by Collapsible and Admonition
 
 ## Dark Mode Architecture
 
@@ -50,9 +54,15 @@ If you change the storage key, theme values, or class strategy, update ALL THREE
 - **ThemeProvider:** NEVER call `localStorage` during render/initialization. Always init as `"light"` and sync in `useEffect`. SSR returns "light", client may have "dark" → hydration mismatch.
 - **Heading slug deduplication:** Both `src/components/mdx/mdx-components.tsx` AND `src/lib/toc.ts` must use identical dedup logic (track seen slugs, append `-2`, `-3`). If they diverge, TOC links break and React throws duplicate key warnings.
 - **ChecklistItem:** Uses `useSyncExternalStore` (not `useEffect`) for localStorage persistence to avoid hydration errors.
+- **FeedbackWidget:** Also uses `useSyncExternalStore` with a ref-cached snapshot. Without caching, `JSON.parse` creates new object refs each render → infinite re-render loop that swallows state changes.
+
+## Testing
+
+- **Playwright E2E** (`e2e/`): 149 tests across 7 spec files, run on desktop + mobile viewports. Config in `playwright.config.ts`. Covers all pages, dark mode, FOUC, search, nav, interactive components, a11y, design tokens.
+- **Legacy screenshot suite** (`test-site.mjs`): 233 assertions with 26+ screenshots. Standalone script, no test framework.
+- Both require a running server on `:3000`. Playwright config auto-starts one via `webServer`.
 
 ## Constraints
 
-- **No unit tests.** Quality verified via Playwright screenshots (`test-site.mjs`) + manual review.
-- **SSG only.** All 38 pages pre-built via `generateStaticParams`. No server-side rendering or API routes.
+- **SSG only.** All 46 pages pre-built via `generateStaticParams`. No server-side rendering or API routes.
 - **Token-first styling.** Architecture must support easy theme swaps — no component should depend on specific color values.
